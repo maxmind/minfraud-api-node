@@ -1,6 +1,11 @@
 # Node.js API for MaxMind minFraud Score, Insights, and Factors
 
-## Usage
+## Errors and Exceptions
+
+Thrown by the request and transaction models:
+* `ArgumentError` - Thrown when invalid data is passed to the model constructor.
+
+## Example
 
 ```
 import * as minFraud from '@maxmind/minfraud-api-node';
