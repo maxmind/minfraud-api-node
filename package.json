@@ -67,5 +67,7 @@
     "test:watch": "jest --watch",
     "version": "yarn build:docs && yarn deploy:docs"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@maxmind/geoip2-node": "^0.3.0"
+  }
 }
