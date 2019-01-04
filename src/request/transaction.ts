@@ -1,3 +1,4 @@
+import snakecaseKeys = require('snakecase-keys');
 import { ArgumentError } from '../errors';
 import Device from './device';
 
@@ -13,6 +14,16 @@ export default class Transaction {
       throw new ArgumentError('`device` needs to be an instance of Device');
     }
 
-    this.device = new Device(transaction.device);
+    this.device = transaction.device;
+  }
+
+  public toString(): string {
+    return `{
+      "device": ${this.snakeJsonStringify(this.device)}
+    }`.replace(/\n|\s+/g, '');
+  }
+
+  private snakeJsonStringify(property: any): string {
+    return JSON.stringify(snakecaseKeys(property));
   }
 }

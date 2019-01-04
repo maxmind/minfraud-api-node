@@ -22,16 +22,6 @@ describe('Transaction()', () => {
     }).toThrowError(ArgumentError);
   });
 
-  it('throws an error if device.ipAddress is not valid', () => {
-    expect(() => {
-      const test = new Transaction({
-        device: new Device({
-          ipAddress: 'foo',
-        }),
-      });
-    }).toThrowError(ArgumentError);
-  });
-
   it('constructs', () => {
     expect(() => {
       const test = new Transaction({
@@ -40,5 +30,15 @@ describe('Transaction()', () => {
         }),
       });
     }).not.toThrow();
+  });
+
+  it('toString()', () => {
+    const test = new Transaction({
+      device: new Device({
+        ipAddress: '1.1.1.1',
+      }),
+    });
+
+    expect(test.toString()).toEqual('{"device":{"ip_address":"1.1.1.1"}}');
   });
 });

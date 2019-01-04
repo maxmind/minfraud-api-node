@@ -11,13 +11,20 @@ Thrown by the request and transaction models:
 import * as minFraud from '@maxmind/minfraud-api-node';
 // const minFraud = require('@maxmind/minfraud-api-node');
 
+// client is reusable
 const client = new minFraud.WebServiceClient("1234", "LICENSEKEY");
 
-const transaction = new minFraud.Transaction({
-  device: new minFraud.Device({
-    ipAddress: "8.8.8.8",
-  }),
-})
+let transaction;
+
+try {
+  transaction = new minFraud.Transaction({
+    device: new minFraud.Device({
+      ipAddress: "8.8.8.8",
+    }),
+  })
+} catch(error) {
+  // handle the error
+}
 
 client.score(transaction).then(response => {
   console.log(response.riskScore) // 50

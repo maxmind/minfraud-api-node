@@ -3,7 +3,7 @@ export interface ScoreIpAddress {
 }
 
 export interface IpAddress {
-  risk: number;
+  readonly risk: number;
 }
 
 export interface CreditCardIssuer {
