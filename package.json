@@ -1,0 +1,77 @@
+{
+  "name": "@maxmind/minfraud-api-node",
+  "version": "0.0.0",
+  "description": "Node.js API for MaxMind minFraud Score, Insights, and Factors web services",
+  "main": "dist/index.js",
+  "homepage": "https://github.com/maxmind/minfraud-api-node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxmind/minfraud-api-node.git"
+  },
+  "author": "MaxMind",
+  "license": "Apache-2.0",
+  "private": false,
+  "keywords": [
+    "maxmind",
+    "minfraud",
+    "minfraud score",
+    "minfraud insights",
+    "minfraud factors"
+  ],
+  "files": ["dist"],
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "@types/camelcase-keys": "^4.0.0",
+    "@types/jest": "^23.3.5",
+    "@types/nock": "^9.3.0",
+    "@types/node": "^10.11.6",
+    "@types/snakecase-keys": "^2.1.0",
+    "gh-pages": "^2.0.1",
+    "husky": "^1.1.1",
+    "jest": "^23.6.0",
+    "lint-staged": "^7.3.0",
+    "nock": "^10.0.4",
+    "np": "^3.0.4",
+    "prettier": "^1.14.3",
+    "ts-jest": "^23.10.4",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typedoc": "^0.13.0",
+    "typescript": "^3.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.json": ["prettier --parser json --write", "git add"],
+    "*.ts": [
+      "prettier --parser typescript --single-quote true --trailing-comma es5 --write",
+      "tslint -p tsconfig.lint.json -t stylish",
+      "git add"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "build:docs": "rimraf docs && typedoc --out docs --exclude \"**/*.spec.ts\" --mode file --readme README.md",
+    "deploy:docs": "gh-pages -d docs",
+    "lint": "tslint -p ./tsconfig.lint.json -t stylish",
+    "prettier:ts": "prettier --parser typescript --single-quote true --trailing-comma es5 --write 'src/**/*.ts'",
+    "prettier:ci": "prettier --parser typescript --single-quote true --trailing-comma es5 --list-different 'src/**/*.ts'",
+    "prettier:json": "prettier --parser json --write '**/*.json'",
+    "release": "yarn build && np",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "version": "yarn build:docs && yarn deploy:docs"
+  },
+  "dependencies": {
+    "@maxmind/geoip2-node": "^0.3.0",
+    "camelcase-keys": "^5.0.0",
+    "snakecase-keys": "^2.1.0"
+  }
+}
