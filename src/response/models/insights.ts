@@ -1,0 +1,54 @@
+import { Insights as GeoInsights } from '@maxmind/geoip2-node';
+import { camelizeResponse } from '../../utils';
+import * as records from '../records';
+import * as webRecords from '../web-records';
+import Score from './score';
+
+export default class Insights extends Score {
+  public readonly billingAddress?: records.BillingAddress;
+  public readonly creditCard?: records.CreditCard;
+  public readonly device: records.Device;
+  public readonly email?: records.Email;
+  public readonly ipAddress: records.IpAddress;
+  public readonly shippingAddress?: records.ShippingAddress;
+
+  public constructor(response: webRecords.InsightsResponse) {
+    super(response);
+
+    this.billingAddress = this.maybeGet<records.BillingAddress>(
+      response,
+      'billing_address'
+    );
+    this.creditCard = this.maybeGet<records.CreditCard>(
+      response,
+      'credit_card'
+    );
+    this.device = camelizeResponse(response.device);
+    this.email = this.maybeGet<records.Email>(response, 'email');
+    this.ipAddress = this.getIpAddress(response);
+    this.shippingAddress = this.maybeGet<records.ShippingAddress>(
+      response,
+      'shipping_address'
+    );
+  }
+
+  private maybeGet<T>(
+    response: webRecords.InsightsResponse,
+    prop: keyof webRecords.InsightsResponse
+  ): T {
+    return response[prop] ? camelizeResponse(response[prop]) : undefined;
+  }
+
+  private getIpAddress(
+    response: webRecords.InsightsResponse
+  ): records.IpAddress {
+    const insights = new GeoInsights(response.ip_address) as records.IpAddress;
+    insights.country.isHighRisk = response.ip_address.country.is_high_risk;
+    insights.location.localTime = response.ip_address.location.local_time;
+    insights.risk = response.ip_address.risk;
+
+    delete insights.maxmind;
+
+    return insights;
+  }
+}

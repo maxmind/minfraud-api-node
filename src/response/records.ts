@@ -1,57 +1,70 @@
+import { CountryRecord, Insights, LocationRecord } from '@maxmind/geoip2-node';
+
 export interface ScoreIpAddress {
   readonly risk: number;
 }
 
-export interface IpAddress {
-  readonly risk: number;
+export interface GeoIPCountry extends CountryRecord {
+  isHighRisk: boolean;
+}
+
+export interface GeoIPLocation extends LocationRecord {
+  localTime: string;
+}
+
+export interface IpAddress extends Insights {
+  readonly country: GeoIPCountry;
+  readonly location: GeoIPLocation;
+  maxmind: any;
+  risk: number;
 }
 
 export interface CreditCardIssuer {
   readonly name: string;
-  readonly matchesProvidedName: boolean;
+  readonly matchesProvidedName?: boolean;
   readonly phoneNumber: string;
-  readonly matchesProvidedPhoneNumber: boolean;
+  readonly matchesProvidedPhoneNumber?: boolean;
 }
 
 export interface CreditCard {
   readonly issuer: CreditCardIssuer;
   readonly brand: string;
   readonly country: string;
-  readonly isIssuedInBillingAddressCountry: boolean;
-  readonly isPrepaid: boolean;
-  readonly isVirtual: boolean;
+  readonly isIssuedInBillingAddressCountry?: boolean;
+  readonly isPrepaid?: boolean;
+  readonly isVirtual?: boolean;
   readonly type: string;
 }
 
 export interface Device {
   readonly confidence: number;
-  readonly id: string;
+  readonly id?: string;
   readonly lastSeen: string;
   readonly localTime: string;
 }
 
 export interface Email {
   readonly firstSeen: string;
-  readonly isFree: boolean;
-  readonly isHighRisk: boolean;
+  readonly isFree?: boolean;
+  readonly isHighRisk?: boolean;
 }
 
 export interface ShippingAddress {
   readonly isHighRisk: boolean;
-  readonly isPostalInCity: boolean;
+  readonly isPostalInCity?: boolean;
   readonly latitude: number;
   readonly longitude: number;
   readonly distanceToIpLocation: number;
   readonly distanceToBillingAddress: number;
-  readonly isInIpCountry: number;
+  readonly isInIpCountry?: boolean;
 }
 
 export interface BillingAddress {
-  readonly isPostalInCity: boolean;
+  readonly isPostalInCity?: boolean;
   readonly latitude: number;
   readonly longitude: number;
   readonly distanceToIpLocation: number;
-  readonly isInIpCountry: number;
+  readonly isInIpCountry?: boolean;
 }
 
 export interface Disposition {

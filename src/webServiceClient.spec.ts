@@ -1,6 +1,9 @@
+import cloneDeep = require('lodash.clonedeep');
 import nock = require('nock');
-import * as fixtures from '../fixtures/score.json';
+import * as insights from '../fixtures/insights.json';
+import * as score from '../fixtures/score.json';
 import { Client, Device, Transaction } from './index';
+import * as webRecords from './response/web-records';
 import { camelizeResponse } from './utils';
 
 const baseUrl = 'https://minfraud.maxmind.com';
@@ -14,6 +17,98 @@ const fullPath = (path: string) => `/minfraud/v2.0/${path}`;
 const client = new Client(auth.user, auth.pass);
 
 describe('WebServiceClient', () => {
+  describe('insights()', () => {
+    const transaction = new Transaction({
+      device: new Device({
+        ipAddress: '1.1.1.1',
+      }),
+    });
+
+    it('handles "full" responses', () => {
+      expect.assertions(1);
+
+      nockInstance
+        .post(fullPath('insights'), insights.request.basic)
+        .basicAuth(auth)
+        .reply(200, insights.response.full);
+
+      return expect(client.insights(transaction)).resolves.toEqual(
+        camelizeResponse(insights.response.full)
+      );
+    });
+
+    it('handles "basic" responses', () => {
+      expect.assertions(1);
+
+      const response = cloneDeep(insights.response.full);
+      delete response.disposition;
+      delete response.warnings;
+
+      nockInstance
+        .post(fullPath('insights'), insights.request.basic)
+        .basicAuth(auth)
+        .reply(200, response);
+
+      return expect(client.insights(transaction)).resolves.toEqual(
+        camelizeResponse(response)
+      );
+    });
+
+    it('handles "no disposition" responses', () => {
+      expect.assertions(1);
+
+      const response = cloneDeep(insights.response.full);
+      delete response.disposition;
+
+      nockInstance
+        .post(fullPath('insights'), insights.request.basic)
+        .basicAuth(auth)
+        .reply(200, response);
+
+      return expect(client.insights(transaction)).resolves.toEqual(
+        camelizeResponse(response)
+      );
+    });
+
+    it('handles "no warnings" responses', () => {
+      expect.assertions(1);
+
+      const response = cloneDeep(insights.response.full);
+      delete response.warnings;
+
+      nockInstance
+        .post(fullPath('insights'), insights.request.basic)
+        .basicAuth(auth)
+        .reply(200, response);
+
+      return expect(client.insights(transaction)).resolves.toEqual(
+        camelizeResponse(response)
+      );
+    });
+
+    test.each`
+      property
+      ${'billing_address'}
+      ${'credit_card'}
+      ${'email'}
+      ${'shipping_address'}
+    `('handles missing response $property', ({ property }) => {
+      expect.assertions(1);
+
+      const response = cloneDeep(insights.response.full);
+      delete response[property as keyof webRecords.InsightsResponse];
+
+      nockInstance
+        .post(fullPath('insights'), insights.request.basic)
+        .basicAuth(auth)
+        .reply(200, response);
+
+      return expect(client.insights(transaction)).resolves.toEqual(
+        camelizeResponse(response)
+      );
+    });
+  });
+
   describe('score()', () => {
     const transaction = new Transaction({
       device: new Device({
@@ -25,12 +120,12 @@ describe('WebServiceClient', () => {
       expect.assertions(1);
 
       nockInstance
-        .post(fullPath('score'), fixtures.request.basic)
+        .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
-        .reply(200, fixtures.response.full);
+        .reply(200, score.response.full);
 
       return expect(client.score(transaction)).resolves.toEqual(
-        camelizeResponse(fixtures.response.full)
+        camelizeResponse(score.response.full)
       );
     });
 
@@ -38,12 +133,12 @@ describe('WebServiceClient', () => {
       expect.assertions(1);
 
       nockInstance
-        .post(fullPath('score'), fixtures.request.basic)
+        .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
-        .reply(200, fixtures.response.basic);
+        .reply(200, score.response.basic);
 
       return expect(client.score(transaction)).resolves.toEqual(
-        camelizeResponse(fixtures.response.basic)
+        camelizeResponse(score.response.basic)
       );
     });
 
@@ -51,11 +146,11 @@ describe('WebServiceClient', () => {
       expect.assertions(1);
 
       nockInstance
-        .post(fullPath('score'), fixtures.request.basic)
-        .reply(200, fixtures.response.noDisposition);
+        .post(fullPath('score'), score.request.basic)
+        .reply(200, score.response.noDisposition);
 
       return expect(client.score(transaction)).resolves.toEqual(
-        camelizeResponse(fixtures.response.noDisposition)
+        camelizeResponse(score.response.noDisposition)
       );
     });
 
@@ -63,11 +158,11 @@ describe('WebServiceClient', () => {
       expect.assertions(1);
 
       nockInstance
-        .post(fullPath('score'), fixtures.request.basic)
-        .reply(200, fixtures.response.noWarnings);
+        .post(fullPath('score'), score.request.basic)
+        .reply(200, score.response.noWarnings);
 
       return expect(client.score(transaction)).resolves.toEqual(
-        camelizeResponse(fixtures.response.noWarnings)
+        camelizeResponse(score.response.noWarnings)
       );
     });
   });
@@ -83,7 +178,7 @@ describe('WebServiceClient', () => {
       expect.assertions(1);
 
       nockInstance
-        .post(fullPath('score'), fixtures.request.basic)
+        .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
         .reply(500);
 
@@ -98,7 +193,7 @@ describe('WebServiceClient', () => {
       expect.assertions(1);
 
       nockInstance
-        .post(fullPath('score'), fixtures.request.basic)
+        .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
         .reply(300);
 
@@ -113,7 +208,7 @@ describe('WebServiceClient', () => {
       expect.assertions(1);
 
       nockInstance
-        .post(fullPath('score'), fixtures.request.basic)
+        .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
         .reply(401, { foo: 'bar' });
 
@@ -139,7 +234,7 @@ describe('WebServiceClient', () => {
       expect.assertions(1);
 
       nockInstance
-        .post(fullPath('score'), fixtures.request.basic)
+        .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
         .replyWithError(error);
 
@@ -159,7 +254,7 @@ describe('WebServiceClient', () => {
       ${403} | ${'PERMISSION_REQUIRED'}   | ${'permission required'}
     `('handles $code error', ({ code, error, status }) => {
       nockInstance
-        .post(fullPath('score'), fixtures.request.basic)
+        .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
         .reply(status, { code, error });
       expect.assertions(1);

@@ -1,3 +1,4 @@
+import Insights from './insights';
 import Score from './score';
 
-export { Score };
+export { Insights, Score };
