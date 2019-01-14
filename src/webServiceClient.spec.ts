@@ -59,55 +59,6 @@ describe('WebServiceClient', () => {
       );
     });
 
-    it('handles "basic" responses', () => {
-      expect.assertions(1);
-
-      const response = cloneDeep(insights.response.full);
-      delete response.disposition;
-      delete response.warnings;
-
-      nockInstance
-        .post(fullPath('insights'), insights.request.basic)
-        .basicAuth(auth)
-        .reply(200, response);
-
-      return expect(client.insights(transaction)).resolves.toEqual(
-        camelizeResponse(response)
-      );
-    });
-
-    it('handles "no disposition" responses', () => {
-      expect.assertions(1);
-
-      const response = cloneDeep(insights.response.full);
-      delete response.disposition;
-
-      nockInstance
-        .post(fullPath('insights'), insights.request.basic)
-        .basicAuth(auth)
-        .reply(200, response);
-
-      return expect(client.insights(transaction)).resolves.toEqual(
-        camelizeResponse(response)
-      );
-    });
-
-    it('handles "no warnings" responses', () => {
-      expect.assertions(1);
-
-      const response = cloneDeep(insights.response.full);
-      delete response.warnings;
-
-      nockInstance
-        .post(fullPath('insights'), insights.request.basic)
-        .basicAuth(auth)
-        .reply(200, response);
-
-      return expect(client.insights(transaction)).resolves.toEqual(
-        camelizeResponse(response)
-      );
-    });
-
     test.each`
       property
       ${'billing_address'}
@@ -148,19 +99,6 @@ describe('WebServiceClient', () => {
 
       return expect(client.score(transaction)).resolves.toEqual(
         camelizeResponse(score.response.full)
-      );
-    });
-
-    it('handles "basic" responses', () => {
-      expect.assertions(1);
-
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .basicAuth(auth)
-        .reply(200, score.response.basic);
-
-      return expect(client.score(transaction)).resolves.toEqual(
-        camelizeResponse(score.response.basic)
       );
     });
 
