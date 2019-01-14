@@ -25,6 +25,8 @@ export interface CreditCardIssuer {
   readonly matches_provided_phone_number?: boolean;
 }
 
+export type CreditCardType = 'charge' | 'credit' | 'debit';
+
 export interface CreditCard {
   readonly issuer: CreditCardIssuer;
   readonly brand: string;
@@ -32,7 +34,7 @@ export interface CreditCard {
   readonly is_issued_in_billing_address_country?: boolean;
   readonly is_prepaid?: boolean;
   readonly is_virtual?: boolean;
-  readonly type: string;
+  readonly type: CreditCardType;
 }
 
 export interface Device {
@@ -66,9 +68,13 @@ export interface BillingAddress {
   readonly is_in_ip_country?: boolean;
 }
 
+export type DispositionAction = 'accept' | 'reject' | 'manual_review';
+
+export type DispositionReason = 'default' | 'custom_rule';
+
 export interface Disposition {
-  readonly action: string;
-  readonly reason: string;
+  readonly action: DispositionAction;
+  readonly reason: DispositionReason;
 }
 
 export interface Subscores {

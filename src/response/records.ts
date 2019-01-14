@@ -1,4 +1,9 @@
 import { CountryRecord, Insights, LocationRecord } from '@maxmind/geoip2-node';
+import {
+  CreditCardType,
+  DispositionAction,
+  DispositionReason,
+} from './web-records';
 
 export interface ScoreIpAddress {
   readonly risk: number;
@@ -33,7 +38,7 @@ export interface CreditCard {
   readonly isIssuedInBillingAddressCountry?: boolean;
   readonly isPrepaid?: boolean;
   readonly isVirtual?: boolean;
-  readonly type: string;
+  readonly type: CreditCardType;
 }
 
 export interface Device {
@@ -68,8 +73,8 @@ export interface BillingAddress {
 }
 
 export interface Disposition {
-  readonly action: string;
-  readonly reason: string;
+  readonly action: DispositionAction;
+  readonly reason: DispositionReason;
 }
 
 export interface Subscores {
