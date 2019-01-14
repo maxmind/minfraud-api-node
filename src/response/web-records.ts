@@ -72,23 +72,23 @@ export interface Disposition {
 }
 
 export interface Subscores {
-  readonly avs_result: number;
-  readonly billing_address: number;
-  readonly billing_address_distance_to_ip_location: number;
-  readonly browser: number;
-  readonly chargeback: number;
-  readonly country: number;
-  readonly country_mismatch: number;
-  readonly cvv_result: number;
-  readonly email_address: number;
-  readonly email_domain: number;
-  readonly email_tenure: number;
-  readonly ip_tenure: number;
-  readonly issuer_id_number: number;
-  readonly order_amount: number;
-  readonly phone_number: number;
-  readonly shipping_address_distance_to_ip_location: number;
-  readonly time_of_day: number;
+  readonly avs_result?: number;
+  readonly billing_address?: number;
+  readonly billing_address_distance_to_ip_location?: number;
+  readonly browser?: number;
+  readonly chargeback?: number;
+  readonly country?: number;
+  readonly country_mismatch?: number;
+  readonly cvv_result?: number;
+  readonly email_address?: number;
+  readonly email_domain?: number;
+  readonly email_tenure?: number;
+  readonly ip_tenure?: number;
+  readonly issuer_id_number?: number;
+  readonly order_amount?: number;
+  readonly phone_number?: number;
+  readonly shipping_address_distance_to_ip_location?: number;
+  readonly time_of_day?: number;
 }
 
 export interface Warning {
@@ -114,4 +114,8 @@ export interface InsightsResponse extends ScoreResponse {
   readonly email?: Email;
   readonly shipping_address?: ShippingAddress;
   readonly billing_address?: BillingAddress;
+}
+
+export interface FactorsResponse extends InsightsResponse {
+  readonly subscores: Subscores;
 }

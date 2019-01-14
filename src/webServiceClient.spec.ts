@@ -1,5 +1,6 @@
 import cloneDeep = require('lodash.clonedeep');
 import nock = require('nock');
+import * as factors from '../fixtures/factors.json';
 import * as insights from '../fixtures/insights.json';
 import * as score from '../fixtures/score.json';
 import { Client, Device, Transaction } from './index';
@@ -17,6 +18,27 @@ const fullPath = (path: string) => `/minfraud/v2.0/${path}`;
 const client = new Client(auth.user, auth.pass);
 
 describe('WebServiceClient', () => {
+  describe('factors()', () => {
+    const transaction = new Transaction({
+      device: new Device({
+        ipAddress: '1.1.1.1',
+      }),
+    });
+
+    it('handles "full" responses', () => {
+      expect.assertions(1);
+
+      nockInstance
+        .post(fullPath('factors'), factors.request.basic)
+        .basicAuth(auth)
+        .reply(200, factors.response.full);
+
+      return expect(client.factors(transaction)).resolves.toEqual(
+        camelizeResponse(factors.response.full)
+      );
+    });
+  });
+
   describe('insights()', () => {
     const transaction = new Transaction({
       device: new Device({

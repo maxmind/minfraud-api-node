@@ -1,4 +1,5 @@
+import Factors from './factors';
 import Insights from './insights';
 import Score from './score';
 
-export { Insights, Score };
+export { Factors, Insights, Score };

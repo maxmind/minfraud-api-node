@@ -73,23 +73,23 @@ export interface Disposition {
 }
 
 export interface Subscores {
-  readonly avsResult: number;
-  readonly billingAddress: number;
-  readonly billingAddressDistanceToIpLocation: number;
-  readonly browser: number;
-  readonly chargeback: number;
-  readonly country: number;
-  readonly countryMismatch: number;
-  readonly cvvResult: number;
-  readonly emailAddress: number;
-  readonly emailDomain: number;
-  readonly emailTenure: number;
-  readonly ipTenure: number;
-  readonly issuerIdNumber: number;
-  readonly orderAmount: number;
-  readonly phoneNumber: number;
-  readonly shippingAddressDistanceToIpLocation: number;
-  readonly timeOfDay: number;
+  readonly avsResult?: number;
+  readonly billingAddress?: number;
+  readonly billingAddressDistanceToIpLocation?: number;
+  readonly browser?: number;
+  readonly chargeback?: number;
+  readonly country?: number;
+  readonly countryMismatch?: number;
+  readonly cvvResult?: number;
+  readonly emailAddress?: number;
+  readonly emailDomain?: number;
+  readonly emailTenure?: number;
+  readonly ipTenure?: number;
+  readonly issuerIdNumber?: number;
+  readonly orderAmount?: number;
+  readonly phoneNumber?: number;
+  readonly shippingAddressDistanceToIpLocation?: number;
+  readonly timeOfDay?: number;
 }
 
 export interface Warning {
