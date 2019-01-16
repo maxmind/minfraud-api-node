@@ -1,8 +1,8 @@
 import cloneDeep = require('lodash.clonedeep');
 import nock = require('nock');
-import * as factors from '../fixtures/factors.json';
 import * as insights from '../fixtures/insights.json';
 import * as score from '../fixtures/score.json';
+import * as subscores from '../fixtures/subscores.json';
 import { Client, Device, Transaction } from './index';
 import * as webRecords from './response/web-records';
 import { camelizeResponse } from './utils';
@@ -18,6 +18,9 @@ const fullPath = (path: string) => `/minfraud/v2.0/${path}`;
 const client = new Client(auth.user, auth.pass);
 
 describe('WebServiceClient', () => {
+  const factors = cloneDeep(insights) as any;
+  factors.response.full.subscores = cloneDeep(subscores);
+
   describe('factors()', () => {
     const transaction = new Transaction({
       device: new Device({
