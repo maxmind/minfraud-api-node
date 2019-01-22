@@ -7,16 +7,6 @@
     }
   },
   "response": {
-    "basic": {
-      "id": "5bc5d6c2-b2c8-40af-87f4-6d61af86b6ae",
-      "risk_score": 0.01,
-      "funds_remaining": 25.0,
-      "queries_remaining": 5000,
-
-      "ip_address": {
-        "risk": 0.01
-      }
-    },
     "full": {
       "id": "5bc5d6c2-b2c8-40af-87f4-6d61af86b6ae",
       "risk_score": 0.01,

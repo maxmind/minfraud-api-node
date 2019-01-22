@@ -6,7 +6,7 @@ export default class Score {
   public readonly disposition?: records.Disposition;
   public readonly fundsRemaining: number;
   public readonly id: string;
-  public readonly ipAddress: records.IpAddress;
+  public readonly ipAddress: records.ScoreIpAddress;
   public readonly queriesRemaining: number;
   public readonly riskScore: number;
   public readonly warnings?: records.Warning[];

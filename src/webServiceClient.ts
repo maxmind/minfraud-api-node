@@ -24,6 +24,22 @@ export default class WebServiceClient {
     this.host = 'minfraud.maxmind.com';
   }
 
+  public factors(transaction: Transaction): Promise<models.Factors> {
+    return this.responseFor<models.Factors>(
+      'factors',
+      transaction.toString(),
+      models.Factors
+    );
+  }
+
+  public insights(transaction: Transaction): Promise<models.Insights> {
+    return this.responseFor<models.Insights>(
+      'insights',
+      transaction.toString(),
+      models.Insights
+    );
+  }
+
   public score(transaction: Transaction): Promise<models.Score> {
     return this.responseFor<models.Score>(
       'score',
