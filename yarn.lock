@@ -290,10 +290,10 @@
     "@types/istanbul-lib-coverage" "^2.0.0"
     "@types/yargs" "^12.0.9"
 
-"@maxmind/geoip2-node@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-0.4.0.tgz#ccdd2dddbd525a9657336ddaae8d7d4f7b730c36"
-  integrity sha512-H7oRWzICrc5agrAlHICf7z0rKk8Rh9gVlyHiyFlNKF7LiOS4kiVLnxwIQiO0vH3Y3k5aQKSNN3m9Da19FE/0RA==
+"@maxmind/geoip2-node@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-0.5.0.tgz#2e17e5c74e6568284f58ca3b64aeadbaee4d1cb6"
+  integrity sha512-jtuL+SQUOgLou8QHXH0gaMyZTk5jdAld2liPE/mphas7bs095OKdRwZsM3rGj6yQ3BcloH0tfE0hZbhrcnPxOQ==
   dependencies:
     camelcase-keys "^5.0.0"
     lodash.set "^4.3.2"
