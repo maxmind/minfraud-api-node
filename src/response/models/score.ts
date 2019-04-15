@@ -19,7 +19,7 @@ export default class Score {
     this.queriesRemaining = response.queries_remaining;
     this.riskScore = response.risk_score;
     this.warnings = response.warnings
-      ? camelizeResponse(response.warnings)
+      ? (camelizeResponse(response.warnings) as records.Warning[])
       : undefined;
   }
 }
