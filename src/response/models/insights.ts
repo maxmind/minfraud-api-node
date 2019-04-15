@@ -23,7 +23,7 @@ export default class Insights extends Score {
       response,
       'credit_card'
     );
-    this.device = camelizeResponse(response.device);
+    this.device = camelizeResponse(response.device) as records.Device;
     this.email = this.maybeGet<records.Email>(response, 'email');
     this.ipAddress = this.getIpAddress(response);
     this.shippingAddress = this.maybeGet<records.ShippingAddress>(
@@ -35,8 +35,8 @@ export default class Insights extends Score {
   private maybeGet<T>(
     response: webRecords.InsightsResponse,
     prop: keyof webRecords.InsightsResponse
-  ): T {
-    return response[prop] ? camelizeResponse(response[prop]) : undefined;
+  ): T | undefined {
+    return response[prop] ? (camelizeResponse(response[prop]) as T) : undefined;
   }
 
   private getIpAddress(
