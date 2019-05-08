@@ -9,6 +9,6 @@ export default class Factors extends Insights {
   public constructor(response: webRecords.FactorsResponse) {
     super(response);
 
-    this.subscores = camelizeResponse(response.subscores);
+    this.subscores = camelizeResponse(response.subscores) as records.Subscores;
   }
 }
