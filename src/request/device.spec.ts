@@ -14,6 +14,7 @@ describe('Device()', () => {
     expect(() => {
       const device = new Device({
         ipAddress: '1.1.1.1',
+        userAgent: 'foo',
       });
     }).not.toThrow();
   });

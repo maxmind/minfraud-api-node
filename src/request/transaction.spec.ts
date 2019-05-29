@@ -36,9 +36,12 @@ describe('Transaction()', () => {
     const test = new Transaction({
       device: new Device({
         ipAddress: '1.1.1.1',
+        sessionAge: 100,
       }),
     });
 
-    expect(test.toString()).toEqual('{"device":{"ip_address":"1.1.1.1"}}');
+    expect(test.toString()).toEqual(
+      '{"device":{"ip_address":"1.1.1.1","session_age":100}}'
+    );
   });
 });
