@@ -1,4 +1,5 @@
 import { ArgumentError } from '../errors';
+import Account from './account';
 import Device from './device';
 import Event from './event';
 import Transaction from './transaction';
@@ -65,6 +66,27 @@ describe('Transaction()', () => {
         {
           "device":{"ip_address":"1.1.1.1","session_age":100}
           ,"event":{"time":"${mockDate}","transaction_id":"foobar"}
+        }
+      `.replace(/\n|\s+/g, '')
+      );
+    });
+
+    it('it handles optional account field', () => {
+      const test = new Transaction({
+        account: new Account({
+          username: 'foo',
+        }),
+        device: new Device({
+          ipAddress: '1.1.1.1',
+          sessionAge: 100,
+        }),
+      });
+
+      expect(test.toString()).toEqual(
+        `
+        {
+          "device":{"ip_address":"1.1.1.1","session_age":100}
+          ,"account":{"username_md5":"acbd18db4cc2f85cedef654fccc4a4d8"}
         }
       `.replace(/\n|\s+/g, '')
       );
