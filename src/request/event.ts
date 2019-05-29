@@ -1,13 +1,4 @@
-type EventType =
-  | 'account_creation'
-  | 'account_login'
-  | 'email_change'
-  | 'password_reset'
-  | 'payout_change'
-  | 'purchase'
-  | 'recurring_purchase'
-  | 'referral'
-  | 'survey';
+import { EventType } from '../constants';
 
 interface EventProps {
   transactionId?: string;
