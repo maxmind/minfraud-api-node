@@ -8,6 +8,7 @@ import Event from './request/event';
 import Order from './request/order';
 import Payment from './request/payment';
 import Shipping from './request/shipping';
+import ShoppingCartItem from './request/shopping-cart-item';
 import Transaction from './request/transaction';
 import Client from './webServiceClient';
 
@@ -23,5 +24,6 @@ export {
   Order,
   Payment,
   Shipping,
+  ShoppingCartItem,
   Transaction,
 };

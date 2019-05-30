@@ -9,6 +9,7 @@ import Event from './event';
 import Order from './order';
 import Payment from './payment';
 import Shipping from './shipping';
+import ShoppingCartItem from './shopping-cart-item';
 import Transaction from './transaction';
 
 describe('Transaction()', () => {
@@ -206,6 +207,30 @@ describe('Transaction()', () => {
       expect(test.toString()).toContain(deviceString);
 
       expect(test.toString()).toContain('"order":{"amount":123.99}');
+    });
+
+    it('it handles optional shopping cart field', () => {
+      const test = new Transaction({
+        device: new Device({
+          ipAddress: '1.1.1.1',
+          sessionAge: 100,
+        }),
+        shoppingCart: [
+          new ShoppingCartItem({
+            category: 'foo',
+          }),
+          new ShoppingCartItem({
+            itemId: 'bar',
+          }),
+        ],
+      });
+
+      expect(isJSON(test.toString())).toBe(true);
+
+      expect(test.toString()).toContain(deviceString);
+
+      expect(test.toString()).toContain('"shopping_cart":[{"category":"foo"},');
+      expect(test.toString()).toContain('{"item_id":"bar"}]');
     });
   });
 });

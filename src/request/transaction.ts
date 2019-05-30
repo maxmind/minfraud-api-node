@@ -9,6 +9,7 @@ import Event from './event';
 import Order from './order';
 import Payment from './payment';
 import Shipping from './shipping';
+import ShoppingCartItem from './shopping-cart-item';
 
 interface TransactionProps {
   account?: Account;
@@ -20,6 +21,7 @@ interface TransactionProps {
   order?: Order;
   payment?: Payment;
   shipping?: Shipping;
+  shoppingCart?: ShoppingCartItem[];
 }
 
 export default class Transaction implements TransactionProps {
@@ -32,21 +34,16 @@ export default class Transaction implements TransactionProps {
   public order?: Order;
   public payment?: Payment;
   public shipping?: Shipping;
+  public shoppingCart?: ShoppingCartItem[];
 
   public constructor(transaction: TransactionProps) {
     if (!transaction.device || !(transaction.device instanceof Device)) {
       throw new ArgumentError('`device` needs to be an instance of Device');
     }
 
+    // This is done to appease TypeScript - strict
     this.device = transaction.device;
-    this.email = transaction.email;
-    this.event = transaction.event;
-    this.account = transaction.account;
-    this.billing = transaction.billing;
-    this.shipping = transaction.shipping;
-    this.payment = transaction.payment;
-    this.creditCard = transaction.creditCard;
-    this.order = transaction.order;
+    Object.assign(this, transaction);
   }
 
   public toString(): string {
