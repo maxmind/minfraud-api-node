@@ -5,6 +5,7 @@ import Billing from './billing';
 import Device from './device';
 import Email from './email';
 import Event from './event';
+import Payment from './payment';
 import Shipping from './shipping';
 import Transaction from './transaction';
 
@@ -149,6 +150,24 @@ describe('Transaction()', () => {
       expect(test.toString()).toContain(deviceString);
 
       expect(test.toString()).toContain('"shipping":{"address_2":"foo"}');
+    });
+
+    it('it handles optional payment field', () => {
+      const test = new Transaction({
+        device: new Device({
+          ipAddress: '1.1.1.1',
+          sessionAge: 100,
+        }),
+        payment: new Payment({
+          wasAuthorized: true,
+        }),
+      });
+
+      expect(isJSON(test.toString())).toBe(true);
+
+      expect(test.toString()).toContain(deviceString);
+
+      expect(test.toString()).toContain('"payment":{"was_authorized":true}');
     });
   });
 });
