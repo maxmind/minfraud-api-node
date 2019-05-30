@@ -2,6 +2,7 @@ import isJSON = require('validator/lib/isJSON');
 import { ArgumentError } from '../errors';
 import Account from './account';
 import Billing from './billing';
+import CreditCard from './creditcard';
 import Device from './device';
 import Email from './email';
 import Event from './event';
@@ -168,6 +169,24 @@ describe('Transaction()', () => {
       expect(test.toString()).toContain(deviceString);
 
       expect(test.toString()).toContain('"payment":{"was_authorized":true}');
+    });
+
+    it('it handles optional credit card field', () => {
+      const test = new Transaction({
+        creditCard: new CreditCard({
+          bankName: 'foo',
+        }),
+        device: new Device({
+          ipAddress: '1.1.1.1',
+          sessionAge: 100,
+        }),
+      });
+
+      expect(isJSON(test.toString())).toBe(true);
+
+      expect(test.toString()).toContain(deviceString);
+
+      expect(test.toString()).toContain('"credit_card":{"bank_name":"foo"}');
     });
   });
 });

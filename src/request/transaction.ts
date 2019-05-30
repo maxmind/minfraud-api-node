@@ -2,6 +2,7 @@ import snakecaseKeys = require('snakecase-keys');
 import { ArgumentError } from '../errors';
 import Account from './account';
 import Billing from './billing';
+import CreditCard from './creditcard';
 import Device from './device';
 import Email from './email';
 import Event from './event';
@@ -11,6 +12,7 @@ import Shipping from './shipping';
 interface TransactionProps {
   account?: Account;
   billing?: Billing;
+  creditCard?: CreditCard;
   device: Device;
   email?: Email;
   event?: Event;
@@ -21,6 +23,7 @@ interface TransactionProps {
 export default class Transaction implements TransactionProps {
   public account?: Account;
   public billing?: Billing;
+  public creditCard?: CreditCard;
   public device: Device;
   public email?: Email;
   public event?: Event;
@@ -39,6 +42,7 @@ export default class Transaction implements TransactionProps {
     this.billing = transaction.billing;
     this.shipping = transaction.shipping;
     this.payment = transaction.payment;
+    this.creditCard = transaction.creditCard;
   }
 
   public toString(): string {
