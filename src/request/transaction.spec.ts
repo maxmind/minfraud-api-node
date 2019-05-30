@@ -1,6 +1,8 @@
+import isJSON = require('validator/lib/isJSON');
 import { ArgumentError } from '../errors';
 import Account from './account';
 import Device from './device';
+import Email from './email';
 import Event from './event';
 import Transaction from './transaction';
 
@@ -35,6 +37,8 @@ describe('Transaction()', () => {
   });
 
   describe('toString()', () => {
+    const deviceString = '"device":{"ip_address":"1.1.1.1","session_age":100}';
+
     it('it handles mandatory device field', () => {
       const test = new Transaction({
         device: new Device({
@@ -43,9 +47,9 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(test.toString()).toEqual(
-        '{"device":{"ip_address":"1.1.1.1","session_age":100}}'
-      );
+      expect(isJSON(test.toString())).toBe(true);
+
+      expect(test.toString()).toEqual(`{${deviceString}}`);
     });
 
     it('it handles optional event field', () => {
@@ -61,12 +65,12 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(test.toString()).toEqual(
-        `
-        {
-          "device":{"ip_address":"1.1.1.1","session_age":100}
-          ,"event":{"time":"${mockDate}","transaction_id":"foobar"}
-        }
+      expect(isJSON(test.toString())).toBe(true);
+
+      expect(test.toString()).toContain(deviceString);
+
+      expect(test.toString()).toContain(
+        `"event":{"time":"${mockDate}","transaction_id":"foobar"}
       `.replace(/\n|\s+/g, '')
       );
     });
@@ -82,14 +86,31 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(test.toString()).toEqual(
-        `
-        {
-          "device":{"ip_address":"1.1.1.1","session_age":100}
-          ,"account":{"username_md5":"acbd18db4cc2f85cedef654fccc4a4d8"}
-        }
-      `.replace(/\n|\s+/g, '')
+      expect(isJSON(test.toString())).toBe(true);
+
+      expect(test.toString()).toContain(deviceString);
+
+      expect(test.toString()).toContain(
+        '"account":{"username_md5":"acbd18db4cc2f85cedef654fccc4a4d8"}'
       );
+    });
+
+    it('it handles optional email field', () => {
+      const test = new Transaction({
+        device: new Device({
+          ipAddress: '1.1.1.1',
+          sessionAge: 100,
+        }),
+        email: new Email({
+          domain: 'foo.com',
+        }),
+      });
+
+      expect(isJSON(test.toString())).toBe(true);
+
+      expect(test.toString()).toContain(deviceString);
+
+      expect(test.toString()).toContain('"email":{"domain":"foo.com"}');
     });
   });
 });
