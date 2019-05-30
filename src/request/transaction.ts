@@ -6,6 +6,7 @@ import CreditCard from './creditcard';
 import Device from './device';
 import Email from './email';
 import Event from './event';
+import Order from './order';
 import Payment from './payment';
 import Shipping from './shipping';
 
@@ -16,6 +17,7 @@ interface TransactionProps {
   device: Device;
   email?: Email;
   event?: Event;
+  order?: Order;
   payment?: Payment;
   shipping?: Shipping;
 }
@@ -27,6 +29,7 @@ export default class Transaction implements TransactionProps {
   public device: Device;
   public email?: Email;
   public event?: Event;
+  public order?: Order;
   public payment?: Payment;
   public shipping?: Shipping;
 
@@ -43,6 +46,7 @@ export default class Transaction implements TransactionProps {
     this.shipping = transaction.shipping;
     this.payment = transaction.payment;
     this.creditCard = transaction.creditCard;
+    this.order = transaction.order;
   }
 
   public toString(): string {

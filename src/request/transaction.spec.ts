@@ -6,6 +6,7 @@ import CreditCard from './creditcard';
 import Device from './device';
 import Email from './email';
 import Event from './event';
+import Order from './order';
 import Payment from './payment';
 import Shipping from './shipping';
 import Transaction from './transaction';
@@ -187,6 +188,24 @@ describe('Transaction()', () => {
       expect(test.toString()).toContain(deviceString);
 
       expect(test.toString()).toContain('"credit_card":{"bank_name":"foo"}');
+    });
+
+    it('it handles optional order field', () => {
+      const test = new Transaction({
+        device: new Device({
+          ipAddress: '1.1.1.1',
+          sessionAge: 100,
+        }),
+        order: new Order({
+          amount: 123.99,
+        }),
+      });
+
+      expect(isJSON(test.toString())).toBe(true);
+
+      expect(test.toString()).toContain(deviceString);
+
+      expect(test.toString()).toContain('"order":{"amount":123.99}');
     });
   });
 });
