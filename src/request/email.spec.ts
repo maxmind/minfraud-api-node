@@ -43,4 +43,12 @@ describe('Email()', () => {
 
     expect(email.address).toBe('f3ada405ce890b6f8204094deb12d8a8');
   });
+
+  it('sets email.domain if email.address is given', () => {
+    const email = new Email({
+      address: 'foo@bar.com',
+    });
+
+    expect(email.domain).toBe('bar.com');
+  });
 });

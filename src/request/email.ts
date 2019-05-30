@@ -28,5 +28,9 @@ export default class Email implements EmailProps {
           .digest('hex')
       : undefined;
     this.domain = email.domain;
+
+    if (email.domain == null && email.address != null) {
+      this.domain = email.address.substring(email.address.indexOf('@') + 1);
+    }
   }
 }
