@@ -3,6 +3,7 @@ import { ArgumentError } from '../errors';
 import Account from './account';
 import Billing from './billing';
 import CreditCard from './creditcard';
+import CustomInput from './custom-input';
 import Device from './device';
 import Email from './email';
 import Event from './event';
@@ -15,6 +16,7 @@ interface TransactionProps {
   account?: Account;
   billing?: Billing;
   creditCard?: CreditCard;
+  customInputs?: CustomInput[];
   device: Device;
   email?: Email;
   event?: Event;
@@ -24,10 +26,11 @@ interface TransactionProps {
   shoppingCart?: ShoppingCartItem[];
 }
 
-export default class Transaction implements TransactionProps {
+export default class Transaction {
   public account?: Account;
   public billing?: Billing;
   public creditCard?: CreditCard;
+  public customInputs?: any;
   public device: Device;
   public email?: Email;
   public event?: Event;
@@ -43,7 +46,12 @@ export default class Transaction implements TransactionProps {
 
     // This is done to appease TypeScript - strict
     this.device = transaction.device;
+
     Object.assign(this, transaction);
+
+    if (transaction.customInputs != null) {
+      this.customInputs = Object.assign({}, ...transaction.customInputs);
+    }
   }
 
   public toString(): string {

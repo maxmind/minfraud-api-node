@@ -21,6 +21,10 @@ try {
     device: new minFraud.Device({
       ipAddress: "8.8.8.8",
     }),
+    customInputs: [
+      new CustomInput('string', value),
+      new CustomInput('string', value),
+    ]
   })
 } catch(error) {
   // handle the error

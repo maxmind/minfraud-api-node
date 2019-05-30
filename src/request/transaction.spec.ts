@@ -3,6 +3,7 @@ import { ArgumentError } from '../errors';
 import Account from './account';
 import Billing from './billing';
 import CreditCard from './creditcard';
+import CustomInput from './custom-input';
 import Device from './device';
 import Email from './email';
 import Event from './event';
@@ -40,6 +41,23 @@ describe('Transaction()', () => {
         }),
       });
     }).not.toThrow();
+  });
+
+  it('flattens custom inputs', () => {
+    const test = new Transaction({
+      customInputs: [
+        new CustomInput('foo', 'bar'),
+        new CustomInput('fizz', 'buzz'),
+      ],
+      device: new Device({
+        ipAddress: '1.1.1.1',
+      }),
+    });
+
+    expect(test.customInputs).toEqual({
+      fizz: 'buzz',
+      foo: 'bar',
+    });
   });
 
   describe('toString()', () => {
