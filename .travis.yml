@@ -14,16 +14,12 @@ script:
 before_install:
 - if [[ $RUN_SNYK && $SNYK_TOKEN ]]; then npm install -g snyk; fi
 install:
-- if [[ $RUN_SNYK && $SNYK_TOKEN ]]; then snyk auth $SNYK_TOKEN; fi
 - if [[ $RUN_SNYK && $SNYK_TOKEN ]]; then snyk test --org=maxmind; fi
 - yarn install
 after_success:
-- if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' && $RUN_SNYK
-  && $SNYK_TOKEN ]]; then snyk auth $SNYK_TOKEN;
-  fi
 - if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' && $RUN_SNYK
   && $SNYK_TOKEN ]]; then snyk monitor --org=maxmind --project-name=maxmind/minfraud-api-node;
   fi
 env:
   global:
-  - secure: DRxcXl1BxxB30fqgVCPbt/teM11dsdlhEImdORJ00527uBEQlWkBscYRvoUZx1naSes/XPSw9gbrJNv+64ZIZmvvaUAzmr3nez/22iJJR0bvv772xbyhQ8huGa1QAvi/cC/lnxqvm55x/IqANxmTWeQWr0mLwssebaozLrIao6jGFoo8kLn7yWsrRvW0LX/hlaOLpA02ixkSxMzUs6CUnXsTrOfBfL0fAQI6ck1fx2IoVkdnuvGlK2ouw1dLCU04P0sORrO+Ah9UdCYII8fTXZIhiI3Mb5SVZZWT972TgcehQJODPu0Mk7793FgRmvieqYEM94d1xOb0QRq2FznfV3q6bT3HRsox+A0pFG0PQmNokCt6oxesGeK4cPe3UTJ02QhIIMUCGub0oFRrmcAXrPHnX7jEwM6syMTy5ujK+zp8JS9PBJZALCfMb16705+OH0odxiikZHqQl237ibHnGbIfwWYdZmzVqPmKRCKgq6mnnuNR6I7AxroIdATldKBQdAW797ElXTq82R+10vsrnoK8Dnmsid6xB1xmhdHmOKMOpbNE9YCwwCeDsipQlmRKNRNMvB9z0cqGBM6ib8rO+9DywGb+QIIcN885SshOnBCpauMDXkx6+3kzaolLSurImmAb0YX1QALdKNMtZ9l/VSafAi4RRAS3lOl1hGn3C70=
+  - secure: n+jGPI5TN2L6l/28Ybgmk7ogbHVtaZB0dFWwxqIJDI0cSVJAI1zQGe2GgLpV8mweX70C5Ds6aNHgTSYsIUqOnqkiPNPuNlx3dHPYxjhk8utB6rTfgfmXEv9SNnZceOaDbR0XQaqHFmiAQB/TDbsqKTHk0fk3xb1YNsqlRS/NBGLcQwQuwzxS/MdXt5I9e8QcQEtNMD6OWphgOHXItr2T7ApJjaTli72c+mafV+cyPTgTM0O5+SiaG1JLrzW/VHjT/whet/2zMqNAJ3wzFv7H/v+jd9WuyeWQm8kqc+dBhIOaBnPK948yVKh6DWpa+lOvfgdSmFjzLXKPnovaM55wdnf7oZRWDnDaJoxvyCSCsc5pZn6lZRa+m4LSUtAfHKh+2661NdBIrMJouWfo5/c0BG14USIBzvF0FPBKAflNw4ci7zLZ3WlOFWmEvkPAlzcbisJRtMPK4+6VgRnzZ99hJS1TGB1e5FS52bDVpzdSrYIs92tD166T4IsDkRMz+8FvTcllzIQePpPvEZIR5W7UurIWdHPA2MyEuYqZytWPWF7G7Q7lWtA3g+uhhp7y3tZEkzqU8kMm0iPHNRto6LFfOY0QMcwl8NdwpebNakl3cJ/643E6X96JyfmAcMxStLodcPwMbNXmI2QIXZjmEgRAUXAB17KhSarnY1N6uQpcw7E=
