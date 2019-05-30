@@ -21,7 +21,7 @@ describe('CreditCard()', () => {
   it('throws an error if token is not valid', () => {
     expect(() => {
       const creditcard = new CreditCard({
-        token: 'foo',
+        token: '432312',
       });
     }).toThrowError(ArgumentError);
   });
@@ -29,7 +29,9 @@ describe('CreditCard()', () => {
   it('constructs', () => {
     expect(() => {
       const creditcard = new CreditCard({
-        bankPhoneCountryCode: '1',
+        issuerIdNumber: '123456',
+        last_4_digits: '1234',
+        token: 'valid_token',
       });
     }).not.toThrow();
   });

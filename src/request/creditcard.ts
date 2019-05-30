@@ -13,7 +13,7 @@ interface CreditCardProps {
 
 const issuerIdNumberRegex = /^[0-9]{6}$/;
 const last4Regex = /^[0-9]{4}$/;
-const tokenRegex = /^(?![0-9]{1,19}$)[\\x21-\\x7E]{1,255}$/;
+const tokenRegex = /^(?![0-9]{1,19}$)[\u0021-\u007E]{1,255}$/;
 
 export default class CreditCard implements CreditCardProps {
   public issuerIdNumber?: string;
