@@ -1,9 +1,11 @@
 import isJSON = require('validator/lib/isJSON');
 import { ArgumentError } from '../errors';
 import Account from './account';
+import Billing from './billing';
 import Device from './device';
 import Email from './email';
 import Event from './event';
+import Shipping from './shipping';
 import Transaction from './transaction';
 
 describe('Transaction()', () => {
@@ -111,6 +113,42 @@ describe('Transaction()', () => {
       expect(test.toString()).toContain(deviceString);
 
       expect(test.toString()).toContain('"email":{"domain":"foo.com"}');
+    });
+
+    it('it handles optional billing field', () => {
+      const test = new Transaction({
+        billing: new Billing({
+          address_2: 'foo',
+        }),
+        device: new Device({
+          ipAddress: '1.1.1.1',
+          sessionAge: 100,
+        }),
+      });
+
+      expect(isJSON(test.toString())).toBe(true);
+
+      expect(test.toString()).toContain(deviceString);
+
+      expect(test.toString()).toContain('"billing":{"address_2":"foo"}');
+    });
+
+    it('it handles optional shipping field', () => {
+      const test = new Transaction({
+        device: new Device({
+          ipAddress: '1.1.1.1',
+          sessionAge: 100,
+        }),
+        shipping: new Shipping({
+          address_2: 'foo',
+        }),
+      });
+
+      expect(isJSON(test.toString())).toBe(true);
+
+      expect(test.toString()).toContain(deviceString);
+
+      expect(test.toString()).toContain('"shipping":{"address_2":"foo"}');
     });
   });
 });

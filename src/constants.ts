@@ -9,3 +9,10 @@ export enum EventType {
   Referral = 'referral',
   Survey = 'survey',
 }
+
+export enum DeliverySpeed {
+  SameDay = 'same_day',
+  Overnight = 'overnight',
+  Expedited = 'expedited',
+  Standard = 'standard',
+}
