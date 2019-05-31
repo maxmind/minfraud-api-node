@@ -185,7 +185,7 @@ describe('Transaction()', () => {
     it('it handles optional billing field', () => {
       const test = new Transaction({
         billing: new Billing({
-          address_2: 'foo',
+          address2: 'foo',
         }),
         device: new Device({
           ipAddress: '1.1.1.1',
@@ -207,7 +207,7 @@ describe('Transaction()', () => {
           sessionAge: 100,
         }),
         shipping: new Shipping({
-          address_2: 'foo',
+          address2: 'foo',
         }),
       });
 
@@ -239,7 +239,7 @@ describe('Transaction()', () => {
     it('it handles optional credit card field', () => {
       const test = new Transaction({
         creditCard: new CreditCard({
-          bankName: 'foo',
+          last4digits: '1234',
         }),
         device: new Device({
           ipAddress: '1.1.1.1',
@@ -251,7 +251,9 @@ describe('Transaction()', () => {
 
       expect(test.toString()).toContain(deviceString);
 
-      expect(test.toString()).toContain('"credit_card":{"bank_name":"foo"}');
+      expect(test.toString()).toContain(
+        '"credit_card":{"last_4_digits":"1234"}'
+      );
     });
 
     it('it handles optional order field', () => {

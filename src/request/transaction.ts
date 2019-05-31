@@ -53,7 +53,9 @@ export default class Transaction {
   }
 
   public toString(): string {
-    return JSON.stringify(snakecaseKeys(this));
+    const sanitized = this.sanitizeKeys();
+
+    return JSON.stringify(snakecaseKeys(sanitized));
   }
 
   private argumentCheck(property: any, type: any, key: string) {
@@ -62,6 +64,30 @@ export default class Transaction {
         `\`${key}\` needs to be an instance of ${type.name}`
       );
     }
+  }
+
+  private sanitizeKeys() {
+    const sanitized = Object.assign({}, this) as any;
+
+    if (
+      sanitized.creditCard != null &&
+      sanitized.creditCard.last4digits != null
+    ) {
+      sanitized.creditCard.last_4_digits = this.creditCard!.last4digits;
+      delete sanitized.creditCard.last4digits;
+    }
+
+    if (sanitized.billing != null && sanitized.billing.address2 != null) {
+      sanitized.billing.address_2 = this.billing!.address2;
+      delete sanitized.billing.address2;
+    }
+
+    if (sanitized.shipping != null && sanitized.shipping.address2 != null) {
+      sanitized.shipping.address_2 = this.shipping!.address2;
+      delete sanitized.shipping.address2;
+    }
+
+    return sanitized;
   }
 
   private checkRegularProps(props: TransactionProps) {

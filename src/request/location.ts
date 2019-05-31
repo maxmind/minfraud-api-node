@@ -5,7 +5,7 @@ export interface LocationProps {
   lastName?: string;
   company?: string;
   address?: string;
-  address_2?: string;
+  address2?: string;
   city?: string;
   region?: string;
   country?: string;
@@ -21,7 +21,7 @@ export default class Location implements LocationProps {
   public lastName?: string;
   public company?: string;
   public address?: string;
-  public address_2?: string;
+  public address2?: string;
   public city?: string;
   public region?: string;
   public country?: string;

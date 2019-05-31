@@ -2,7 +2,7 @@ import { ArgumentError } from '../errors';
 
 interface CreditCardProps {
   issuerIdNumber?: string;
-  last_4_digits?: string;
+  last4digits?: string;
   token?: string;
   bankName?: string;
   bankPhoneCountryCode?: string;
@@ -18,7 +18,7 @@ const tokenRegex = /^(?![0-9]{1,19}$)[\u0021-\u007E]{1,255}$/;
 
 export default class CreditCard implements CreditCardProps {
   public issuerIdNumber?: string;
-  public last_4_digits?: string;
+  public last4digits?: string;
   public token?: string;
   public bankName?: string;
   public bankPhoneCountryCode?: string;
@@ -61,12 +61,12 @@ export default class CreditCard implements CreditCardProps {
     }
 
     if (
-      creditCard.last_4_digits != null &&
-      !last4Regex.test(creditCard.last_4_digits)
+      creditCard.last4digits != null &&
+      !last4Regex.test(creditCard.last4digits)
     ) {
       throw new ArgumentError(
-        `The last 4 credit card digits (last_4_digits) ${
-          creditCard.last_4_digits
+        `The last 4 credit card digits (last4digits) ${
+          creditCard.last4digits
         } are of the wrong format.`
       );
     }

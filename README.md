@@ -38,7 +38,7 @@ try {
     }),
     billing: new minFraud.Billing({
       address: '123 Robot Ave.',
-      address_2: 'Suite 10011',
+      address2: 'Suite 10011',
       city: 'Waltham',
       company: 'Robots Inc.',
       country: 'US',
@@ -51,7 +51,7 @@ try {
     }),
     shipping: new minFraud.Shipping({
       address: '123 Robot Ave.',
-      address_2: 'Suite 10011',
+      address2: 'Suite 10011',
       city: 'Waltham',
       company: 'Robots Inc.',
       country: 'US',
@@ -75,7 +75,7 @@ try {
       bankPhoneNumber: '123-123-1234',
       cvvResult: 'B',
       issuerIdNumber: '123456',
-      last_4_digits: '1234',
+      last4digits: '1234',
       token: 'a_token',
     }),
     order: new minFraud.Order({

@@ -29,7 +29,7 @@ describe('CreditCard()', () => {
   it('throws an error if last4 is not valid', () => {
     expect(() => {
       const creditcard = new CreditCard({
-        last_4_digits: 'foo',
+        last4digits: 'foo',
       });
     }).toThrowError(ArgumentError);
   });
@@ -46,7 +46,7 @@ describe('CreditCard()', () => {
     expect(() => {
       const creditcard = new CreditCard({
         issuerIdNumber: '123456',
-        last_4_digits: '1234',
+        last4digits: '1234',
         token: 'valid_token',
       });
     }).not.toThrow();
