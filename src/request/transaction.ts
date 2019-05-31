@@ -40,9 +40,7 @@ export default class Transaction {
   public shoppingCart?: ShoppingCartItem[];
 
   public constructor(transaction: TransactionProps) {
-    if (!transaction.device || !(transaction.device instanceof Device)) {
-      throw new ArgumentError('`device` needs to be an instance of Device');
-    }
+    this.ensureTypes(transaction);
 
     // This is done to appease TypeScript - strict
     this.device = transaction.device;
@@ -56,5 +54,64 @@ export default class Transaction {
 
   public toString(): string {
     return JSON.stringify(snakecaseKeys(this));
+  }
+
+  private argumentCheck(property: any, type: any, key: string) {
+    if (property != null && !(property instanceof type)) {
+      throw new ArgumentError(
+        `\`${key}\` needs to be an instance of ${type.name}`
+      );
+    }
+  }
+
+  private checkRegularProps(props: TransactionProps) {
+    // Excludes device, and array props (customInputs, shoppingCart)
+    const propTypeMap = ({
+      account: Account,
+      billing: Billing,
+      creditCard: CreditCard,
+      email: Email,
+      event: Event,
+      order: Order,
+      payment: Payment,
+      shipping: Shipping,
+    } as unknown) as typeof props;
+
+    const keys = Object.keys(propTypeMap) as Array<keyof typeof props>;
+
+    for (const key of keys) {
+      this.argumentCheck(props[key], propTypeMap[key], key);
+    }
+  }
+
+  private checkArrayProps(props: TransactionProps) {
+    if (props.shoppingCart != null) {
+      for (const [idx, item] of props.shoppingCart.entries()) {
+        if (!(item instanceof ShoppingCartItem)) {
+          throw new ArgumentError(
+            `\`shoppingCart[${idx}]\` needs to be an instance of ShoppingCartItem`
+          );
+        }
+      }
+    }
+
+    if (props.customInputs != null) {
+      for (const [idx, item] of props.customInputs.entries()) {
+        if (!(item instanceof CustomInput)) {
+          throw new ArgumentError(
+            `\`customInputs[${idx}]\` needs to be an instance of CustomInput`
+          );
+        }
+      }
+    }
+  }
+
+  private ensureTypes(props: TransactionProps) {
+    if (!props.device || !(props.device instanceof Device)) {
+      throw new ArgumentError('`device` needs to be an instance of Device');
+    }
+
+    this.checkRegularProps(props);
+    this.checkArrayProps(props);
   }
 }

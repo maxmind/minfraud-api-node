@@ -33,6 +33,51 @@ describe('Transaction()', () => {
     }).toThrowError(ArgumentError);
   });
 
+  test.each`
+    property        | instance        | val
+    ${'account'}    | ${'Account'}    | ${{ account: { userId: 'foo' } }}
+    ${'billing'}    | ${'Billing'}    | ${{ billing: { address: 'foo' } }}
+    ${'creditCard'} | ${'CreditCard'} | ${{ creditCard: { bankName: 'foo' } }}
+    ${'email'}      | ${'Email'}      | ${{ email: { domain: 'foo.com' } }}
+    ${'event'}      | ${'Event'}      | ${{ event: { shopId: 'foo' } }}
+    ${'order'}      | ${'Order'}      | ${{ order: { affiliateId: 'foo' } }}
+    ${'payment'}    | ${'Payment'}    | ${{ payment: { declineCode: 'A' } }}
+    ${'shipping'}   | ${'Shipping'}   | ${{ shipping: { address: 'foo' } }}
+  `(
+    'throws an error if `$property` is not an instance of $class',
+    ({ property, instance, val }) => {
+      expect(() => {
+        const txn = Object.assign(
+          { device: new Device({ ipAddress: '1.1.1.1' }) },
+          val
+        );
+        const test = new Transaction(txn);
+      }).toThrowError(ArgumentError);
+    }
+  );
+
+  it('throws an error if `customInputs[i]` is not an instance of CustomInput', () => {
+    expect(() => {
+      const test = new Transaction({
+        customInputs: [{ foo: 'bar' }],
+        device: new Device({
+          ipAddress: '1.1.1.1',
+        }),
+      });
+    }).toThrow(ArgumentError);
+  });
+
+  it('throws an error if `shoppingCart[i]` is not an instance of ShoppingCartItem', () => {
+    expect(() => {
+      const test = new Transaction({
+        device: new Device({
+          ipAddress: '1.1.1.1',
+        }),
+        shoppingCart: [{ category: 'bar' }],
+      });
+    }).toThrow(ArgumentError);
+  });
+
   it('constructs', () => {
     expect(() => {
       const test = new Transaction({
