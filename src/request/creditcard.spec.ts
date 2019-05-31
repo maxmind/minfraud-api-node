@@ -2,6 +2,22 @@ import { ArgumentError } from '../errors';
 import CreditCard from './creditcard';
 
 describe('CreditCard()', () => {
+  it('throws an error if avsResult is not valid', () => {
+    expect(() => {
+      const creditcard = new CreditCard({
+        avsResult: 'foo',
+      });
+    }).toThrowError(ArgumentError);
+  });
+
+  it('throws an error if cvvResult is not valid', () => {
+    expect(() => {
+      const creditcard = new CreditCard({
+        cvvResult: 'foo',
+      });
+    }).toThrowError(ArgumentError);
+  });
+
   it('throws an error if IIN is not valid', () => {
     expect(() => {
       const creditcard = new CreditCard({
