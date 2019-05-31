@@ -1,3 +1,4 @@
+import isURL = require('validator/lib/isURL');
 import { ArgumentError } from '../errors';
 
 interface OrderProps {
@@ -26,6 +27,12 @@ export default class Order implements OrderProps {
   public constructor(order: OrderProps) {
     if (order.currency != null && !currencyRegex.test(order.currency)) {
       throw new ArgumentError(`The currency code ${order.currency} is invalid`);
+    }
+
+    if (order.referrerUri != null && !isURL(order.referrerUri)) {
+      throw new ArgumentError(
+        `The referrer URI ${order.referrerUri} is invalid`
+      );
     }
 
     Object.assign(this, order);
