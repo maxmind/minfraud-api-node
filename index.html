@@ -1,0 +1,442 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@maxmind/minfraud-api-node</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@maxmind/minfraud-api-node</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> @maxmind/minfraud-api-node</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="node-js-api-for-maxmind-minfraud-score-insights-and-factors">Node.js API for MaxMind minFraud Score, Insights, and Factors</h1>
+				<h2 id="errors-and-exceptions">Errors and Exceptions</h2>
+				<p>Thrown by the request and transaction models:</p>
+				<ul>
+					<li><code>ArgumentError</code> - Thrown when invalid data is passed to the model constructor.</li>
+				</ul>
+				<h2 id="example">Example</h2>
+				<pre><code><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> minFraud <span class="hljs-keyword">from</span> <span class="hljs-string">'@maxmind/minfraud-api-node'</span>;
+// const minFraud = require(<span class="hljs-string">'@maxmind/minfraud-api-node'</span>);
+
+// client <span class="hljs-keyword">is</span> reusable
+const client = <span class="hljs-built_in">new</span> minFraud.Client("1234", "LICENSEKEY");
+
+let <span class="hljs-keyword">transaction</span>;
+
+try {
+  <span class="hljs-keyword">transaction</span> = <span class="hljs-built_in">new</span> minFraud.<span class="hljs-keyword">Transaction</span>({
+    // device <span class="hljs-keyword">is</span> required
+    device: <span class="hljs-built_in">new</span> minFraud.Device({
+      ipAddress: "8.8.8.8",
+    }),
+    event: <span class="hljs-built_in">new</span> minFraud.Event({
+      shopId: <span class="hljs-string">'shop'</span>,
+      <span class="hljs-type">time</span>: <span class="hljs-built_in">new</span> <span class="hljs-type">Date</span>(<span class="hljs-type">Date</span>.now()),
+      transactionId: <span class="hljs-string">'txn1234'</span>,
+      <span class="hljs-keyword">type</span>: minFraud.Constants.EventType.PayoutChange,
+    }),
+    account: <span class="hljs-built_in">new</span> minFraud.Account({
+      userId: <span class="hljs-string">'user123'</span>,
+      username: <span class="hljs-string">'userperson'</span>,
+    }),
+    email: <span class="hljs-built_in">new</span> minFraud.Email({
+      address: <span class="hljs-string">'foo@bar.com'</span>,
+      <span class="hljs-keyword">domain</span>: <span class="hljs-string">'bar.com'</span>,
+    }),
+    billing: <span class="hljs-built_in">new</span> minFraud.Billing({
+      address: <span class="hljs-string">'123 Robot Ave.'</span>,
+      address_2: <span class="hljs-string">'Suite 10011'</span>,
+      city: <span class="hljs-string">'Waltham'</span>,
+      company: <span class="hljs-string">'Robots Inc.'</span>,
+      country: <span class="hljs-string">'US'</span>,
+      firstName: <span class="hljs-string">'Robot'</span>,
+      lastName: <span class="hljs-string">'Bar'</span>,
+      phoneCountryCode: <span class="hljs-string">'1'</span>,
+      phoneNumber: <span class="hljs-string">'321-321-3211'</span>,
+      postal: <span class="hljs-string">'12345'</span>,
+      region: <span class="hljs-string">'MA'</span>,
+    }),
+    shipping: <span class="hljs-built_in">new</span> minFraud.Shipping({
+      address: <span class="hljs-string">'123 Robot Ave.'</span>,
+      address_2: <span class="hljs-string">'Suite 10011'</span>,
+      city: <span class="hljs-string">'Waltham'</span>,
+      company: <span class="hljs-string">'Robots Inc.'</span>,
+      country: <span class="hljs-string">'US'</span>,
+      deliverySpeed: minFraud.Constants.DeliverySpeed.Expedited,
+      firstName: <span class="hljs-string">'Robot'</span>,
+      lastName: <span class="hljs-string">'Bar'</span>,
+      phoneCountryCode: <span class="hljs-string">'1'</span>,
+      phoneNumber: <span class="hljs-string">'321-321-3211'</span>,
+      postal: <span class="hljs-string">'12345'</span>,
+      region: <span class="hljs-string">'MA'</span>,
+    }),
+    payment: <span class="hljs-built_in">new</span> minFraud.Payment({
+      declineCode: <span class="hljs-string">'A'</span>,
+      processor: minFraud.Constants.Processor.ConceptPayments,
+      wasAuthorized: <span class="hljs-keyword">true</span>,
+    }),
+    creditCard: <span class="hljs-built_in">new</span> minFraud.CreditCard({
+      avsResult: <span class="hljs-string">'A'</span>,
+      bankName: <span class="hljs-string">'Foo Bank'</span>,
+      bankPhoneCountryCode: <span class="hljs-string">'1'</span>,
+      bankPhoneNumber: <span class="hljs-string">'123-123-1234'</span>,
+      cvvResult: <span class="hljs-string">'B'</span>,
+      issuerIdNumber: <span class="hljs-string">'123456'</span>,
+      last_4_digits: <span class="hljs-string">'1234'</span>,
+      token: <span class="hljs-string">'a_token'</span>,
+    }),
+    <span class="hljs-keyword">order</span>: <span class="hljs-built_in">new</span> minFraud.<span class="hljs-keyword">Order</span>({
+      affiliateId: <span class="hljs-string">'robotnet'</span>,
+      amount: <span class="hljs-number">22.99</span>,
+      currency: <span class="hljs-string">'USD'</span>,
+      discountCode: <span class="hljs-string">'COUPONS'</span>,
+      hasGiftMessage: <span class="hljs-keyword">true</span>,
+      isGift: <span class="hljs-keyword">true</span>,
+      referrerUri: <span class="hljs-string">'https://robots.com/swarms'</span>,
+      subaffiliateId: <span class="hljs-string">'swarm'</span>,
+    }),
+    shoppingCart: [
+      <span class="hljs-built_in">new</span> minFraud.ShoppingCartItem({
+        category: <span class="hljs-string">'screws'</span>,
+        itemId: <span class="hljs-string">'sc123'</span>,
+        price: <span class="hljs-number">9.99</span>,
+        quantity: <span class="hljs-number">100</span>,
+      }),
+      <span class="hljs-built_in">new</span> minFraud.ShoppingCartItem({
+        category: <span class="hljs-string">'screws'</span>,
+        itemId: <span class="hljs-string">'sc123'</span>,
+        price: <span class="hljs-number">9.99</span>,
+        quantity: <span class="hljs-number">100</span>,
+      }),
+    ],
+    customInputs: [
+      <span class="hljs-built_in">new</span> minFraud.CustomInput(<span class="hljs-string">'key'</span>, <span class="hljs-string">'value'</span>),
+      <span class="hljs-built_in">new</span> minFraud.CustomInput(<span class="hljs-string">'key_2'</span>, <span class="hljs-keyword">true</span>),
+      <span class="hljs-built_in">new</span> minFraud.CustomInput(<span class="hljs-string">'key_3'</span>, <span class="hljs-number">100</span>),
+    ]
+  })
+} catch(error) {
+  // handle the error
+}
+
+client.score(<span class="hljs-keyword">transaction</span>).<span class="hljs-keyword">then</span>(response =&gt; {
+  console.log(response.riskScore) // <span class="hljs-number">50</span>
+  console.log(response.ipAddress.risk) // <span class="hljs-number">50</span>
+});</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/deliveryspeed.html" class="tsd-kind-icon">Delivery<wbr>Speed</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/eventtype.html" class="tsd-kind-icon">Event<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/processor.html" class="tsd-kind-icon">Processor</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/account.html" class="tsd-kind-icon">Account</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/argumenterror.html" class="tsd-kind-icon">Argument<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/billing.html" class="tsd-kind-icon">Billing</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/creditcard.html" class="tsd-kind-icon">Credit<wbr>Card</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/custominput.html" class="tsd-kind-icon">Custom<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/device.html" class="tsd-kind-icon">Device</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/email.html" class="tsd-kind-icon">Email</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/event.html" class="tsd-kind-icon">Event</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/factors.html" class="tsd-kind-icon">Factors</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/insights.html" class="tsd-kind-icon">Insights</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/location.html" class="tsd-kind-icon">Location</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/order.html" class="tsd-kind-icon">Order</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/payment.html" class="tsd-kind-icon">Payment</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/score.html" class="tsd-kind-icon">Score</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/shipping.html" class="tsd-kind-icon">Shipping</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/shoppingcartitem.html" class="tsd-kind-icon">Shopping<wbr>Cart<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/transaction.html" class="tsd-kind-icon">Transaction</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/webserviceclient.html" class="tsd-kind-icon">Web<wbr>Service<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/accountprops.html" class="tsd-kind-icon">Account<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/billingaddress.html" class="tsd-kind-icon">Billing<wbr>Address</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/creditcardissuer.html" class="tsd-kind-icon">Credit<wbr>Card<wbr>Issuer</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/creditcardprops.html" class="tsd-kind-icon">Credit<wbr>Card<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/deviceprops.html" class="tsd-kind-icon">Device<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/disposition.html" class="tsd-kind-icon">Disposition</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/emailprops.html" class="tsd-kind-icon">Email<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/eventprops.html" class="tsd-kind-icon">Event<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/factorsresponse.html" class="tsd-kind-icon">Factors<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/geoipcountry.html" class="tsd-kind-icon">GeoIPCountry</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/geoiplocation.html" class="tsd-kind-icon">GeoIPLocation</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/insightsresponse.html" class="tsd-kind-icon">Insights<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipaddress.html" class="tsd-kind-icon">Ip<wbr>Address</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/locationprops.html" class="tsd-kind-icon">Location<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/orderprops.html" class="tsd-kind-icon">Order<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/paymentprops.html" class="tsd-kind-icon">Payment<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/responseerror.html" class="tsd-kind-icon">Response<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/scoreipaddress.html" class="tsd-kind-icon">Score<wbr>IpAddress</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/scoreresponse.html" class="tsd-kind-icon">Score<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/shippingaddress.html" class="tsd-kind-icon">Shipping<wbr>Address</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/shippingprops.html" class="tsd-kind-icon">Shipping<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/shoppingcartitemprops.html" class="tsd-kind-icon">Shopping<wbr>Cart<wbr>Item<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/subscores.html" class="tsd-kind-icon">Subscores</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/transactionprops.html" class="tsd-kind-icon">Transaction<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/warning.html" class="tsd-kind-icon">Warning</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/webserviceclienterror.html" class="tsd-kind-icon">Web<wbr>Service<wbr>Client<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#creditcardtype" class="tsd-kind-icon">Credit<wbr>Card<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-is-not-exported">
+						<a href="globals.html#custominputvalue" class="tsd-kind-icon">Custom<wbr>Input<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#dispositionaction" class="tsd-kind-icon">Disposition<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#dispositionreason" class="tsd-kind-icon">Disposition<wbr>Reason</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-is-not-exported">
+						<a href="globals.html#servicepath" class="tsd-kind-icon">service<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#countryregex" class="tsd-kind-icon">country<wbr>Regex</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#currencyregex" class="tsd-kind-icon">currency<wbr>Regex</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#issueridnumberregex" class="tsd-kind-icon">issuer<wbr>IdNumber<wbr>Regex</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#last4regex" class="tsd-kind-icon">last4<wbr>Regex</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#singlechar" class="tsd-kind-icon">single<wbr>Char</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#tokenregex" class="tsd-kind-icon">token<wbr>Regex</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#camelizeresponse" class="tsd-kind-icon">camelize<wbr>Response</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
