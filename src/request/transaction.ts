@@ -2,7 +2,7 @@ import * as snakecaseKeys from 'snakecase-keys';
 import { ArgumentError } from '../errors';
 import Account from './account';
 import Billing from './billing';
-import CreditCard from './creditcard';
+import CreditCard from './credit-card';
 import CustomInput from './custom-input';
 import Device from './device';
 import Email from './email';

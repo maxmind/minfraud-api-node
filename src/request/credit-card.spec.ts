@@ -1,5 +1,5 @@
 import { ArgumentError } from '../errors';
-import CreditCard from './creditcard';
+import CreditCard from './credit-card';
 
 describe('CreditCard()', () => {
   it('throws an error if avsResult is not valid', () => {
