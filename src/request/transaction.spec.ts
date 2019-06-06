@@ -1,4 +1,4 @@
-import isJSON = require('validator/lib/isJSON');
+import * as isJSON from 'validator/lib/isJSON';
 import { ArgumentError } from '../errors';
 import Account from './account';
 import Billing from './billing';

@@ -1,4 +1,4 @@
-import isURL = require('validator/lib/isURL');
+import * as isURL from 'validator/lib/isURL';
 import { ArgumentError } from '../errors';
 
 interface OrderProps {

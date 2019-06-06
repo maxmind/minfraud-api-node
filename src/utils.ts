@@ -1,4 +1,4 @@
-import camelcaseKeys = require('camelcase-keys');
+import * as camelcaseKeys from 'camelcase-keys';
 
 export const camelizeResponse = (response: any) =>
   camelcaseKeys(response, {

@@ -1,5 +1,5 @@
-import http = require('http');
-import https = require('https');
+import * as http from 'http';
+import * as https from 'https';
 import Transaction from './request/transaction';
 import * as models from './response/models';
 import { WebServiceClientError } from './types';

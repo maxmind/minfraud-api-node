@@ -1,4 +1,4 @@
-import snakecaseKeys = require('snakecase-keys');
+import * as snakecaseKeys from 'snakecase-keys';
 import { ArgumentError } from '../errors';
 import Account from './account';
 import Billing from './billing';

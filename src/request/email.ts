@@ -1,6 +1,6 @@
-import crypto = require('crypto');
-import isEmail = require('validator/lib/isEmail');
-import isFQDN = require('validator/lib/isFQDN');
+import * as crypto from 'crypto';
+import * as isEmail from 'validator/lib/isEmail';
+import * as isFQDN from 'validator/lib/isFQDN';
 import { ArgumentError } from '../errors';
 
 interface EmailProps {
