@@ -1,3 +1,4 @@
+import { URL } from 'url';
 import * as isJSON from 'validator/lib/isJSON';
 import { ArgumentError } from '../errors';
 import Account from './account';
@@ -264,6 +265,7 @@ describe('Transaction()', () => {
         }),
         order: new Order({
           amount: 123.99,
+          referrerUri: new URL('http://google.com'),
         }),
       });
 
@@ -271,7 +273,8 @@ describe('Transaction()', () => {
 
       expect(test.toString()).toContain(deviceString);
 
-      expect(test.toString()).toContain('"order":{"amount":123.99}');
+      expect(test.toString()).toContain('"order":{"amount":123.99');
+      expect(test.toString()).toContain('"referrer_uri":"http://google.com/"');
     });
 
     it('it handles optional shopping cart field', () => {

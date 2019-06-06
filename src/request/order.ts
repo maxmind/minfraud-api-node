@@ -1,3 +1,4 @@
+import { URL } from 'url';
 import * as isURL from 'validator/lib/isURL';
 import { ArgumentError } from '../errors';
 
@@ -7,7 +8,7 @@ interface OrderProps {
   discountCode?: string;
   affiliateId?: string;
   subaffiliateId?: string;
-  referrerUri?: string;
+  referrerUri?: URL;
   isGift?: boolean;
   hasGiftMessage?: boolean;
 }
@@ -20,7 +21,7 @@ export default class Order implements OrderProps {
   public discountCode?: string;
   public affiliateId?: string;
   public subaffiliateId?: string;
-  public referrerUri?: string;
+  public referrerUri?: URL;
   public isGift?: boolean;
   public hasGiftMessage?: boolean;
 
@@ -29,7 +30,7 @@ export default class Order implements OrderProps {
       throw new ArgumentError(`The currency code ${order.currency} is invalid`);
     }
 
-    if (order.referrerUri != null && !isURL(order.referrerUri)) {
+    if (order.referrerUri != null && !isURL(order.referrerUri.toString())) {
       throw new ArgumentError(
         `The referrer URI ${order.referrerUri} is invalid`
       );

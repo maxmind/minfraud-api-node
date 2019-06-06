@@ -55,6 +55,10 @@ export default class Transaction {
   public toString(): string {
     const sanitized = this.sanitizeKeys();
 
+    if (sanitized.order != null && sanitized.order.referrerUri) {
+      sanitized.order.referrerUri = sanitized.order.referrerUri.toString();
+    }
+
     return JSON.stringify(snakecaseKeys(sanitized));
   }
 

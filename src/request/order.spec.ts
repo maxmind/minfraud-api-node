@@ -1,3 +1,4 @@
+import { URL } from 'url';
 import { ArgumentError } from '../errors';
 import Order from './order';
 
@@ -13,6 +14,7 @@ describe('Order()', () => {
   it('throws an error if referrer URI is not valid', () => {
     expect(() => {
       const order = new Order({
+        // @ts-ignore
         referrerUri: 'foo',
       });
     }).toThrowError(ArgumentError);
@@ -22,7 +24,7 @@ describe('Order()', () => {
     expect(() => {
       const order = new Order({
         currency: 'CAD',
-        referrerUri: 'https://www.foobar.com/foo/bar.html?ref=1',
+        referrerUri: new URL('https://www.foobar.com/foo/bar.html?ref=1'),
       });
     }).not.toThrow();
   });
