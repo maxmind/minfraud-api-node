@@ -3,11 +3,12 @@ import Device from './device';
 
 describe('Device()', () => {
   it('throws an error if device.ipAddress is not valid', () => {
-    expect(() => {
-      const device = new Device({
+    const device = () =>
+      new Device({
         ipAddress: 'foo',
       });
-    }).toThrowError(ArgumentError);
+    expect(device).toThrowError(ArgumentError);
+    expect(device).toThrowError('device.ipAddress');
   });
 
   it('constructs', () => {

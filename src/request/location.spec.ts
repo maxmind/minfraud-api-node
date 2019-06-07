@@ -3,11 +3,13 @@ import Location from './location';
 
 describe('Location()', () => {
   it('throws an error if country is not valid', () => {
-    expect(() => {
-      const location = new Location({
+    const location = () =>
+      new Location({
         country: 'foo',
       });
-    }).toThrowError(ArgumentError);
+
+    expect(location).toThrowError(ArgumentError);
+    expect(location).toThrowError('country code');
   });
 
   it('constructs', () => {

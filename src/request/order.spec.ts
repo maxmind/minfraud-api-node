@@ -4,20 +4,22 @@ import Order from './order';
 
 describe('Order()', () => {
   it('throws an error if currency is not valid', () => {
-    expect(() => {
-      const order = new Order({
+    const order = () =>
+      new Order({
         currency: 'foo',
       });
-    }).toThrowError(ArgumentError);
+    expect(order).toThrowError(ArgumentError);
+    expect(order).toThrowError('currency code');
   });
 
   it('throws an error if referrer URI is not valid', () => {
-    expect(() => {
-      const order = new Order({
+    const order = () =>
+      new Order({
         // @ts-ignore
         referrerUri: 'foo',
       });
-    }).toThrowError(ArgumentError);
+    expect(order).toThrowError(ArgumentError);
+    expect(order).toThrowError('referrer URI');
   });
 
   it('constructs', () => {

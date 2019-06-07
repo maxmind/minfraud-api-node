@@ -16,26 +16,28 @@ import Transaction from './transaction';
 
 describe('Transaction()', () => {
   it('throws an error if `device` is not defined', () => {
-    expect(() => {
-      const test = new Transaction({
+    const test = () =>
+      new Transaction({
         // @ts-ignore
         device: undefined,
       });
-    }).toThrowError(ArgumentError);
+    expect(test).toThrowError(ArgumentError);
+    expect(test).toThrowError('instance of Device');
   });
 
   it('throws an error if `device` is not an instance of Device', () => {
-    expect(() => {
-      const test = new Transaction({
+    const test = () =>
+      new Transaction({
         device: {
           ipAddress: '123',
         },
       });
-    }).toThrowError(ArgumentError);
+    expect(test).toThrowError(ArgumentError);
+    expect(test).toThrowError('instance of Device');
   });
 
   test.each`
-    property        | instance        | val
+    property        | clss            | val
     ${'account'}    | ${'Account'}    | ${{ account: { userId: 'foo' } }}
     ${'billing'}    | ${'Billing'}    | ${{ billing: { address: 'foo' } }}
     ${'creditCard'} | ${'CreditCard'} | ${{ creditCard: { bankName: 'foo' } }}
@@ -45,38 +47,40 @@ describe('Transaction()', () => {
     ${'payment'}    | ${'Payment'}    | ${{ payment: { declineCode: 'A' } }}
     ${'shipping'}   | ${'Shipping'}   | ${{ shipping: { address: 'foo' } }}
   `(
-    'throws an error if `$property` is not an instance of $class',
-    ({ property, instance, val }) => {
-      expect(() => {
-        const txn = Object.assign(
-          { device: new Device({ ipAddress: '1.1.1.1' }) },
-          val
-        );
-        const test = new Transaction(txn);
-      }).toThrowError(ArgumentError);
+    'throws an error if `$property` is not an instance of $clss',
+    ({ property, clss, val }) => {
+      const txn = Object.assign(
+        { device: new Device({ ipAddress: '1.1.1.1' }) },
+        val
+      );
+      const test = () => new Transaction(txn);
+      expect(test).toThrowError(ArgumentError);
+      expect(test).toThrowError(clss);
     }
   );
 
   it('throws an error if `customInputs[i]` is not an instance of CustomInput', () => {
-    expect(() => {
-      const test = new Transaction({
+    const test = () =>
+      new Transaction({
         customInputs: [{ foo: 'bar' }],
         device: new Device({
           ipAddress: '1.1.1.1',
         }),
       });
-    }).toThrow(ArgumentError);
+    expect(test).toThrow(ArgumentError);
+    expect(test).toThrow('CustomInput');
   });
 
   it('throws an error if `shoppingCart[i]` is not an instance of ShoppingCartItem', () => {
-    expect(() => {
-      const test = new Transaction({
+    const test = () =>
+      new Transaction({
         device: new Device({
           ipAddress: '1.1.1.1',
         }),
         shoppingCart: [{ category: 'bar' }],
       });
-    }).toThrow(ArgumentError);
+    expect(test).toThrow(ArgumentError);
+    expect(test).toThrow('ShoppingCartItem');
   });
 
   it('constructs', () => {

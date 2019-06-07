@@ -3,19 +3,21 @@ import ShoppingCartItem from './shopping-cart-item';
 
 describe('ShoppingCartItem()', () => {
   it('throws an error if quantity is not an integer', () => {
-    expect(() => {
-      const item = new ShoppingCartItem({
+    const item = () =>
+      new ShoppingCartItem({
         quantity: 123.12,
       });
-    }).toThrowError(ArgumentError);
+    expect(item).toThrowError(ArgumentError);
+    expect(item).toThrowError('positive integer');
   });
 
   it('throws an error if quantity is not a positive integer', () => {
-    expect(() => {
-      const item = new ShoppingCartItem({
+    const item = () =>
+      new ShoppingCartItem({
         quantity: -1,
       });
-    }).toThrowError(ArgumentError);
+    expect(item).toThrowError(ArgumentError);
+    expect(item).toThrowError('positive integer');
   });
 
   it('constructs', () => {

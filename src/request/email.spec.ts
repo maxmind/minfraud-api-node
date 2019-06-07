@@ -3,19 +3,21 @@ import Email from './email';
 
 describe('Email()', () => {
   it('throws an error if email.address is not valid', () => {
-    expect(() => {
-      const email = new Email({
+    const email = () =>
+      new Email({
         address: '123',
       });
-    }).toThrowError(ArgumentError);
+    expect(email).toThrowError(ArgumentError);
+    expect(email).toThrowError('email.address');
   });
 
   it('throws an error if email.domain is not valid', () => {
-    expect(() => {
-      const email = new Email({
+    const email = () =>
+      new Email({
         domain: '123',
       });
-    }).toThrowError(ArgumentError);
+    expect(email).toThrowError(ArgumentError);
+    expect(email).toThrowError('email.domain');
   });
 
   it('constructs', () => {
