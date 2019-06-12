@@ -29,15 +29,15 @@ Documentation for this API can be found [here](https://maxmind.github.io/minfrau
 To use this API, first create a new `Client` object. The constructor
 takes your MaxMind account ID and license key. For example:
 
-```
+```js
 const client = new minFraud.Client("1234", "LICENSEKEY");
 ```
 
 Then create a new `Transaction` object. This represents the transaction that
-you are sending to minFraud. Each transacation property is instatiated by creating
+you are sending to minFraud. Each transaction property is instantiated by creating
 a new instance of each property's class.  For example:
 
-```
+```js
 const transaction = new minFraud.Transaction({
   device: new minFraud.Device({
     ipAddress: '8.8.8.8',
@@ -49,18 +49,18 @@ const transaction = new minFraud.Transaction({
 })
 ```
 
-If Transaction instatiation fails, an `ArgumentError` is thrown. This is usually
+If Transaction instantiation fails, an `ArgumentError` is thrown. This is usually
 due to invalid property values, a missing Device object, or a Device object
  with either an invalid or missing IP Address.
 
 After creating the Transaction object, you can send a Score, Insights, or Factors
 request, which returns a Promise that contains the corresponding model:
 
-```
+```js
 // minFraud Score
 client.score(transaction).then(scoreResponse => ...);
 
-// minFraud Insights 
+// minFraud Insights
 client.insights(transaction).then(insightsResponse => ...);
 
 // minFraud Factors
@@ -69,9 +69,9 @@ client.factors(transaction).then(factorsResponse => ...);
 ```
 
 If the request fails, an error object will be returned in the catch in the form
-of: 
+of:
 
-```
+```js
 {
   code: string
   error: string
@@ -87,7 +87,7 @@ and Transaction property constructors.
 In addition to the [response errors](https://dev.maxmind.com/minfraud/#Errors)
 returned by the web API, we also return: 
 
-```
+```js
 {
   code: 'SERVER_ERROR',
   error: 'Some message',
@@ -106,7 +106,7 @@ returned by the web API, we also return:
 
 ## Example
 
-```
+```js
 import { URL } from 'url'; // Used for `order.referrerUri
 import * as minFraud from '@maxmind/minfraud-api-node';
 // const minFraud = require('@maxmind/minfraud-api-node');
