@@ -7,7 +7,7 @@ import Score from './score';
 export default class Insights extends Score {
   public readonly billingAddress?: records.BillingAddress;
   public readonly creditCard?: records.CreditCard;
-  public readonly device: records.Device;
+  public readonly device?: records.Device;
   public readonly email?: records.Email;
   public readonly ipAddress: records.IpAddress;
   public readonly shippingAddress?: records.ShippingAddress;
@@ -23,9 +23,7 @@ export default class Insights extends Score {
       response,
       'credit_card'
     );
-    this.device = (camelizeResponse(
-      response.device
-    ) as unknown) as records.Device;
+    this.device = this.maybeGet<records.Device>(response, 'device');
     this.email = this.maybeGet<records.Email>(response, 'email');
     this.ipAddress = this.getIpAddress(response);
     this.shippingAddress = this.maybeGet<records.ShippingAddress>(
