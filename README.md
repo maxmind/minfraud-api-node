@@ -90,17 +90,17 @@ returned by the web API, we also return:
 ```js
 {
   code: 'SERVER_ERROR',
-  error: 'Some message',
+  error: <string>
 }
 
 {
   code: 'HTTP_STATUS_CODE_ERROR',
-  error: 'Some message',
+  error: <string>
 }
 
 {
   code: 'INVALID_RESPONSE_BODY',
-  error: 'Some message',
+  error: <string>
 }
 ```
 
