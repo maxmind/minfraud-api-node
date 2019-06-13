@@ -19,9 +19,7 @@ export default class ShoppingCartItem implements ShoppingCartItemProps {
       (!Number.isInteger(item.quantity) || item.quantity < 0)
     ) {
       throw new ArgumentError(
-        `Expected a positive integer for quantity but received: ${
-          item.quantity
-        }`
+        `Expected a positive integer for quantity but received: ${item.quantity}`
       );
     }
 

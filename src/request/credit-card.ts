@@ -32,9 +32,7 @@ export default class CreditCard implements CreditCardProps {
       !singleChar.test(creditCard.avsResult)
     ) {
       throw new ArgumentError(
-        `avsResult should be a single character but we received: ${
-          creditCard.avsResult
-        }`
+        `avsResult should be a single character but we received: ${creditCard.avsResult}`
       );
     }
 
@@ -43,9 +41,7 @@ export default class CreditCard implements CreditCardProps {
       !singleChar.test(creditCard.cvvResult)
     ) {
       throw new ArgumentError(
-        `cvvResult should be a single character but we received: ${
-          creditCard.cvvResult
-        }`
+        `cvvResult should be a single character but we received: ${creditCard.cvvResult}`
       );
     }
 
@@ -54,9 +50,7 @@ export default class CreditCard implements CreditCardProps {
       !issuerIdNumberRegex.test(creditCard.issuerIdNumber)
     ) {
       throw new ArgumentError(
-        `The issuer ID number (issuerIdNumber) ${
-          creditCard.issuerIdNumber
-        } is of the wrong format.`
+        `The issuer ID number (issuerIdNumber) ${creditCard.issuerIdNumber} is of the wrong format.`
       );
     }
 
@@ -65,17 +59,13 @@ export default class CreditCard implements CreditCardProps {
       !last4Regex.test(creditCard.last4digits)
     ) {
       throw new ArgumentError(
-        `The last 4 credit card digits (last4digits) ${
-          creditCard.last4digits
-        } are of the wrong format.`
+        `The last 4 credit card digits (last4digits) ${creditCard.last4digits} are of the wrong format.`
       );
     }
 
     if (creditCard.token != null && !tokenRegex.test(creditCard.token)) {
       throw new ArgumentError(
-        `The credit card token (token) ${
-          creditCard.token
-        } was invalid. Tokens must be non-space ASCII printable characters. If the token consists of all digits, it must be more than 19 digits.`
+        `The credit card token (token) ${creditCard.token} was invalid. Tokens must be non-space ASCII printable characters. If the token consists of all digits, it must be more than 19 digits.`
       );
     }
 
