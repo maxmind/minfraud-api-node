@@ -121,9 +121,7 @@ export default class WebServiceClient {
     ) {
       return {
         code: 'SERVER_ERROR',
-        error: `Received a server error with HTTP status code: ${
-          response.statusCode
-        }`,
+        error: `Received a server error with HTTP status code: ${response.statusCode}`,
         url,
       };
     }
@@ -134,9 +132,7 @@ export default class WebServiceClient {
     ) {
       return {
         code: 'HTTP_STATUS_CODE_ERROR',
-        error: `Received an unexpected HTTP status code: ${
-          response.statusCode
-        }`,
+        error: `Received an unexpected HTTP status code: ${response.statusCode}`,
         url,
       };
     }
