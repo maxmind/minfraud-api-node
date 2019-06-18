@@ -1,5 +1,6 @@
 import * as http from 'http';
 import * as https from 'https';
+import { version } from '../package.json';
 import Transaction from './request/transaction';
 import * as models from './response/models';
 import { WebServiceClientError } from './types';
@@ -62,7 +63,7 @@ export default class WebServiceClient {
         Accept: 'application/json',
         'Content-Length': Buffer.byteLength(postData),
         'Content-Type': 'application/json',
-        'User-Agent': `minfraud-api-node/${process.env.npm_package_version}`,
+        'User-Agent': `minfraud-api-node/${version}`,
       },
       host: this.host,
       method: 'POST',
