@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+0.2.0
+------------------
+
+* Added the following new values to the `Processor` enum:
+  * `Afterpay`
+  * `Dotpay`
+  * `Klarna`
+  * `Paysafecard`
+
 0.1.2 (2019-06-18)
 ------------------
 

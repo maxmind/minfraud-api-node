@@ -19,6 +19,7 @@ export enum DeliverySpeed {
 
 export enum Processor {
   Adyen = 'adyen',
+  Afterpay = 'afterpay',
   Altapay = 'altapay',
   AmazonPayments = 'amazon_payments',
   AmericanExpressPaymentGateway = 'american_express_payment_gateway',
@@ -48,6 +49,7 @@ export enum Processor {
   Datacash = 'datacash',
   Dibs = 'dibs',
   DigitalRiver = 'digital_river',
+  Dotpay = 'dotpay',
   Ebs = 'ebs',
   Ecomm365 = 'ecomm365',
   Elavon = 'elavon',
@@ -65,6 +67,7 @@ export enum Processor {
   Internetsecure = 'internetsecure',
   IntuitQuickbooksPayments = 'intuit_quickbooks_payments',
   Iugu = 'iugu',
+  Klarna = 'klarna',
   LemonWay = 'lemon_way',
   MastercardPaymentGateway = 'mastercard_payment_gateway',
   Mercadopago = 'mercadopago',
@@ -89,6 +92,7 @@ export enum Processor {
   Payone = 'payone',
   Paypal = 'paypal',
   Payplus = 'payplus',
+  Paysafecard = 'paysafecard',
   Paystation = 'paystation',
   Paytrace = 'paytrace',
   Paytrail = 'paytrail',
