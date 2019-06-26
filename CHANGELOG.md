@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-0.2.0
+0.2.0 (2019-06-26)
 ------------------
 
 * Added the following new values to the `Processor` enum:
