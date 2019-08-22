@@ -64,18 +64,31 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="node-js-api-for-maxmind-minfraud-score-insights-and-factors">Node.js API for MaxMind minFraud Score, Insights, and Factors</h1>
-				<h2 id="description">Description</h2>
+				<a href="#nodejs-api-for-maxmind-minfraud-score-insights-and-factors" id="nodejs-api-for-maxmind-minfraud-score-insights-and-factors" style="color: inherit; text-decoration: none;">
+					<h1>Node.js API for MaxMind minFraud Score, Insights, and Factors</h1>
+				</a>
+				<a href="#description" id="description" style="color: inherit; text-decoration: none;">
+					<h2>Description</h2>
+				</a>
 				<p>This package provides an API for the <a href="https://dev.maxmind.com/minfraud/">MaxMind minFraud Score, Insights, and
 				Factors web services</a>.</p>
-				<h2 id="requirements">Requirements</h2>
+				<a href="#requirements" id="requirements" style="color: inherit; text-decoration: none;">
+					<h2>Requirements</h2>
+				</a>
 				<p>MaxMind has tested this API with Node.js versions 8 and 10.  We aim to support
 				active LTS versions of Node.js, as well as the latest stable release.</p>
-				<h2 id="installation">Installation</h2>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
 				<pre><code><span class="hljs-selector-tag">yarn</span> <span class="hljs-selector-tag">add</span> @<span class="hljs-keyword">maxmind</span>/<span class="hljs-keyword">minfraud</span>-<span class="hljs-keyword">api</span>-<span class="hljs-keyword">node</span></code></pre><p>If you are not able to use <code>yarn</code>, you may also use <code>npm</code>:</p>
-				<pre><code><span class="hljs-selector-tag">npm</span> <span class="hljs-selector-tag">install</span> @<span class="hljs-keyword">maxmind</span>/<span class="hljs-keyword">minfraud</span>-<span class="hljs-keyword">api</span>-<span class="hljs-keyword">node</span></code></pre><h2 id="api-documentation">API Documentation</h2>
+				<pre><code><span class="hljs-selector-tag">npm</span> <span class="hljs-selector-tag">install</span> @<span class="hljs-keyword">maxmind</span>/<span class="hljs-keyword">minfraud</span>-<span class="hljs-keyword">api</span>-<span class="hljs-keyword">node</span></code></pre>
+				<a href="#api-documentation" id="api-documentation" style="color: inherit; text-decoration: none;">
+					<h2>API Documentation</h2>
+				</a>
 				<p>Documentation for this API can be found <a href="https://maxmind.github.io/minfraud-api-node/">here</a></p>
-				<h2 id="usage">Usage</h2>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
 				<p>To use this API, first create a new <code>Client</code> object. The constructor
 				takes your MaxMind account ID and license key. For example:</p>
 				<pre><code class="language-js"><span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> minFraud.Client(<span class="hljs-string">"1234"</span>, <span class="hljs-string">"LICENSEKEY"</span>);</code></pre>
@@ -111,7 +124,9 @@ client.factors(transaction).then(<span class="hljs-function"><span class="hljs-p
   <span class="hljs-attr">code</span>: string
   error: string
 }</code></pre>
-				<h2 id="errors-and-exceptions">Errors and Exceptions</h2>
+				<a href="#errors-and-exceptions" id="errors-and-exceptions" style="color: inherit; text-decoration: none;">
+					<h2>Errors and Exceptions</h2>
+				</a>
 				<p>Thrown by the request and transaction models:</p>
 				<ul>
 					<li><code>ArgumentError</code> - Thrown when invalid data is passed to the Transaction
@@ -133,7 +148,9 @@ client.factors(transaction).then(<span class="hljs-function"><span class="hljs-p
   code: 'INVALID_RESPONSE_BODY',
   error: &lt;string&gt;
 }</code></pre>
-				<h2 id="example">Example</h2>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h2>Example</h2>
+				</a>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> { URL } <span class="hljs-keyword">from</span> <span class="hljs-string">'url'</span>; <span class="hljs-comment">// Used for `order.referrerUri</span>
 <span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> minFraud <span class="hljs-keyword">from</span> <span class="hljs-string">'@maxmind/minfraud-api-node'</span>;
 <span class="hljs-comment">// const minFraud = require('@maxmind/minfraud-api-node');</span>
@@ -243,18 +260,26 @@ client.score(transaction <span class="hljs-keyword">as</span> minFraud.Transacti
   <span class="hljs-built_in">console</span>.log(response.riskScore) <span class="hljs-comment">// 50</span>
   <span class="hljs-built_in">console</span>.log(response.ipAddress.risk) <span class="hljs-comment">// 50</span>
 });</code></pre>
-				<h2 id="support">Support</h2>
+				<a href="#support" id="support" style="color: inherit; text-decoration: none;">
+					<h2>Support</h2>
+				</a>
 				<p>Please report all issues with this code using the
 				<a href="https://github.com/maxmind/minfraud-api-node/issues">GitHub issue tracker</a>.</p>
 				<p>If you are having an issue with the minFraud service that is not specific
 					to the client API, please see
 				<a href="https://www.maxmind.com/en/support">our support page</a>.</p>
-				<h2 id="contributing">Contributing</h2>
+				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
+					<h2>Contributing</h2>
+				</a>
 				<p>Patches and pull requests are encouraged. Please include unit tests whenever
 				possible.</p>
-				<h2 id="versioning">Versioning</h2>
+				<a href="#versioning" id="versioning" style="color: inherit; text-decoration: none;">
+					<h2>Versioning</h2>
+				</a>
 				<p>This API uses <a href="https://semver.org/">Semantic Versioning</a>.</p>
-				<h2 id="copyright-and-license">Copyright and License</h2>
+				<a href="#copyright-and-license" id="copyright-and-license" style="color: inherit; text-decoration: none;">
+					<h2>Copyright and License</h2>
+				</a>
 				<p>This software is Copyright (c) 2019 by MaxMind, Inc.</p>
 				<p>This is free software, licensed under the Apache License, Version 2.0.</p>
 			</div>
@@ -463,6 +488,7 @@ client.score(transaction <span class="hljs-keyword">as</span> minFraud.Transacti
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -511,7 +537,7 @@ client.score(transaction <span class="hljs-keyword">as</span> minFraud.Transacti
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
