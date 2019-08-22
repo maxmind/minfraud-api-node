@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+1.0.0 (2019-08-22)
+-----------------
+
+* Point package.json's main to dist/src/index.js
+
 0.2.0 (2019-06-26)
 ------------------
 
