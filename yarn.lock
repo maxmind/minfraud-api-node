@@ -294,12 +294,12 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@maxmind/geoip2-node@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-0.7.0.tgz#95829a41b0d63f7aaa3993acfc4cee0a5f32411d"
-  integrity sha512-+BiIsGZtR0Gug+Dh9Iwv1+Tb1v/kaORGYNyyA05hcAVufY9tHWfaIxRjqC+mnydwNOVuQ9KOalMJ6NuWACHDhA==
+"@maxmind/geoip2-node@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-1.1.1.tgz#3cd86811bdea5a660592ce2f1682551dc5e27e71"
+  integrity sha512-gcSVnQ1laXGy+2k5c1FpLhdor26Y5k+Vlc0s8s3EBvG+UeukajSwsT6v2hqOm8pwi0DyZSHApNt1YvyRJQz4VQ==
   dependencies:
-    camelcase-keys "^5.0.0"
+    camelcase-keys "^6.0.1"
     lodash.set "^4.3.2"
     maxmind "^2.11.0"
 
@@ -910,6 +910,15 @@ camelcase-keys@^5.0.0:
     camelcase "^5.3.1"
     map-obj "^3.0.0"
     quick-lru "^1.0.0"
+
+camelcase-keys@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/camelcase-keys/-/camelcase-keys-6.0.1.tgz#a0d1a03cab5499a7ddcc62b23b4874399ca1dfaf"
+  integrity sha512-Pet+fVo99HMVy183qJuyTiQECQlb0dCXg89qhixcud88j4BSns+gzhSrjRT0ustEYSWJqKMO42arm1cS1VG5FA==
+  dependencies:
+    camelcase "^5.3.1"
+    map-obj "^4.0.0"
+    quick-lru "^4.0.1"
 
 camelcase@^4.0.0, camelcase@^4.1.0:
   version "4.1.0"
@@ -3407,6 +3416,11 @@ map-obj@^3.0.0:
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-3.1.0.tgz#3be9810d926db2f8612c728a2e95e03b7f109241"
   integrity sha512-Xg1iyYz/+iIW6YoMldux47H/e5QZyDSB41Kb0ev+YYHh3FJnyyzY0vTk/WbVeWcCvdXd70cOriUBmhP8alUFBA==
 
+map-obj@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-4.1.0.tgz#b91221b542734b9f14256c0132c897c5d7256fd5"
+  integrity sha512-glc9y00wgtwcDmp7GaE/0b0OnxpNJsVf3ael/An6Fe2Q51LLwN1er6sdomLRzz5h0+yMpiYLhWYF5R7HeqVd4g==
+
 map-obj@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-3.0.0.tgz#4221cc62360f88c0735f9e7c0813bd889657f490"
@@ -4322,6 +4336,11 @@ quick-lru@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-1.1.0.tgz#4360b17c61136ad38078397ff11416e186dcfbb8"
   integrity sha1-Q2CxfGETatOAeDl/8RQW4Ybc+7g=
+
+quick-lru@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
+  integrity sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
 
 rc@^1.0.1, rc@^1.1.6, rc@^1.2.7, rc@^1.2.8:
   version "1.2.8"
