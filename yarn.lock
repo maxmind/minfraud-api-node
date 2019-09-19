@@ -288,9 +288,9 @@
     "@types/yargs" "^13.0.0"
 
 "@maxmind/geoip2-node@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-1.1.1.tgz#3cd86811bdea5a660592ce2f1682551dc5e27e71"
-  integrity sha512-gcSVnQ1laXGy+2k5c1FpLhdor26Y5k+Vlc0s8s3EBvG+UeukajSwsT6v2hqOm8pwi0DyZSHApNt1YvyRJQz4VQ==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-1.2.0.tgz#c7907a2d1d35424d775795f67e8aa94f031988c3"
+  integrity sha512-YxgH5Jk09yU/ieji7CYlXz+nCzWNvSN5pO4MVLlFfvfx9HOzVafGzQg3Tqfjenqo0uN3ddaKjqNR0pgYXroqEw==
   dependencies:
     camelcase-keys "^6.0.1"
     lodash.set "^4.3.2"
@@ -5290,9 +5290,9 @@ through@2, through@^2.3.6, through@^2.3.8:
   integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
 
 tiny-lru@^6.0.0:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-6.0.1.tgz#558bd6b7232b8b9dfa482147539676fdd75a3a07"
-  integrity sha512-k/vdHz+bFALjmik0URLWBYNuO0hCABTL5dullbZBXvFDdlL8RrKaeLR6YuHfX+6ZXOLkHw+HpNLCUA7DtLMQmg==
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-6.1.0.tgz#f29e66e35324a383f55eb03834f2127b1b2fe6d5"
+  integrity sha512-lbz53M11ioFDKxPUBR2UVK7a8JolPZpSkzL0iXW60fpvU98P9+VqWQ7bGGJpGjqnIlILQzl9r+fikhqbcOs7bg==
 
 tlds@^1.203.0:
   version "1.203.1"
