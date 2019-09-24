@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+1.1.0
+-----------------
+
+* Add the following new values to the `Processor` enum:
+  * `Affirm`
+  * `Interac`
+
 1.0.0 (2019-08-22)
 -----------------
 

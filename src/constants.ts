@@ -19,6 +19,7 @@ export enum DeliverySpeed {
 
 export enum Processor {
   Adyen = 'adyen',
+  Affirm = 'affirm',
   Afterpay = 'afterpay',
   Altapay = 'altapay',
   AmazonPayments = 'amazon_payments',
@@ -64,6 +65,7 @@ export enum Processor {
   Heartland = 'heartland',
   Hipay = 'hipay',
   Ingenico = 'ingenico',
+  Interac = 'interac',
   Internetsecure = 'internetsecure',
   IntuitQuickbooksPayments = 'intuit_quickbooks_payments',
   Iugu = 'iugu',
