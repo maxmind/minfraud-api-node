@@ -10,6 +10,12 @@ export interface ScoreIpAddress {
 }
 
 export interface GeoIPCountry extends CountryRecord {
+  /**
+   * Deprecated effective August 29, 2019.
+   *
+   * @category Deprecated
+   * @deprecated
+   */
   isHighRisk: boolean;
 }
 
