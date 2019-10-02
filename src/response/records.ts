@@ -10,6 +10,12 @@ export interface ScoreIpAddress {
 }
 
 export interface GeoIPCountry extends CountryRecord {
+  /**
+   * Deprecated effective August 29, 2019.
+   *
+   * @category Deprecated
+   * @deprecated
+   */
   isHighRisk: boolean;
 }
 
@@ -88,13 +94,34 @@ export interface Subscores {
   readonly cvvResult?: number;
   readonly emailAddress?: number;
   readonly emailDomain?: number;
-  readonly emailTenure?: number;
-  readonly ipTenure?: number;
   readonly issuerIdNumber?: number;
   readonly orderAmount?: number;
   readonly phoneNumber?: number;
   readonly shippingAddressDistanceToIpLocation?: number;
   readonly timeOfDay?: number;
+
+  /**
+   * Deprecated effective August 29, 2019.
+   *
+   * This subscore will default to 1 and will be removed in a future release.
+   * The user tenure on email is reflected in the [[Subscores.emailAddress]]
+   * output.
+   *
+   * @category Deprecated
+   * @deprecated
+   */
+  readonly emailTenure?: number;
+
+  /**
+   * Deprecated effective August 29, 2019.
+   *
+   * This subscore will default to 1 and will be removed in a future release.
+   * The IP tenure is reflected in the [[Score.riskScore|overall risk score]].
+   *
+   * @category Deprecated
+   * @deprecated
+   */
+  readonly ipTenure?: number;
 }
 
 export interface Warning {
