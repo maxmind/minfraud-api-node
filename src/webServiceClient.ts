@@ -95,11 +95,9 @@ export default class WebServiceClient {
             return resolve(new modelClass(data));
           } catch (error) {
             const responseData = data as ResponseError;
-            responseData.code = 'INVALID_RESPONSE_BODY'
+            responseData.code = 'INVALID_RESPONSE_BODY';
             responseData.error = `Received incomplete response body, could not create ${path} model. (${error.message})`;
-            return reject(
-              this.handleError(responseData, response, url)
-            );
+            return reject(this.handleError(responseData, response, url));
           }
         });
       });
@@ -136,7 +134,8 @@ export default class WebServiceClient {
     }
 
     if (
-      response.statusCode != 200 &&
+      response.statusCode &&
+      response.statusCode !== 200 &&
       (response.statusCode < 400 || response.statusCode >= 600)
     ) {
       return {

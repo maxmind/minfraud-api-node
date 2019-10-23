@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+1.2.1 (2019-10-23)
+-----------------
+
+* Catch errors thrown when creating response models
+
 1.2.0 (2019-09-24)
 -----------------
 
