@@ -94,9 +94,10 @@ export default class WebServiceClient {
           try {
             return resolve(new modelClass(data));
           } catch (error) {
-            const responseData = data as ResponseError;
-            responseData.code = 'INVALID_RESPONSE_BODY';
-            responseData.error = `Received incomplete response body, could not create ${path} model. (${error.message})`;
+            const responseData: ResponseError = {
+              code: 'INVALID_RESPONSE_BODY',
+              error: `Received incomplete response body, could not create ${path} model. (${error.message})`,
+            };
             return reject(this.handleError(responseData, response, url));
           }
         });

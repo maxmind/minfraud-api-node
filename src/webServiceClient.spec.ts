@@ -182,6 +182,22 @@ describe('WebServiceClient', () => {
       });
     });
 
+    it('handles errors with incomplete payload', () => {
+      expect.assertions(1);
+
+      nockInstance
+        .post(fullPath('insights'), insights.request.basic)
+        .basicAuth(auth)
+        .reply(200, insights.response.incomplete);
+
+      return expect(client.insights(transaction)).rejects.toEqual({
+        code: 'INVALID_RESPONSE_BODY',
+        error:
+          "Received incomplete response body, could not create insights model. (Cannot read property 'is_high_risk' of undefined)",
+        url: baseUrl + fullPath('insights'),
+      });
+    });
+
     it('handles general http.request errors', () => {
       const error = {
         code: 'FOO_ERR',
