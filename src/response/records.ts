@@ -16,11 +16,11 @@ export interface GeoIPCountry extends CountryRecord {
    * @category Deprecated
    * @deprecated
    */
-  isHighRisk: boolean;
+  isHighRisk?: boolean;
 }
 
 export interface GeoIPLocation extends LocationRecord {
-  localTime: string;
+  localTime?: string;
 }
 
 export interface IpAddress extends Insights {

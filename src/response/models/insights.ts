@@ -45,8 +45,15 @@ export default class Insights extends Score {
     response: webRecords.InsightsResponse
   ): records.IpAddress {
     const insights = new GeoInsights(response.ip_address) as records.IpAddress;
-    insights.country.isHighRisk = response.ip_address.country.is_high_risk;
-    insights.location.localTime = response.ip_address.location.local_time;
+
+    insights.country.isHighRisk = response.ip_address.country
+      ? response.ip_address.country.is_high_risk
+      : undefined;
+
+    insights.location.localTime = response.ip_address.location
+      ? response.ip_address.location.local_time
+      : undefined;
+
     insights.risk = response.ip_address.risk;
 
     delete insights.maxmind;

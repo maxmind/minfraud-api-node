@@ -14,8 +14,8 @@ export interface GeoIPLocation extends LocationRecord {
 
 export interface IpAddress extends CityResponse {
   readonly risk: number;
-  readonly country: GeoIPCountry;
-  readonly location: GeoIPLocation;
+  readonly country?: GeoIPCountry;
+  readonly location?: GeoIPLocation;
 }
 
 export interface CreditCardIssuer {
