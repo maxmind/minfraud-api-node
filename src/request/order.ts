@@ -1,5 +1,5 @@
 import { URL } from 'url';
-import * as isURL from 'validator/lib/isURL';
+import isURL from 'validator/lib/isURL';
 import { ArgumentError } from '../errors';
 
 interface OrderProps {

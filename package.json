@@ -18,7 +18,9 @@
     "minfraud insights",
     "minfraud factors"
   ],
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "types": "dist/src/index.d.ts",
   "devDependencies": {
     "@types/jest": "^24.0.9",
@@ -48,7 +50,10 @@
     }
   },
   "lint-staged": {
-    "*.json": ["prettier --parser json --write", "git add"],
+    "*.json": [
+      "prettier --parser json --write",
+      "git add"
+    ],
     "*.ts": [
       "prettier --parser typescript --single-quote true --trailing-comma es5 --write",
       "tslint -p tsconfig.lint.json -t stylish",
