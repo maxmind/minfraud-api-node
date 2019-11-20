@@ -1,6 +1,6 @@
 import * as crypto from 'crypto';
-import * as isEmail from 'validator/lib/isEmail';
-import * as isFQDN from 'validator/lib/isFQDN';
+import isEmail from 'validator/lib/isEmail';
+import isFQDN from 'validator/lib/isFQDN';
 import { ArgumentError } from '../errors';
 
 interface EmailProps {
