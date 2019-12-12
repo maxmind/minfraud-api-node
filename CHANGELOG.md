@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+1.3.0
+-----------------
+
+* Add the following new values to the `Processor` enum:
+  * `Cetelem`
+  * `Ecommpay`
+  * `G2aPay`
+  * `Mercanet`
+
 1.2.0 (2019-09-24)
 -----------------
 
