@@ -3529,13 +3529,20 @@ marked@^0.8.0:
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.8.0.tgz#ec5c0c9b93878dc52dd54be8d0e524097bd81a99"
   integrity sha512-MyUe+T/Pw4TZufHkzAfDj6HarCBWia2y27/bhuYkTaiUnfDYFnCP3KUN+9oM7Wi6JA2rymtVYbQu3spE0GCmxQ==
 
-maxmind@^2.11.0, maxmind@^2.11.2:
+maxmind@^2.11.0:
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/maxmind/-/maxmind-2.12.0.tgz#b7d16b0ee2fff50061ead36b258577cb7d85fec5"
   integrity sha512-gnLdeLg0GFYlrtPt2122RYrRUy8OWxrhYEDCORaUkr6AvKXnLfnNpsFmWUOBYkvZK17XX4NeuMwnjIQM9EcxTw==
   dependencies:
     big-integer "^1.6.31"
     tiny-lru "^6.0.0"
+
+maxmind@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/maxmind/-/maxmind-4.1.0.tgz#d42c10f74ff9e27c338ea5f7001e0e080557a04c"
+  integrity sha512-rcJ9EDNDFttuD8zrJSrcBwladOfrGbm37kF8OpgUn7N2ZtgyBQzxtg81Chqkmq2pFyCClBhQ8Nv2zBvoeIuqiQ==
+  dependencies:
+    tiny-lru "7.0.2"
 
 mem@^4.3.0:
   version "4.3.0"
@@ -5291,6 +5298,11 @@ through@2, through@^2.3.6, through@^2.3.8:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
+
+tiny-lru@7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-7.0.2.tgz#6a8853deb1e355f4c8863bf1289337e3e3a7e973"
+  integrity sha512-cmc9OOwmnAJtyFBYaznKR3abypEhWecarFrvS5db6qwSgoaDUWV0JX+mdh6B9wN60Wux3+gE1vjzxkoqxFBjqw==
 
 tiny-lru@^6.0.0:
   version "6.1.0"
