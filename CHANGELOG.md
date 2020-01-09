@@ -4,6 +4,7 @@ CHANGELOG
 1.3.0
 -----------------
 
+* Drop support for Node 8.
 * Add the following new values to the `Processor` enum:
   * `Cetelem`
   * `Ecommpay`
