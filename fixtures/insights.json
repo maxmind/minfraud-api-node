@@ -135,6 +135,7 @@
           "is_satellite_provider": true,
           "is_tor_exit_node": true,
           "isp": "Linkem spa",
+          "ip_address": "1.2.3.0/24",
           "organization": "Linkem IR WiMax Network",
           "user_type": "traveler"
         }
