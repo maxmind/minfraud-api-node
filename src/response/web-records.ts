@@ -1,14 +1,37 @@
-import { CityResponse, CountryRecord, LocationRecord } from 'maxmind';
+import { CityResponse } from 'maxmind';
 
 export interface ScoreIpAddress {
   readonly risk: number;
 }
 
-export interface GeoIPCountry extends CountryRecord {
+interface Names {
+  readonly de?: string;
+  readonly en: string;
+  readonly es?: string;
+  readonly fr?: string;
+  readonly ja?: string;
+  readonly 'pt-BR'?: string;
+  readonly ru?: string;
+  readonly 'zh-CN'?: string;
+}
+
+export interface GeoIPCountry {
+  readonly geoname_id: number;
+  readonly is_in_european_union?: boolean;
+  readonly iso_code: string;
+  readonly names: Names;
+  readonly confidence?: number;
   readonly is_high_risk: boolean;
 }
 
-export interface GeoIPLocation extends LocationRecord {
+export interface GeoIPLocation {
+  readonly accuracy_radius: number;
+  readonly average_income?: number;
+  readonly latitude: number;
+  readonly longitude: number;
+  readonly metro_code?: number;
+  readonly population_density?: number;
+  readonly time_zone?: string;
   readonly local_time: string;
 }
 

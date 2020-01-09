@@ -6,7 +6,7 @@ Factors web services](https://dev.maxmind.com/minfraud/).
 
 ## Requirements
 
-MaxMind has tested this API with Node.js versions 8 and 10.  We aim to support
+MaxMind has tested this API with Node.js versions 10 and 12.  We aim to support
 active LTS versions of Node.js, as well as the latest stable release.
 
 ## Installation
@@ -238,6 +238,6 @@ This API uses [Semantic Versioning](https://semver.org/).
 
 ## Copyright and License
 
-This software is Copyright (c) 2019 by MaxMind, Inc.
+This software is Copyright (c) 2019-2020 by MaxMind, Inc.
 
 This is free software, licensed under the Apache License, Version 2.0.
