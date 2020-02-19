@@ -56,6 +56,7 @@ export interface Device {
 
 export interface Email {
   readonly firstSeen: string;
+  readonly isDisposable?: boolean;
   readonly isFree?: boolean;
   readonly isHighRisk?: boolean;
 }
