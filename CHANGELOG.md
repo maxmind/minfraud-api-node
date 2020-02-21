@@ -1,10 +1,11 @@
 CHANGELOG
 =========
 
-1.4.0
+1.4.0 (2020-02-21)
 ------------------
 
 * Add support for the `/email/is_disposable` output.
+* Upgrade yarn dependencies
 
 1.3.0 (2020-01-09)
 ------------------
