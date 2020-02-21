@@ -165,6 +165,7 @@
 
       "email": {
         "first_seen": "2016-02-03",
+        "is_disposable": false,
         "is_free": false,
         "is_high_risk": true
       },

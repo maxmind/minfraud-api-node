@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+1.4.0
+------------------
+
+* Add support for the `/email/is_disposable` output.
+
 1.3.0 (2020-01-09)
 ------------------
 
