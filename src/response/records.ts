@@ -54,7 +54,12 @@ export interface Device {
   readonly localTime: string;
 }
 
+export interface EmailDomain {
+  readonly firstSeen: string;
+}
+
 export interface Email {
+  readonly domain: EmailDomain;
   readonly firstSeen: string;
   readonly isDisposable?: boolean;
   readonly isFree?: boolean;

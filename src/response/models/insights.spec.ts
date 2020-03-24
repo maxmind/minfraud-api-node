@@ -22,4 +22,13 @@ describe('Insights()', () => {
 
     expect(model.ipAddress.location.localTime).toBeUndefined();
   });
+
+  it('allows /email/domain/first_seen to be accessed', () => {
+    let input = cloneDeep(insights) as any;
+    input = input.response.full;
+
+    const model = new Insights(input);
+
+    expect(model.email?.domain?.firstSeen).toBe('2016-01-23');
+  });
 });

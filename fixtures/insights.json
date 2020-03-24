@@ -164,6 +164,9 @@
       },
 
       "email": {
+        "domain": {
+          "first_seen": "2016-01-23"
+        },
         "first_seen": "2016-02-03",
         "is_disposable": false,
         "is_free": false,
