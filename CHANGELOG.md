@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+1.5.0
+------------------
+
+* Add support for the `/email/domain/first_seen` output. This may be
+  accessed via `response.email.domain.firstSeen` on the minFraud Insights
+  and Factors objects.
+
 1.4.0 (2020-02-21)
 ------------------
 
