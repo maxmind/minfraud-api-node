@@ -7,6 +7,9 @@ CHANGELOG
 * Add support for the `/email/domain/first_seen` output. This may be
   accessed via `response.email.domain.firstSeen` on the minFraud Insights
   and Factors objects.
+* Add the following new values to the `Processor` enum:
+  * `Cardpay`
+  * `Epx`
 
 1.4.0 (2020-02-21)
 ------------------
