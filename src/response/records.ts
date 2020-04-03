@@ -41,6 +41,7 @@ export interface CreditCard {
   readonly issuer: CreditCardIssuer;
   readonly brand: string;
   readonly country: string;
+  readonly isBusiness?: boolean;
   readonly isIssuedInBillingAddressCountry?: boolean;
   readonly isPrepaid?: boolean;
   readonly isVirtual?: boolean;
