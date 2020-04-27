@@ -4,12 +4,27 @@ import isFQDN from 'validator/lib/isFQDN';
 import { ArgumentError } from '../errors';
 
 interface EmailProps {
+  /**
+   * The email address used in the transaction.
+   */
   address?: string;
+  /**
+   * The domain of the email address.
+   */
   domain?: string;
 }
 
+/**
+ * The email information for the transaction being sent to the web service.
+ */
 export default class Email implements EmailProps {
+  /**
+   * The MD5 generated from the email address.
+   */
   public address?: string;
+  /**
+   * The domain of the email address.
+   */
   public domain?: string;
 
   public constructor(email: EmailProps) {

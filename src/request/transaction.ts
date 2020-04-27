@@ -13,30 +13,99 @@ import Shipping from './shipping';
 import ShoppingCartItem from './shopping-cart-item';
 
 interface TransactionProps {
+  /**
+   * Account information for the transaction.
+   */
   account?: Account;
+  /**
+   * Information about the account used in the transaction.
+   */
   billing?: Billing;
+  /**
+   * Information about the credit card used in the transaction.
+   */
   creditCard?: CreditCard;
+  /**
+   * Custom inputs as configured on your account portal.
+   */
   customInputs?: CustomInput[];
+  /**
+   * Information about the device used in the transaction.
+   */
   device: Device;
+  /**
+   * Information about the email used in the transaction.
+   */
   email?: Email;
+  /**
+   * Details about the event such as the time.
+   */
   event?: Event;
+  /**
+   * Details about the order.
+   */
   order?: Order;
+  /**
+   * Information about the payment processing.
+   */
   payment?: Payment;
+  /**
+   * Shipping information used in the transaction.
+   */
   shipping?: Shipping;
+  /**
+   * List of shopping items in the transaction.
+   */
   shoppingCart?: ShoppingCartItem[];
 }
 
+/**
+ * The transaction to be sent to the web service.
+ */
 export default class Transaction {
+  /**
+   * Account information for the transaction.
+   */
   public account?: Account;
+  /**
+   * Information about the account used in the transaction.
+   */
   public billing?: Billing;
+  /**
+   * Information about the credit card used in the transaction.
+   */
   public creditCard?: CreditCard;
+  /**
+   * Custom inputs as configured on your account portal.
+   */
   public customInputs?: any;
+  /**
+   * Information about the device used in the transaction.
+   */
   public device: Device;
+  /**
+   * Information about the email used in the transaction.
+   */
   public email?: Email;
+  /**
+   * Details about the event such as the time.
+   */
   public event?: Event;
+  /**
+   * Details about the order.
+   */
   public order?: Order;
+  /**
+   * Information about the payment processing.
+   */
   public payment?: Payment;
+  /**
+   * Shipping information used in the transaction.
+   */
   public shipping?: Shipping;
+  /**
+   * List of shopping items in the transaction.
+   */
   public shoppingCart?: ShoppingCartItem[];
 
   public constructor(transaction: TransactionProps) {
