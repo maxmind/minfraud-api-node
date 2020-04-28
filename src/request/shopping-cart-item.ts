@@ -25,22 +25,13 @@ interface ShoppingCartItemProps {
  * to the web service.
  */
 export default class ShoppingCartItem implements ShoppingCartItemProps {
-  /**
-   * The category of the item.
-   */
+  /** @inheritDoc ShoppingCartItemProps.category */
   public category?: string;
-  /**
-   * Your internal ID for the item.
-   */
+  /** @inheritDoc ShoppingCartItemProps.itemId */
   public itemId?: string;
-  /**
-   * The quantity of the item in the shopping cart.
-   */
+  /** @inheritDoc ShoppingCartItemProps.quantity */
   public quantity?: number;
-  /**
-   * The per-unit price of the item in the shopping cart. This should use the
-   * same currency as the order currency.
-   */
+  /** @inheritDoc ShoppingCartItemProps.price */
   public price?: number;
 
   public constructor(item: ShoppingCartItemProps) {

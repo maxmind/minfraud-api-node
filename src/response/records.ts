@@ -97,7 +97,7 @@ export interface CreditCardIssuer {
 /**
  * Information about the credit card based on the issuer ID number.
  */
-export interface CreditCard {
+export interface CreditCardRecord {
   /**
    * An object containing information about the credit card issuer.
    */

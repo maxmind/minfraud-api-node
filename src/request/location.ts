@@ -54,50 +54,27 @@ const countryRegex = /^[A-Z]{2}$/;
  * The location information for the transaction being sent to the web service.
  */
 export default class Location implements LocationProps {
-  /**
-   * The first name associated with the address.
-   */
+  /** @inheritDoc LocationProps.firstName */
   public firstName?: string;
-  /**
-   * The last name associated with the address.
-   */
+  /** @inheritDoc LocationProps.lastName */
   public lastName?: string;
-  /**
-   * The company name associated with the address.
-   */
+  /** @inheritDoc LocationProps.company */
   public company?: string;
-  /**
-   * The first line of the address.
-   */
+  /** @inheritDoc LocationProps.address */
   public address?: string;
-  /**
-   * The second line of the address.
-   */
+  /** @inheritDoc LocationProps.address2 */
   public address2?: string;
-  /**
-   * The city associated with the address.
-   */
+  /** @inheritDoc LocationProps.city */
   public city?: string;
-  /**
-   * The ISO 3166-2 subdivision code for the region associated with the address.
-   */
+  /** @inheritDoc LocationProps.region */
   public region?: string;
-  /**
-   * The ISO 3166-1 alpha-2 country code for the country associated with the
-   * address (e.g., "US")
-   */
+  /** @inheritDoc LocationProps.country */
   public country?: string;
-  /**
-   * The postal code for associated with the address.
-   */
+  /** @inheritDoc LocationProps.postal */
   public postal?: string;
-  /**
-   * The phone country code for the phone number associated with the address.
-   */
+  /** @inheritDoc LocationProps.phoneNumber */
   public phoneNumber?: string;
-  /**
-   * The phone number, without the country code, associated with the address.
-   */
+  /** @inheritDoc LocationProps.phoneCountryCode */
   public phoneCountryCode?: string;
 
   public constructor(location: LocationProps) {

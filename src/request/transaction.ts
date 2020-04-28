@@ -63,49 +63,27 @@ interface TransactionProps {
  * The transaction to be sent to the web service.
  */
 export default class Transaction {
-  /**
-   * Account information for the transaction.
-   */
+  /** @inheritDoc TransactionProps.account */
   public account?: Account;
-  /**
-   * Information about the account used in the transaction.
-   */
+  /** @inheritDoc TransactionProps.billing */
   public billing?: Billing;
-  /**
-   * Information about the credit card used in the transaction.
-   */
+  /** @inheritDoc TransactionProps.creditCard */
   public creditCard?: CreditCard;
-  /**
-   * Custom inputs as configured on your account portal.
-   */
+  /** @inheritDoc TransactionProps.customInputs */
   public customInputs?: any;
-  /**
-   * Information about the device used in the transaction.
-   */
+  /** @inheritDoc TransactionProps.device */
   public device: Device;
-  /**
-   * Information about the email used in the transaction.
-   */
+  /** @inheritDoc TransactionProps.email */
   public email?: Email;
-  /**
-   * Details about the event such as the time.
-   */
+  /** @inheritDoc TransactionProps.event */
   public event?: Event;
-  /**
-   * Details about the order.
-   */
+  /** @inheritDoc TransactionProps.order */
   public order?: Order;
-  /**
-   * Information about the payment processing.
-   */
+  /** @inheritDoc TransactionProps.payment */
   public payment?: Payment;
-  /**
-   * Shipping information used in the transaction.
-   */
+  /** @inheritDoc TransactionProps.shipping */
   public shipping?: Shipping;
-  /**
-   * List of shopping items in the transaction.
-   */
+  /** @inheritDoc TransactionProps.shoppingCart */
   public shoppingCart?: ShoppingCartItem[];
 
   public constructor(transaction: TransactionProps) {

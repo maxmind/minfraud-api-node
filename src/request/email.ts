@@ -22,9 +22,7 @@ export default class Email implements EmailProps {
    * The MD5 generated from the email address.
    */
   public address?: string;
-  /**
-   * The domain of the email address.
-   */
+  /** @inheritDoc EmailProps.domain */
   public domain?: string;
 
   public constructor(email: EmailProps) {

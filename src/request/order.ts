@@ -44,38 +44,21 @@ const currencyRegex = /^[A-Z]{3}$/;
  * The order information for the transaction being sent to the web service.
  */
 export default class Order implements OrderProps {
-  /**
-   * The total order amount for the transaction.
-   */
+  /** @inheritDoc OrderProps.amount */
   public amount?: number;
-  /**
-   * The ISO 4217 currency code for the currency used in the transaction.
-   */
+  /** @inheritDoc OrderProps.currency */
   public currency?: string;
-  /**
-   * The discount code applied to the transaction. If multiple discount codes
-   * were used, please separate them with a comma.
-   */
+  /** @inheritDoc OrderProps.discountCode */
   public discountCode?: string;
-  /**
-   * The ID of the affiliate where the order is coming from.
-   */
+  /** @inheritDoc OrderProps.affiliateId */
   public affiliateId?: string;
-  /**
-   * The ID of the sub-affiliate where the order is coming from.
-   */
+  /** @inheritDoc OrderProps.subaffiliateId */
   public subaffiliateId?: string;
-  /**
-   * The URI of the referring site for this order.
-   */
+  /** @inheritDoc OrderProps.referrerUri */
   public referrerUri?: URL;
-  /**
-   * Whether order was marked as a gift by the purchaser.
-   */
+  /** @inheritDoc OrderProps.isGift */
   public isGift?: boolean;
-  /**
-   * Whether the purchaser included a gift message.
-   */
+  /** @inheritDoc OrderProps.hasGiftMessage */
   public hasGiftMessage?: boolean;
 
   public constructor(order: OrderProps) {

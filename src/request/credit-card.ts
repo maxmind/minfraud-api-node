@@ -49,42 +49,21 @@ const tokenRegex = /^(?![0-9]{1,19}$)[\u0021-\u007E]{1,255}$/;
  * The credit card information for the transaction being sent to the web service.
  */
 export default class CreditCard implements CreditCardProps {
-  /**
-   * The issuer ID number for the credit card. This is the first 6 digits of
-   * the credit card number. It identifies the issuing bank.
-   */
+  /** @inheritDoc CreditCardProps.issuerIdNumber */
   public issuerIdNumber?: string;
-  /**
-   * The last four digits of the credit card number.
-   */
+  /** @inheritDoc CreditCardProps.last4digits */
   public last4digits?: string;
-  /**
-   * A token uniquely identifying the card. This should not be the actual
-   * credit card number.
-   */
+  /** @inheritDoc CreditCardProps.token */
   public token?: string;
-  /**
-   * The name of the issuing bank as provided by the end user.
-   */
+  /** @inheritDoc CreditCardProps.bankName */
   public bankName?: string;
-  /**
-   * The phone country code for the issuing bank as provided by the end user.
-   */
+  /** @inheritDoc CreditCardProps.bankPhoneCountryCode */
   public bankPhoneCountryCode?: string;
-  /**
-   * The phone number, without the country code, for the issuing bank as
-   * provided by the end user.
-   */
+  /** @inheritDoc CreditCardProps.bankPhoneNumber */
   public bankPhoneNumber?: string;
-  /**
-   * The address verification system (AVS) check result, as returned to you by
-   * the credit card processor. The minFraud service supports the standard AVS
-   * codes.
-   */
+  /** @inheritDoc CreditCardProps.avsResult */
   public avsResult?: string;
-  /**
-   * The card verification value (CVV) code as provided by the payment processor.
-   */
+  /** @inheritDoc CreditCardProps.cvvResult */
   public cvvResult?: string;
 
   public constructor(creditCard: CreditCardProps) {

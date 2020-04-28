@@ -14,7 +14,7 @@ export default class Insights extends Score {
    * An object containing minFraud data about the credit card used in the
    * transaction.
    */
-  public readonly creditCard?: records.CreditCard;
+  public readonly creditCard?: records.CreditCardRecord;
   /**
    * This object contains information about the device that MaxMind believes is
    * associated with the IP address passed in the request.
@@ -41,7 +41,7 @@ export default class Insights extends Score {
       response,
       'billing_address'
     );
-    this.creditCard = this.maybeGet<records.CreditCard>(
+    this.creditCard = this.maybeGet<records.CreditCardRecord>(
       response,
       'credit_card'
     );

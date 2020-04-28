@@ -12,9 +12,7 @@ interface ShippingProps extends LocationProps {
  * The shipping information for the transaction being sent to the web service.
  */
 export default class Shipping extends Location {
-  /**
-   * The shipping delivery speed for the order.
-   */
+  /** @inheritDoc ShippingProps.deliverySpeed */
   public deliverySpeed?: DeliverySpeed;
 
   public constructor(shipping: ShippingProps) {
