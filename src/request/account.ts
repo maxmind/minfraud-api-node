@@ -5,7 +5,7 @@ interface AccountProps {
    * A unique user ID associated with the end-user in your system. If your
    * system allows the login name for the account to be changed, this should
    * not be the login name for the account, but rather should be an internal ID
-   * that does not change. This is not your MaxMind user ID.
+   * that does not change. This is not your MaxMind account ID.
    */
   userId?: string;
   /**
@@ -24,7 +24,7 @@ export default class Account {
    * A unique user ID associated with the end-user in your system. If your
    * system allows the login name for the account to be changed, this should
    * not be the login name for the account, but rather should be an internal ID
-   * that does not change. This is not your MaxMind user ID.
+   * that does not change. This is not your MaxMind account ID.
    */
   public userId?: string;
   /**
