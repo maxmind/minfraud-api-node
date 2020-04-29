@@ -13,30 +13,77 @@ import Shipping from './shipping';
 import ShoppingCartItem from './shopping-cart-item';
 
 interface TransactionProps {
+  /**
+   * Account information for the transaction.
+   */
   account?: Account;
+  /**
+   * Information about the account used in the transaction.
+   */
   billing?: Billing;
+  /**
+   * Information about the credit card used in the transaction.
+   */
   creditCard?: CreditCard;
+  /**
+   * Custom inputs as configured on your account portal.
+   */
   customInputs?: CustomInput[];
+  /**
+   * Information about the device used in the transaction.
+   */
   device: Device;
+  /**
+   * Information about the email used in the transaction.
+   */
   email?: Email;
+  /**
+   * Details about the event such as the time.
+   */
   event?: Event;
+  /**
+   * Details about the order.
+   */
   order?: Order;
+  /**
+   * Information about the payment processing.
+   */
   payment?: Payment;
+  /**
+   * Shipping information used in the transaction.
+   */
   shipping?: Shipping;
+  /**
+   * List of shopping items in the transaction.
+   */
   shoppingCart?: ShoppingCartItem[];
 }
 
+/**
+ * The transaction to be sent to the web service.
+ */
 export default class Transaction {
+  /** @inheritDoc TransactionProps.account */
   public account?: Account;
+  /** @inheritDoc TransactionProps.billing */
   public billing?: Billing;
+  /** @inheritDoc TransactionProps.creditCard */
   public creditCard?: CreditCard;
+  /** @inheritDoc TransactionProps.customInputs */
   public customInputs?: any;
+  /** @inheritDoc TransactionProps.device */
   public device: Device;
+  /** @inheritDoc TransactionProps.email */
   public email?: Email;
+  /** @inheritDoc TransactionProps.event */
   public event?: Event;
+  /** @inheritDoc TransactionProps.order */
   public order?: Order;
+  /** @inheritDoc TransactionProps.payment */
   public payment?: Payment;
+  /** @inheritDoc TransactionProps.shipping */
   public shipping?: Shipping;
+  /** @inheritDoc TransactionProps.shoppingCart */
   public shoppingCart?: ShoppingCartItem[];
 
   public constructor(transaction: TransactionProps) {

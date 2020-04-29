@@ -5,11 +5,33 @@ import * as webRecords from '../web-records';
 import Score from './score';
 
 export default class Insights extends Score {
+  /**
+   * An object containing minFraud data related to the billing address used in
+   * the transaction.
+   */
   public readonly billingAddress?: records.BillingAddress;
-  public readonly creditCard?: records.CreditCard;
+  /**
+   * An object containing minFraud data about the credit card used in the
+   * transaction.
+   */
+  public readonly creditCard?: records.CreditCardRecord;
+  /**
+   * This object contains information about the device that MaxMind believes is
+   * associated with the IP address passed in the request.
+   */
   public readonly device?: records.Device;
+  /**
+   * This object contains information about the email address passed in the
+   * request.
+   */
   public readonly email?: records.Email;
+  /**
+   * An object containing GeoIP2 and minFraud Insights information about the IP address.
+   */
   public readonly ipAddress: records.IpAddress;
+  /**
+   * An object containing minFraud data related to the shipping address used in the transaction.
+   */
   public readonly shippingAddress?: records.ShippingAddress;
 
   public constructor(response: webRecords.InsightsResponse) {
@@ -19,7 +41,7 @@ export default class Insights extends Score {
       response,
       'billing_address'
     );
-    this.creditCard = this.maybeGet<records.CreditCard>(
+    this.creditCard = this.maybeGet<records.CreditCardRecord>(
       response,
       'credit_card'
     );

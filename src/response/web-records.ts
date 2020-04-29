@@ -15,7 +15,7 @@ interface Names {
   readonly 'zh-CN'?: string;
 }
 
-export interface GeoIPCountry {
+export interface GeoIPCountryWebRecord {
   readonly geoname_id: number;
   readonly is_in_european_union?: boolean;
   readonly iso_code: string;
@@ -24,7 +24,7 @@ export interface GeoIPCountry {
   readonly is_high_risk: boolean;
 }
 
-export interface GeoIPLocation {
+export interface GeoIPLocationWebRecord {
   readonly accuracy_radius: number;
   readonly average_income?: number;
   readonly latitude: number;
@@ -35,13 +35,13 @@ export interface GeoIPLocation {
   readonly local_time: string;
 }
 
-export interface IpAddress extends CityResponse {
+export interface IpAddressWebRecord extends CityResponse {
   readonly risk: number;
-  readonly country?: GeoIPCountry;
-  readonly location?: GeoIPLocation;
+  readonly country?: GeoIPCountryWebRecord;
+  readonly location?: GeoIPLocationWebRecord;
 }
 
-export interface CreditCardIssuer {
+export interface CreditCardIssuerWebRecord {
   readonly name: string;
   readonly matches_provided_name?: boolean;
   readonly phone_number: string;
@@ -50,8 +50,8 @@ export interface CreditCardIssuer {
 
 export type CreditCardType = 'charge' | 'credit' | 'debit';
 
-export interface CreditCard {
-  readonly issuer: CreditCardIssuer;
+export interface CreditCardWebRecord {
+  readonly issuer: CreditCardIssuerWebRecord;
   readonly brand: string;
   readonly country: string;
   readonly is_business?: boolean;
@@ -61,26 +61,26 @@ export interface CreditCard {
   readonly type: CreditCardType;
 }
 
-export interface Device {
+export interface DeviceWebRecord {
   readonly confidence: number;
   readonly id?: string;
   readonly last_seen: string;
   readonly local_time: string;
 }
 
-export interface EmailDomain {
+export interface EmailDomainWebRecord {
   readonly first_seen: string;
 }
 
-export interface Email {
-  readonly domain: EmailDomain;
+export interface EmailWebRecord {
+  readonly domain: EmailDomainWebRecord;
   readonly first_seen: string;
   readonly isDisposable?: boolean;
   readonly is_free?: boolean;
   readonly is_high_risk?: boolean;
 }
 
-export interface ShippingAddress {
+export interface ShippingAddressWebRecord {
   readonly is_high_risk: boolean;
   readonly is_postal_in_city?: boolean;
   readonly latitude: number;
@@ -90,7 +90,7 @@ export interface ShippingAddress {
   readonly is_in_ip_country?: boolean;
 }
 
-export interface BillingAddress {
+export interface BillingAddressWebRecord {
   readonly is_postal_in_city?: boolean;
   readonly latitude: number;
   readonly longitude: number;
@@ -102,12 +102,12 @@ export type DispositionAction = 'accept' | 'reject' | 'manual_review';
 
 export type DispositionReason = 'default' | 'custom_rule';
 
-export interface Disposition {
+export interface DispositionWebRecord {
   readonly action: DispositionAction;
   readonly reason: DispositionReason;
 }
 
-export interface Subscores {
+export interface SubscoresWebRecord {
   readonly avs_result?: number;
   readonly billing_address?: number;
   readonly billing_address_distance_to_ip_location?: number;
@@ -134,7 +134,7 @@ export interface Warning {
 }
 
 export interface ScoreResponse {
-  readonly disposition?: Disposition;
+  readonly disposition?: DispositionWebRecord;
   readonly funds_remaining: number;
   readonly id: string;
   readonly ip_address: ScoreIpAddress;
@@ -144,14 +144,14 @@ export interface ScoreResponse {
 }
 
 export interface InsightsResponse extends ScoreResponse {
-  readonly ip_address: IpAddress;
-  readonly credit_card?: CreditCard;
-  readonly device: Device;
-  readonly email?: Email;
-  readonly shipping_address?: ShippingAddress;
-  readonly billing_address?: BillingAddress;
+  readonly ip_address: IpAddressWebRecord;
+  readonly credit_card?: CreditCardWebRecord;
+  readonly device: DeviceWebRecord;
+  readonly email?: EmailWebRecord;
+  readonly shipping_address?: ShippingAddressWebRecord;
+  readonly billing_address?: BillingAddressWebRecord;
 }
 
 export interface FactorsResponse extends InsightsResponse {
-  readonly subscores: Subscores;
+  readonly subscores: SubscoresWebRecord;
 }
