@@ -66,12 +66,16 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Model for minFraud GeoIP2 Insights data.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
-					<li>
-						<span class="tsd-signature-type">CityResponse</span>
-					</li>
 					<li>
 						<span class="tsd-signature-type">Insights</span>
 						<ul class="tsd-hierarchy">
@@ -95,19 +99,17 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="ipaddress.html#city" class="tsd-kind-icon">city</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="ipaddress.html#continent" class="tsd-kind-icon">continent</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ipaddress.html#city" class="tsd-kind-icon">city</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ipaddress.html#continent" class="tsd-kind-icon">continent</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="ipaddress.html#country" class="tsd-kind-icon">country</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="ipaddress.html#location" class="tsd-kind-icon">location</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="ipaddress.html#maxmind" class="tsd-kind-icon">maxmind</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="ipaddress.html#postal" class="tsd-kind-icon">postal</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ipaddress.html#postal" class="tsd-kind-icon">postal</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ipaddress.html#registeredcountry" class="tsd-kind-icon">registered<wbr>Country</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ipaddress.html#registered_country" class="tsd-kind-icon">registered_<wbr>country</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ipaddress.html#representedcountry" class="tsd-kind-icon">represented<wbr>Country</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ipaddress.html#represented_country" class="tsd-kind-icon">represented_<wbr>country</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ipaddress.html#risk" class="tsd-kind-icon">risk</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="ipaddress.html#subdivisions" class="tsd-kind-icon">subdivisions</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="ipaddress.html#traits" class="tsd-kind-icon">traits</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ipaddress.html#subdivisions" class="tsd-kind-icon">subdivisions</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ipaddress.html#traits" class="tsd-kind-icon">traits</a></li>
 							</ul>
 						</section>
 					</div>
@@ -143,53 +145,60 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="city" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> city</h3>
-					<div class="tsd-signature tsd-kind-icon">city<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CityRecord</span></div>
+					<h3>city</h3>
+					<div class="tsd-signature tsd-kind-icon">city<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CityRecord</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ipaddress.html">IpAddress</a>.<a href="ipaddress.html#city">city</a></p>
-						<p>Overrides City.city</p>
 						<ul>
-							<li>Defined in node_modules/maxmind/lib/reader/response.d.ts:77</li>
+							<li>Defined in node_modules/@maxmind/geoip2-node/dist/src/models/City.d.ts:5</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="continent" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> continent</h3>
-					<div class="tsd-signature tsd-kind-icon">continent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ContinentRecord</span></div>
+					<h3>continent</h3>
+					<div class="tsd-signature tsd-kind-icon">continent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ContinentRecord</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ipaddress.html">IpAddress</a>.<a href="ipaddress.html#continent">continent</a></p>
-						<p>Overrides Country.continent</p>
 						<ul>
-							<li>Defined in node_modules/maxmind/lib/reader/response.d.ts:70</li>
+							<li>Defined in node_modules/@maxmind/geoip2-node/dist/src/models/Country.d.ts:4</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 					<a name="country" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> country</h3>
-					<div class="tsd-signature tsd-kind-icon">country<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">GeoIPCountry</span></div>
+					<h3>country</h3>
+					<div class="tsd-signature tsd-kind-icon">country<span class="tsd-signature-symbol">:</span> <a href="geoipcountry.html" class="tsd-signature-type">GeoIPCountry</a></div>
 					<aside class="tsd-sources">
-						<p>Overrides CountryResponse.country</p>
+						<p>Overrides Country.country</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L40">src/response/web-records.ts:40</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L27">src/response/records.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L51">src/response/records.ts:51</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Country object for the requested IP address. This record represents the
+							country where MaxMind believes the IP is located.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 					<a name="location" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> location</h3>
-					<div class="tsd-signature tsd-kind-icon">location<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">GeoIPLocation</span></div>
+					<h3>location</h3>
+					<div class="tsd-signature tsd-kind-icon">location<span class="tsd-signature-symbol">:</span> <a href="geoiplocation.html" class="tsd-signature-type">GeoIPLocation</a></div>
 					<aside class="tsd-sources">
-						<p>Overrides CityResponse.location</p>
+						<p>Overrides City.location</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L41">src/response/web-records.ts:41</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L28">src/response/records.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L55">src/response/records.ts:55</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Location object for the requested IP address.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 					<a name="maxmind" class="tsd-anchor"></a>
@@ -198,19 +207,23 @@
 					<aside class="tsd-sources">
 						<p>Overrides Country.maxmind</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L29">src/response/records.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L59">src/response/records.ts:59</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Gets the MaxMind record containing data related to your account</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="postal" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> postal</h3>
-					<div class="tsd-signature tsd-kind-icon">postal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PostalRecord</span></div>
+					<h3>postal</h3>
+					<div class="tsd-signature tsd-kind-icon">postal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PostalRecord</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ipaddress.html">IpAddress</a>.<a href="ipaddress.html#postal">postal</a></p>
-						<p>Overrides City.postal</p>
 						<ul>
-							<li>Defined in node_modules/maxmind/lib/reader/response.d.ts:79</li>
+							<li>Defined in node_modules/@maxmind/geoip2-node/dist/src/models/City.d.ts:7</li>
 						</ul>
 					</aside>
 				</section>
@@ -226,17 +239,6 @@
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="registered_country" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> registered_<wbr>country</h3>
-					<div class="tsd-signature tsd-kind-icon">registered_<wbr>country<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegisteredCountryRecord</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="ipaddress.html">IpAddress</a>.<a href="ipaddress.html#registered_country">registered_country</a></p>
-						<ul>
-							<li>Defined in node_modules/maxmind/lib/reader/response.d.ts:72</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="representedcountry" class="tsd-anchor"></a>
 					<h3>represented<wbr>Country</h3>
 					<div class="tsd-signature tsd-kind-icon">represented<wbr>Country<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RepresentedCountryRecord</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{}</span></div>
@@ -247,49 +249,41 @@
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="represented_country" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> represented_<wbr>country</h3>
-					<div class="tsd-signature tsd-kind-icon">represented_<wbr>country<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RepresentedCountryRecord</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="ipaddress.html">IpAddress</a>.<a href="ipaddress.html#represented_country">represented_country</a></p>
-						<ul>
-							<li>Defined in node_modules/maxmind/lib/reader/response.d.ts:73</li>
-						</ul>
-					</aside>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="risk" class="tsd-anchor"></a>
 					<h3>risk</h3>
 					<div class="tsd-signature tsd-kind-icon">risk<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L39">src/response/web-records.ts:39</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L30">src/response/records.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L64">src/response/records.ts:64</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The risk associated with the IP address. The value ranges from 0.01 to 99.
+							A higher score indicates a higher risk.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="subdivisions" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> subdivisions</h3>
-					<div class="tsd-signature tsd-kind-icon">subdivisions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SubdivisionsRecord</span><span class="tsd-signature-symbol">[]</span></div>
+					<h3>subdivisions</h3>
+					<div class="tsd-signature tsd-kind-icon">subdivisions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SubdivisionsRecord</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-symbol">]</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ipaddress.html">IpAddress</a>.<a href="ipaddress.html#subdivisions">subdivisions</a></p>
-						<p>Overrides City.subdivisions</p>
 						<ul>
-							<li>Defined in node_modules/maxmind/lib/reader/response.d.ts:80</li>
+							<li>Defined in node_modules/@maxmind/geoip2-node/dist/src/models/City.d.ts:8</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="traits" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> traits</h3>
+					<h3>traits</h3>
 					<div class="tsd-signature tsd-kind-icon">traits<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TraitsRecord</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ipaddress.html">IpAddress</a>.<a href="ipaddress.html#traits">traits</a></p>
-						<p>Overrides Country.traits</p>
 						<ul>
-							<li>Defined in node_modules/maxmind/lib/reader/response.d.ts:74</li>
+							<li>Defined in node_modules/@maxmind/geoip2-node/dist/src/models/Country.d.ts:9</li>
 						</ul>
 					</aside>
 				</section>
@@ -313,10 +307,10 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
 								<a href="ipaddress.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ipaddress.html#city" class="tsd-kind-icon">city</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ipaddress.html#continent" class="tsd-kind-icon">continent</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
@@ -328,28 +322,22 @@
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 								<a href="ipaddress.html#maxmind" class="tsd-kind-icon">maxmind</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ipaddress.html#postal" class="tsd-kind-icon">postal</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ipaddress.html#registeredcountry" class="tsd-kind-icon">registered<wbr>Country</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="ipaddress.html#registered_country" class="tsd-kind-icon">registered_<wbr>country</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ipaddress.html#representedcountry" class="tsd-kind-icon">represented<wbr>Country</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="ipaddress.html#represented_country" class="tsd-kind-icon">represented_<wbr>country</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="ipaddress.html#risk" class="tsd-kind-icon">risk</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ipaddress.html#subdivisions" class="tsd-kind-icon">subdivisions</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ipaddress.html#traits" class="tsd-kind-icon">traits</a>
 							</li>
 						</ul>

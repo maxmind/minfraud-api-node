@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PaymentProps | @maxmind/minfraud-api-node</title>
+	<title>BillingAddressWebRecord | @maxmind/minfraud-api-node</title>
 	<meta name="description" content="Documentation for @maxmind/minfraud-api-node">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="paymentprops.html">PaymentProps</a>
+					<a href="billingaddresswebrecord.html">BillingAddressWebRecord</a>
 				</li>
 			</ul>
-			<h1>Interface PaymentProps</h1>
+			<h1>Interface BillingAddressWebRecord</h1>
 		</div>
 	</div>
 </header>
@@ -70,14 +70,8 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PaymentProps</span>
+						<span class="target">BillingAddressWebRecord</span>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implemented by</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../classes/payment.html" class="tsd-signature-type">Payment</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -87,9 +81,11 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="paymentprops.html#declinecode" class="tsd-kind-icon">decline<wbr>Code</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="paymentprops.html#processor" class="tsd-kind-icon">processor</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="paymentprops.html#wasauthorized" class="tsd-kind-icon">was<wbr>Authorized</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="billingaddresswebrecord.html#distance_to_ip_location" class="tsd-kind-icon">distance_<wbr>to_<wbr>ip_<wbr>location</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="billingaddresswebrecord.html#is_in_ip_country" class="tsd-kind-icon">is_<wbr>in_<wbr>ip_<wbr>country</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="billingaddresswebrecord.html#is_postal_in_city" class="tsd-kind-icon">is_<wbr>postal_<wbr>in_<wbr>city</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="billingaddresswebrecord.html#latitude" class="tsd-kind-icon">latitude</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="billingaddresswebrecord.html#longitude" class="tsd-kind-icon">longitude</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,51 +94,54 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="declinecode" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> decline<wbr>Code</h3>
-					<div class="tsd-signature tsd-kind-icon">decline<wbr>Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="distance_to_ip_location" class="tsd-anchor"></a>
+					<h3>distance_<wbr>to_<wbr>ip_<wbr>location</h3>
+					<div class="tsd-signature tsd-kind-icon">distance_<wbr>to_<wbr>ip_<wbr>location<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/payment.ts#L17">src/request/payment.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/web-records.ts#L97">src/response/web-records.ts:97</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The decline code as provided by your payment processor. If the transaction
-							was not declined, do not include this field.</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="processor" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> processor</h3>
-					<div class="tsd-signature tsd-kind-icon">processor<span class="tsd-signature-symbol">:</span> <a href="../enums/processor.html" class="tsd-signature-type">Processor</a></div>
+					<a name="is_in_ip_country" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> is_<wbr>in_<wbr>ip_<wbr>country</h3>
+					<div class="tsd-signature tsd-kind-icon">is_<wbr>in_<wbr>ip_<wbr>country<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/payment.ts#L7">src/request/payment.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/web-records.ts#L98">src/response/web-records.ts:98</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The payment processor used for the transaction.</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="wasauthorized" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> was<wbr>Authorized</h3>
-					<div class="tsd-signature tsd-kind-icon">was<wbr>Authorized<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<a name="is_postal_in_city" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> is_<wbr>postal_<wbr>in_<wbr>city</h3>
+					<div class="tsd-signature tsd-kind-icon">is_<wbr>postal_<wbr>in_<wbr>city<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/payment.ts#L12">src/request/payment.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/web-records.ts#L94">src/response/web-records.ts:94</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The authorization outcome from the payment processor. If the transaction
-							has not yet been approved or denied, do not include this field.</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="latitude" class="tsd-anchor"></a>
+					<h3>latitude</h3>
+					<div class="tsd-signature tsd-kind-icon">latitude<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/web-records.ts#L95">src/response/web-records.ts:95</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="longitude" class="tsd-anchor"></a>
+					<h3>longitude</h3>
+					<div class="tsd-signature tsd-kind-icon">longitude<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/web-records.ts#L96">src/response/web-records.ts:96</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -159,16 +158,22 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="paymentprops.html" class="tsd-kind-icon">Payment<wbr>Props</a>
+						<a href="billingaddresswebrecord.html" class="tsd-kind-icon">Billing<wbr>Address<wbr>Web<wbr>Record</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="paymentprops.html#declinecode" class="tsd-kind-icon">decline<wbr>Code</a>
+								<a href="billingaddresswebrecord.html#distance_to_ip_location" class="tsd-kind-icon">distance_<wbr>to_<wbr>ip_<wbr>location</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="paymentprops.html#processor" class="tsd-kind-icon">processor</a>
+								<a href="billingaddresswebrecord.html#is_in_ip_country" class="tsd-kind-icon">is_<wbr>in_<wbr>ip_<wbr>country</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="paymentprops.html#wasauthorized" class="tsd-kind-icon">was<wbr>Authorized</a>
+								<a href="billingaddresswebrecord.html#is_postal_in_city" class="tsd-kind-icon">is_<wbr>postal_<wbr>in_<wbr>city</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="billingaddresswebrecord.html#latitude" class="tsd-kind-icon">latitude</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="billingaddresswebrecord.html#longitude" class="tsd-kind-icon">longitude</a>
 							</li>
 						</ul>
 					</li>

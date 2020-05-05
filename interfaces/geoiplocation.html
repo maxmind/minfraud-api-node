@@ -66,6 +66,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A subclass of the GeoIP2 Location model with minFraud-specific additions.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -87,19 +94,13 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="geoiplocation.html#accuracyradius" class="tsd-kind-icon">accuracy<wbr>Radius</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="geoiplocation.html#accuracy_radius" class="tsd-kind-icon">accuracy_<wbr>radius</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="geoiplocation.html#averageincome" class="tsd-kind-icon">average<wbr>Income</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="geoiplocation.html#average_income" class="tsd-kind-icon">average_<wbr>income</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="geoiplocation.html#latitude" class="tsd-kind-icon">latitude</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="geoiplocation.html#latitude" class="tsd-kind-icon">latitude</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="geoiplocation.html#localtime" class="tsd-kind-icon">local<wbr>Time</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="geoiplocation.html#local_time" class="tsd-kind-icon">local_<wbr>time</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="geoiplocation.html#longitude" class="tsd-kind-icon">longitude</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="geoiplocation.html#longitude" class="tsd-kind-icon">longitude</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="geoiplocation.html#metrocode" class="tsd-kind-icon">metro<wbr>Code</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="geoiplocation.html#metro_code" class="tsd-kind-icon">metro_<wbr>code</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="geoiplocation.html#populationdensity" class="tsd-kind-icon">population<wbr>Density</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="geoiplocation.html#population_density" class="tsd-kind-icon">population_<wbr>density</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="geoiplocation.html#timezone" class="tsd-kind-icon">time<wbr>Zone</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="geoiplocation.html#time_zone" class="tsd-kind-icon">time_<wbr>zone</a></li>
 							</ul>
 						</section>
 					</div>
@@ -118,16 +119,6 @@
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="accuracy_radius" class="tsd-anchor"></a>
-					<h3>accuracy_<wbr>radius</h3>
-					<div class="tsd-signature tsd-kind-icon">accuracy_<wbr>radius<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L28">src/response/web-records.ts:28</a></li>
-						</ul>
-					</aside>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="averageincome" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> average<wbr>Income</h3>
@@ -139,24 +130,14 @@
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="average_income" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> average_<wbr>income</h3>
-					<div class="tsd-signature tsd-kind-icon">average_<wbr>income<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L29">src/response/web-records.ts:29</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="latitude" class="tsd-anchor"></a>
 					<h3>latitude</h3>
 					<div class="tsd-signature tsd-kind-icon">latitude<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Overrides LocationRecord.latitude</p>
+						<p>Inherited from <a href="geoiplocation.html">GeoIPLocation</a>.<a href="geoiplocation.html#latitude">latitude</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L30">src/response/web-records.ts:30</a></li>
+							<li>Defined in node_modules/@maxmind/geoip2-node/dist/src/records.d.ts:36</li>
 						</ul>
 					</aside>
 				</section>
@@ -166,28 +147,24 @@
 					<div class="tsd-signature tsd-kind-icon">local<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L23">src/response/records.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L40">src/response/records.ts:40</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The date and time of the transaction in the time zone associated with the
+							IP address.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="local_time" class="tsd-anchor"></a>
-					<h3>local_<wbr>time</h3>
-					<div class="tsd-signature tsd-kind-icon">local_<wbr>time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L35">src/response/web-records.ts:35</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="longitude" class="tsd-anchor"></a>
 					<h3>longitude</h3>
 					<div class="tsd-signature tsd-kind-icon">longitude<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Overrides LocationRecord.longitude</p>
+						<p>Inherited from <a href="geoiplocation.html">GeoIPLocation</a>.<a href="geoiplocation.html#longitude">longitude</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L31">src/response/web-records.ts:31</a></li>
+							<li>Defined in node_modules/@maxmind/geoip2-node/dist/src/records.d.ts:37</li>
 						</ul>
 					</aside>
 				</section>
@@ -202,16 +179,6 @@
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="metro_code" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> metro_<wbr>code</h3>
-					<div class="tsd-signature tsd-kind-icon">metro_<wbr>code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L32">src/response/web-records.ts:32</a></li>
-						</ul>
-					</aside>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="populationdensity" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> population<wbr>Density</h3>
@@ -223,16 +190,6 @@
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="population_density" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> population_<wbr>density</h3>
-					<div class="tsd-signature tsd-kind-icon">population_<wbr>density<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L33">src/response/web-records.ts:33</a></li>
-						</ul>
-					</aside>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="timezone" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> time<wbr>Zone</h3>
@@ -241,16 +198,6 @@
 						<p>Inherited from <a href="geoiplocation.html">GeoIPLocation</a>.<a href="geoiplocation.html#timezone">timeZone</a></p>
 						<ul>
 							<li>Defined in node_modules/@maxmind/geoip2-node/dist/src/records.d.ts:40</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="time_zone" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> time_<wbr>zone</h3>
-					<div class="tsd-signature tsd-kind-icon">time_<wbr>zone<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L34">src/response/web-records.ts:34</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -274,44 +221,26 @@
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="geoiplocation.html#accuracyradius" class="tsd-kind-icon">accuracy<wbr>Radius</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="geoiplocation.html#accuracy_radius" class="tsd-kind-icon">accuracy_<wbr>radius</a>
-							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="geoiplocation.html#averageincome" class="tsd-kind-icon">average<wbr>Income</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="geoiplocation.html#average_income" class="tsd-kind-icon">average_<wbr>income</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="geoiplocation.html#latitude" class="tsd-kind-icon">latitude</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="geoiplocation.html#localtime" class="tsd-kind-icon">local<wbr>Time</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="geoiplocation.html#local_time" class="tsd-kind-icon">local_<wbr>time</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="geoiplocation.html#longitude" class="tsd-kind-icon">longitude</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="geoiplocation.html#metrocode" class="tsd-kind-icon">metro<wbr>Code</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="geoiplocation.html#metro_code" class="tsd-kind-icon">metro_<wbr>code</a>
-							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="geoiplocation.html#populationdensity" class="tsd-kind-icon">population<wbr>Density</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="geoiplocation.html#population_density" class="tsd-kind-icon">population_<wbr>density</a>
-							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="geoiplocation.html#timezone" class="tsd-kind-icon">time<wbr>Zone</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="geoiplocation.html#time_zone" class="tsd-kind-icon">time_<wbr>zone</a>
 							</li>
 						</ul>
 					</li>

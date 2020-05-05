@@ -66,6 +66,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The credit card information for the transaction being sent to the web service.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -97,22 +104,10 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#bankname" class="tsd-kind-icon">bank<wbr>Name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#bankphonecountrycode" class="tsd-kind-icon">bank<wbr>Phone<wbr>Country<wbr>Code</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#bankphonenumber" class="tsd-kind-icon">bank<wbr>Phone<wbr>Number</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#brand" class="tsd-kind-icon">brand</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#country" class="tsd-kind-icon">country</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#cvvresult" class="tsd-kind-icon">cvv<wbr>Result</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#isbusiness" class="tsd-kind-icon">is<wbr>Business</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#isissuedinbillingaddresscountry" class="tsd-kind-icon">is<wbr>Issued<wbr>InBilling<wbr>Address<wbr>Country</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#isprepaid" class="tsd-kind-icon">is<wbr>Prepaid</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#isvirtual" class="tsd-kind-icon">is<wbr>Virtual</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#is_business" class="tsd-kind-icon">is_<wbr>business</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#is_issued_in_billing_address_country" class="tsd-kind-icon">is_<wbr>issued_<wbr>in_<wbr>billing_<wbr>address_<wbr>country</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#is_prepaid" class="tsd-kind-icon">is_<wbr>prepaid</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#is_virtual" class="tsd-kind-icon">is_<wbr>virtual</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#issuer" class="tsd-kind-icon">issuer</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#issueridnumber" class="tsd-kind-icon">issuer<wbr>IdNumber</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#last4digits" class="tsd-kind-icon">last4digits</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#token" class="tsd-kind-icon">token</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 					</div>
@@ -130,7 +125,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/credit-card.ts#L27">src/request/credit-card.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/credit-card.ts#L67">src/request/credit-card.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -153,9 +148,16 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/creditcardprops.html">CreditCardProps</a>.<a href="../interfaces/creditcardprops.html#avsresult">avsResult</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/credit-card.ts#L26">src/request/credit-card.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/credit-card.ts#L65">src/request/credit-card.ts:65</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The address verification system (AVS) check result, as returned to you by
+								the credit card processor. The minFraud service supports the standard AVS
+							codes.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="bankname" class="tsd-anchor"></a>
@@ -164,9 +166,14 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/creditcardprops.html">CreditCardProps</a>.<a href="../interfaces/creditcardprops.html#bankname">bankName</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/credit-card.ts#L23">src/request/credit-card.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/credit-card.ts#L59">src/request/credit-card.ts:59</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The name of the issuing bank as provided by the end user.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="bankphonecountrycode" class="tsd-anchor"></a>
@@ -175,9 +182,14 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/creditcardprops.html">CreditCardProps</a>.<a href="../interfaces/creditcardprops.html#bankphonecountrycode">bankPhoneCountryCode</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/credit-card.ts#L24">src/request/credit-card.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/credit-card.ts#L61">src/request/credit-card.ts:61</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The phone country code for the issuing bank as provided by the end user.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="bankphonenumber" class="tsd-anchor"></a>
@@ -186,31 +198,15 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/creditcardprops.html">CreditCardProps</a>.<a href="../interfaces/creditcardprops.html#bankphonenumber">bankPhoneNumber</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/credit-card.ts#L25">src/request/credit-card.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/credit-card.ts#L63">src/request/credit-card.ts:63</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="brand" class="tsd-anchor"></a>
-					<h3>brand</h3>
-					<div class="tsd-signature tsd-kind-icon">brand<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L55">src/response/web-records.ts:55</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L42">src/response/records.ts:42</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="country" class="tsd-anchor"></a>
-					<h3>country</h3>
-					<div class="tsd-signature tsd-kind-icon">country<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L56">src/response/web-records.ts:56</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L43">src/response/records.ts:43</a></li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The phone number, without the country code, for the issuing bank as
+							provided by the end user.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="cvvresult" class="tsd-anchor"></a>
@@ -219,100 +215,14 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/creditcardprops.html">CreditCardProps</a>.<a href="../interfaces/creditcardprops.html#cvvresult">cvvResult</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/credit-card.ts#L27">src/request/credit-card.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/credit-card.ts#L67">src/request/credit-card.ts:67</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="isbusiness" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> is<wbr>Business</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Business<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L44">src/response/records.ts:44</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="isissuedinbillingaddresscountry" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> is<wbr>Issued<wbr>InBilling<wbr>Address<wbr>Country</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Issued<wbr>InBilling<wbr>Address<wbr>Country<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L45">src/response/records.ts:45</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="isprepaid" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> is<wbr>Prepaid</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Prepaid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L46">src/response/records.ts:46</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="isvirtual" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> is<wbr>Virtual</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Virtual<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L47">src/response/records.ts:47</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="is_business" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> is_<wbr>business</h3>
-					<div class="tsd-signature tsd-kind-icon">is_<wbr>business<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L57">src/response/web-records.ts:57</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="is_issued_in_billing_address_country" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> is_<wbr>issued_<wbr>in_<wbr>billing_<wbr>address_<wbr>country</h3>
-					<div class="tsd-signature tsd-kind-icon">is_<wbr>issued_<wbr>in_<wbr>billing_<wbr>address_<wbr>country<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L58">src/response/web-records.ts:58</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="is_prepaid" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> is_<wbr>prepaid</h3>
-					<div class="tsd-signature tsd-kind-icon">is_<wbr>prepaid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L59">src/response/web-records.ts:59</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="is_virtual" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> is_<wbr>virtual</h3>
-					<div class="tsd-signature tsd-kind-icon">is_<wbr>virtual<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L60">src/response/web-records.ts:60</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="issuer" class="tsd-anchor"></a>
-					<h3>issuer</h3>
-					<div class="tsd-signature tsd-kind-icon">issuer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CreditCardIssuer</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L54">src/response/web-records.ts:54</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L41">src/response/records.ts:41</a></li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The card verification value (CVV) code as provided by the payment processor.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="issueridnumber" class="tsd-anchor"></a>
@@ -321,9 +231,15 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/creditcardprops.html">CreditCardProps</a>.<a href="../interfaces/creditcardprops.html#issueridnumber">issuerIdNumber</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/credit-card.ts#L20">src/request/credit-card.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/credit-card.ts#L53">src/request/credit-card.ts:53</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The issuer ID number for the credit card. This is the first 6 digits of
+							the credit card number. It identifies the issuing bank.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="last4digits" class="tsd-anchor"></a>
@@ -332,9 +248,14 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/creditcardprops.html">CreditCardProps</a>.<a href="../interfaces/creditcardprops.html#last4digits">last4digits</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/credit-card.ts#L21">src/request/credit-card.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/credit-card.ts#L55">src/request/credit-card.ts:55</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The last four digits of the credit card number.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="token" class="tsd-anchor"></a>
@@ -343,20 +264,15 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/creditcardprops.html">CreditCardProps</a>.<a href="../interfaces/creditcardprops.html#token">token</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/credit-card.ts#L22">src/request/credit-card.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/credit-card.ts#L57">src/request/credit-card.ts:57</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="type" class="tsd-anchor"></a>
-					<h3>type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../globals.html#creditcardtype" class="tsd-signature-type">CreditCardType</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L61">src/response/web-records.ts:61</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L48">src/response/records.ts:48</a></li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A token uniquely identifying the card. This should not be the actual
+							credit card number.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -391,40 +307,7 @@
 								<a href="creditcard.html#bankphonenumber" class="tsd-kind-icon">bank<wbr>Phone<wbr>Number</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#brand" class="tsd-kind-icon">brand</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#country" class="tsd-kind-icon">country</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="creditcard.html#cvvresult" class="tsd-kind-icon">cvv<wbr>Result</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#isbusiness" class="tsd-kind-icon">is<wbr>Business</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#isissuedinbillingaddresscountry" class="tsd-kind-icon">is<wbr>Issued<wbr>InBilling<wbr>Address<wbr>Country</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#isprepaid" class="tsd-kind-icon">is<wbr>Prepaid</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#isvirtual" class="tsd-kind-icon">is<wbr>Virtual</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#is_business" class="tsd-kind-icon">is_<wbr>business</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#is_issued_in_billing_address_country" class="tsd-kind-icon">is_<wbr>issued_<wbr>in_<wbr>billing_<wbr>address_<wbr>country</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#is_prepaid" class="tsd-kind-icon">is_<wbr>prepaid</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#is_virtual" class="tsd-kind-icon">is_<wbr>virtual</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#issuer" class="tsd-kind-icon">issuer</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="creditcard.html#issueridnumber" class="tsd-kind-icon">issuer<wbr>IdNumber</a>
@@ -434,9 +317,6 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="creditcard.html#token" class="tsd-kind-icon">token</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#type" class="tsd-kind-icon">type</a>
 							</li>
 						</ul>
 					</li>

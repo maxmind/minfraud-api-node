@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PaymentProps | @maxmind/minfraud-api-node</title>
+	<title>DispositionWebRecord | @maxmind/minfraud-api-node</title>
 	<meta name="description" content="Documentation for @maxmind/minfraud-api-node">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="paymentprops.html">PaymentProps</a>
+					<a href="dispositionwebrecord.html">DispositionWebRecord</a>
 				</li>
 			</ul>
-			<h1>Interface PaymentProps</h1>
+			<h1>Interface DispositionWebRecord</h1>
 		</div>
 	</div>
 </header>
@@ -70,14 +70,8 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PaymentProps</span>
+						<span class="target">DispositionWebRecord</span>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implemented by</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../classes/payment.html" class="tsd-signature-type">Payment</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -87,9 +81,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="paymentprops.html#declinecode" class="tsd-kind-icon">decline<wbr>Code</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="paymentprops.html#processor" class="tsd-kind-icon">processor</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="paymentprops.html#wasauthorized" class="tsd-kind-icon">was<wbr>Authorized</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="dispositionwebrecord.html#action" class="tsd-kind-icon">action</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="dispositionwebrecord.html#reason" class="tsd-kind-icon">reason</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,51 +91,24 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="declinecode" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> decline<wbr>Code</h3>
-					<div class="tsd-signature tsd-kind-icon">decline<wbr>Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="action" class="tsd-anchor"></a>
+					<h3>action</h3>
+					<div class="tsd-signature tsd-kind-icon">action<span class="tsd-signature-symbol">:</span> <a href="../globals.html#dispositionaction" class="tsd-signature-type">DispositionAction</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/payment.ts#L17">src/request/payment.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/web-records.ts#L106">src/response/web-records.ts:106</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The decline code as provided by your payment processor. If the transaction
-							was not declined, do not include this field.</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="processor" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> processor</h3>
-					<div class="tsd-signature tsd-kind-icon">processor<span class="tsd-signature-symbol">:</span> <a href="../enums/processor.html" class="tsd-signature-type">Processor</a></div>
+					<a name="reason" class="tsd-anchor"></a>
+					<h3>reason</h3>
+					<div class="tsd-signature tsd-kind-icon">reason<span class="tsd-signature-symbol">:</span> <a href="../globals.html#dispositionreason" class="tsd-signature-type">DispositionReason</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/payment.ts#L7">src/request/payment.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/web-records.ts#L107">src/response/web-records.ts:107</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The payment processor used for the transaction.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="wasauthorized" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> was<wbr>Authorized</h3>
-					<div class="tsd-signature tsd-kind-icon">was<wbr>Authorized<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/payment.ts#L12">src/request/payment.ts:12</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The authorization outcome from the payment processor. If the transaction
-							has not yet been approved or denied, do not include this field.</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -159,16 +125,13 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="paymentprops.html" class="tsd-kind-icon">Payment<wbr>Props</a>
+						<a href="dispositionwebrecord.html" class="tsd-kind-icon">Disposition<wbr>Web<wbr>Record</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="paymentprops.html#declinecode" class="tsd-kind-icon">decline<wbr>Code</a>
+								<a href="dispositionwebrecord.html#action" class="tsd-kind-icon">action</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="paymentprops.html#processor" class="tsd-kind-icon">processor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="paymentprops.html#wasauthorized" class="tsd-kind-icon">was<wbr>Authorized</a>
+								<a href="dispositionwebrecord.html#reason" class="tsd-kind-icon">reason</a>
 							</li>
 						</ul>
 					</li>

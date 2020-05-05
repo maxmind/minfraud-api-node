@@ -66,6 +66,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The payment information for the transaction being sent to the web service.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -113,7 +120,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/payment.ts#L12">src/request/payment.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/payment.ts#L29">src/request/payment.ts:29</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -136,9 +143,15 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/paymentprops.html">PaymentProps</a>.<a href="../interfaces/paymentprops.html#declinecode">declineCode</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/payment.ts#L12">src/request/payment.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/payment.ts#L29">src/request/payment.ts:29</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The decline code as provided by your payment processor. If the transaction
+							was not declined, do not include this field.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="processor" class="tsd-anchor"></a>
@@ -147,9 +160,14 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/paymentprops.html">PaymentProps</a>.<a href="../interfaces/paymentprops.html#processor">processor</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/payment.ts#L10">src/request/payment.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/payment.ts#L25">src/request/payment.ts:25</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The payment processor used for the transaction.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="wasauthorized" class="tsd-anchor"></a>
@@ -158,9 +176,15 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/paymentprops.html">PaymentProps</a>.<a href="../interfaces/paymentprops.html#wasauthorized">wasAuthorized</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/payment.ts#L11">src/request/payment.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/payment.ts#L27">src/request/payment.ts:27</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The authorization outcome from the payment processor. If the transaction
+							has not yet been approved or denied, do not include this field.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>

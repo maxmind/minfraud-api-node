@@ -66,6 +66,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This object contains the disposition set by custom rules.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -96,10 +103,16 @@
 					<div class="tsd-signature tsd-kind-icon">action<span class="tsd-signature-symbol">:</span> <a href="../globals.html#dispositionaction" class="tsd-signature-type">DispositionAction</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L106">src/response/web-records.ts:106</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L89">src/response/records.ts:89</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L297">src/response/records.ts:297</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The action to take on the transaction as defined by your custom rules. The
+								current set of values are &quot;accept&quot;, &quot;manual_review&quot;, and &quot;reject&quot;. If you
+							do not have custom rules set up, <code>null</code> will be returned.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="reason" class="tsd-anchor"></a>
@@ -107,10 +120,16 @@
 					<div class="tsd-signature tsd-kind-icon">reason<span class="tsd-signature-symbol">:</span> <a href="../globals.html#dispositionreason" class="tsd-signature-type">DispositionReason</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L107">src/response/web-records.ts:107</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L90">src/response/records.ts:90</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L303">src/response/records.ts:303</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The reason for the action. The current possible values are &quot;custom_rule&quot;,
+								&quot;block_list&quot;, and &quot;default&quot;. If you do not have custom rules set up, <code>null</code>
+							will be returned.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>

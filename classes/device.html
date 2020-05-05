@@ -66,6 +66,17 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The device information for the transaction being sent to the web service.
+							This object contains information about the device that MaxMind believes is
+							associated with the IP address passed in the request. In order to receive
+							device output from minFraud Insights or minFraud Factors, you must be using
+						the Device Tracking Add-on.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -98,9 +109,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#id" class="tsd-kind-icon">id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#ipaddress" class="tsd-kind-icon">ip<wbr>Address</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#lastseen" class="tsd-kind-icon">last<wbr>Seen</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#last_seen" class="tsd-kind-icon">last_<wbr>seen</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#localtime" class="tsd-kind-icon">local<wbr>Time</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#local_time" class="tsd-kind-icon">local_<wbr>time</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#sessionage" class="tsd-kind-icon">session<wbr>Age</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#sessionid" class="tsd-kind-icon">session<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#useragent" class="tsd-kind-icon">user<wbr>Agent</a></li>
@@ -121,7 +130,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/device.ts#L17">src/request/device.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/device.ts#L44">src/request/device.ts:44</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -144,9 +153,14 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/deviceprops.html">DeviceProps</a>.<a href="../interfaces/deviceprops.html#acceptlanguage">acceptLanguage</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/device.ts#L15">src/request/device.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/device.ts#L40">src/request/device.ts:40</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The HTTP “Accept-Language” header of the device used in the transaction.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="confidence" class="tsd-anchor"></a>
@@ -154,10 +168,17 @@
 					<div class="tsd-signature tsd-kind-icon">confidence<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L65">src/response/web-records.ts:65</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L52">src/response/records.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L154">src/response/records.ts:154</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A number representing the confidence that the <code>deviceId</code> refers to a unique
+								device as opposed to a cluster of similar devices. A confidence of 0.01
+								indicates very low confidence that the device is unique, whereas 99
+							indicates very high confidence.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="id" class="tsd-anchor"></a>
@@ -165,10 +186,18 @@
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L66">src/response/web-records.ts:66</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L53">src/response/records.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L162">src/response/records.ts:162</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A UUID that MaxMind uses for the device associated with this IP address.
+								Note that many devices cannot be uniquely identified because they are too
+								common (for example, all iPhones of a given model and OS release). In
+								these cases, the minFraud service will simply not return a UUID for that
+							device.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="ipaddress" class="tsd-anchor"></a>
@@ -177,9 +206,15 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/deviceprops.html">DeviceProps</a>.<a href="../interfaces/deviceprops.html#ipaddress">ipAddress</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/device.ts#L13">src/request/device.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/device.ts#L36">src/request/device.ts:36</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The IP address associated with the device used by the customer in the
+							transaction.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="lastseen" class="tsd-anchor"></a>
@@ -187,19 +222,14 @@
 					<div class="tsd-signature tsd-kind-icon">last<wbr>Seen<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L54">src/response/records.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L166">src/response/records.ts:166</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="last_seen" class="tsd-anchor"></a>
-					<h3>last_<wbr>seen</h3>
-					<div class="tsd-signature tsd-kind-icon">last_<wbr>seen<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L67">src/response/web-records.ts:67</a></li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The date and time of the last sighting of the device.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="localtime" class="tsd-anchor"></a>
@@ -207,19 +237,16 @@
 					<div class="tsd-signature tsd-kind-icon">local<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L55">src/response/records.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L172">src/response/records.ts:172</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="local_time" class="tsd-anchor"></a>
-					<h3>local_<wbr>time</h3>
-					<div class="tsd-signature tsd-kind-icon">local_<wbr>time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L68">src/response/web-records.ts:68</a></li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The local date and time of the transaction in the time zone of the device.
+								This is determined by using the UTC offset associated with the device.
+							This is an RFC 3339 date-time</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="sessionage" class="tsd-anchor"></a>
@@ -228,9 +255,16 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/deviceprops.html">DeviceProps</a>.<a href="../interfaces/deviceprops.html#sessionage">sessionAge</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/device.ts#L16">src/request/device.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/device.ts#L42">src/request/device.ts:42</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The number of seconds between the creation of the user&#39;s session and the
+								time of the transaction. Note that sessionAge is not the duration of the
+							current visit, but the time since the start of the first visit.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="sessionid" class="tsd-anchor"></a>
@@ -239,9 +273,15 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/deviceprops.html">DeviceProps</a>.<a href="../interfaces/deviceprops.html#sessionid">sessionId</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/device.ts#L17">src/request/device.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/device.ts#L44">src/request/device.ts:44</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A string up to 255 characters in length. This is an ID that uniquely
+							identifies a visitor&#39;s session on the site.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="useragent" class="tsd-anchor"></a>
@@ -250,9 +290,14 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/deviceprops.html">DeviceProps</a>.<a href="../interfaces/deviceprops.html#useragent">userAgent</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/request/device.ts#L14">src/request/device.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/request/device.ts#L38">src/request/device.ts:38</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The HTTP “User-Agent” header of the browser used in the transaction.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -290,13 +335,7 @@
 								<a href="device.html#lastseen" class="tsd-kind-icon">last<wbr>Seen</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="device.html#last_seen" class="tsd-kind-icon">last_<wbr>seen</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="device.html#localtime" class="tsd-kind-icon">local<wbr>Time</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="device.html#local_time" class="tsd-kind-icon">local_<wbr>time</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="device.html#sessionage" class="tsd-kind-icon">session<wbr>Age</a>

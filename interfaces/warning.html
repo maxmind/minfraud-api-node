@@ -66,6 +66,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A warning returned by the web service.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -98,10 +105,16 @@
 					<div class="tsd-signature tsd-kind-icon">code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L131">src/response/web-records.ts:131</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L135">src/response/records.ts:135</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/web-records.ts#L131">src/response/web-records.ts:131</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L424">src/response/records.ts:424</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This value is a machine-readable code identifying the warning. See the web
+							service documentation for the current list of of warning codes.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="inputpointer" class="tsd-anchor"></a>
@@ -109,9 +122,17 @@
 					<div class="tsd-signature tsd-kind-icon">input<wbr>Pointer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L137">src/response/records.ts:137</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L436">src/response/records.ts:436</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A JSON Pointer to the input field that the warning is associated with. For
+								instance, if the warning was about the billing city, this would be
+								<code>/billing/city</code>. If it was for the price in the second shopping cart item,
+							it would be <code>/shopping_cart/1/price</code>.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="input_pointer" class="tsd-anchor"></a>
@@ -119,7 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">input_<wbr>pointer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L133">src/response/web-records.ts:133</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/web-records.ts#L133">src/response/web-records.ts:133</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -129,10 +150,16 @@
 					<div class="tsd-signature tsd-kind-icon">warning<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/web-records.ts#L132">src/response/web-records.ts:132</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/b465c6a/src/response/records.ts#L136">src/response/records.ts:136</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/web-records.ts#L132">src/response/web-records.ts:132</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/e7415e8/src/response/records.ts#L429">src/response/records.ts:429</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This property provides a human-readable explanation of the warning. The
+							description may change at any time and should not be matched against.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
