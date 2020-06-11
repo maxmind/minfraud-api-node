@@ -2,6 +2,7 @@ import * as http from 'http';
 import * as https from 'https';
 import { version } from '../package.json';
 import Transaction from './request/transaction';
+import TransactionReport from './request/transaction-report';
 import * as models from './response/models';
 import { WebServiceClientError } from './types';
 
@@ -10,7 +11,7 @@ interface ResponseError {
   error?: string;
 }
 
-type servicePath = 'factors' | 'insights' | 'score';
+type servicePath = 'factors' | 'insights' | 'score' | 'transactions/report';
 
 export default class WebServiceClient {
   private accountID: string;
@@ -49,10 +50,14 @@ export default class WebServiceClient {
     );
   }
 
+  public reportTransaction(report: TransactionReport): Promise<void> {
+    return this.responseFor<void>('transactions/report', report.toString());
+  }
+
   private responseFor<T>(
     path: servicePath,
     postData: string,
-    modelClass: any
+    modelClass?: any
   ): Promise<T> {
     const parsedPath = `/minfraud/v2.0/${path}`;
     const url = `https://${this.host}${parsedPath}`;
@@ -80,6 +85,10 @@ export default class WebServiceClient {
         });
 
         response.on('end', () => {
+          if (response.statusCode && response.statusCode === 204) {
+            return resolve();
+          }
+
           try {
             data = JSON.parse(data);
           } catch {

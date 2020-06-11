@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+1.7.0 (XXXX-XX-XX)
+------------------
+
+* Added support for the Report Transaction API.
+
 1.6.0 (2020-04-06)
 ------------------
 

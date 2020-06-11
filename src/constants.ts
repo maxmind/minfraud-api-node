@@ -143,3 +143,10 @@ export enum Processor {
   Wirecard = 'wirecard',
   Worldpay = 'worldpay',
 }
+
+export enum Tag {
+  CHARGEBACK = 'chargeback',
+  NOT_FRAUD = 'not_fraud',
+  SPAM_OR_ABUSE = 'spam_or_abuse',
+  SUSPECTED_FRAUD = 'suspected_fraud',
+}

@@ -11,6 +11,7 @@ import Payment from './request/payment';
 import Shipping from './request/shipping';
 import ShoppingCartItem from './request/shopping-cart-item';
 import Transaction from './request/transaction';
+import TransactionReport from './request/transaction-report';
 import Client from './webServiceClient';
 
 export {
@@ -28,4 +29,5 @@ export {
   Shipping,
   ShoppingCartItem,
   Transaction,
+  TransactionReport,
 };
