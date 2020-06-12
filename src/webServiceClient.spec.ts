@@ -3,7 +3,13 @@ import * as nock from 'nock';
 import * as insights from '../fixtures/insights.json';
 import * as score from '../fixtures/score.json';
 import * as subscores from '../fixtures/subscores.json';
-import { Client, Device, Transaction } from './index';
+import {
+  Client,
+  Constants,
+  Device,
+  Transaction,
+  TransactionReport,
+} from './index';
 import * as webRecords from './response/web-records';
 import { camelizeResponse } from './utils';
 
@@ -127,6 +133,43 @@ describe('WebServiceClient', () => {
       return expect(client.score(transaction)).resolves.toEqual(
         camelizeResponse(score.response.noWarnings)
       );
+    });
+  });
+
+  describe('reportTransaction', () => {
+    it('handles bare minimum request', () => {
+      const report = new TransactionReport({
+        ipAddress: '1.1.1.1',
+        tag: Constants.Tag.CHARGEBACK,
+      });
+
+      expect.assertions(1);
+
+      nockInstance
+        .post(fullPath('transactions/report'), report.toString())
+        .reply(204);
+
+      return expect(client.reportTransaction(report)).resolves.toBeUndefined();
+    });
+
+    it('handles a "full" request', () => {
+      const report = new TransactionReport({
+        chargebackCode: 'foobar',
+        ipAddress: '1.1.1.1',
+        maxmindId: '1234',
+        minfraudId: '1234',
+        notes: 'hello world',
+        tag: Constants.Tag.CHARGEBACK,
+        transactionId: 'what the',
+      });
+
+      expect.assertions(1);
+
+      nockInstance
+        .post(fullPath('transactions/report'), report.toString())
+        .reply(204);
+
+      return expect(client.reportTransaction(report)).resolves.toBeUndefined();
     });
   });
 

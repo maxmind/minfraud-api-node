@@ -1,8 +1,8 @@
 # Node.js API for MaxMind minFraud Score, Insights, and Factors
 
 ## Description
-This package provides an API for the [MaxMind minFraud Score, Insights, and
-Factors web services](https://dev.maxmind.com/minfraud/).
+This package provides an API for the [MaxMind minFraud Score, Insights,
+Factors, and Report Transaction web services](https://dev.maxmind.com/minfraud/).
 
 ## Requirements
 
@@ -75,6 +75,49 @@ of:
 {
   code: string
   error: string
+  url: string
+}
+```
+
+### Reporting a transaction using the Report Transactions API
+
+MaxMind encourages the use of this API, as data received through this channel
+is continually used to improve the accuracy of our fraud detection algorithms.
+
+To use the Report Transactions API, create a new `TransactionReport` object. An
+IP address and a valid tag are required key values.  Additional key values may
+also be set, as documented below.
+
+See the API documentation for more details.
+
+```js
+  const transactionReport = new minFraud.TransactionReport({
+    ipAddress: '8.8.8.8',
+    tag: minFraud.Constants.Tag.NOT_FRAUD,
+
+    // The following key/values are not mandatory but are encouraged
+    chargebackCode: 'the string provided by your payment processor indicating
+    the reason for the chargeback',
+    maxmindId: '12345678',
+    minfraudId: '58fa38d8-4b87-458b-a22b-f00eda1aa20d',
+    notes: 'some notes',
+    transactionId: 'the transaction ID you originally passed to minFraud',
+  });
+
+  client.reportTransaction(transactionReport).then(() => ...);
+```
+
+
+If the request succeeds, no data is returned in the Promise.
+
+If the request fails, an error object will be returned in the catch in the
+form of:
+
+```js
+{
+  code: string
+  error: string
+  url: string
 }
 ```
 
