@@ -70,8 +70,8 @@
 				<a href="#description" id="description" style="color: inherit; text-decoration: none;">
 					<h2>Description</h2>
 				</a>
-				<p>This package provides an API for the <a href="https://dev.maxmind.com/minfraud/">MaxMind minFraud Score, Insights, and
-				Factors web services</a>.</p>
+				<p>This package provides an API for the <a href="https://dev.maxmind.com/minfraud/">MaxMind minFraud Score, Insights,
+				Factors, and Report Transaction web services</a>.</p>
 				<a href="#requirements" id="requirements" style="color: inherit; text-decoration: none;">
 					<h2>Requirements</h2>
 				</a>
@@ -123,6 +123,38 @@ client.factors(transaction).then(<span class="hljs-function"><span class="hljs-p
 				<pre><code class="language-js">{
   <span class="hljs-attr">code</span>: string
   <span class="hljs-attr">error</span>: string
+  <span class="hljs-attr">url</span>: string
+}</code></pre>
+				<a href="#reporting-a-transaction-using-the-report-transactions-api" id="reporting-a-transaction-using-the-report-transactions-api" style="color: inherit; text-decoration: none;">
+					<h3>Reporting a transaction using the Report Transactions API</h3>
+				</a>
+				<p>MaxMind encourages the use of this API, as data received through this channel
+				is continually used to improve the accuracy of our fraud detection algorithms.</p>
+				<p>To use the Report Transactions API, create a new <code>TransactionReport</code> object. An
+					IP address and a valid tag are required key values.  Additional key values may
+				also be set, as documented below.</p>
+				<p>See the API documentation for more details.</p>
+				<pre><code class="language-js">  const transactionReport = new minFraud.TransactionReport({
+    ipAddress: '8.8.8.8',
+    tag: minFraud.Constants.Tag.NOT_FRAUD,
+
+    // The following key/values are not mandatory but are encouraged
+    chargebackCode: 'the string provided by your payment processor indicating
+    the reason for the chargeback',
+    maxmindId: '12345678',
+    minfraudId: '58fa38d8-4b87-458b-a22b-f00eda1aa20d',
+    notes: 'some notes',
+    transactionId: 'the transaction ID you originally passed to minFraud',
+  });
+
+  client.reportTransaction(transactionReport).then(() =&gt; ...);</code></pre>
+				<p>If the request succeeds, no data is returned in the Promise.</p>
+				<p>If the request fails, an error object will be returned in the catch in the
+				form of:</p>
+				<pre><code class="language-js">{
+  <span class="hljs-attr">code</span>: string
+  <span class="hljs-attr">error</span>: string
+  <span class="hljs-attr">url</span>: string
 }</code></pre>
 				<a href="#errors-and-exceptions" id="errors-and-exceptions" style="color: inherit; text-decoration: none;">
 					<h2>Errors and Exceptions</h2>
@@ -303,6 +335,9 @@ client.score(transaction <span class="hljs-keyword">as</span> minFraud.Transacti
 					<li class=" tsd-kind-enum">
 						<a href="enums/processor.html" class="tsd-kind-icon">Processor</a>
 					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/tag.html" class="tsd-kind-icon">Tag</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/account.html" class="tsd-kind-icon">Account</a>
 					</li>
@@ -353,6 +388,9 @@ client.score(transaction <span class="hljs-keyword">as</span> minFraud.Transacti
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/transaction.html" class="tsd-kind-icon">Transaction</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/transactionreport.html" class="tsd-kind-icon">Transaction<wbr>Report</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/webserviceclient.html" class="tsd-kind-icon">Web<wbr>Service<wbr>Client</a>
@@ -473,6 +511,9 @@ client.score(transaction <span class="hljs-keyword">as</span> minFraud.Transacti
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/transactionprops.html" class="tsd-kind-icon">Transaction<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/transactionreportprops.html" class="tsd-kind-icon">Transaction<wbr>Report<wbr>Props</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/warning.html" class="tsd-kind-icon">Warning</a>

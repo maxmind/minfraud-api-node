@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ShippingAddress | @maxmind/minfraud-api-node</title>
+	<title>TransactionReportProps | @maxmind/minfraud-api-node</title>
 	<meta name="description" content="Documentation for @maxmind/minfraud-api-node">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,28 +56,21 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="shippingaddress.html">ShippingAddress</a>
+					<a href="transactionreportprops.html">TransactionReportProps</a>
 				</li>
 			</ul>
-			<h1>Interface ShippingAddress</h1>
+			<h1>Interface TransactionReportProps</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Information about the shipping address.</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ShippingAddress</span>
+						<span class="target">TransactionReportProps</span>
 					</li>
 				</ul>
 			</section>
@@ -88,13 +81,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="shippingaddress.html#distancetobillingaddress" class="tsd-kind-icon">distance<wbr>ToBilling<wbr>Address</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="shippingaddress.html#distancetoiplocation" class="tsd-kind-icon">distance<wbr>ToIp<wbr>Location</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="shippingaddress.html#ishighrisk" class="tsd-kind-icon">is<wbr>High<wbr>Risk</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="shippingaddress.html#isinipcountry" class="tsd-kind-icon">is<wbr>InIp<wbr>Country</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="shippingaddress.html#ispostalincity" class="tsd-kind-icon">is<wbr>Postal<wbr>InCity</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="shippingaddress.html#latitude" class="tsd-kind-icon">latitude</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="shippingaddress.html#longitude" class="tsd-kind-icon">longitude</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="transactionreportprops.html#chargebackcode" class="tsd-kind-icon">chargeback<wbr>Code</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="transactionreportprops.html#ipaddress" class="tsd-kind-icon">ip<wbr>Address</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="transactionreportprops.html#maxmindid" class="tsd-kind-icon">maxmind<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="transactionreportprops.html#minfraudid" class="tsd-kind-icon">minfraud<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="transactionreportprops.html#notes" class="tsd-kind-icon">notes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="transactionreportprops.html#tag" class="tsd-kind-icon">tag</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="transactionreportprops.html#transactionid" class="tsd-kind-icon">transaction<wbr>Id</a></li>
 							</ul>
 						</section>
 					</div>
@@ -103,116 +96,119 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="distancetobillingaddress" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> distance<wbr>ToBilling<wbr>Address</h3>
-					<div class="tsd-signature tsd-kind-icon">distance<wbr>ToBilling<wbr>Address<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="chargebackcode" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> chargeback<wbr>Code</h3>
+					<div class="tsd-signature tsd-kind-icon">chargeback<wbr>Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/response/records.ts#L249">src/response/records.ts:249</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/request/transaction-report.ts#L11">src/request/transaction-report.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The distance in kilometers from the shipping address to billing address.</p>
+							<p>A string which is provided by your payment processor indicating the
+							reason for the chargeback.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="distancetoiplocation" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> distance<wbr>ToIp<wbr>Location</h3>
-					<div class="tsd-signature tsd-kind-icon">distance<wbr>ToIp<wbr>Location<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="ipaddress" class="tsd-anchor"></a>
+					<h3>ip<wbr>Address</h3>
+					<div class="tsd-signature tsd-kind-icon">ip<wbr>Address<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/response/records.ts#L245">src/response/records.ts:245</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/request/transaction-report.ts#L15">src/request/transaction-report.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The distance in kilometers from the address to the IP location.</p>
+							<p>The IP address of the customer placing the order.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="ishighrisk" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> is<wbr>High<wbr>Risk</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>High<wbr>Risk<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="maxmindid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> maxmind<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">maxmind<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/response/records.ts#L226">src/response/records.ts:226</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/request/transaction-report.ts#L22">src/request/transaction-report.ts:22</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>This property is <code>true</code> if the shipping address is in the IP country. The
-								property is <code>false</code> when the address is not in the IP country. If the
-								shipping address could not be parsed or was not provided or the IP address
-							could not be geolocated, then the property is <code>null</code>.</p>
+							<p>A unique eight character string identifying a minFraud Standard or
+								Premium request. These IDs are returned in the maxmindID field of a
+								response for a successful minFraud request. This field is not required,
+							but you are encouraged to provide it, if possible.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="isinipcountry" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> is<wbr>InIp<wbr>Country</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>InIp<wbr>Country<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<a name="minfraudid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> minfraud<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">minfraud<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/response/records.ts#L256">src/response/records.ts:256</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/request/transaction-report.ts#L29">src/request/transaction-report.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>This property is <code>true</code> if the address is in the IP country.The property is
-								<code>false</code> when the address is not in the IP country. If the address could not
-								be parsed or was not provided or if the IP address could not be
-							geolocated, the property will be <code>null</code>.</p>
+							<p>A UUID that identifies a minFraud Score, minFraud Insights, or minFraud
+								Factors request. This ID is returned at /id in the response. This field
+								is not required, but you are encouraged to provide it if the request was
+							made to one of these services.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="ispostalincity" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> is<wbr>Postal<wbr>InCity</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Postal<wbr>InCity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<a name="notes" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> notes</h3>
+					<div class="tsd-signature tsd-kind-icon">notes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/response/records.ts#L233">src/response/records.ts:233</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/request/transaction-report.ts#L35">src/request/transaction-report.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>This property is <code>true</code> if the postal code provided with the address is in
-								the city for the address.The property is <code>false</code> when the postal code is not
-								in the city. If the address was not provided or could not be parsed, the
-							property will be <code>null</code>.</p>
+							<p>Your notes on the fraud tag associated with the transaction. We manually
+								review many reported transactions to improve our scoring for you so any
+							additional details to help us understand context are helpful.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="latitude" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> latitude</h3>
-					<div class="tsd-signature tsd-kind-icon">latitude<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="tag" class="tsd-anchor"></a>
+					<h3>tag</h3>
+					<div class="tsd-signature tsd-kind-icon">tag<span class="tsd-signature-symbol">:</span> <a href="../enums/tag.html" class="tsd-signature-type">Tag</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/response/records.ts#L237">src/response/records.ts:237</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/request/transaction-report.ts#L40">src/request/transaction-report.ts:40</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The latitude associated with the address.</p>
+							<p>A Tag enum indicating the likelihood that a transaction may be
+							fraudulent.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="longitude" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> longitude</h3>
-					<div class="tsd-signature tsd-kind-icon">longitude<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="transactionid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> transaction<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">transaction<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/response/records.ts#L241">src/response/records.ts:241</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/284db9c/src/request/transaction-report.ts#L46">src/request/transaction-report.ts:46</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The longitude associated with the address.</p>
+							<p>The transaction ID you originally passed to minFraud. This field is not
+								required, but you are encouraged to provide it or the transaction’s
+							maxmindId or minfraudId.</p>
 						</div>
 					</div>
 				</section>
@@ -231,28 +227,28 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="shippingaddress.html" class="tsd-kind-icon">Shipping<wbr>Address</a>
+						<a href="transactionreportprops.html" class="tsd-kind-icon">Transaction<wbr>Report<wbr>Props</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="shippingaddress.html#distancetobillingaddress" class="tsd-kind-icon">distance<wbr>ToBilling<wbr>Address</a>
+								<a href="transactionreportprops.html#chargebackcode" class="tsd-kind-icon">chargeback<wbr>Code</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="shippingaddress.html#distancetoiplocation" class="tsd-kind-icon">distance<wbr>ToIp<wbr>Location</a>
+								<a href="transactionreportprops.html#ipaddress" class="tsd-kind-icon">ip<wbr>Address</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="shippingaddress.html#ishighrisk" class="tsd-kind-icon">is<wbr>High<wbr>Risk</a>
+								<a href="transactionreportprops.html#maxmindid" class="tsd-kind-icon">maxmind<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="shippingaddress.html#isinipcountry" class="tsd-kind-icon">is<wbr>InIp<wbr>Country</a>
+								<a href="transactionreportprops.html#minfraudid" class="tsd-kind-icon">minfraud<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="shippingaddress.html#ispostalincity" class="tsd-kind-icon">is<wbr>Postal<wbr>InCity</a>
+								<a href="transactionreportprops.html#notes" class="tsd-kind-icon">notes</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="shippingaddress.html#latitude" class="tsd-kind-icon">latitude</a>
+								<a href="transactionreportprops.html#tag" class="tsd-kind-icon">tag</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="shippingaddress.html#longitude" class="tsd-kind-icon">longitude</a>
+								<a href="transactionreportprops.html#transactionid" class="tsd-kind-icon">transaction<wbr>Id</a>
 							</li>
 						</ul>
 					</li>
