@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+1.8.0
+------------------
+
+* Add the following new values to the `Processor` enum:
+  * `Cashfree`
+  * `FirstAtlanticCommerce`
+  * `Komoju`
+  * `Paytm`
+  * `Razorpay`
+  * `Systempay`
+
 1.7.0 (2020-06-16)
 ------------------
 
