@@ -116,13 +116,16 @@ export interface SubscoresWebRecord {
   readonly country?: number;
   readonly country_mismatch?: number;
   readonly cvv_result?: number;
+  readonly device?: number;
   readonly email_address?: number;
   readonly email_domain?: number;
+  readonly email_local_part?: number;
   readonly email_tenure?: number;
   readonly ip_tenure?: number;
   readonly issuer_id_number?: number;
   readonly order_amount?: number;
   readonly phone_number?: number;
+  readonly shipping_address?: number;
   readonly shipping_address_distance_to_ip_location?: number;
   readonly time_of_day?: number;
 }
