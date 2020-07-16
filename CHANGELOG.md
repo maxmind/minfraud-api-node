@@ -11,6 +11,7 @@ CHANGELOG
   * `Paytm`
   * `Razorpay`
   * `Systempay`
+* Add `device`, `emailLocalPart`, and `shippingAddress` to subscores
 
 1.7.0 (2020-06-16)
 ------------------

@@ -352,6 +352,11 @@ export interface Subscores {
    */
   readonly cvvResult?: number;
   /**
+   * The risk associated with the device. If present, this is a value in the
+   * range 0.01 to 99.
+   */
+  readonly device?: number;
+  /**
    * The risk associated with the particular email address. If present, this is
    * a value in the range 0.01 to 99.
    */
@@ -361,6 +366,12 @@ export interface Subscores {
    * value in the range 0.01 to 99.
    */
   readonly emailDomain?: number;
+  /**
+   * The risk associated with the email address local part (the part of the
+   * email address before the @ symbol). If present, this is a value in the
+   * range 0.01 to 99.
+   */
+  readonly emailLocalPart?: number;
   /**
    * The risk associated with the particular issuer ID number (IIN) given the
    * billing location and the history of usage of the IIN on your account and
@@ -377,6 +388,11 @@ export interface Subscores {
    * a value in the range 0.01 to 99.
    */
   readonly phoneNumber?: number;
+  /**
+   * The risk associated with the shipping address. If present, this is a
+   * value in the range 0.01 to 99.
+   */
+  readonly shippingAddress?: number;
   /**
    * The risk associated with the distance between the shipping address and the
    * location for the given IP address. If present, this is a value in the
