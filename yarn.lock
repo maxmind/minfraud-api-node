@@ -484,9 +484,9 @@
     chalk "^3.0.0"
 
 "@maxmind/geoip2-node@^1.1.1":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-1.4.0.tgz#f0fdaa10b22db1d1fc8038402a007cae0175432f"
-  integrity sha512-cykW3+uiRe0aNN3obp+BaPHm6Yuaw7qGIJXppMAJNFHlyK8XPLwbP6jSUsjMRh9zRRwOO5gcb68CFUfAohT6aQ==
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-1.5.0.tgz#e2439729af74b961e62c9353d9cd7b2b8dc86029"
+  integrity sha512-fSaswe/yIeI29aW/aFnraavh6s+6j7GsmvuNmdBDfPaItnRgk/9Q3cYpvjPztY014KBJRVxxU4dbssAiLTNTAA==
   dependencies:
     camelcase-keys "^6.0.1"
     ip6addr "^0.2.3"
