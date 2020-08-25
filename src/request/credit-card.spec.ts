@@ -42,7 +42,7 @@ describe('CreditCard()', () => {
         new CreditCard({
           avsResult: 'A',
           cvvResult: 'c',
-          issuerIdNumber: '123456',
+          issuerIdNumber: '411111',
           last4digits: '1234',
           token: 'valid_token',
         })
