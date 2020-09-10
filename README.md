@@ -40,7 +40,7 @@ a new instance of each property's class.  For example:
 ```js
 const transaction = new minFraud.Transaction({
   device: new minFraud.Device({
-    ipAddress: '8.8.8.8',
+    ipAddress: '81.2.69.160',
   }),
   email: new minFraud.Email({
     address: 'foo@bar.com',
@@ -92,7 +92,7 @@ See the API documentation for more details.
 
 ```js
   const transactionReport = new minFraud.TransactionReport({
-    ipAddress: '8.8.8.8',
+    ipAddress: '81.2.69.160',
     tag: minFraud.Constants.Tag.NOT_FRAUD,
 
     // The following key/values are not mandatory but are encouraged
@@ -163,7 +163,7 @@ try {
   transaction = new minFraud.Transaction({
     // device is required
     device: new minFraud.Device({
-      ipAddress: "8.8.8.8",
+      ipAddress: "81.2.69.160",
     }),
     event: new minFraud.Event({
       shopId: 'shop',
@@ -188,7 +188,7 @@ try {
       firstName: 'Robot',
       lastName: 'Bar',
       phoneCountryCode: '1',
-      phoneNumber: '321-321-3211',
+      phoneNumber: '123-456-1234',
       postal: '12345',
       region: 'MA',
     }),
@@ -202,7 +202,7 @@ try {
       firstName: 'Robot',
       lastName: 'Bar',
       phoneCountryCode: '1',
-      phoneNumber: '321-321-3211',
+      phoneNumber: '123-456-0000',
       postal: '12345',
       region: 'MA',
     }),
@@ -217,7 +217,7 @@ try {
       bankPhoneCountryCode: '1',
       bankPhoneNumber: '123-123-1234',
       cvvResult: 'B',
-      issuerIdNumber: '123456',
+      issuerIdNumber: '411111',
       last4digits: '1234',
       token: 'a_token',
     }),
