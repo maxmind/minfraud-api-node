@@ -12,6 +12,8 @@ CHANGELOG
   * `Razorpay`
   * `Systempay`
 * Add `device`, `emailLocalPart`, and `shippingAddress` to subscores
+* Update `@maxmind/geoip2-node` to a version that supports
+  `response.ipAddress.traits.isResidentialProxy`.
 
 1.7.0 (2020-06-16)
 ------------------

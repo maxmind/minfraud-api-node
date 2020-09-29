@@ -132,6 +132,7 @@
           "is_hosting_provider": true,
           "is_legitimate_proxy": false,
           "is_public_proxy": true,
+          "is_residential_proxy": false,
           "is_satellite_provider": true,
           "is_tor_exit_node": true,
           "isp": "Linkem spa",

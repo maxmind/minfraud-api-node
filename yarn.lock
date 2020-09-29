@@ -455,7 +455,7 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@maxmind/geoip2-node@^1.1.1":
+"@maxmind/geoip2-node@^1.6.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-1.6.0.tgz#526da73970a807a916ba15b3aa4c0b5247113348"
   integrity sha512-3+AixEbxcYRcSEzT4t1Zgs2O00tjtFjH8XFz1zOI3NISDzVrYCL5cc59Nq81bqp+zy/cIex3IGOyXniCPjGgsg==
