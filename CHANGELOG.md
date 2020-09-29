@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-1.8.0
+1.8.0 (2020-09-30)
 ------------------
 
 * Add the following new values to the `Processor` enum:
