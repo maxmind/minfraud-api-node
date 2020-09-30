@@ -484,14 +484,14 @@
     chalk "^3.0.0"
 
 "@maxmind/geoip2-node@^1.1.1":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-1.5.0.tgz#e2439729af74b961e62c9353d9cd7b2b8dc86029"
-  integrity sha512-fSaswe/yIeI29aW/aFnraavh6s+6j7GsmvuNmdBDfPaItnRgk/9Q3cYpvjPztY014KBJRVxxU4dbssAiLTNTAA==
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-1.6.0.tgz#526da73970a807a916ba15b3aa4c0b5247113348"
+  integrity sha512-3+AixEbxcYRcSEzT4t1Zgs2O00tjtFjH8XFz1zOI3NISDzVrYCL5cc59Nq81bqp+zy/cIex3IGOyXniCPjGgsg==
   dependencies:
     camelcase-keys "^6.0.1"
     ip6addr "^0.2.3"
     lodash.set "^4.3.2"
-    maxmind "^4.1.0"
+    maxmind "^4.2.0"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -3635,10 +3635,10 @@ marked@^1.1.1:
   resolved "https://registry.yarnpkg.com/marked/-/marked-1.1.1.tgz#e5d61b69842210d5df57b05856e0c91572703e6a"
   integrity sha512-mJzT8D2yPxoPh7h0UXkB+dBj4FykPJ2OIfxAWeIHrvoHDkFxukV/29QxoFQoPM6RLEwhIFdJpmKBlqVM3s2ZIw==
 
-maxmind@^4.1.0:
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/maxmind/-/maxmind-4.1.4.tgz#14fa0cf9a88f15b708edfd1378c5e49e0f0105c1"
-  integrity sha512-DfcZPpc0XJVF1yypRpVqMs9JiSYYShVkfexSjwTbfqZMCEoQlCU83ooX9cRmWMUaLqm4zffi7HtZg7XqcJaL1A==
+maxmind@^4.1.0, maxmind@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/maxmind/-/maxmind-4.2.0.tgz#912e5ec4a961807d20d7fb541160aeb5ea802c1c"
+  integrity sha512-TADiE11Q10IjvLtlo05tTD52xLqfCJMhE3eYJHmpYIKg668STi/fQZGH9X3FpqpIP/2WPgKFxf899awFvfMtQA==
   dependencies:
     tiny-lru "7.0.6"
 
