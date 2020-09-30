@@ -80,7 +80,8 @@
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
-				<pre><code>yarn add @maxmind/m<span class="hljs-literal">inf</span>raud-api-<span class="hljs-keyword">node</span><span class="hljs-title"></span></code></pre><p>If you are not able to use <code>yarn</code>, you may also use <code>npm</code>:</p>
+				<pre><code>yarn add @maxmind/m<span class="hljs-literal">inf</span>raud-api-<span class="hljs-keyword">node</span><span class="hljs-title"></span></code></pre>
+				<p>If you are not able to use <code>yarn</code>, you may also use <code>npm</code>:</p>
 				<pre><code>npm install @maxmind/m<span class="hljs-literal">inf</span>raud-api-<span class="hljs-keyword">node</span><span class="hljs-title"></span></code></pre>
 				<a href="#api-documentation" id="api-documentation" style="color: inherit; text-decoration: none;">
 					<h2>API Documentation</h2>
@@ -91,17 +92,17 @@
 				</a>
 				<p>To use this API, first create a new <code>Client</code> object. The constructor
 				takes your MaxMind account ID and license key. For example:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> minFraud.Client(<span class="hljs-string">"1234"</span>, <span class="hljs-string">"LICENSEKEY"</span>);</code></pre>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> minFraud.Client(<span class="hljs-string">&quot;1234&quot;</span>, <span class="hljs-string">&quot;LICENSEKEY&quot;</span>);</code></pre>
 				<p>Then create a new <code>Transaction</code> object. This represents the transaction that
 					you are sending to minFraud. Each transaction property is instantiated by creating
 				a new instance of each property&#39;s class.  For example:</p>
 				<pre><code class="language-js"><span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">new</span> minFraud.Transaction({
   <span class="hljs-attr">device</span>: <span class="hljs-keyword">new</span> minFraud.Device({
-    <span class="hljs-attr">ipAddress</span>: <span class="hljs-string">'8.8.8.8'</span>,
+    <span class="hljs-attr">ipAddress</span>: <span class="hljs-string">&#x27;81.2.69.160&#x27;</span>,
   }),
   <span class="hljs-attr">email</span>: <span class="hljs-keyword">new</span> minFraud.Email({
-    <span class="hljs-attr">address</span>: <span class="hljs-string">'foo@bar.com'</span>,
-    <span class="hljs-attr">domain</span>: <span class="hljs-string">'bar.com'</span>,
+    <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;foo@bar.com&#x27;</span>,
+    <span class="hljs-attr">domain</span>: <span class="hljs-string">&#x27;bar.com&#x27;</span>,
   }),
 })</code></pre>
 				<p>If Transaction instantiation fails, an <code>ArgumentError</code> is thrown. This is usually
@@ -135,16 +136,16 @@ client.factors(transaction).then(<span class="hljs-function"><span class="hljs-p
 				also be set, as documented below.</p>
 				<p>See the API documentation for more details.</p>
 				<pre><code class="language-js">  const transactionReport = new minFraud.TransactionReport({
-    ipAddress: '8.8.8.8',
+    ipAddress: &#x27;81.2.69.160&#x27;,
     tag: minFraud.Constants.Tag.NOT_FRAUD,
 
     // The following key/values are not mandatory but are encouraged
-    chargebackCode: 'the string provided by your payment processor indicating
-    the reason for the chargeback',
-    maxmindId: '12345678',
-    minfraudId: '58fa38d8-4b87-458b-a22b-f00eda1aa20d',
-    notes: 'some notes',
-    transactionId: 'the transaction ID you originally passed to minFraud',
+    chargebackCode: &#x27;the string provided by your payment processor indicating
+    the reason for the chargeback&#x27;,
+    maxmindId: &#x27;12345678&#x27;,
+    minfraudId: &#x27;58fa38d8-4b87-458b-a22b-f00eda1aa20d&#x27;,
+    notes: &#x27;some notes&#x27;,
+    transactionId: &#x27;the transaction ID you originally passed to minFraud&#x27;,
   });
 
   client.reportTransaction(transactionReport).then(() =&gt; ...);</code></pre>
@@ -167,28 +168,28 @@ client.factors(transaction).then(<span class="hljs-function"><span class="hljs-p
 				<p>In addition to the <a href="https://dev.maxmind.com/minfraud/#Errors">response errors</a>
 				returned by the web API, we also return: </p>
 				<pre><code class="language-js">{
-  <span class="hljs-attr">code</span>: <span class="hljs-string">'SERVER_ERROR'</span>,
+  <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;SERVER_ERROR&#x27;</span>,
   <span class="hljs-attr">error</span>: &lt;string&gt;
 }
 
 {
-  code: 'HTTP_STATUS_CODE_ERROR',
+  code: &#x27;HTTP_STATUS_CODE_ERROR&#x27;,
   error: &lt;string&gt;
 }
 
 {
-  code: 'INVALID_RESPONSE_BODY',
+  code: &#x27;INVALID_RESPONSE_BODY&#x27;,
   error: &lt;string&gt;
 }</code></pre>
 				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
 					<h2>Example</h2>
 				</a>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> { URL } <span class="hljs-keyword">from</span> <span class="hljs-string">'url'</span>; <span class="hljs-comment">// Used for `order.referrerUri</span>
-<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> minFraud <span class="hljs-keyword">from</span> <span class="hljs-string">'@maxmind/minfraud-api-node'</span>;
-<span class="hljs-comment">// const minFraud = require('@maxmind/minfraud-api-node');</span>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { URL } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;url&#x27;</span>; <span class="hljs-comment">// Used for `order.referrerUri</span>
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> minFraud <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@maxmind/minfraud-api-node&#x27;</span>;
+<span class="hljs-comment">// const minFraud = require(&#x27;@maxmind/minfraud-api-node&#x27;);</span>
 
 <span class="hljs-comment">// client is reusable</span>
-<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> minFraud.Client(<span class="hljs-string">"1234"</span>, <span class="hljs-string">"LICENSEKEY"</span>);
+<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> minFraud.Client(<span class="hljs-string">&quot;1234&quot;</span>, <span class="hljs-string">&quot;LICENSEKEY&quot;</span>);
 
 <span class="hljs-keyword">let</span> transaction;
 
@@ -196,92 +197,92 @@ client.factors(transaction).then(<span class="hljs-function"><span class="hljs-p
   transaction = <span class="hljs-keyword">new</span> minFraud.Transaction({
     <span class="hljs-comment">// device is required</span>
     <span class="hljs-attr">device</span>: <span class="hljs-keyword">new</span> minFraud.Device({
-      <span class="hljs-attr">ipAddress</span>: <span class="hljs-string">"8.8.8.8"</span>,
+      <span class="hljs-attr">ipAddress</span>: <span class="hljs-string">&quot;81.2.69.160&quot;</span>,
     }),
     <span class="hljs-attr">event</span>: <span class="hljs-keyword">new</span> minFraud.Event({
-      <span class="hljs-attr">shopId</span>: <span class="hljs-string">'shop'</span>,
+      <span class="hljs-attr">shopId</span>: <span class="hljs-string">&#x27;shop&#x27;</span>,
       <span class="hljs-attr">time</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-built_in">Date</span>.now()),
-      <span class="hljs-attr">transactionId</span>: <span class="hljs-string">'txn1234'</span>,
+      <span class="hljs-attr">transactionId</span>: <span class="hljs-string">&#x27;txn1234&#x27;</span>,
       <span class="hljs-attr">type</span>: minFraud.Constants.EventType.PayoutChange,
     }),
     <span class="hljs-attr">account</span>: <span class="hljs-keyword">new</span> minFraud.Account({
-      <span class="hljs-attr">userId</span>: <span class="hljs-string">'user123'</span>,
-      <span class="hljs-attr">username</span>: <span class="hljs-string">'userperson'</span>,
+      <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;user123&#x27;</span>,
+      <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;userperson&#x27;</span>,
     }),
     <span class="hljs-attr">email</span>: <span class="hljs-keyword">new</span> minFraud.Email({
-      <span class="hljs-attr">address</span>: <span class="hljs-string">'foo@bar.com'</span>,
-      <span class="hljs-attr">domain</span>: <span class="hljs-string">'bar.com'</span>,
+      <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;foo@bar.com&#x27;</span>,
+      <span class="hljs-attr">domain</span>: <span class="hljs-string">&#x27;bar.com&#x27;</span>,
     }),
     <span class="hljs-attr">billing</span>: <span class="hljs-keyword">new</span> minFraud.Billing({
-      <span class="hljs-attr">address</span>: <span class="hljs-string">'123 Robot Ave.'</span>,
-      <span class="hljs-attr">address2</span>: <span class="hljs-string">'Suite 10011'</span>,
-      <span class="hljs-attr">city</span>: <span class="hljs-string">'Waltham'</span>,
-      <span class="hljs-attr">company</span>: <span class="hljs-string">'Robots Inc.'</span>,
-      <span class="hljs-attr">country</span>: <span class="hljs-string">'US'</span>,
-      <span class="hljs-attr">firstName</span>: <span class="hljs-string">'Robot'</span>,
-      <span class="hljs-attr">lastName</span>: <span class="hljs-string">'Bar'</span>,
-      <span class="hljs-attr">phoneCountryCode</span>: <span class="hljs-string">'1'</span>,
-      <span class="hljs-attr">phoneNumber</span>: <span class="hljs-string">'321-321-3211'</span>,
-      <span class="hljs-attr">postal</span>: <span class="hljs-string">'12345'</span>,
-      <span class="hljs-attr">region</span>: <span class="hljs-string">'MA'</span>,
+      <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;123 Robot Ave.&#x27;</span>,
+      <span class="hljs-attr">address2</span>: <span class="hljs-string">&#x27;Suite 10011&#x27;</span>,
+      <span class="hljs-attr">city</span>: <span class="hljs-string">&#x27;Waltham&#x27;</span>,
+      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Robots Inc.&#x27;</span>,
+      <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;US&#x27;</span>,
+      <span class="hljs-attr">firstName</span>: <span class="hljs-string">&#x27;Robot&#x27;</span>,
+      <span class="hljs-attr">lastName</span>: <span class="hljs-string">&#x27;Bar&#x27;</span>,
+      <span class="hljs-attr">phoneCountryCode</span>: <span class="hljs-string">&#x27;1&#x27;</span>,
+      <span class="hljs-attr">phoneNumber</span>: <span class="hljs-string">&#x27;123-456-1234&#x27;</span>,
+      <span class="hljs-attr">postal</span>: <span class="hljs-string">&#x27;12345&#x27;</span>,
+      <span class="hljs-attr">region</span>: <span class="hljs-string">&#x27;MA&#x27;</span>,
     }),
     <span class="hljs-attr">shipping</span>: <span class="hljs-keyword">new</span> minFraud.Shipping({
-      <span class="hljs-attr">address</span>: <span class="hljs-string">'123 Robot Ave.'</span>,
-      <span class="hljs-attr">address2</span>: <span class="hljs-string">'Suite 10011'</span>,
-      <span class="hljs-attr">city</span>: <span class="hljs-string">'Waltham'</span>,
-      <span class="hljs-attr">company</span>: <span class="hljs-string">'Robots Inc.'</span>,
-      <span class="hljs-attr">country</span>: <span class="hljs-string">'US'</span>,
+      <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;123 Robot Ave.&#x27;</span>,
+      <span class="hljs-attr">address2</span>: <span class="hljs-string">&#x27;Suite 10011&#x27;</span>,
+      <span class="hljs-attr">city</span>: <span class="hljs-string">&#x27;Waltham&#x27;</span>,
+      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Robots Inc.&#x27;</span>,
+      <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;US&#x27;</span>,
       <span class="hljs-attr">deliverySpeed</span>: minFraud.Constants.DeliverySpeed.Expedited,
-      <span class="hljs-attr">firstName</span>: <span class="hljs-string">'Robot'</span>,
-      <span class="hljs-attr">lastName</span>: <span class="hljs-string">'Bar'</span>,
-      <span class="hljs-attr">phoneCountryCode</span>: <span class="hljs-string">'1'</span>,
-      <span class="hljs-attr">phoneNumber</span>: <span class="hljs-string">'321-321-3211'</span>,
-      <span class="hljs-attr">postal</span>: <span class="hljs-string">'12345'</span>,
-      <span class="hljs-attr">region</span>: <span class="hljs-string">'MA'</span>,
+      <span class="hljs-attr">firstName</span>: <span class="hljs-string">&#x27;Robot&#x27;</span>,
+      <span class="hljs-attr">lastName</span>: <span class="hljs-string">&#x27;Bar&#x27;</span>,
+      <span class="hljs-attr">phoneCountryCode</span>: <span class="hljs-string">&#x27;1&#x27;</span>,
+      <span class="hljs-attr">phoneNumber</span>: <span class="hljs-string">&#x27;123-456-0000&#x27;</span>,
+      <span class="hljs-attr">postal</span>: <span class="hljs-string">&#x27;12345&#x27;</span>,
+      <span class="hljs-attr">region</span>: <span class="hljs-string">&#x27;MA&#x27;</span>,
     }),
     <span class="hljs-attr">payment</span>: <span class="hljs-keyword">new</span> minFraud.Payment({
-      <span class="hljs-attr">declineCode</span>: <span class="hljs-string">'A'</span>,
+      <span class="hljs-attr">declineCode</span>: <span class="hljs-string">&#x27;A&#x27;</span>,
       <span class="hljs-attr">processor</span>: minFraud.Constants.Processor.ConceptPayments,
       <span class="hljs-attr">wasAuthorized</span>: <span class="hljs-literal">true</span>,
     }),
     <span class="hljs-attr">creditCard</span>: <span class="hljs-keyword">new</span> minFraud.CreditCard({
-      <span class="hljs-attr">avsResult</span>: <span class="hljs-string">'A'</span>,
-      <span class="hljs-attr">bankName</span>: <span class="hljs-string">'Foo Bank'</span>,
-      <span class="hljs-attr">bankPhoneCountryCode</span>: <span class="hljs-string">'1'</span>,
-      <span class="hljs-attr">bankPhoneNumber</span>: <span class="hljs-string">'123-123-1234'</span>,
-      <span class="hljs-attr">cvvResult</span>: <span class="hljs-string">'B'</span>,
-      <span class="hljs-attr">issuerIdNumber</span>: <span class="hljs-string">'123456'</span>,
-      <span class="hljs-attr">last4digits</span>: <span class="hljs-string">'1234'</span>,
-      <span class="hljs-attr">token</span>: <span class="hljs-string">'a_token'</span>,
+      <span class="hljs-attr">avsResult</span>: <span class="hljs-string">&#x27;A&#x27;</span>,
+      <span class="hljs-attr">bankName</span>: <span class="hljs-string">&#x27;Foo Bank&#x27;</span>,
+      <span class="hljs-attr">bankPhoneCountryCode</span>: <span class="hljs-string">&#x27;1&#x27;</span>,
+      <span class="hljs-attr">bankPhoneNumber</span>: <span class="hljs-string">&#x27;123-123-1234&#x27;</span>,
+      <span class="hljs-attr">cvvResult</span>: <span class="hljs-string">&#x27;B&#x27;</span>,
+      <span class="hljs-attr">issuerIdNumber</span>: <span class="hljs-string">&#x27;411111&#x27;</span>,
+      <span class="hljs-attr">last4digits</span>: <span class="hljs-string">&#x27;1234&#x27;</span>,
+      <span class="hljs-attr">token</span>: <span class="hljs-string">&#x27;a_token&#x27;</span>,
     }),
     <span class="hljs-attr">order</span>: <span class="hljs-keyword">new</span> minFraud.Order({
-      <span class="hljs-attr">affiliateId</span>: <span class="hljs-string">'robotnet'</span>,
+      <span class="hljs-attr">affiliateId</span>: <span class="hljs-string">&#x27;robotnet&#x27;</span>,
       <span class="hljs-attr">amount</span>: <span class="hljs-number">22.99</span>,
-      <span class="hljs-attr">currency</span>: <span class="hljs-string">'USD'</span>,
-      <span class="hljs-attr">discountCode</span>: <span class="hljs-string">'COUPONS'</span>,
+      <span class="hljs-attr">currency</span>: <span class="hljs-string">&#x27;USD&#x27;</span>,
+      <span class="hljs-attr">discountCode</span>: <span class="hljs-string">&#x27;COUPONS&#x27;</span>,
       <span class="hljs-attr">hasGiftMessage</span>: <span class="hljs-literal">true</span>,
       <span class="hljs-attr">isGift</span>: <span class="hljs-literal">true</span>,
-      <span class="hljs-attr">referrerUri</span>: <span class="hljs-keyword">new</span> URL(<span class="hljs-string">'https://robots.com/swarms'</span>),
-      <span class="hljs-attr">subaffiliateId</span>: <span class="hljs-string">'swarm'</span>,
+      <span class="hljs-attr">referrerUri</span>: <span class="hljs-keyword">new</span> URL(<span class="hljs-string">&#x27;https://robots.com/swarms&#x27;</span>),
+      <span class="hljs-attr">subaffiliateId</span>: <span class="hljs-string">&#x27;swarm&#x27;</span>,
     }),
     <span class="hljs-attr">shoppingCart</span>: [
       <span class="hljs-keyword">new</span> minFraud.ShoppingCartItem({
-        <span class="hljs-attr">category</span>: <span class="hljs-string">'screws'</span>,
-        <span class="hljs-attr">itemId</span>: <span class="hljs-string">'sc123'</span>,
+        <span class="hljs-attr">category</span>: <span class="hljs-string">&#x27;screws&#x27;</span>,
+        <span class="hljs-attr">itemId</span>: <span class="hljs-string">&#x27;sc123&#x27;</span>,
         <span class="hljs-attr">price</span>: <span class="hljs-number">9.99</span>,
         <span class="hljs-attr">quantity</span>: <span class="hljs-number">100</span>,
       }),
       <span class="hljs-keyword">new</span> minFraud.ShoppingCartItem({
-        <span class="hljs-attr">category</span>: <span class="hljs-string">'screws'</span>,
-        <span class="hljs-attr">itemId</span>: <span class="hljs-string">'sc123'</span>,
+        <span class="hljs-attr">category</span>: <span class="hljs-string">&#x27;screws&#x27;</span>,
+        <span class="hljs-attr">itemId</span>: <span class="hljs-string">&#x27;sc123&#x27;</span>,
         <span class="hljs-attr">price</span>: <span class="hljs-number">9.99</span>,
         <span class="hljs-attr">quantity</span>: <span class="hljs-number">100</span>,
       }),
     ],
     <span class="hljs-attr">customInputs</span>: [
-      <span class="hljs-keyword">new</span> minFraud.CustomInput(<span class="hljs-string">'key'</span>, <span class="hljs-string">'value'</span>),
-      <span class="hljs-keyword">new</span> minFraud.CustomInput(<span class="hljs-string">'key_2'</span>, <span class="hljs-literal">true</span>),
-      <span class="hljs-keyword">new</span> minFraud.CustomInput(<span class="hljs-string">'key_3'</span>, <span class="hljs-number">100</span>),
+      <span class="hljs-keyword">new</span> minFraud.CustomInput(<span class="hljs-string">&#x27;key&#x27;</span>, <span class="hljs-string">&#x27;value&#x27;</span>),
+      <span class="hljs-keyword">new</span> minFraud.CustomInput(<span class="hljs-string">&#x27;key_2&#x27;</span>, <span class="hljs-literal">true</span>),
+      <span class="hljs-keyword">new</span> minFraud.CustomInput(<span class="hljs-string">&#x27;key_3&#x27;</span>, <span class="hljs-number">100</span>),
     ]
   })
 } <span class="hljs-keyword">catch</span>(error) {
