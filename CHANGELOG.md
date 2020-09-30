@@ -1,7 +1,13 @@
 CHANGELOG
 =========
 
-1.8.0 (2020-09-30)
+1.9.0 (2020-09-30)
+------------------
+
+* Update `@maxmind/geoip2-node` to a version that supports
+  `response.ipAddress.traits.isResidentialProxy`.
+
+1.8.0 (2020-07-17)
 ------------------
 
 * Add the following new values to the `Processor` enum:
@@ -12,8 +18,6 @@ CHANGELOG
   * `Razorpay`
   * `Systempay`
 * Add `device`, `emailLocalPart`, and `shippingAddress` to subscores
-* Update `@maxmind/geoip2-node` to a version that supports
-  `response.ipAddress.traits.isResidentialProxy`.
 
 1.7.0 (2020-06-16)
 ------------------
