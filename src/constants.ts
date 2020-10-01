@@ -138,6 +138,7 @@ export enum Processor {
   Telerecargas = 'telerecargas',
   Towah = 'towah',
   TransactPro = 'transact_pro',
+  Tsys = 'tsys',
   UsaEpay = 'usa_epay',
   Vantiv = 'vantiv',
   Verepay = 'verepay',
