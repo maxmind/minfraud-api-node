@@ -154,7 +154,7 @@ export default class Transaction {
       shipping: Shipping,
     } as unknown) as typeof props;
 
-    const keys = Object.keys(propTypeMap) as Array<keyof typeof props>;
+    const keys = Object.keys(propTypeMap) as (keyof typeof props)[];
 
     for (const key of keys) {
       this.argumentCheck(props[key], propTypeMap[key], key);
