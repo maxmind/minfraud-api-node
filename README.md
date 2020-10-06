@@ -48,7 +48,7 @@ const transaction = new minFraud.Transaction({
     address: 'foo@bar.com',
     domain: 'bar.com',
   }),
-})
+});
 ```
 
 If Transaction instantiation fails, an `ArgumentError` is thrown. This is usually
@@ -248,7 +248,7 @@ try {
       new minFraud.CustomInput('key_2', true),
       new minFraud.CustomInput('key_3', 100),
     ]
-  })
+  });
 } catch(error) {
   // handle the error
 }
