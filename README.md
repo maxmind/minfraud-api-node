@@ -1,6 +1,7 @@
 # Node.js API for MaxMind minFraud Score, Insights, and Factors
 
 ## Description
+
 This package provides an API for the [MaxMind minFraud Score, Insights,
 Factors, and Report Transaction web services](https://dev.maxmind.com/minfraud/).
 
@@ -26,6 +27,7 @@ npm install @maxmind/minfraud-api-node
 Documentation for this API can be found [here](https://maxmind.github.io/minfraud-api-node/)
 
 ## Usage
+
 To use this API, first create a new `Client` object. The constructor
 takes your MaxMind account ID and license key. For example:
 
@@ -64,7 +66,6 @@ client.insights(transaction).then(insightsResponse => ...);
 
 // minFraud Factors
 client.factors(transaction).then(factorsResponse => ...);
-
 ```
 
 If the request fails, an error object will be returned in the catch in the form
@@ -105,7 +106,6 @@ See the API documentation for more details.
 
   client.reportTransaction(transactionReport).then(() => ...);
 ```
-
 
 If the request succeeds, no data is returned in the Promise.
 
