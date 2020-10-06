@@ -19,4 +19,12 @@ describe('Device()', () => {
       });
     }).not.toThrow();
   });
+
+  it('constructs without IP', () => {
+    expect(() => {
+      const device = new Device({
+        userAgent: 'foo',
+      });
+    }).not.toThrow();
+  });
 });

@@ -1,6 +1,7 @@
 # Node.js API for MaxMind minFraud Score, Insights, and Factors
 
 ## Description
+
 This package provides an API for the [MaxMind minFraud Score, Insights,
 Factors, and Report Transaction web services](https://dev.maxmind.com/minfraud/).
 
@@ -26,6 +27,7 @@ npm install @maxmind/minfraud-api-node
 Documentation for this API can be found [here](https://maxmind.github.io/minfraud-api-node/)
 
 ## Usage
+
 To use this API, first create a new `Client` object. The constructor
 takes your MaxMind account ID and license key. For example:
 
@@ -46,12 +48,11 @@ const transaction = new minFraud.Transaction({
     address: 'foo@bar.com',
     domain: 'bar.com',
   }),
-})
+});
 ```
 
 If Transaction instantiation fails, an `ArgumentError` is thrown. This is usually
-due to invalid property values, a missing Device object, or a Device object
- with either an invalid or missing IP Address.
+due to invalid property values.
 
 After creating the Transaction object, you can send a Score, Insights, or Factors
 request, which returns a Promise that contains the corresponding model:
@@ -65,7 +66,6 @@ client.insights(transaction).then(insightsResponse => ...);
 
 // minFraud Factors
 client.factors(transaction).then(factorsResponse => ...);
-
 ```
 
 If the request fails, an error object will be returned in the catch in the form
@@ -106,7 +106,6 @@ See the API documentation for more details.
 
   client.reportTransaction(transactionReport).then(() => ...);
 ```
-
 
 If the request succeeds, no data is returned in the Promise.
 
@@ -161,7 +160,6 @@ let transaction;
 
 try {
   transaction = new minFraud.Transaction({
-    // device is required
     device: new minFraud.Device({
       ipAddress: "81.2.69.160",
     }),
@@ -250,7 +248,7 @@ try {
       new minFraud.CustomInput('key_2', true),
       new minFraud.CustomInput('key_3', 100),
     ]
-  })
+  });
 } catch(error) {
   // handle the error
 }

@@ -6,7 +6,7 @@ interface DeviceProps {
    * The IP address associated with the device used by the customer in the
    * transaction.
    */
-  ipAddress: string;
+  ipAddress?: string;
   /**
    * The HTTP “User-Agent” header of the browser used in the transaction.
    */
@@ -33,7 +33,7 @@ interface DeviceProps {
  */
 export default class Device implements DeviceProps {
   /** @inheritDoc DeviceProps.ipAddress */
-  public ipAddress: string;
+  public ipAddress?: string;
   /** @inheritDoc DeviceProps.userAgent */
   public userAgent?: string;
   /** @inheritDoc DeviceProps.acceptLanguage */
@@ -44,12 +44,10 @@ export default class Device implements DeviceProps {
   public sessionId?: string;
 
   public constructor(device: DeviceProps) {
-    if (isIP(device.ipAddress) === 0) {
+    if (device.ipAddress != null && isIP(device.ipAddress) === 0) {
       throw new ArgumentError('`device.ipAddress` is an invalid IP address');
     }
 
-    // This is done to appease TypeScript - strict
-    this.ipAddress = device.ipAddress;
     Object.assign(this, device);
   }
 }
