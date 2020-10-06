@@ -50,8 +50,7 @@ const transaction = new minFraud.Transaction({
 ```
 
 If Transaction instantiation fails, an `ArgumentError` is thrown. This is usually
-due to invalid property values, a missing Device object, or a Device object
- with either an invalid or missing IP Address.
+due to invalid property values.
 
 After creating the Transaction object, you can send a Score, Insights, or Factors
 request, which returns a Promise that contains the corresponding model:
@@ -161,7 +160,6 @@ let transaction;
 
 try {
   transaction = new minFraud.Transaction({
-    // device is required
     device: new minFraud.Device({
       ipAddress: "81.2.69.160",
     }),
