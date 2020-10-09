@@ -32,7 +32,7 @@ interface TransactionProps {
   /**
    * Information about the device used in the transaction.
    */
-  device: Device;
+  device?: Device;
   /**
    * Information about the email used in the transaction.
    */
@@ -72,7 +72,7 @@ export default class Transaction {
   /** @inheritDoc TransactionProps.customInputs */
   public customInputs?: any;
   /** @inheritDoc TransactionProps.device */
-  public device: Device;
+  public device?: Device;
   /** @inheritDoc TransactionProps.email */
   public email?: Email;
   /** @inheritDoc TransactionProps.event */
@@ -88,9 +88,6 @@ export default class Transaction {
 
   public constructor(transaction: TransactionProps) {
     this.ensureTypes(transaction);
-
-    // This is done to appease TypeScript - strict
-    this.device = transaction.device;
 
     Object.assign(this, transaction);
 
@@ -142,11 +139,12 @@ export default class Transaction {
   }
 
   private checkRegularProps(props: TransactionProps) {
-    // Excludes device, and array props (customInputs, shoppingCart)
+    // Excludes array props (customInputs, shoppingCart)
     const propTypeMap = ({
       account: Account,
       billing: Billing,
       creditCard: CreditCard,
+      device: Device,
       email: Email,
       event: Event,
       order: Order,
@@ -154,7 +152,7 @@ export default class Transaction {
       shipping: Shipping,
     } as unknown) as typeof props;
 
-    const keys = Object.keys(propTypeMap) as Array<keyof typeof props>;
+    const keys = Object.keys(propTypeMap) as (keyof typeof props)[];
 
     for (const key of keys) {
       this.argumentCheck(props[key], propTypeMap[key], key);
@@ -184,10 +182,6 @@ export default class Transaction {
   }
 
   private ensureTypes(props: TransactionProps) {
-    if (!props.device || !(props.device instanceof Device)) {
-      throw new ArgumentError('`device` needs to be an instance of Device');
-    }
-
     this.checkRegularProps(props);
     this.checkArrayProps(props);
   }

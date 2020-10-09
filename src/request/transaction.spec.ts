@@ -15,14 +15,13 @@ import ShoppingCartItem from './shopping-cart-item';
 import Transaction from './transaction';
 
 describe('Transaction()', () => {
-  it('throws an error if `device` is not defined', () => {
+  it('does not throw an error if `device` is not defined', () => {
     const test = () =>
       new Transaction({
         // @ts-ignore
         device: undefined,
       });
-    expect(test).toThrowError(ArgumentError);
-    expect(test).toThrowError('instance of Device');
+    expect(test).not.toThrow();
   });
 
   it('throws an error if `device` is not an instance of Device', () => {
@@ -88,6 +87,16 @@ describe('Transaction()', () => {
       const test = new Transaction({
         device: new Device({
           ipAddress: '1.1.1.1',
+        }),
+      });
+    }).not.toThrow();
+  });
+
+  it('constructs without device', () => {
+    expect(() => {
+      const test = new Transaction({
+        account: new Account({
+          username: 'foo',
         }),
       });
     }).not.toThrow();

@@ -5,6 +5,7 @@ CHANGELOG
 ------------------
 
 * Added `Tsys` to the `Processor` enum.
+* The device IP address is no longer a required input.
 
 1.9.0 (2020-09-30)
 ------------------
