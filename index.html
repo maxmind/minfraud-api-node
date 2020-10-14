@@ -104,10 +104,9 @@
     <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;foo@bar.com&#x27;</span>,
     <span class="hljs-attr">domain</span>: <span class="hljs-string">&#x27;bar.com&#x27;</span>,
   }),
-})</code></pre>
+});</code></pre>
 				<p>If Transaction instantiation fails, an <code>ArgumentError</code> is thrown. This is usually
-					due to invalid property values, a missing Device object, or a Device object
-				with either an invalid or missing IP Address.</p>
+				due to invalid property values.</p>
 				<p>After creating the Transaction object, you can send a Score, Insights, or Factors
 				request, which returns a Promise that contains the corresponding model:</p>
 				<pre><code class="language-js"><span class="hljs-comment">// minFraud Score</span>
@@ -117,8 +116,7 @@ client.score(transaction).then(<span class="hljs-function"><span class="hljs-par
 client.insights(transaction).then(<span class="hljs-function"><span class="hljs-params">insightsResponse</span> =&gt;</span> ...);
 
 <span class="hljs-comment">// minFraud Factors</span>
-client.factors(transaction).then(<span class="hljs-function"><span class="hljs-params">factorsResponse</span> =&gt;</span> ...);
-</code></pre>
+client.factors(transaction).then(<span class="hljs-function"><span class="hljs-params">factorsResponse</span> =&gt;</span> ...);</code></pre>
 				<p>If the request fails, an error object will be returned in the catch in the form
 				of:</p>
 				<pre><code class="language-js">{
@@ -195,7 +193,6 @@ client.factors(transaction).then(<span class="hljs-function"><span class="hljs-p
 
 <span class="hljs-keyword">try</span> {
   transaction = <span class="hljs-keyword">new</span> minFraud.Transaction({
-    <span class="hljs-comment">// device is required</span>
     <span class="hljs-attr">device</span>: <span class="hljs-keyword">new</span> minFraud.Device({
       <span class="hljs-attr">ipAddress</span>: <span class="hljs-string">&quot;81.2.69.160&quot;</span>,
     }),
@@ -284,7 +281,7 @@ client.factors(transaction).then(<span class="hljs-function"><span class="hljs-p
       <span class="hljs-keyword">new</span> minFraud.CustomInput(<span class="hljs-string">&#x27;key_2&#x27;</span>, <span class="hljs-literal">true</span>),
       <span class="hljs-keyword">new</span> minFraud.CustomInput(<span class="hljs-string">&#x27;key_3&#x27;</span>, <span class="hljs-number">100</span>),
     ]
-  })
+  });
 } <span class="hljs-keyword">catch</span>(error) {
   <span class="hljs-comment">// handle the error</span>
 }
