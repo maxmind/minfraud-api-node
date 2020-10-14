@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-1.10.0
+1.10.0 (2020-10-14)
 ------------------
 
 * Added `Tsys` to the `Processor` enum.
