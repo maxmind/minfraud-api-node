@@ -48,11 +48,11 @@ export interface IpAddress extends Insights {
    * Country object for the requested IP address. This record represents the
    * country where MaxMind believes the IP is located.
    */
-  readonly country: GeoIPCountry;
+  readonly country?: GeoIPCountry;
   /**
    * Location object for the requested IP address.
    */
-  readonly location: GeoIPLocation;
+  readonly location?: GeoIPLocation;
   /**
    * Gets the MaxMind record containing data related to your account
    */
