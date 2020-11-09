@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.0.0 (2020-11-09)
+------------------
+
+### Breaking change
+`country` and `location` insights values return undefined instead of {} when empty.
+
 1.10.0 (2020-10-14)
 ------------------
 
