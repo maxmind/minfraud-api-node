@@ -33,7 +33,7 @@
     "lint-staged": "^10.0.0",
     "lodash.clonedeep": "^4.5.0",
     "nock": "^13.0.2",
-    "np": "^6.1.0",
+    "np": "^7.0.0",
     "prettier": "^2.0.2",
     "ts-jest": "^26.4.1",
     "tslint": "^6.1.3",
