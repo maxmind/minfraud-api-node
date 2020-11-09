@@ -68,13 +68,13 @@ export default class Insights extends Score {
   ): records.IpAddress {
     const insights = new GeoInsights(response.ip_address) as records.IpAddress;
 
-    insights.country.isHighRisk = response.ip_address.country
-      ? response.ip_address.country.is_high_risk
-      : undefined;
+    if (insights.country && response.ip_address.country) {
+      insights.country.isHighRisk = response.ip_address.country.is_high_risk;
+    }
 
-    insights.location.localTime = response.ip_address.location
-      ? response.ip_address.location.local_time
-      : undefined;
+    if (insights.location && response.ip_address.location) {
+      insights.location.localTime = response.ip_address.location.local_time;
+    }
 
     insights.risk = response.ip_address.risk;
 

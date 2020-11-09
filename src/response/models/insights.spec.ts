@@ -10,7 +10,7 @@ describe('Insights()', () => {
 
     const model = new Insights(input);
 
-    expect(model.ipAddress.country.isHighRisk).toBeUndefined();
+    expect(model.ipAddress.country).toBeUndefined();
   });
 
   it('handles empty location responses', () => {
@@ -20,7 +20,7 @@ describe('Insights()', () => {
 
     const model = new Insights(input);
 
-    expect(model.ipAddress.location.localTime).toBeUndefined();
+    expect(model.ipAddress.location).toBeUndefined();
   });
 
   it('allows /email/domain/first_seen to be accessed', () => {
