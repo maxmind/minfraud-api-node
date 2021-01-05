@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2.1.0
+------------------
+
+* Added `ApplePay` and `ApsPayments` to the `Processor` enum.
+
 2.0.0 (2020-11-09)
 ------------------
 
