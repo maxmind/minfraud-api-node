@@ -477,9 +477,9 @@
     chalk "^4.0.0"
 
 "@maxmind/geoip2-node@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-2.0.1.tgz#21ea31be058caa80c23924e6c37d8f479ddd3ede"
-  integrity sha512-6V3Y6jEAazQbwVi1M22C/jD6WsITMdr+hVVzCPk5TTB2h3wJYbc4orEGVsvdbZZRr8j8YsWHr6vLNqMiMzK4mQ==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-2.1.0.tgz#9b311ee80b265daf5f59b9a69bb70d6f7e0be15f"
+  integrity sha512-mN7YRe1gwEt0PXC9gv3xChRvsFq226HgngEadTUtpK84+R8t5bc5IFiC4YJz+ogIpWBUuQBeekqpuWcWT4HYdg==
   dependencies:
     camelcase-keys "^6.0.1"
     ip6addr "^0.2.3"
