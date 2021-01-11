@@ -58,7 +58,12 @@ export default class WebServiceClient {
     path: servicePath,
     postData: string,
     modelClass?: any
-  ): Promise<T> {
+  ): Promise<T>;
+  private responseFor<T>(
+    path: servicePath,
+    postData: string,
+    modelClass?: any
+  ): Promise<void> {
     const parsedPath = `/minfraud/v2.0/${path}`;
     const url = `https://${this.host}${parsedPath}`;
 
