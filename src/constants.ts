@@ -24,6 +24,8 @@ export enum Processor {
   Altapay = 'altapay',
   AmazonPayments = 'amazon_payments',
   AmericanExpressPaymentGateway = 'american_express_payment_gateway',
+  ApplePay = 'apple_pay',
+  ApsPayments = 'aps_payments',
   Authorizenet = 'authorizenet',
   Balanced = 'balanced',
   Beanstream = 'beanstream',
