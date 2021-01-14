@@ -123,11 +123,11 @@ form of:
 ## Errors and Exceptions
 
 Thrown by the request and transaction models:
-* `ArgumentError` - Thrown when invalid data is passed to the Transaction 
+* `ArgumentError` - Thrown when invalid data is passed to the Transaction
 and Transaction property constructors.
 
 In addition to the [response errors](https://dev.maxmind.com/minfraud/#Errors)
-returned by the web API, we also return: 
+returned by the web API, we also return:
 
 ```js
 {
