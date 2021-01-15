@@ -1,4 +1,5 @@
 import * as crypto from 'crypto';
+import * as punycode from 'punycode';
 import isEmail from 'validator/lib/isEmail';
 import isFQDN from 'validator/lib/isFQDN';
 import { ArgumentError } from '../errors';
@@ -12,6 +13,11 @@ interface EmailProps {
    * The domain of the email address.
    */
   domain?: string;
+  /**
+   * By default, the address will be sent in plain text. If this is set
+   * true, the address will instead be sent as an MD5 hash.
+   */
+  hashAddress?: boolean;
 }
 
 /**
@@ -19,11 +25,25 @@ interface EmailProps {
  */
 export default class Email implements EmailProps {
   /**
-   * The MD5 generated from the email address.
+   * The email address, or the MD5 generated from the email address if
+   * hashAddress is true.
    */
   public address?: string;
   /** @inheritDoc EmailProps.domain */
   public domain?: string;
+
+  private static readonly typoDomains: { [key: string]: string } = {
+    // gmail.com
+    '35gmai.com': 'gmail.com',
+    '636gmail.com': 'gmail.com',
+    'gamil.com': 'gmail.com',
+    'gmail.comu': 'gmail.com',
+    'gmial.com': 'gmail.com',
+    'gmil.com': 'gmail.com',
+    'yahoogmail.com': 'gmail.com',
+    // outlook.com
+    'putlook.com': 'outlook.com',
+  };
 
   public constructor(email: EmailProps) {
     if (email.address != null && !isEmail(email.address)) {
@@ -34,16 +54,59 @@ export default class Email implements EmailProps {
       throw new ArgumentError('`email.domain` is an invalid domain');
     }
 
-    this.address = email.address
-      ? crypto
+    if (email.address) {
+      if (email.hashAddress) {
+        this.address = crypto
           .createHash('md5')
-          .update(email.address.toLowerCase())
-          .digest('hex')
-      : undefined;
+          .update(this.cleanEmailAddress(email.address))
+          .digest('hex');
+      } else {
+        this.address = email.address;
+      }
+    }
+
     this.domain = email.domain;
 
     if (email.domain == null && email.address != null) {
       this.domain = email.address.substring(email.address.indexOf('@') + 1);
     }
+  }
+
+  private cleanEmailAddress(address: string) {
+    address = address.trim().toLowerCase();
+
+    const atIndex = address.lastIndexOf('@');
+
+    // We don't need to check that there is an @ or if it's the last index
+    // because validation rejects those cases.
+
+    let localPart = address.substring(0, atIndex);
+    let domain = address.substring(atIndex + 1);
+
+    domain = this.cleanDomain(domain);
+
+    const separator = domain === 'yahoo.com' ? '-' : '+';
+    const separatorIndex = localPart.indexOf(separator);
+    if (separatorIndex > 0) {
+      localPart = localPart.substring(0, separatorIndex);
+    }
+
+    return localPart + '@' + domain;
+  }
+
+  private cleanDomain(domain: string) {
+    // We don't need to trim the domain as if it has any leading whitespace
+    // validation rejects it as invalid.
+
+    // We don't need to strip a trailing '.' because validation rejects domains
+    // that have it.
+
+    domain = punycode.toASCII(domain);
+
+    if (Email.typoDomains.hasOwnProperty(domain)) {
+      domain = Email.typoDomains[domain];
+    }
+
+    return domain;
   }
 }

@@ -1,10 +1,20 @@
 CHANGELOG
 =========
 
-2.1.0
+3.0.0
 ------------------
 
 * Added `ApplePay` and `ApsPayments` to the `Processor` enum.
+* Added additional normalizing of the email address when it is sent as an
+  MD5 hash instead of plain text.
+
+### Breaking change
+The email address field is now sent to the web service in plain text unless
+you enable the new `hashAddress` option on `EmailProps`. Enabling this
+option sends the MD5 hash of the address to the web service instead.
+Previously the address was always sent as an MD5 hash. The new default
+behavior matches that of other official minFraud API clients. Note the
+email domain is always sent in plain text.
 
 2.0.0 (2020-11-09)
 ------------------
