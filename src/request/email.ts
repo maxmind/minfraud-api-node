@@ -12,6 +12,11 @@ interface EmailProps {
    * The domain of the email address.
    */
   domain?: string;
+  /**
+   * By default, the address will be sent in plain text. If this is set
+   * true, the address will instead be sent as an MD5 hash.
+   */
+  hashAddress?: boolean;
 }
 
 /**
@@ -19,7 +24,8 @@ interface EmailProps {
  */
 export default class Email implements EmailProps {
   /**
-   * The MD5 generated from the email address.
+   * The email address, or the MD5 generated from the email address if
+   * hashAddress is true.
    */
   public address?: string;
   /** @inheritDoc EmailProps.domain */
@@ -34,12 +40,17 @@ export default class Email implements EmailProps {
       throw new ArgumentError('`email.domain` is an invalid domain');
     }
 
-    this.address = email.address
-      ? crypto
+    if (email.address) {
+      if (email.hashAddress) {
+        this.address = crypto
           .createHash('md5')
           .update(email.address.toLowerCase())
-          .digest('hex')
-      : undefined;
+          .digest('hex');
+      } else {
+        this.address = email.address;
+      }
+    }
+
     this.domain = email.domain;
 
     if (email.domain == null && email.address != null) {

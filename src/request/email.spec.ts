@@ -37,13 +37,25 @@ describe('Email()', () => {
     }).not.toThrow();
   });
 
-  it('hashes email.address', () => {
+  it('sets email.address', () => {
     const email = new Email({
       address: 'foo@bar.com',
       domain: 'bar.com',
     });
 
+    expect(email.address).toBe('foo@bar.com');
+    expect(email.domain).toBe('bar.com');
+  });
+
+  it('hashes email.address', () => {
+    const email = new Email({
+      address: 'foo@bar.com',
+      domain: 'bar.com',
+      hashAddress: true,
+    });
+
     expect(email.address).toBe('f3ada405ce890b6f8204094deb12d8a8');
+    expect(email.domain).toBe('bar.com');
   });
 
   it('sets email.domain if email.address is given', () => {
