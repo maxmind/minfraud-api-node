@@ -5,6 +5,8 @@ CHANGELOG
 ------------------
 
 * Added `ApplePay` and `ApsPayments` to the `Processor` enum.
+* Added additional normalizing of the email address when it is sent as an
+  MD5 hash instead of plain text.
 
 ### Breaking change
 The email address field is now sent to the web service in plain text unless

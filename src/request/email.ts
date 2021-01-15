@@ -1,4 +1,5 @@
 import * as crypto from 'crypto';
+import * as punycode from 'punycode';
 import isEmail from 'validator/lib/isEmail';
 import isFQDN from 'validator/lib/isFQDN';
 import { ArgumentError } from '../errors';
@@ -31,6 +32,19 @@ export default class Email implements EmailProps {
   /** @inheritDoc EmailProps.domain */
   public domain?: string;
 
+  private static readonly typoDomains: { [key: string]: string } = {
+    // gmail.com
+    '35gmai.com': 'gmail.com',
+    '636gmail.com': 'gmail.com',
+    'gamil.com': 'gmail.com',
+    'gmail.comu': 'gmail.com',
+    'gmial.com': 'gmail.com',
+    'gmil.com': 'gmail.com',
+    'yahoogmail.com': 'gmail.com',
+    // outlook.com
+    'putlook.com': 'outlook.com',
+  };
+
   public constructor(email: EmailProps) {
     if (email.address != null && !isEmail(email.address)) {
       throw new ArgumentError('`email.address` is an invalid email address');
@@ -44,7 +58,7 @@ export default class Email implements EmailProps {
       if (email.hashAddress) {
         this.address = crypto
           .createHash('md5')
-          .update(email.address.toLowerCase())
+          .update(this.cleanEmailAddress(email.address))
           .digest('hex');
       } else {
         this.address = email.address;
@@ -56,5 +70,43 @@ export default class Email implements EmailProps {
     if (email.domain == null && email.address != null) {
       this.domain = email.address.substring(email.address.indexOf('@') + 1);
     }
+  }
+
+  private cleanEmailAddress(address: string) {
+    address = address.trim().toLowerCase();
+
+    const atIndex = address.lastIndexOf('@');
+
+    // We don't need to check that there is an @ or if it's the last index
+    // because validation rejects those cases.
+
+    let localPart = address.substring(0, atIndex);
+    let domain = address.substring(atIndex + 1);
+
+    domain = this.cleanDomain(domain);
+
+    const separator = domain === 'yahoo.com' ? '-' : '+';
+    const separatorIndex = localPart.indexOf(separator);
+    if (separatorIndex > 0) {
+      localPart = localPart.substring(0, separatorIndex);
+    }
+
+    return localPart + '@' + domain;
+  }
+
+  private cleanDomain(domain: string) {
+    // We don't need to trim the domain as if it has any leading whitespace
+    // validation rejects it as invalid.
+
+    // We don't need to strip a trailing '.' because validation rejects domains
+    // that have it.
+
+    domain = punycode.toASCII(domain);
+
+    if (Email.typoDomains.hasOwnProperty(domain)) {
+      domain = Email.typoDomains[domain];
+    }
+
+    return domain;
   }
 }
