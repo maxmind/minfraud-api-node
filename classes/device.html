@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for @maxmind/minfraud-api-node">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -40,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -53,7 +52,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../globals.html">Globals</a>
+					<a href="../modules.html">@maxmind/minfraud-api-node</a>
 				</li>
 				<li>
 					<a href="device.html">Device</a>
@@ -69,11 +68,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The device information for the transaction being sent to the web service.
-							This object contains information about the device that MaxMind believes is
-							associated with the IP address passed in the request. In order to receive
-							device output from minFraud Insights or minFraud Factors, you must be using
-						the Device Tracking Add-on.</p>
+						<p>The device information for the transaction being sent to the web service.</p>
 					</div>
 				</div>
 			</section>
@@ -88,7 +83,7 @@
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/deviceprops.html" class="tsd-signature-type">DeviceProps</a></li>
+					<li><span class="tsd-signature-type">DeviceProps</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -105,11 +100,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#acceptlanguage" class="tsd-kind-icon">accept<wbr>Language</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#confidence" class="tsd-kind-icon">confidence</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#id" class="tsd-kind-icon">id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#ipaddress" class="tsd-kind-icon">ip<wbr>Address</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#lastseen" class="tsd-kind-icon">last<wbr>Seen</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#localtime" class="tsd-kind-icon">local<wbr>Time</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#sessionage" class="tsd-kind-icon">session<wbr>Age</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#sessionid" class="tsd-kind-icon">session<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#useragent" class="tsd-kind-icon">user<wbr>Agent</a></li>
@@ -124,22 +115,22 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Device<span class="tsd-signature-symbol">(</span>device<span class="tsd-signature-symbol">: </span><a href="../interfaces/deviceprops.html" class="tsd-signature-type">DeviceProps</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="device.html" class="tsd-signature-type">Device</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Device<span class="tsd-signature-symbol">(</span>device<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DeviceProps</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="device.html" class="tsd-signature-type" data-tsd-kind="Class">Device</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/device.ts#L44">src/request/device.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/device.ts#L44">request/device.ts:44</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>device: <a href="../interfaces/deviceprops.html" class="tsd-signature-type">DeviceProps</a></h5>
+									<h5>device: <span class="tsd-signature-type">DeviceProps</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="device.html" class="tsd-signature-type">Device</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="device.html" class="tsd-signature-type" data-tsd-kind="Class">Device</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -151,52 +142,16 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> accept<wbr>Language</h3>
 					<div class="tsd-signature tsd-kind-icon">accept<wbr>Language<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/deviceprops.html">DeviceProps</a>.<a href="../interfaces/deviceprops.html#acceptlanguage">acceptLanguage</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/device.ts#L40">src/request/device.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/device.ts#L40">request/device.ts:40</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The HTTP “Accept-Language” header of the device used in the transaction.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="confidence" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> confidence</h3>
-					<div class="tsd-signature tsd-kind-icon">confidence<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/response/records.ts#L154">src/response/records.ts:154</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>A number representing the confidence that the <code>deviceId</code> refers to a unique
-								device as opposed to a cluster of similar devices. A confidence of 0.01
-								indicates very low confidence that the device is unique, whereas 99
-							indicates very high confidence.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="id" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> id</h3>
-					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/response/records.ts#L162">src/response/records.ts:162</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>A UUID that MaxMind uses for the device associated with this IP address.
-								Note that many devices cannot be uniquely identified because they are too
-								common (for example, all iPhones of a given model and OS release). In
-								these cases, the minFraud service will simply not return a UUID for that
-							device.</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>inheritdoc</dt>
+							<dd><p>DeviceProps.acceptLanguage</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -204,48 +159,16 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> ip<wbr>Address</h3>
 					<div class="tsd-signature tsd-kind-icon">ip<wbr>Address<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/deviceprops.html">DeviceProps</a>.<a href="../interfaces/deviceprops.html#ipaddress">ipAddress</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/device.ts#L36">src/request/device.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/device.ts#L36">request/device.ts:36</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The IP address associated with the device used by the customer in the
-							transaction.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="lastseen" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> last<wbr>Seen</h3>
-					<div class="tsd-signature tsd-kind-icon">last<wbr>Seen<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/response/records.ts#L166">src/response/records.ts:166</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The date and time of the last sighting of the device.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="localtime" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> local<wbr>Time</h3>
-					<div class="tsd-signature tsd-kind-icon">local<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/response/records.ts#L172">src/response/records.ts:172</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The local date and time of the transaction in the time zone of the device.
-								This is determined by using the UTC offset associated with the device.
-							This is an RFC 3339 date-time</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>inheritdoc</dt>
+							<dd><p>DeviceProps.ipAddress</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -253,17 +176,16 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> session<wbr>Age</h3>
 					<div class="tsd-signature tsd-kind-icon">session<wbr>Age<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/deviceprops.html">DeviceProps</a>.<a href="../interfaces/deviceprops.html#sessionage">sessionAge</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/device.ts#L42">src/request/device.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/device.ts#L42">request/device.ts:42</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The number of seconds between the creation of the user&#39;s session and the
-								time of the transaction. Note that sessionAge is not the duration of the
-							current visit, but the time since the start of the first visit.</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>inheritdoc</dt>
+							<dd><p>DeviceProps.sessionAge</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -271,16 +193,16 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> session<wbr>Id</h3>
 					<div class="tsd-signature tsd-kind-icon">session<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/deviceprops.html">DeviceProps</a>.<a href="../interfaces/deviceprops.html#sessionid">sessionId</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/device.ts#L44">src/request/device.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/device.ts#L44">request/device.ts:44</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>A string up to 255 characters in length. This is an ID that uniquely
-							identifies a visitor&#39;s session on the site.</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>inheritdoc</dt>
+							<dd><p>DeviceProps.sessionId</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -288,15 +210,16 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> user<wbr>Agent</h3>
 					<div class="tsd-signature tsd-kind-icon">user<wbr>Agent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/deviceprops.html">DeviceProps</a>.<a href="../interfaces/deviceprops.html#useragent">userAgent</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/device.ts#L38">src/request/device.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/device.ts#L38">request/device.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The HTTP “User-Agent” header of the browser used in the transaction.</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>inheritdoc</dt>
+							<dd><p>DeviceProps.userAgent</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 			</section>
@@ -304,13 +227,28 @@
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="../globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="account.html" class="tsd-kind-icon">Account</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="billing.html" class="tsd-kind-icon">Billing</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="client.html" class="tsd-kind-icon">Client</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="creditcard.html" class="tsd-kind-icon">Credit<wbr>Card</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="custominput.html" class="tsd-kind-icon">Custom<wbr>Input</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -323,19 +261,7 @@
 								<a href="device.html#acceptlanguage" class="tsd-kind-icon">accept<wbr>Language</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="device.html#confidence" class="tsd-kind-icon">confidence</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="device.html#id" class="tsd-kind-icon">id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="device.html#ipaddress" class="tsd-kind-icon">ip<wbr>Address</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="device.html#lastseen" class="tsd-kind-icon">last<wbr>Seen</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="device.html#localtime" class="tsd-kind-icon">local<wbr>Time</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="device.html#sessionage" class="tsd-kind-icon">session<wbr>Age</a>
@@ -350,6 +276,30 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="email.html" class="tsd-kind-icon">Email</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="event.html" class="tsd-kind-icon">Event</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="order.html" class="tsd-kind-icon">Order</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="payment.html" class="tsd-kind-icon">Payment</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="shipping.html" class="tsd-kind-icon">Shipping</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="shoppingcartitem.html" class="tsd-kind-icon">Shopping<wbr>Cart<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="transaction.html" class="tsd-kind-icon">Transaction</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="transactionreport.html" class="tsd-kind-icon">Transaction<wbr>Report</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -367,15 +317,6 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 			</ul>
 		</div>
 	</div>

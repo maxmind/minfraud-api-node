@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for @maxmind/minfraud-api-node">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -40,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -51,12 +50,7 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
-			<h1>@maxmind/minfraud-api-node</h1>
+			<h1>Project @maxmind/minfraud-api-node</h1>
 		</div>
 	</div>
 </header>
@@ -80,9 +74,11 @@
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
-				<pre><code>yarn add @maxmind/m<span class="hljs-literal">inf</span>raud-api-<span class="hljs-keyword">node</span><span class="hljs-title"></span></code></pre>
+				<pre><code><span style="color: #001080">yarn</span><span style="color: #000000"> </span><span style="color: #001080">add</span><span style="color: #000000"> @</span><span style="color: #001080">maxmind</span><span style="color: #000000">/</span><span style="color: #001080">minfraud</span><span style="color: #000000">-</span><span style="color: #001080">api</span><span style="color: #000000">-</span><span style="color: #001080">node</span>
+</code></pre>
 				<p>If you are not able to use <code>yarn</code>, you may also use <code>npm</code>:</p>
-				<pre><code>npm install @maxmind/m<span class="hljs-literal">inf</span>raud-api-<span class="hljs-keyword">node</span><span class="hljs-title"></span></code></pre>
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> @</span><span style="color: #001080">maxmind</span><span style="color: #000000">/</span><span style="color: #001080">minfraud</span><span style="color: #000000">-</span><span style="color: #001080">api</span><span style="color: #000000">-</span><span style="color: #001080">node</span>
+</code></pre>
 				<a href="#api-documentation" id="api-documentation" style="color: inherit; text-decoration: none;">
 					<h2>API Documentation</h2>
 				</a>
@@ -92,38 +88,42 @@
 				</a>
 				<p>To use this API, first create a new <code>Client</code> object. The constructor
 				takes your MaxMind account ID and license key. For example:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> minFraud.Client(<span class="hljs-string">&quot;1234&quot;</span>, <span class="hljs-string">&quot;LICENSEKEY&quot;</span>);</code></pre>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Client</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;1234&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;LICENSEKEY&quot;</span><span style="color: #000000">);</span>
+</code></pre>
 				<p>Then create a new <code>Transaction</code> object. This represents the transaction that
 					you are sending to minFraud. Each transaction property is instantiated by creating
 				a new instance of each property&#39;s class.  For example:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">new</span> minFraud.Transaction({
-  <span class="hljs-attr">device</span>: <span class="hljs-keyword">new</span> minFraud.Device({
-    <span class="hljs-attr">ipAddress</span>: <span class="hljs-string">&#x27;81.2.69.160&#x27;</span>,
-  }),
-  <span class="hljs-attr">email</span>: <span class="hljs-keyword">new</span> minFraud.Email({
-    <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;foo@bar.com&#x27;</span>,
-    <span class="hljs-attr">domain</span>: <span class="hljs-string">&#x27;bar.com&#x27;</span>,
-  }),
-});</code></pre>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">transaction</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Transaction</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">device:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Device</span><span style="color: #000000">({</span>
+<span style="color: #000000">    </span><span style="color: #001080">ipAddress:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;81.2.69.160&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  }),</span>
+<span style="color: #000000">  </span><span style="color: #001080">email:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Email</span><span style="color: #000000">({</span>
+<span style="color: #000000">    </span><span style="color: #001080">address:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;foo@bar.com&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">domain:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;bar.com&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  }),</span>
+<span style="color: #000000">});</span>
+</code></pre>
 				<p>If Transaction instantiation fails, an <code>ArgumentError</code> is thrown. This is usually
 				due to invalid property values.</p>
 				<p>After creating the Transaction object, you can send a Score, Insights, or Factors
 				request, which returns a Promise that contains the corresponding model:</p>
-				<pre><code class="language-js"><span class="hljs-comment">// minFraud Score</span>
-client.score(transaction).then(<span class="hljs-function"><span class="hljs-params">scoreResponse</span> =&gt;</span> ...);
+				<pre><code class="language-js"><span style="color: #008000">// minFraud Score</span>
+<span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">score</span><span style="color: #000000">(</span><span style="color: #001080">transaction</span><span style="color: #000000">).</span><span style="color: #795E26">then</span><span style="color: #000000">(</span><span style="color: #001080">scoreResponse</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> ...);</span>
 
-<span class="hljs-comment">// minFraud Insights</span>
-client.insights(transaction).then(<span class="hljs-function"><span class="hljs-params">insightsResponse</span> =&gt;</span> ...);
+<span style="color: #008000">// minFraud Insights</span>
+<span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">insights</span><span style="color: #000000">(</span><span style="color: #001080">transaction</span><span style="color: #000000">).</span><span style="color: #795E26">then</span><span style="color: #000000">(</span><span style="color: #001080">insightsResponse</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> ...);</span>
 
-<span class="hljs-comment">// minFraud Factors</span>
-client.factors(transaction).then(<span class="hljs-function"><span class="hljs-params">factorsResponse</span> =&gt;</span> ...);</code></pre>
+<span style="color: #008000">// minFraud Factors</span>
+<span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">factors</span><span style="color: #000000">(</span><span style="color: #001080">transaction</span><span style="color: #000000">).</span><span style="color: #795E26">then</span><span style="color: #000000">(</span><span style="color: #001080">factorsResponse</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> ...);</span>
+</code></pre>
 				<p>If the request fails, an error object will be returned in the catch in the form
 				of:</p>
-				<pre><code class="language-js">{
-  <span class="hljs-attr">code</span>: string
-  <span class="hljs-attr">error</span>: string
-  <span class="hljs-attr">url</span>: string
-}</code></pre>
+				<pre><code class="language-js"><span style="color: #000000">{</span>
+<span style="color: #000000">  code: </span><span style="color: #001080">string</span>
+<span style="color: #000000">  error: </span><span style="color: #001080">string</span>
+<span style="color: #000000">  url: </span><span style="color: #001080">string</span>
+<span style="color: #000000">}</span>
+</code></pre>
 				<a href="#reporting-a-transaction-using-the-report-transactions-api" id="reporting-a-transaction-using-the-report-transactions-api" style="color: inherit; text-decoration: none;">
 					<h3>Reporting a transaction using the Report Transactions API</h3>
 				</a>
@@ -133,28 +133,30 @@ client.factors(transaction).then(<span class="hljs-function"><span class="hljs-p
 					IP address and a valid tag are required key values.  Additional key values may
 				also be set, as documented below.</p>
 				<p>See the API documentation for more details.</p>
-				<pre><code class="language-js">  const transactionReport = new minFraud.TransactionReport({
-    ipAddress: &#x27;81.2.69.160&#x27;,
-    tag: minFraud.Constants.Tag.NOT_FRAUD,
+				<pre><code class="language-js"><span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">transactionReport</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">TransactionReport</span><span style="color: #000000">({</span>
+<span style="color: #000000">    </span><span style="color: #001080">ipAddress:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;81.2.69.160&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">tag:</span><span style="color: #000000"> </span><span style="color: #001080">minFraud</span><span style="color: #000000">.</span><span style="color: #001080">Constants</span><span style="color: #000000">.</span><span style="color: #001080">Tag</span><span style="color: #000000">.</span><span style="color: #0070C1">NOT_FRAUD</span><span style="color: #000000">,</span>
 
-    // The following key/values are not mandatory but are encouraged
-    chargebackCode: &#x27;the string provided by your payment processor indicating
-    the reason for the chargeback&#x27;,
-    maxmindId: &#x27;12345678&#x27;,
-    minfraudId: &#x27;58fa38d8-4b87-458b-a22b-f00eda1aa20d&#x27;,
-    notes: &#x27;some notes&#x27;,
-    transactionId: &#x27;the transaction ID you originally passed to minFraud&#x27;,
-  });
+<span style="color: #000000">    </span><span style="color: #008000">// The following key/values are not mandatory but are encouraged</span>
+<span style="color: #000000">    </span><span style="color: #001080">chargebackCode:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;the string provided by your payment processor indicatin</span><span style="color: #CD3131">g</span>
+<span style="color: #000000">    </span><span style="color: #001080">the</span><span style="color: #000000"> </span><span style="color: #001080">reason</span><span style="color: #000000"> </span><span style="color: #001080">for</span><span style="color: #000000"> </span><span style="color: #001080">the</span><span style="color: #000000"> </span><span style="color: #001080">chargeback</span><span style="color: #A31515">&#039;</span><span style="color: #CD3131">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">maxmindId</span><span style="color: #000000">: </span><span style="color: #A31515">&#039;12345678&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">minfraudId:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;58fa38d8-4b87-458b-a22b-f00eda1aa20d&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">notes:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;some notes&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">transactionId:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;the transaction ID you originally passed to minFraud&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  });</span>
 
-  client.reportTransaction(transactionReport).then(() =&gt; ...);</code></pre>
+<span style="color: #000000">  </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">reportTransaction</span><span style="color: #000000">(</span><span style="color: #001080">transactionReport</span><span style="color: #000000">).</span><span style="color: #795E26">then</span><span style="color: #000000">(() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> ...);</span>
+</code></pre>
 				<p>If the request succeeds, no data is returned in the Promise.</p>
 				<p>If the request fails, an error object will be returned in the catch in the
 				form of:</p>
-				<pre><code class="language-js">{
-  <span class="hljs-attr">code</span>: string
-  <span class="hljs-attr">error</span>: string
-  <span class="hljs-attr">url</span>: string
-}</code></pre>
+				<pre><code class="language-js"><span style="color: #000000">{</span>
+<span style="color: #000000">  code: </span><span style="color: #001080">string</span>
+<span style="color: #000000">  error: </span><span style="color: #001080">string</span>
+<span style="color: #000000">  url: </span><span style="color: #001080">string</span>
+<span style="color: #000000">}</span>
+</code></pre>
 				<a href="#errors-and-exceptions" id="errors-and-exceptions" style="color: inherit; text-decoration: none;">
 					<h2>Errors and Exceptions</h2>
 				</a>
@@ -164,132 +166,134 @@ client.factors(transaction).then(<span class="hljs-function"><span class="hljs-p
 					and Transaction property constructors.</li>
 				</ul>
 				<p>In addition to the <a href="https://dev.maxmind.com/minfraud/#Errors">response errors</a>
-				returned by the web API, we also return: </p>
-				<pre><code class="language-js">{
-  <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;SERVER_ERROR&#x27;</span>,
-  <span class="hljs-attr">error</span>: &lt;string&gt;
-}
+				returned by the web API, we also return:</p>
+				<pre><code class="language-js"><span style="color: #000000">{</span>
+<span style="color: #000000">  code: </span><span style="color: #A31515">&#039;SERVER_ERROR&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  error: </span><span style="color: #800000">&lt;string&gt;</span>
+<span style="color: #000000">}</span>
 
-{
-  <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;HTTP_STATUS_CODE_ERROR&#x27;</span>,
-  <span class="hljs-attr">error</span>: &lt;string&gt;
-}
+<span style="color: #0000FF">{</span>
+<span style="color: #000000FF">  </span><span style="color: #001080">code</span><span style="color: #000000FF">: </span><span style="color: #A31515">&#039;HTTP_STATUS_CODE_ERROR&#039;</span><span style="color: #000000FF">,</span>
+<span style="color: #000000FF">  </span><span style="color: #001080">error</span><span style="color: #000000FF">: </span><span style="color: #800000">&lt;string&gt;</span>
+<span style="color: #000000FF">}</span>
 
-{
-  <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;INVALID_RESPONSE_BODY&#x27;</span>,
-  <span class="hljs-attr">error</span>: &lt;string&gt;
-}</code></pre>
+<span style="color: #0000FF">{</span>
+<span style="color: #000000FF">  </span><span style="color: #001080">code</span><span style="color: #000000FF">: </span><span style="color: #A31515">&#039;INVALID_RESPONSE_BODY&#039;</span><span style="color: #000000FF">,</span>
+<span style="color: #000000FF">  </span><span style="color: #001080">error</span><span style="color: #000000FF">: </span><span style="color: #800000">&lt;string&gt;</span>
+<span style="color: #000000FF">}</span>
+</code></pre>
 				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
 					<h2>Example</h2>
 				</a>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> { URL } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;url&#x27;</span>; <span class="hljs-comment">// Used for `order.referrerUri</span>
-<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> minFraud <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@maxmind/minfraud-api-node&#x27;</span>;
-<span class="hljs-comment">// const minFraud = require(&#x27;@maxmind/minfraud-api-node&#x27;);</span>
+				<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">URL</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;url&#039;</span><span style="color: #000000">; </span><span style="color: #008000">// Used for `order.referrerUri</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #0000FF">*</span><span style="color: #000000"> </span><span style="color: #AF00DB">as</span><span style="color: #000000"> </span><span style="color: #001080">minFraud</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@maxmind/minfraud-api-node&#039;</span><span style="color: #000000">;</span>
+<span style="color: #008000">// const minFraud = require(&#039;@maxmind/minfraud-api-node&#039;);</span>
 
-<span class="hljs-comment">// client is reusable</span>
-<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> minFraud.Client(<span class="hljs-string">&quot;1234&quot;</span>, <span class="hljs-string">&quot;LICENSEKEY&quot;</span>);
+<span style="color: #008000">// client is reusable</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Client</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;1234&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;LICENSEKEY&quot;</span><span style="color: #000000">);</span>
 
-<span class="hljs-keyword">let</span> transaction;
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">transaction</span><span style="color: #000000">;</span>
 
-<span class="hljs-keyword">try</span> {
-  transaction = <span class="hljs-keyword">new</span> minFraud.Transaction({
-    <span class="hljs-attr">device</span>: <span class="hljs-keyword">new</span> minFraud.Device({
-      <span class="hljs-attr">ipAddress</span>: <span class="hljs-string">&quot;81.2.69.160&quot;</span>,
-    }),
-    <span class="hljs-attr">event</span>: <span class="hljs-keyword">new</span> minFraud.Event({
-      <span class="hljs-attr">shopId</span>: <span class="hljs-string">&#x27;shop&#x27;</span>,
-      <span class="hljs-attr">time</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-built_in">Date</span>.now()),
-      <span class="hljs-attr">transactionId</span>: <span class="hljs-string">&#x27;txn1234&#x27;</span>,
-      <span class="hljs-attr">type</span>: minFraud.Constants.EventType.PayoutChange,
-    }),
-    <span class="hljs-attr">account</span>: <span class="hljs-keyword">new</span> minFraud.Account({
-      <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;user123&#x27;</span>,
-      <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;userperson&#x27;</span>,
-    }),
-    <span class="hljs-attr">email</span>: <span class="hljs-keyword">new</span> minFraud.Email({
-      <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;foo@bar.com&#x27;</span>,
-      <span class="hljs-attr">domain</span>: <span class="hljs-string">&#x27;bar.com&#x27;</span>,
-    }),
-    <span class="hljs-attr">billing</span>: <span class="hljs-keyword">new</span> minFraud.Billing({
-      <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;123 Robot Ave.&#x27;</span>,
-      <span class="hljs-attr">address2</span>: <span class="hljs-string">&#x27;Suite 10011&#x27;</span>,
-      <span class="hljs-attr">city</span>: <span class="hljs-string">&#x27;Waltham&#x27;</span>,
-      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Robots Inc.&#x27;</span>,
-      <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;US&#x27;</span>,
-      <span class="hljs-attr">firstName</span>: <span class="hljs-string">&#x27;Robot&#x27;</span>,
-      <span class="hljs-attr">lastName</span>: <span class="hljs-string">&#x27;Bar&#x27;</span>,
-      <span class="hljs-attr">phoneCountryCode</span>: <span class="hljs-string">&#x27;1&#x27;</span>,
-      <span class="hljs-attr">phoneNumber</span>: <span class="hljs-string">&#x27;123-456-1234&#x27;</span>,
-      <span class="hljs-attr">postal</span>: <span class="hljs-string">&#x27;12345&#x27;</span>,
-      <span class="hljs-attr">region</span>: <span class="hljs-string">&#x27;MA&#x27;</span>,
-    }),
-    <span class="hljs-attr">shipping</span>: <span class="hljs-keyword">new</span> minFraud.Shipping({
-      <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;123 Robot Ave.&#x27;</span>,
-      <span class="hljs-attr">address2</span>: <span class="hljs-string">&#x27;Suite 10011&#x27;</span>,
-      <span class="hljs-attr">city</span>: <span class="hljs-string">&#x27;Waltham&#x27;</span>,
-      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Robots Inc.&#x27;</span>,
-      <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;US&#x27;</span>,
-      <span class="hljs-attr">deliverySpeed</span>: minFraud.Constants.DeliverySpeed.Expedited,
-      <span class="hljs-attr">firstName</span>: <span class="hljs-string">&#x27;Robot&#x27;</span>,
-      <span class="hljs-attr">lastName</span>: <span class="hljs-string">&#x27;Bar&#x27;</span>,
-      <span class="hljs-attr">phoneCountryCode</span>: <span class="hljs-string">&#x27;1&#x27;</span>,
-      <span class="hljs-attr">phoneNumber</span>: <span class="hljs-string">&#x27;123-456-0000&#x27;</span>,
-      <span class="hljs-attr">postal</span>: <span class="hljs-string">&#x27;12345&#x27;</span>,
-      <span class="hljs-attr">region</span>: <span class="hljs-string">&#x27;MA&#x27;</span>,
-    }),
-    <span class="hljs-attr">payment</span>: <span class="hljs-keyword">new</span> minFraud.Payment({
-      <span class="hljs-attr">declineCode</span>: <span class="hljs-string">&#x27;A&#x27;</span>,
-      <span class="hljs-attr">processor</span>: minFraud.Constants.Processor.ConceptPayments,
-      <span class="hljs-attr">wasAuthorized</span>: <span class="hljs-literal">true</span>,
-    }),
-    <span class="hljs-attr">creditCard</span>: <span class="hljs-keyword">new</span> minFraud.CreditCard({
-      <span class="hljs-attr">avsResult</span>: <span class="hljs-string">&#x27;A&#x27;</span>,
-      <span class="hljs-attr">bankName</span>: <span class="hljs-string">&#x27;Foo Bank&#x27;</span>,
-      <span class="hljs-attr">bankPhoneCountryCode</span>: <span class="hljs-string">&#x27;1&#x27;</span>,
-      <span class="hljs-attr">bankPhoneNumber</span>: <span class="hljs-string">&#x27;123-123-1234&#x27;</span>,
-      <span class="hljs-attr">cvvResult</span>: <span class="hljs-string">&#x27;B&#x27;</span>,
-      <span class="hljs-attr">issuerIdNumber</span>: <span class="hljs-string">&#x27;411111&#x27;</span>,
-      <span class="hljs-attr">last4digits</span>: <span class="hljs-string">&#x27;1234&#x27;</span>,
-      <span class="hljs-attr">token</span>: <span class="hljs-string">&#x27;a_token&#x27;</span>,
-    }),
-    <span class="hljs-attr">order</span>: <span class="hljs-keyword">new</span> minFraud.Order({
-      <span class="hljs-attr">affiliateId</span>: <span class="hljs-string">&#x27;robotnet&#x27;</span>,
-      <span class="hljs-attr">amount</span>: <span class="hljs-number">22.99</span>,
-      <span class="hljs-attr">currency</span>: <span class="hljs-string">&#x27;USD&#x27;</span>,
-      <span class="hljs-attr">discountCode</span>: <span class="hljs-string">&#x27;COUPONS&#x27;</span>,
-      <span class="hljs-attr">hasGiftMessage</span>: <span class="hljs-literal">true</span>,
-      <span class="hljs-attr">isGift</span>: <span class="hljs-literal">true</span>,
-      <span class="hljs-attr">referrerUri</span>: <span class="hljs-keyword">new</span> URL(<span class="hljs-string">&#x27;https://robots.com/swarms&#x27;</span>),
-      <span class="hljs-attr">subaffiliateId</span>: <span class="hljs-string">&#x27;swarm&#x27;</span>,
-    }),
-    <span class="hljs-attr">shoppingCart</span>: [
-      <span class="hljs-keyword">new</span> minFraud.ShoppingCartItem({
-        <span class="hljs-attr">category</span>: <span class="hljs-string">&#x27;screws&#x27;</span>,
-        <span class="hljs-attr">itemId</span>: <span class="hljs-string">&#x27;sc123&#x27;</span>,
-        <span class="hljs-attr">price</span>: <span class="hljs-number">9.99</span>,
-        <span class="hljs-attr">quantity</span>: <span class="hljs-number">100</span>,
-      }),
-      <span class="hljs-keyword">new</span> minFraud.ShoppingCartItem({
-        <span class="hljs-attr">category</span>: <span class="hljs-string">&#x27;screws&#x27;</span>,
-        <span class="hljs-attr">itemId</span>: <span class="hljs-string">&#x27;sc123&#x27;</span>,
-        <span class="hljs-attr">price</span>: <span class="hljs-number">9.99</span>,
-        <span class="hljs-attr">quantity</span>: <span class="hljs-number">100</span>,
-      }),
-    ],
-    <span class="hljs-attr">customInputs</span>: [
-      <span class="hljs-keyword">new</span> minFraud.CustomInput(<span class="hljs-string">&#x27;key&#x27;</span>, <span class="hljs-string">&#x27;value&#x27;</span>),
-      <span class="hljs-keyword">new</span> minFraud.CustomInput(<span class="hljs-string">&#x27;key_2&#x27;</span>, <span class="hljs-literal">true</span>),
-      <span class="hljs-keyword">new</span> minFraud.CustomInput(<span class="hljs-string">&#x27;key_3&#x27;</span>, <span class="hljs-number">100</span>),
-    ]
-  });
-} <span class="hljs-keyword">catch</span>(error) {
-  <span class="hljs-comment">// handle the error</span>
-}
+<span style="color: #AF00DB">try</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">transaction</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Transaction</span><span style="color: #000000">({</span>
+<span style="color: #000000">    </span><span style="color: #001080">device:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Device</span><span style="color: #000000">({</span>
+<span style="color: #000000">      </span><span style="color: #001080">ipAddress:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;81.2.69.160&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    }),</span>
+<span style="color: #000000">    </span><span style="color: #001080">event:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Event</span><span style="color: #000000">({</span>
+<span style="color: #000000">      </span><span style="color: #001080">shopId:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;shop&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">time:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">(</span><span style="color: #267F99">Date</span><span style="color: #000000">.</span><span style="color: #795E26">now</span><span style="color: #000000">()),</span>
+<span style="color: #000000">      </span><span style="color: #001080">transactionId:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;txn1234&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #001080">minFraud</span><span style="color: #000000">.</span><span style="color: #001080">Constants</span><span style="color: #000000">.</span><span style="color: #001080">EventType</span><span style="color: #000000">.</span><span style="color: #001080">PayoutChange</span><span style="color: #000000">,</span>
+<span style="color: #000000">    }),</span>
+<span style="color: #000000">    </span><span style="color: #001080">account:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Account</span><span style="color: #000000">({</span>
+<span style="color: #000000">      </span><span style="color: #001080">userId:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;user123&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">username:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;userperson&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    }),</span>
+<span style="color: #000000">    </span><span style="color: #001080">email:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Email</span><span style="color: #000000">({</span>
+<span style="color: #000000">      </span><span style="color: #001080">address:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;foo@bar.com&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">domain:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;bar.com&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    }),</span>
+<span style="color: #000000">    </span><span style="color: #001080">billing:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Billing</span><span style="color: #000000">({</span>
+<span style="color: #000000">      </span><span style="color: #001080">address:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;123 Robot Ave.&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">address2:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Suite 10011&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">city:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Waltham&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">company:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Robots Inc.&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">country:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;US&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">firstName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Robot&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">lastName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Bar&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">phoneCountryCode:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;1&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">phoneNumber:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;123-456-1234&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">postal:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;12345&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">region:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;MA&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    }),</span>
+<span style="color: #000000">    </span><span style="color: #001080">shipping:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Shipping</span><span style="color: #000000">({</span>
+<span style="color: #000000">      </span><span style="color: #001080">address:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;123 Robot Ave.&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">address2:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Suite 10011&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">city:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Waltham&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">company:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Robots Inc.&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">country:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;US&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">deliverySpeed:</span><span style="color: #000000"> </span><span style="color: #001080">minFraud</span><span style="color: #000000">.</span><span style="color: #001080">Constants</span><span style="color: #000000">.</span><span style="color: #001080">DeliverySpeed</span><span style="color: #000000">.</span><span style="color: #001080">Expedited</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">firstName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Robot&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">lastName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Bar&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">phoneCountryCode:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;1&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">phoneNumber:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;123-456-0000&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">postal:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;12345&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">region:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;MA&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    }),</span>
+<span style="color: #000000">    </span><span style="color: #001080">payment:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Payment</span><span style="color: #000000">({</span>
+<span style="color: #000000">      </span><span style="color: #001080">declineCode:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;A&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">processor:</span><span style="color: #000000"> </span><span style="color: #001080">minFraud</span><span style="color: #000000">.</span><span style="color: #001080">Constants</span><span style="color: #000000">.</span><span style="color: #001080">Processor</span><span style="color: #000000">.</span><span style="color: #001080">ConceptPayments</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">wasAuthorized:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">,</span>
+<span style="color: #000000">    }),</span>
+<span style="color: #000000">    </span><span style="color: #001080">creditCard:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">CreditCard</span><span style="color: #000000">({</span>
+<span style="color: #000000">      </span><span style="color: #001080">avsResult:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;A&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">bankName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Foo Bank&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">bankPhoneCountryCode:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;1&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">bankPhoneNumber:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;123-123-1234&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">cvvResult:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;B&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">issuerIdNumber:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;411111&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">last4digits:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;1234&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">token:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;a_token&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    }),</span>
+<span style="color: #000000">    </span><span style="color: #001080">order:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Order</span><span style="color: #000000">({</span>
+<span style="color: #000000">      </span><span style="color: #001080">affiliateId:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;robotnet&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">amount:</span><span style="color: #000000"> </span><span style="color: #098658">22.99</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">currency:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;USD&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">discountCode:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;COUPONS&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">hasGiftMessage:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">isGift:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">referrerUri:</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">URL</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;https://robots.com/swarms&#039;</span><span style="color: #000000">),</span>
+<span style="color: #000000">      </span><span style="color: #001080">subaffiliateId:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;swarm&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    }),</span>
+<span style="color: #000000">    </span><span style="color: #001080">shoppingCart:</span><span style="color: #000000"> [</span>
+<span style="color: #000000">      </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">ShoppingCartItem</span><span style="color: #000000">({</span>
+<span style="color: #000000">        </span><span style="color: #001080">category:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;screws&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">itemId:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;sc123&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">price:</span><span style="color: #000000"> </span><span style="color: #098658">9.99</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">quantity:</span><span style="color: #000000"> </span><span style="color: #098658">100</span><span style="color: #000000">,</span>
+<span style="color: #000000">      }),</span>
+<span style="color: #000000">      </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">ShoppingCartItem</span><span style="color: #000000">({</span>
+<span style="color: #000000">        </span><span style="color: #001080">category:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;screws&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">itemId:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;sc123&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">price:</span><span style="color: #000000"> </span><span style="color: #098658">9.99</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">quantity:</span><span style="color: #000000"> </span><span style="color: #098658">100</span><span style="color: #000000">,</span>
+<span style="color: #000000">      }),</span>
+<span style="color: #000000">    ],</span>
+<span style="color: #000000">    </span><span style="color: #001080">customInputs:</span><span style="color: #000000"> [</span>
+<span style="color: #000000">      </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">CustomInput</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;key&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;value&#039;</span><span style="color: #000000">),</span>
+<span style="color: #000000">      </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">CustomInput</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;key_2&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">true</span><span style="color: #000000">),</span>
+<span style="color: #000000">      </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">CustomInput</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;key_3&#039;</span><span style="color: #000000">, </span><span style="color: #098658">100</span><span style="color: #000000">),</span>
+<span style="color: #000000">    ]</span>
+<span style="color: #000000">  });</span>
+<span style="color: #000000">} </span><span style="color: #AF00DB">catch</span><span style="color: #000000">(</span><span style="color: #001080">error</span><span style="color: #000000">) {</span>
+<span style="color: #000000">  </span><span style="color: #008000">// handle the error</span>
+<span style="color: #000000">}</span>
 
-client.score(transaction <span class="hljs-keyword">as</span> minFraud.Transaction).then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> {
-  <span class="hljs-built_in">console</span>.log(response.riskScore) <span class="hljs-comment">// 50</span>
-  <span class="hljs-built_in">console</span>.log(response.ipAddress.risk) <span class="hljs-comment">// 50</span>
-});</code></pre>
+<span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">score</span><span style="color: #000000">(</span><span style="color: #001080">transaction</span><span style="color: #000000"> </span><span style="color: #AF00DB">as</span><span style="color: #000000"> </span><span style="color: #267F99">minFraud</span><span style="color: #000000">.</span><span style="color: #267F99">Transaction</span><span style="color: #000000">).</span><span style="color: #795E26">then</span><span style="color: #000000">(</span><span style="color: #001080">response</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #001080">riskScore</span><span style="color: #000000">) </span><span style="color: #008000">// 50</span>
+<span style="color: #000000">  </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #001080">ipAddress</span><span style="color: #000000">.</span><span style="color: #001080">risk</span><span style="color: #000000">) </span><span style="color: #008000">// 50</span>
+<span style="color: #000000">});</span>
+</code></pre>
 				<a href="#support" id="support" style="color: inherit; text-decoration: none;">
 					<h2>Support</h2>
 				</a>
@@ -310,40 +314,31 @@ client.score(transaction <span class="hljs-keyword">as</span> minFraud.Transacti
 				<a href="#copyright-and-license" id="copyright-and-license" style="color: inherit; text-decoration: none;">
 					<h2>Copyright and License</h2>
 				</a>
-				<p>This software is Copyright (c) 2019-2020 by MaxMind, Inc.</p>
+				<p>This software is Copyright (c) 2019-2021 by MaxMind, Inc.</p>
 				<p>This is free software, licensed under the Apache License, Version 2.0.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/constants.html">Constants</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="enums/deliveryspeed.html" class="tsd-kind-icon">Delivery<wbr>Speed</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/eventtype.html" class="tsd-kind-icon">Event<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/processor.html" class="tsd-kind-icon">Processor</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/tag.html" class="tsd-kind-icon">Tag</a>
-					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/account.html" class="tsd-kind-icon">Account</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/argumenterror.html" class="tsd-kind-icon">Argument<wbr>Error</a>
+						<a href="classes/billing.html" class="tsd-kind-icon">Billing</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/billing.html" class="tsd-kind-icon">Billing</a>
+						<a href="classes/client.html" class="tsd-kind-icon">Client</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/creditcard.html" class="tsd-kind-icon">Credit<wbr>Card</a>
@@ -361,22 +356,10 @@ client.score(transaction <span class="hljs-keyword">as</span> minFraud.Transacti
 						<a href="classes/event.html" class="tsd-kind-icon">Event</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/factors.html" class="tsd-kind-icon">Factors</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/insights.html" class="tsd-kind-icon">Insights</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/location.html" class="tsd-kind-icon">Location</a>
-					</li>
-					<li class=" tsd-kind-class">
 						<a href="classes/order.html" class="tsd-kind-icon">Order</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/payment.html" class="tsd-kind-icon">Payment</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/score.html" class="tsd-kind-icon">Score</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/shipping.html" class="tsd-kind-icon">Shipping</a>
@@ -389,171 +372,6 @@ client.score(transaction <span class="hljs-keyword">as</span> minFraud.Transacti
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/transactionreport.html" class="tsd-kind-icon">Transaction<wbr>Report</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/webserviceclient.html" class="tsd-kind-icon">Web<wbr>Service<wbr>Client</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/accountprops.html" class="tsd-kind-icon">Account<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/billingaddress.html" class="tsd-kind-icon">Billing<wbr>Address</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/billingaddresswebrecord.html" class="tsd-kind-icon">Billing<wbr>Address<wbr>Web<wbr>Record</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/creditcardissuer.html" class="tsd-kind-icon">Credit<wbr>Card<wbr>Issuer</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/creditcardissuerwebrecord.html" class="tsd-kind-icon">Credit<wbr>Card<wbr>Issuer<wbr>Web<wbr>Record</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/creditcardprops.html" class="tsd-kind-icon">Credit<wbr>Card<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/creditcardrecord.html" class="tsd-kind-icon">Credit<wbr>Card<wbr>Record</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/creditcardwebrecord.html" class="tsd-kind-icon">Credit<wbr>Card<wbr>Web<wbr>Record</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/deviceprops.html" class="tsd-kind-icon">Device<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/devicewebrecord.html" class="tsd-kind-icon">Device<wbr>Web<wbr>Record</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/disposition.html" class="tsd-kind-icon">Disposition</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/dispositionwebrecord.html" class="tsd-kind-icon">Disposition<wbr>Web<wbr>Record</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/emaildomain.html" class="tsd-kind-icon">Email<wbr>Domain</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/emaildomainwebrecord.html" class="tsd-kind-icon">Email<wbr>Domain<wbr>Web<wbr>Record</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/emailprops.html" class="tsd-kind-icon">Email<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/emailwebrecord.html" class="tsd-kind-icon">Email<wbr>Web<wbr>Record</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/eventprops.html" class="tsd-kind-icon">Event<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/factorsresponse.html" class="tsd-kind-icon">Factors<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/geoipcountry.html" class="tsd-kind-icon">GeoIPCountry</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/geoipcountrywebrecord.html" class="tsd-kind-icon">GeoIPCountry<wbr>Web<wbr>Record</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/geoiplocation.html" class="tsd-kind-icon">GeoIPLocation</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/geoiplocationwebrecord.html" class="tsd-kind-icon">GeoIPLocation<wbr>Web<wbr>Record</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/insightsresponse.html" class="tsd-kind-icon">Insights<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ipaddress.html" class="tsd-kind-icon">Ip<wbr>Address</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ipaddresswebrecord.html" class="tsd-kind-icon">Ip<wbr>Address<wbr>Web<wbr>Record</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/locationprops.html" class="tsd-kind-icon">Location<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/names.html" class="tsd-kind-icon">Names</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/orderprops.html" class="tsd-kind-icon">Order<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/paymentprops.html" class="tsd-kind-icon">Payment<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/responseerror.html" class="tsd-kind-icon">Response<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/scoreipaddress.html" class="tsd-kind-icon">Score<wbr>IpAddress</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/scoreresponse.html" class="tsd-kind-icon">Score<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/shippingaddress.html" class="tsd-kind-icon">Shipping<wbr>Address</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/shippingaddresswebrecord.html" class="tsd-kind-icon">Shipping<wbr>Address<wbr>Web<wbr>Record</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/shippingprops.html" class="tsd-kind-icon">Shipping<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/shoppingcartitemprops.html" class="tsd-kind-icon">Shopping<wbr>Cart<wbr>Item<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/subscores.html" class="tsd-kind-icon">Subscores</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/subscoreswebrecord.html" class="tsd-kind-icon">Subscores<wbr>Web<wbr>Record</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/transactionprops.html" class="tsd-kind-icon">Transaction<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/transactionreportprops.html" class="tsd-kind-icon">Transaction<wbr>Report<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/warning.html" class="tsd-kind-icon">Warning</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/webserviceclienterror.html" class="tsd-kind-icon">Web<wbr>Service<wbr>Client<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#creditcardtype" class="tsd-kind-icon">Credit<wbr>Card<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#custominputvalue" class="tsd-kind-icon">Custom<wbr>Input<wbr>Value</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#dispositionaction" class="tsd-kind-icon">Disposition<wbr>Action</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#dispositionreason" class="tsd-kind-icon">Disposition<wbr>Reason</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#servicepath" class="tsd-kind-icon">service<wbr>Path</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#countryregex" class="tsd-kind-icon">country<wbr>Regex</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#currencyregex" class="tsd-kind-icon">currency<wbr>Regex</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#issueridnumberregex" class="tsd-kind-icon">issuer<wbr>IdNumber<wbr>Regex</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#last4regex" class="tsd-kind-icon">last4<wbr>Regex</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#singlechar" class="tsd-kind-icon">single<wbr>Char</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#tokenregex" class="tsd-kind-icon">token<wbr>Regex</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#camelizeresponse" class="tsd-kind-icon">camelize<wbr>Response</a>
 					</li>
 				</ul>
 			</nav>
@@ -572,15 +390,6 @@ client.score(transaction <span class="hljs-keyword">as</span> minFraud.Transacti
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 			</ul>
 		</div>
 	</div>

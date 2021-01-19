@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for @maxmind/minfraud-api-node">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -40,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -53,7 +52,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../globals.html">Globals</a>
+					<a href="../modules.html">@maxmind/minfraud-api-node</a>
 				</li>
 				<li>
 					<a href="email.html">Email</a>
@@ -69,8 +68,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The email information for the transaction being sent to the web service.
-						This object contains information about the email address passed in the request.</p>
+						<p>The email information for the transaction being sent to the web service.</p>
 					</div>
 				</div>
 			</section>
@@ -85,7 +83,7 @@
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/emailprops.html" class="tsd-signature-type">EmailProps</a></li>
+					<li><span class="tsd-signature-type">EmailProps</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -103,10 +101,14 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="email.html#address" class="tsd-kind-icon">address</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="email.html#domain" class="tsd-kind-icon">domain</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="email.html#firstseen" class="tsd-kind-icon">first<wbr>Seen</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="email.html#isdisposable" class="tsd-kind-icon">is<wbr>Disposable</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="email.html#isfree" class="tsd-kind-icon">is<wbr>Free</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="email.html#ishighrisk" class="tsd-kind-icon">is<wbr>High<wbr>Risk</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="email.html#typodomains" class="tsd-kind-icon">typo<wbr>Domains</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="email.html#cleandomain" class="tsd-kind-icon">clean<wbr>Domain</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="email.html#cleanemailaddress" class="tsd-kind-icon">clean<wbr>Email<wbr>Address</a></li>
 							</ul>
 						</section>
 					</div>
@@ -118,22 +120,22 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Email<span class="tsd-signature-symbol">(</span>email<span class="tsd-signature-symbol">: </span><a href="../interfaces/emailprops.html" class="tsd-signature-type">EmailProps</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="email.html" class="tsd-signature-type">Email</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Email<span class="tsd-signature-symbol">(</span>email<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EmailProps</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="email.html" class="tsd-signature-type" data-tsd-kind="Class">Email</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/email.ts#L26">src/request/email.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/email.ts#L46">request/email.ts:46</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>email: <a href="../interfaces/emailprops.html" class="tsd-signature-type">EmailProps</a></h5>
+									<h5>email: <span class="tsd-signature-type">EmailProps</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="email.html" class="tsd-signature-type">Email</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="email.html" class="tsd-signature-type" data-tsd-kind="Class">Email</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -145,111 +147,131 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> address</h3>
 					<div class="tsd-signature tsd-kind-icon">address<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/emailprops.html">EmailProps</a>.<a href="../interfaces/emailprops.html#address">address</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/email.ts#L24">src/request/email.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/email.ts#L31">request/email.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The MD5 generated from the email address.</p>
+							<p>The email address, or the MD5 generated from the email address if
+							hashAddress is true.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="domain" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> domain</h3>
-					<div class="tsd-signature tsd-kind-icon">domain<span class="tsd-signature-symbol">:</span> <a href="../interfaces/emaildomain.html" class="tsd-signature-type">EmailDomain</a></div>
+					<div class="tsd-signature tsd-kind-icon">domain<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/emailprops.html">EmailProps</a>.<a href="../interfaces/emailprops.html#domain">domain</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/email.ts#L26">src/request/email.ts:26</a></li>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/response/records.ts#L192">src/response/records.ts:192</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/email.ts#L33">request/email.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The domain of the email address.</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>inheritdoc</dt>
+							<dd><p>EmailProps.domain</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="firstseen" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> first<wbr>Seen</h3>
-					<div class="tsd-signature tsd-kind-icon">first<wbr>Seen<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="typodomains" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> <span class="tsd-flag ts-flagStatic">Static</span> typo<wbr>Domains</h3>
+					<div class="tsd-signature tsd-kind-icon">typo<wbr>Domains<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/response/records.ts#L196">src/response/records.ts:196</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/email.ts#L35">request/email.ts:35</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The date the email address was first seen by MaxMind.</p>
-						</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="isdisposable" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> is<wbr>Disposable</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Disposable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/response/records.ts#L202">src/response/records.ts:202</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>This property incidates whether the email is from a disposable email
-								provider. The value will be <code>null</code> if no email address or email domain was
-							passed as an input.</p>
-						</div>
-					</div>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="cleandomain" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> clean<wbr>Domain</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">clean<wbr>Domain<span class="tsd-signature-symbol">(</span>domain<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/email.ts#L97">request/email.ts:97</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>domain: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="isfree" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> is<wbr>Free</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Free<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/response/records.ts#L207">src/response/records.ts:207</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>This property is true if MaxMind believes that this email is hosted by a
-							free email provider such as Gmail or Yahoo! Mail.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="ishighrisk" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> is<wbr>High<wbr>Risk</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>High<wbr>Risk<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/response/records.ts#L213">src/response/records.ts:213</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>This property is true if MaxMind believes that this email is likely to be
-								used for fraud. Note that this is also factored into the overall
-							risk_score in the response as well.</p>
-						</div>
-					</div>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="cleanemailaddress" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> clean<wbr>Email<wbr>Address</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">clean<wbr>Email<wbr>Address<span class="tsd-signature-symbol">(</span>address<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/email.ts#L75">request/email.ts:75</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>address: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="../globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="account.html" class="tsd-kind-icon">Account</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="billing.html" class="tsd-kind-icon">Billing</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="client.html" class="tsd-kind-icon">Client</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="creditcard.html" class="tsd-kind-icon">Credit<wbr>Card</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="custominput.html" class="tsd-kind-icon">Custom<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="device.html" class="tsd-kind-icon">Device</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -264,22 +286,40 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="email.html#domain" class="tsd-kind-icon">domain</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="email.html#firstseen" class="tsd-kind-icon">first<wbr>Seen</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+								<a href="email.html#typodomains" class="tsd-kind-icon">typo<wbr>Domains</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="email.html#isdisposable" class="tsd-kind-icon">is<wbr>Disposable</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="email.html#cleandomain" class="tsd-kind-icon">clean<wbr>Domain</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="email.html#isfree" class="tsd-kind-icon">is<wbr>Free</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="email.html#ishighrisk" class="tsd-kind-icon">is<wbr>High<wbr>Risk</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="email.html#cleanemailaddress" class="tsd-kind-icon">clean<wbr>Email<wbr>Address</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="event.html" class="tsd-kind-icon">Event</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="order.html" class="tsd-kind-icon">Order</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="payment.html" class="tsd-kind-icon">Payment</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="shipping.html" class="tsd-kind-icon">Shipping</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="shoppingcartitem.html" class="tsd-kind-icon">Shopping<wbr>Cart<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="transaction.html" class="tsd-kind-icon">Transaction</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="transactionreport.html" class="tsd-kind-icon">Transaction<wbr>Report</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -297,15 +337,6 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 			</ul>
 		</div>
 	</div>

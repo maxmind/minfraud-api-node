@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for @maxmind/minfraud-api-node">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -40,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -53,7 +52,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../globals.html">Globals</a>
+					<a href="../modules.html">@maxmind/minfraud-api-node</a>
 				</li>
 				<li>
 					<a href="payment.html">Payment</a>
@@ -84,7 +83,7 @@
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/paymentprops.html" class="tsd-signature-type">PaymentProps</a></li>
+					<li><span class="tsd-signature-type">PaymentProps</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -114,22 +113,22 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Payment<span class="tsd-signature-symbol">(</span>payment<span class="tsd-signature-symbol">: </span><a href="../interfaces/paymentprops.html" class="tsd-signature-type">PaymentProps</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="payment.html" class="tsd-signature-type">Payment</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Payment<span class="tsd-signature-symbol">(</span>payment<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PaymentProps</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="payment.html" class="tsd-signature-type" data-tsd-kind="Class">Payment</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/payment.ts#L29">src/request/payment.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/payment.ts#L29">request/payment.ts:29</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>payment: <a href="../interfaces/paymentprops.html" class="tsd-signature-type">PaymentProps</a></h5>
+									<h5>payment: <span class="tsd-signature-type">PaymentProps</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="payment.html" class="tsd-signature-type">Payment</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="payment.html" class="tsd-signature-type" data-tsd-kind="Class">Payment</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -141,49 +140,50 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> decline<wbr>Code</h3>
 					<div class="tsd-signature tsd-kind-icon">decline<wbr>Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/paymentprops.html">PaymentProps</a>.<a href="../interfaces/paymentprops.html#declinecode">declineCode</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/payment.ts#L29">src/request/payment.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/payment.ts#L29">request/payment.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The decline code as provided by your payment processor. If the transaction
-							was not declined, do not include this field.</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>inheritdoc</dt>
+							<dd><p>PaymentProps.declineCode</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="processor" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> processor</h3>
-					<div class="tsd-signature tsd-kind-icon">processor<span class="tsd-signature-symbol">:</span> <a href="../enums/processor.html" class="tsd-signature-type">Processor</a></div>
+					<div class="tsd-signature tsd-kind-icon">processor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#adyen" class="tsd-signature-type" data-tsd-kind="Enumeration member">Adyen</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#affirm" class="tsd-signature-type" data-tsd-kind="Enumeration member">Affirm</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#afterpay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Afterpay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#altapay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Altapay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#amazonpayments" class="tsd-signature-type" data-tsd-kind="Enumeration member">AmazonPayments</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#americanexpresspaymentgateway" class="tsd-signature-type" data-tsd-kind="Enumeration member">AmericanExpressPaymentGateway</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#applepay" class="tsd-signature-type" data-tsd-kind="Enumeration member">ApplePay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#apspayments" class="tsd-signature-type" data-tsd-kind="Enumeration member">ApsPayments</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#authorizenet" class="tsd-signature-type" data-tsd-kind="Enumeration member">Authorizenet</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#balanced" class="tsd-signature-type" data-tsd-kind="Enumeration member">Balanced</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#beanstream" class="tsd-signature-type" data-tsd-kind="Enumeration member">Beanstream</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#bluepay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Bluepay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#bluesnap" class="tsd-signature-type" data-tsd-kind="Enumeration member">Bluesnap</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#bpoint" class="tsd-signature-type" data-tsd-kind="Enumeration member">Bpoint</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#braintree" class="tsd-signature-type" data-tsd-kind="Enumeration member">Braintree</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#cardpay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Cardpay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#cashfree" class="tsd-signature-type" data-tsd-kind="Enumeration member">Cashfree</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#ccavenue" class="tsd-signature-type" data-tsd-kind="Enumeration member">Ccavenue</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#ccnow" class="tsd-signature-type" data-tsd-kind="Enumeration member">Ccnow</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#cetelem" class="tsd-signature-type" data-tsd-kind="Enumeration member">Cetelem</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#chasepaymentech" class="tsd-signature-type" data-tsd-kind="Enumeration member">ChasePaymentech</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#checkoutcom" class="tsd-signature-type" data-tsd-kind="Enumeration member">CheckoutCom</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#cielo" class="tsd-signature-type" data-tsd-kind="Enumeration member">Cielo</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#collector" class="tsd-signature-type" data-tsd-kind="Enumeration member">Collector</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#commdoo" class="tsd-signature-type" data-tsd-kind="Enumeration member">Commdoo</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#compropago" class="tsd-signature-type" data-tsd-kind="Enumeration member">Compropago</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#conceptpayments" class="tsd-signature-type" data-tsd-kind="Enumeration member">ConceptPayments</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#conekta" class="tsd-signature-type" data-tsd-kind="Enumeration member">Conekta</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#ctpayments" class="tsd-signature-type" data-tsd-kind="Enumeration member">CtPayments</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#cuentadigital" class="tsd-signature-type" data-tsd-kind="Enumeration member">Cuentadigital</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#curopayments" class="tsd-signature-type" data-tsd-kind="Enumeration member">Curopayments</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#cybersource" class="tsd-signature-type" data-tsd-kind="Enumeration member">Cybersource</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#dalenys" class="tsd-signature-type" data-tsd-kind="Enumeration member">Dalenys</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#dalpay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Dalpay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#datacash" class="tsd-signature-type" data-tsd-kind="Enumeration member">Datacash</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#dibs" class="tsd-signature-type" data-tsd-kind="Enumeration member">Dibs</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#digitalriver" class="tsd-signature-type" data-tsd-kind="Enumeration member">DigitalRiver</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#dotpay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Dotpay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#ebs" class="tsd-signature-type" data-tsd-kind="Enumeration member">Ebs</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#ecomm365" class="tsd-signature-type" data-tsd-kind="Enumeration member">Ecomm365</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#ecommpay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Ecommpay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#elavon" class="tsd-signature-type" data-tsd-kind="Enumeration member">Elavon</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#emerchantpay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Emerchantpay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#epay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Epay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#eprocessingnetwork" class="tsd-signature-type" data-tsd-kind="Enumeration member">EprocessingNetwork</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#epx" class="tsd-signature-type" data-tsd-kind="Enumeration member">Epx</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#eway" class="tsd-signature-type" data-tsd-kind="Enumeration member">Eway</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#exact" class="tsd-signature-type" data-tsd-kind="Enumeration member">Exact</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#firstatlanticcommerce" class="tsd-signature-type" data-tsd-kind="Enumeration member">FirstAtlanticCommerce</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#firstdata" class="tsd-signature-type" data-tsd-kind="Enumeration member">FirstData</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#g2apay" class="tsd-signature-type" data-tsd-kind="Enumeration member">G2aPay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#globalpayments" class="tsd-signature-type" data-tsd-kind="Enumeration member">GlobalPayments</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#gocardless" class="tsd-signature-type" data-tsd-kind="Enumeration member">Gocardless</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#heartland" class="tsd-signature-type" data-tsd-kind="Enumeration member">Heartland</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#hipay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Hipay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#ingenico" class="tsd-signature-type" data-tsd-kind="Enumeration member">Ingenico</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#interac" class="tsd-signature-type" data-tsd-kind="Enumeration member">Interac</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#internetsecure" class="tsd-signature-type" data-tsd-kind="Enumeration member">Internetsecure</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#intuitquickbookspayments" class="tsd-signature-type" data-tsd-kind="Enumeration member">IntuitQuickbooksPayments</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#iugu" class="tsd-signature-type" data-tsd-kind="Enumeration member">Iugu</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#klarna" class="tsd-signature-type" data-tsd-kind="Enumeration member">Klarna</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#komoju" class="tsd-signature-type" data-tsd-kind="Enumeration member">Komoju</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#lemonway" class="tsd-signature-type" data-tsd-kind="Enumeration member">LemonWay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#mastercardpaymentgateway" class="tsd-signature-type" data-tsd-kind="Enumeration member">MastercardPaymentGateway</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#mercadopago" class="tsd-signature-type" data-tsd-kind="Enumeration member">Mercadopago</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#mercanet" class="tsd-signature-type" data-tsd-kind="Enumeration member">Mercanet</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#merchantesolutions" class="tsd-signature-type" data-tsd-kind="Enumeration member">MerchantEsolutions</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#mirjeh" class="tsd-signature-type" data-tsd-kind="Enumeration member">Mirjeh</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#mollie" class="tsd-signature-type" data-tsd-kind="Enumeration member">Mollie</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#monerissolutions" class="tsd-signature-type" data-tsd-kind="Enumeration member">MonerisSolutions</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#nmi" class="tsd-signature-type" data-tsd-kind="Enumeration member">Nmi</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#oceanpayment" class="tsd-signature-type" data-tsd-kind="Enumeration member">Oceanpayment</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#oney" class="tsd-signature-type" data-tsd-kind="Enumeration member">Oney</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#openpaymx" class="tsd-signature-type" data-tsd-kind="Enumeration member">Openpaymx</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#optimalpayments" class="tsd-signature-type" data-tsd-kind="Enumeration member">OptimalPayments</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#orangepay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Orangepay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#other" class="tsd-signature-type" data-tsd-kind="Enumeration member">Other</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#pacnetservices" class="tsd-signature-type" data-tsd-kind="Enumeration member">PacnetServices</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#payeezy" class="tsd-signature-type" data-tsd-kind="Enumeration member">Payeezy</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#payfast" class="tsd-signature-type" data-tsd-kind="Enumeration member">Payfast</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#paygate" class="tsd-signature-type" data-tsd-kind="Enumeration member">Paygate</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#paylike" class="tsd-signature-type" data-tsd-kind="Enumeration member">Paylike</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#paymentexpress" class="tsd-signature-type" data-tsd-kind="Enumeration member">PaymentExpress</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#paymentwall" class="tsd-signature-type" data-tsd-kind="Enumeration member">Paymentwall</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#payone" class="tsd-signature-type" data-tsd-kind="Enumeration member">Payone</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#paypal" class="tsd-signature-type" data-tsd-kind="Enumeration member">Paypal</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#payplus" class="tsd-signature-type" data-tsd-kind="Enumeration member">Payplus</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#paysafecard" class="tsd-signature-type" data-tsd-kind="Enumeration member">Paysafecard</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#paystation" class="tsd-signature-type" data-tsd-kind="Enumeration member">Paystation</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#paytm" class="tsd-signature-type" data-tsd-kind="Enumeration member">Paytm</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#paytrace" class="tsd-signature-type" data-tsd-kind="Enumeration member">Paytrace</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#paytrail" class="tsd-signature-type" data-tsd-kind="Enumeration member">Paytrail</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#payture" class="tsd-signature-type" data-tsd-kind="Enumeration member">Payture</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#payulatam" class="tsd-signature-type" data-tsd-kind="Enumeration member">Payulatam</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#payu" class="tsd-signature-type" data-tsd-kind="Enumeration member">Payu</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#payway" class="tsd-signature-type" data-tsd-kind="Enumeration member">Payway</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#payza" class="tsd-signature-type" data-tsd-kind="Enumeration member">Payza</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#pinpayments" class="tsd-signature-type" data-tsd-kind="Enumeration member">Pinpayments</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#posconnect" class="tsd-signature-type" data-tsd-kind="Enumeration member">Posconnect</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#princetonpaymentsolutions" class="tsd-signature-type" data-tsd-kind="Enumeration member">PrincetonPaymentSolutions</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#psigate" class="tsd-signature-type" data-tsd-kind="Enumeration member">Psigate</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#qiwi" class="tsd-signature-type" data-tsd-kind="Enumeration member">Qiwi</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#quickpay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Quickpay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#raberil" class="tsd-signature-type" data-tsd-kind="Enumeration member">Raberil</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#razorpay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Razorpay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#rede" class="tsd-signature-type" data-tsd-kind="Enumeration member">Rede</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#redpagos" class="tsd-signature-type" data-tsd-kind="Enumeration member">Redpagos</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#rewardspay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Rewardspay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#sagepay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Sagepay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#securetrading" class="tsd-signature-type" data-tsd-kind="Enumeration member">Securetrading</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#simplifycommerce" class="tsd-signature-type" data-tsd-kind="Enumeration member">SimplifyCommerce</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#skrill" class="tsd-signature-type" data-tsd-kind="Enumeration member">Skrill</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#smartcoin" class="tsd-signature-type" data-tsd-kind="Enumeration member">Smartcoin</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#smartdebit" class="tsd-signature-type" data-tsd-kind="Enumeration member">Smartdebit</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#solidtrustpay" class="tsd-signature-type" data-tsd-kind="Enumeration member">SolidtrustPay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#spsdecidir" class="tsd-signature-type" data-tsd-kind="Enumeration member">SpsDecidir</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#stripe" class="tsd-signature-type" data-tsd-kind="Enumeration member">Stripe</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#synapsefi" class="tsd-signature-type" data-tsd-kind="Enumeration member">Synapsefi</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#systempay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Systempay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#telerecargas" class="tsd-signature-type" data-tsd-kind="Enumeration member">Telerecargas</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#towah" class="tsd-signature-type" data-tsd-kind="Enumeration member">Towah</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#transactpro" class="tsd-signature-type" data-tsd-kind="Enumeration member">TransactPro</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#tsys" class="tsd-signature-type" data-tsd-kind="Enumeration member">Tsys</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#usaepay" class="tsd-signature-type" data-tsd-kind="Enumeration member">UsaEpay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#vantiv" class="tsd-signature-type" data-tsd-kind="Enumeration member">Vantiv</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#verepay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Verepay</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#vericheck" class="tsd-signature-type" data-tsd-kind="Enumeration member">Vericheck</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#vindicia" class="tsd-signature-type" data-tsd-kind="Enumeration member">Vindicia</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#virtualcardservices" class="tsd-signature-type" data-tsd-kind="Enumeration member">VirtualCardServices</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#vme" class="tsd-signature-type" data-tsd-kind="Enumeration member">Vme</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#vpos" class="tsd-signature-type" data-tsd-kind="Enumeration member">Vpos</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#wirecard" class="tsd-signature-type" data-tsd-kind="Enumeration member">Wirecard</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.processor.html#worldpay" class="tsd-signature-type" data-tsd-kind="Enumeration member">Worldpay</a></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/paymentprops.html">PaymentProps</a>.<a href="../interfaces/paymentprops.html#processor">processor</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/payment.ts#L25">src/request/payment.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/payment.ts#L25">request/payment.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The payment processor used for the transaction.</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>inheritdoc</dt>
+							<dd><p>PaymentProps.processor</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="wasauthorized" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> was<wbr>Authorized</h3>
-					<div class="tsd-signature tsd-kind-icon">was<wbr>Authorized<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<div class="tsd-signature tsd-kind-icon">was<wbr>Authorized<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/paymentprops.html">PaymentProps</a>.<a href="../interfaces/paymentprops.html#wasauthorized">wasAuthorized</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/payment.ts#L27">src/request/payment.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/payment.ts#L27">request/payment.ts:27</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The authorization outcome from the payment processor. If the transaction
-							has not yet been approved or denied, do not include this field.</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>inheritdoc</dt>
+							<dd><p>PaymentProps.wasAuthorized</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 			</section>
@@ -191,13 +191,40 @@
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="../globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="account.html" class="tsd-kind-icon">Account</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="billing.html" class="tsd-kind-icon">Billing</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="client.html" class="tsd-kind-icon">Client</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="creditcard.html" class="tsd-kind-icon">Credit<wbr>Card</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="custominput.html" class="tsd-kind-icon">Custom<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="device.html" class="tsd-kind-icon">Device</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="email.html" class="tsd-kind-icon">Email</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="event.html" class="tsd-kind-icon">Event</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="order.html" class="tsd-kind-icon">Order</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -219,6 +246,18 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="shipping.html" class="tsd-kind-icon">Shipping</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="shoppingcartitem.html" class="tsd-kind-icon">Shopping<wbr>Cart<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="transaction.html" class="tsd-kind-icon">Transaction</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="transactionreport.html" class="tsd-kind-icon">Transaction<wbr>Report</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -236,15 +275,6 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 			</ul>
 		</div>
 	</div>

@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for @maxmind/minfraud-api-node">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -40,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -53,7 +52,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../globals.html">Globals</a>
+					<a href="../modules.html">@maxmind/minfraud-api-node</a>
 				</li>
 				<li>
 					<a href="event.html">Event</a>
@@ -84,7 +83,7 @@
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/eventprops.html" class="tsd-signature-type">EventProps</a></li>
+					<li><span class="tsd-signature-type">EventProps</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -115,22 +114,22 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Event<span class="tsd-signature-symbol">(</span>minfraudEvent<span class="tsd-signature-symbol">: </span><a href="../interfaces/eventprops.html" class="tsd-signature-type">EventProps</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="event.html" class="tsd-signature-type">Event</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Event<span class="tsd-signature-symbol">(</span>minfraudEvent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventProps</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="event.html" class="tsd-signature-type" data-tsd-kind="Class">Event</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/event.ts#L37">src/request/event.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/event.ts#L37">request/event.ts:37</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>minfraudEvent: <a href="../interfaces/eventprops.html" class="tsd-signature-type">EventProps</a></h5>
+									<h5>minfraudEvent: <span class="tsd-signature-type">EventProps</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="event.html" class="tsd-signature-type">Event</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="event.html" class="tsd-signature-type" data-tsd-kind="Class">Event</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -142,33 +141,33 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> shop<wbr>Id</h3>
 					<div class="tsd-signature tsd-kind-icon">shop<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/eventprops.html">EventProps</a>.<a href="../interfaces/eventprops.html#shopid">shopId</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/event.ts#L33">src/request/event.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/event.ts#L33">request/event.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Your internal ID for the shop, affiliate, or merchant this order is coming
-								from. Required for minFraud users who are resellers, payment providers,
-							gateways and affiliate networks.</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>inheritdoc</dt>
+							<dd><p>EventProps.shopId</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="time" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> time</h3>
-					<div class="tsd-signature tsd-kind-icon">time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
+					<div class="tsd-signature tsd-kind-icon">time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/eventprops.html">EventProps</a>.<a href="../interfaces/eventprops.html#time">time</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/event.ts#L35">src/request/event.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/event.ts#L35">request/event.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The date and time the event occurred.</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>inheritdoc</dt>
+							<dd><p>EventProps.time</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -176,33 +175,33 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> transaction<wbr>Id</h3>
 					<div class="tsd-signature tsd-kind-icon">transaction<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/eventprops.html">EventProps</a>.<a href="../interfaces/eventprops.html#transactionid">transactionId</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/event.ts#L31">src/request/event.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/event.ts#L31">request/event.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Your internal ID for the transaction. We can use this to locate a specific
-								transaction in our logs, and it will also show up in email alerts and
-							notifications from us to you.</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>inheritdoc</dt>
+							<dd><p>EventProps.transactionId</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="type" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../enums/eventtype.html" class="tsd-signature-type">EventType</a></div>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.eventtype.html#accountcreation" class="tsd-signature-type" data-tsd-kind="Enumeration member">AccountCreation</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.eventtype.html#accountlogin" class="tsd-signature-type" data-tsd-kind="Enumeration member">AccountLogin</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.eventtype.html#emailchange" class="tsd-signature-type" data-tsd-kind="Enumeration member">EmailChange</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.eventtype.html#passwordreset" class="tsd-signature-type" data-tsd-kind="Enumeration member">PasswordReset</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.eventtype.html#payoutchange" class="tsd-signature-type" data-tsd-kind="Enumeration member">PayoutChange</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.eventtype.html#purchase" class="tsd-signature-type" data-tsd-kind="Enumeration member">Purchase</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.eventtype.html#recurringpurchase" class="tsd-signature-type" data-tsd-kind="Enumeration member">RecurringPurchase</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.eventtype.html#referral" class="tsd-signature-type" data-tsd-kind="Enumeration member">Referral</a><span class="tsd-signature-symbol"> | </span><a href="../enums/constants.eventtype.html#survey" class="tsd-signature-type" data-tsd-kind="Enumeration member">Survey</a></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/eventprops.html">EventProps</a>.<a href="../interfaces/eventprops.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/76b93f4/src/request/event.ts#L37">src/request/event.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/54b637a/src/request/event.ts#L37">request/event.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The type of event being scored.</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>inheritdoc</dt>
+							<dd><p>EventProps.EventType</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 			</section>
@@ -210,13 +209,34 @@
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="../globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="account.html" class="tsd-kind-icon">Account</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="billing.html" class="tsd-kind-icon">Billing</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="client.html" class="tsd-kind-icon">Client</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="creditcard.html" class="tsd-kind-icon">Credit<wbr>Card</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="custominput.html" class="tsd-kind-icon">Custom<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="device.html" class="tsd-kind-icon">Device</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="email.html" class="tsd-kind-icon">Email</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -241,6 +261,24 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="order.html" class="tsd-kind-icon">Order</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="payment.html" class="tsd-kind-icon">Payment</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="shipping.html" class="tsd-kind-icon">Shipping</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="shoppingcartitem.html" class="tsd-kind-icon">Shopping<wbr>Cart<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="transaction.html" class="tsd-kind-icon">Transaction</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="transactionreport.html" class="tsd-kind-icon">Transaction<wbr>Report</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -258,15 +296,6 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 			</ul>
 		</div>
 	</div>
