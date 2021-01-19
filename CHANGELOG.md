@@ -1,12 +1,13 @@
 CHANGELOG
 =========
 
-3.0.0
+3.0.0 (2020-01-19)
 ------------------
 
 * Added `ApplePay` and `ApsPayments` to the `Processor` enum.
 * Added additional normalizing of the email address when it is sent as an
   MD5 hash instead of plain text.
+* Upgrade yarn dependencies
 
 ### Breaking change
 The email address field is now sent to the web service in plain text unless
@@ -15,6 +16,11 @@ option sends the MD5 hash of the address to the web service instead.
 Previously the address was always sent as an MD5 hash. The new default
 behavior matches that of other official minFraud API clients. Note the
 email domain is always sent in plain text.
+
+2.1.0 (2020-01-11)
+------------------
+
+* Upgrade yarn dependencies
 
 2.0.0 (2020-11-09)
 ------------------
