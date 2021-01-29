@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+3.1.0
+------------------
+
+* Added support for the IP address risk reasons in the minFraud Insights and
+  Factors responses. This is available at `response.ipAddress.riskReasons`.
+
 3.0.0 (2020-01-19)
 ------------------
 

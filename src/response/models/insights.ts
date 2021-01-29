@@ -78,6 +78,9 @@ export default class Insights extends Score {
 
     insights.risk = response.ip_address.risk;
 
+    insights.riskReasons = response.ip_address
+      .risk_reasons as records.IpRiskReasons[];
+
     delete insights.maxmind;
 
     return insights;

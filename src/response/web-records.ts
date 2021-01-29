@@ -35,8 +35,14 @@ export interface GeoIPLocationWebRecord {
   readonly local_time: string;
 }
 
+export interface IpRiskReasonsWebRecord {
+  readonly code?: string;
+  readonly reason?: string;
+}
+
 export interface IpAddressWebRecord extends CityResponse {
   readonly risk: number;
+  readonly risk_reasons?: IpRiskReasonsWebRecord[];
   readonly country?: GeoIPCountryWebRecord;
   readonly location?: GeoIPLocationWebRecord;
 }

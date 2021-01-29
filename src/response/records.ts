@@ -41,6 +41,22 @@ export interface GeoIPLocation extends LocationRecord {
 }
 
 /**
+ * A reason for the IP address risk.
+ */
+export interface IpRiskReasons {
+  /**
+   * This value is a machine-readable code identifying the reason. See the web
+   * service documentation for the current list of of reason codes.
+   */
+  readonly code?: string;
+  /**
+   * This property provides a human-readable explanation of the reason. The
+   * description may change at any time and should not be matched against.
+   */
+  readonly reason?: string;
+}
+
+/**
  * Model for minFraud GeoIP2 Insights data.
  */
 export interface IpAddress extends Insights {
@@ -62,6 +78,12 @@ export interface IpAddress extends Insights {
    * A higher score indicates a higher risk.
    */
   risk: number;
+  /**
+   * An array containing risk reason objects identifying the reasons why the IP
+   * address received the associated risk. This will be an empty list if there
+   * are no reasons.
+   */
+  riskReasons?: IpRiskReasons[];
 }
 
 /**
