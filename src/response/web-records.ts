@@ -75,7 +75,7 @@ export interface EmailDomainWebRecord {
 export interface EmailWebRecord {
   readonly domain: EmailDomainWebRecord;
   readonly first_seen: string;
-  readonly isDisposable?: boolean;
+  readonly is_disposable?: boolean;
   readonly is_free?: boolean;
   readonly is_high_risk?: boolean;
 }
