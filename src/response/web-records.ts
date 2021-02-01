@@ -35,8 +35,14 @@ export interface GeoIPLocationWebRecord {
   readonly local_time: string;
 }
 
+export interface IpRiskReasonsWebRecord {
+  readonly code?: string;
+  readonly reason?: string;
+}
+
 export interface IpAddressWebRecord extends CityResponse {
   readonly risk: number;
+  readonly risk_reasons?: IpRiskReasonsWebRecord[];
   readonly country?: GeoIPCountryWebRecord;
   readonly location?: GeoIPLocationWebRecord;
 }
@@ -75,7 +81,7 @@ export interface EmailDomainWebRecord {
 export interface EmailWebRecord {
   readonly domain: EmailDomainWebRecord;
   readonly first_seen: string;
-  readonly isDisposable?: boolean;
+  readonly is_disposable?: boolean;
   readonly is_free?: boolean;
   readonly is_high_risk?: boolean;
 }
