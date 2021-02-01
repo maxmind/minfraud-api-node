@@ -80,8 +80,7 @@ export interface IpAddress extends Insights {
   risk: number;
   /**
    * An array containing risk reason objects identifying the reasons why the IP
-   * address received the associated risk. This will be an empty list if there
-   * are no reasons.
+   * address received the associated risk.
    */
   riskReasons?: IpRiskReasons[];
 }
