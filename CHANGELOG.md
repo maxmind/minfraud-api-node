@@ -1,13 +1,14 @@
 CHANGELOG
 =========
 
-3.1.0
+3.1.0 (2021-02-02)
 ------------------
 
 * Added support for the IP address risk reasons in the minFraud Insights and
   Factors responses. This is available at `response.ipAddress.riskReasons`.
+* Upgraded yarn dependencies
 
-3.0.0 (2020-01-19)
+3.0.0 (2021-01-19)
 ------------------
 
 * Added `ApplePay` and `ApsPayments` to the `Processor` enum.
@@ -23,7 +24,7 @@ Previously the address was always sent as an MD5 hash. The new default
 behavior matches that of other official minFraud API clients. Note the
 email domain is always sent in plain text.
 
-2.1.0 (2020-01-11)
+2.1.0 (2021-01-11)
 ------------------
 
 * Upgrade yarn dependencies
