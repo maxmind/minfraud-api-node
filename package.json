@@ -1,6 +1,6 @@
 {
   "name": "@maxmind/minfraud-api-node",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Node.js API for MaxMind minFraud Score, Insights, and Factors web services",
   "main": "dist/src/index.js",
   "homepage": "https://github.com/maxmind/minfraud-api-node",
