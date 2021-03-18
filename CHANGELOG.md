@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+3.3.0 (2020-03-17)
+------------------
+* Upgrade node modules
+
 3.2.0 (2020-02-16)
 ------------------
 * Upgrade node modules
