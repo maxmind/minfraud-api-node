@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+3.4.0
+------------------
+
+* Add the following new values to the `Processor` enum:
+  * `Cardknox`
+  * `Creditguard`
+  * `Credorax`
+  * `Dlocal`
+  * `Onpay`
+  * `Safecharge`
+
 3.3.0 (2020-03-17)
 ------------------
 * Upgrade node modules
