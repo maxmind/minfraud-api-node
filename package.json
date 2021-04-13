@@ -27,7 +27,7 @@
     "@types/snakecase-keys": "^2.1.0",
     "@types/validator": "^13.0.0",
     "gh-pages": "^3.0.0",
-    "husky": "5",
+    "husky": "6.0.0",
     "jest": "^26.5.0",
     "lint-staged": "^10.5.3",
     "lodash.clonedeep": "^4.5.0",
