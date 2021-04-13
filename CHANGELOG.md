@@ -11,6 +11,9 @@ CHANGELOG
   * `Dlocal`
   * `Onpay`
   * `Safecharge`
+* Upgrade yarn dependencies
+* Update `@maxmind/geoip2-node`. The `staticIpScore` property was
+  incorrectly spelled `staticIPScore`. This is now fixed.
 
 3.3.0 (2020-03-17)
 ------------------
