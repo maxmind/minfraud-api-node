@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-3.4.0
+3.4.0 (2021-04-13)
 ------------------
 
 * Add the following new values to the `Processor` enum:
@@ -11,14 +11,19 @@ CHANGELOG
   * `Dlocal`
   * `Onpay`
   * `Safecharge`
+* Upgrade yarn dependencies
+* Update `@maxmind/geoip2-node`. The `staticIpScore` property was
+  incorrectly spelled `staticIPScore`. This is now fixed.
 
 3.3.0 (2020-03-17)
 ------------------
-* Upgrade node modules
+
+* Upgrade yarn dependencies
 
 3.2.0 (2020-02-16)
 ------------------
-* Upgrade node modules
+
+* Upgrade yarn dependencies
 
 3.1.0 (2021-02-02)
 ------------------
@@ -36,6 +41,7 @@ CHANGELOG
 * Upgrade yarn dependencies
 
 ### Breaking change
+
 The email address field is now sent to the web service in plain text unless
 you enable the new `hashAddress` option on `EmailProps`. Enabling this
 option sends the MD5 hash of the address to the web service instead.
