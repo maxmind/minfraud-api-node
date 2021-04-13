@@ -18,12 +18,12 @@ CHANGELOG
 3.3.0 (2020-03-17)
 ------------------
 
-* Upgrade node modules
+* Upgrade yarn dependencies
 
 3.2.0 (2020-02-16)
 ------------------
 
-* Upgrade node modules
+* Upgrade yarn dependencies
 
 3.1.0 (2021-02-02)
 ------------------
