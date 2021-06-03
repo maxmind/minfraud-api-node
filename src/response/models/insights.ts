@@ -59,7 +59,7 @@ export default class Insights extends Score {
     prop: keyof webRecords.InsightsResponse
   ): T | undefined {
     return response[prop]
-      ? ((camelizeResponse(response[prop]) as unknown) as T)
+      ? (camelizeResponse(response[prop]) as unknown as T)
       : undefined;
   }
 
