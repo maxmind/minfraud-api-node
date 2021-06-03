@@ -1,5 +1,5 @@
 import cloneDeep = require('lodash.clonedeep');
-import * as nock from 'nock';
+import nock from 'nock';
 import * as insights from '../fixtures/insights.json';
 import * as score from '../fixtures/score.json';
 import * as subscores from '../fixtures/subscores.json';

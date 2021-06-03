@@ -1,4 +1,4 @@
-import * as snakecaseKeys from 'snakecase-keys';
+import snakecaseKeys from 'snakecase-keys';
 import { ArgumentError } from '../errors';
 import Account from './account';
 import Billing from './billing';
@@ -140,7 +140,7 @@ export default class Transaction {
 
   private checkRegularProps(props: TransactionProps) {
     // Excludes array props (customInputs, shoppingCart)
-    const propTypeMap = ({
+    const propTypeMap = {
       account: Account,
       billing: Billing,
       creditCard: CreditCard,
@@ -150,7 +150,7 @@ export default class Transaction {
       order: Order,
       payment: Payment,
       shipping: Shipping,
-    } as unknown) as typeof props;
+    } as unknown as typeof props;
 
     const keys = Object.keys(propTypeMap) as (keyof typeof props)[];
 
