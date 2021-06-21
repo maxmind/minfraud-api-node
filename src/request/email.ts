@@ -1,5 +1,5 @@
-import * as crypto from 'crypto';
-import * as punycode from 'punycode';
+import crypto from 'crypto';
+import punycode from 'punycode';
 import isEmail from 'validator/lib/isEmail';
 import isFQDN from 'validator/lib/isFQDN';
 import { ArgumentError } from '../errors';

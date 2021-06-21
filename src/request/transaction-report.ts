@@ -1,5 +1,5 @@
 import { isIP } from 'net';
-import * as snakecaseKeys from 'snakecase-keys';
+import snakecaseKeys from 'snakecase-keys';
 import { Tag } from '../constants';
 import { ArgumentError } from '../errors';
 

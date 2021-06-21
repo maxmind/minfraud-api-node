@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "allowJs": false,
     "declaration": true,
+    "esModuleInterop": true,
     "lib": ["es2015", "es2016", "es2017"],
     "module": "commonjs",
     "outDir": "dist",
@@ -11,7 +12,6 @@
     "removeComments": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "sourceMap": false,
     "strict": true,
     "target": "es6"
   },
