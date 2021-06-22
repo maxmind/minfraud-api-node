@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-4.0.0 (XXXX)
+4.0.0 (2021-06-21)
 ------------------
 
 * **Breaking** Drop Node 10 support
