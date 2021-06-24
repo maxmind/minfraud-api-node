@@ -146,7 +146,7 @@ export interface ScoreResponse {
   readonly disposition?: DispositionWebRecord;
   readonly funds_remaining: number;
   readonly id: string;
-  readonly ip_address: ScoreIpAddress;
+  readonly ip_address?: ScoreIpAddress;
   readonly queries_remaining: number;
   readonly risk_score: number;
   readonly warnings?: Warning[];
