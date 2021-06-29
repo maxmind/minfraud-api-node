@@ -10,7 +10,7 @@ describe('Insights()', () => {
 
     const model = new Insights(input);
 
-    expect(model.ipAddress.country).toBeUndefined();
+    expect(model.ipAddress?.country).toBeUndefined();
   });
 
   it('handles empty location responses', () => {
@@ -20,7 +20,17 @@ describe('Insights()', () => {
 
     const model = new Insights(input);
 
-    expect(model.ipAddress.location).toBeUndefined();
+    expect(model.ipAddress?.location).toBeUndefined();
+  });
+
+  it('handles empty IP address responses', () => {
+    let input = cloneDeep(insights) as any;
+    input = input.response.full;
+    delete input.ip_address;
+
+    const model = new Insights(input);
+
+    expect(model.ipAddress).toBeUndefined();
   });
 
   it('allows /email/domain/first_seen to be accessed', () => {

@@ -28,7 +28,7 @@ export default class Insights extends Score {
   /**
    * An object containing GeoIP2 and minFraud Insights information about the IP address.
    */
-  public readonly ipAddress: records.IpAddress;
+  public readonly ipAddress?: records.IpAddress;
   /**
    * An object containing minFraud data related to the shipping address used in the transaction.
    */
@@ -65,7 +65,11 @@ export default class Insights extends Score {
 
   private getIpAddress(
     response: webRecords.InsightsResponse
-  ): records.IpAddress {
+  ): records.IpAddress | undefined {
+    if (!response.ip_address) {
+      return undefined;
+    }
+
     const insights = new GeoInsights(response.ip_address) as records.IpAddress;
 
     if (insights.country && response.ip_address.country) {

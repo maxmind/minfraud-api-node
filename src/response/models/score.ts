@@ -20,7 +20,7 @@ export default class Score {
   /**
    * An object containing information about the IP address's risk.
    */
-  public readonly ipAddress: records.ScoreIpAddress;
+  public readonly ipAddress?: records.ScoreIpAddress;
   /**
    * The approximate number of queries remaining for this service before your
    * account runs out of funds.
