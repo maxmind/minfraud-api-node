@@ -55,6 +55,7 @@ export enum Processor {
   Cybersource = 'cybersource',
   Dalenys = 'dalenys',
   Dalpay = 'dalpay',
+  Datacap = 'datacap',
   Datacash = 'datacash',
   Dibs = 'dibs',
   DigitalRiver = 'digital_river',
