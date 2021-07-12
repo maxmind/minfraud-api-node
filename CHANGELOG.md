@@ -1,10 +1,11 @@
 CHANGELOG
 =========
 
-4.1.0
+4.1.0 (2021-07-09)
 ------------------
 
 * Add `Datacap` to the `Processor` enum.
+* Upgrade yarn modules
 
 4.0.1 (2021-06-29)
 ------------------
