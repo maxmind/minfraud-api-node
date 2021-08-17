@@ -21,7 +21,7 @@
   "files": ["dist"],
   "types": "dist/src/index.d.ts",
   "devDependencies": {
-    "@types/jest": "^26.0.0",
+    "@types/jest": "^27.0.1",
     "@types/lodash.clonedeep": "^4.5.4",
     "@types/node": "^16.0.1",
     "@types/validator": "^13.0.0",
