@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Device | @maxmind/minfraud-api-node</title>
+	<title>ShoppingCartItem | @maxmind/minfraud-api-node</title>
 	<meta name="description" content="Documentation for @maxmind/minfraud-api-node">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">@maxmind/minfraud-api-node</a>
 				</li>
 				<li>
-					<a href="device.html">Device</a>
+					<a href="ShoppingCartItem.html">ShoppingCartItem</a>
 				</li>
 			</ul>
-			<h1>Class Device</h1>
+			<h1>Class ShoppingCartItem</h1>
 		</div>
 	</div>
 </header>
@@ -68,7 +68,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The device information for the transaction being sent to the web service.</p>
+						<p>Information for an item in the shopping cart for the transaction being sent
+						to the web service.</p>
 					</div>
 				</div>
 			</section>
@@ -76,14 +77,14 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Device</span>
+						<span class="target">ShoppingCartItem</span>
 					</li>
 				</ul>
 			</section>
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><span class="tsd-signature-type">DeviceProps</span></li>
+					<li><span class="tsd-signature-type">ShoppingCartItemProps</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -93,17 +94,16 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="device.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="ShoppingCartItem.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#acceptlanguage" class="tsd-kind-icon">accept<wbr>Language</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#ipaddress" class="tsd-kind-icon">ip<wbr>Address</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#sessionage" class="tsd-kind-icon">session<wbr>Age</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#sessionid" class="tsd-kind-icon">session<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="device.html#useragent" class="tsd-kind-icon">user<wbr>Agent</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ShoppingCartItem.html#category" class="tsd-kind-icon">category</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ShoppingCartItem.html#itemId" class="tsd-kind-icon">item<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ShoppingCartItem.html#price" class="tsd-kind-icon">price</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ShoppingCartItem.html#quantity" class="tsd-kind-icon">quantity</a></li>
 							</ul>
 						</section>
 					</div>
@@ -115,22 +115,22 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Device<span class="tsd-signature-symbol">(</span>device<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DeviceProps</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="device.html" class="tsd-signature-type" data-tsd-kind="Class">Device</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Shopping<wbr>Cart<wbr>Item<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ShoppingCartItemProps</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="ShoppingCartItem.html" class="tsd-signature-type" data-tsd-kind="Class">ShoppingCartItem</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/device.ts#L44">request/device.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/shopping-cart-item.ts#L37">request/shopping-cart-item.ts:37</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>device: <span class="tsd-signature-type">DeviceProps</span></h5>
+									<h5>item: <span class="tsd-signature-type">ShoppingCartItemProps</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="device.html" class="tsd-signature-type" data-tsd-kind="Class">Device</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="ShoppingCartItem.html" class="tsd-signature-type" data-tsd-kind="Class">ShoppingCartItem</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -138,13 +138,13 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="acceptlanguage" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> accept<wbr>Language</h3>
-					<div class="tsd-signature tsd-kind-icon">accept<wbr>Language<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="category" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> category</h3>
+					<div class="tsd-signature tsd-kind-icon">category<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of DeviceProps.acceptLanguage</p>
+						<p>Implementation of ShoppingCartItemProps.category</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/device.ts#L40">request/device.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/shopping-cart-item.ts#L29">request/shopping-cart-item.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -155,13 +155,13 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="ipaddress" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> ip<wbr>Address</h3>
-					<div class="tsd-signature tsd-kind-icon">ip<wbr>Address<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="itemId" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> item<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">item<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of DeviceProps.ipAddress</p>
+						<p>Implementation of ShoppingCartItemProps.itemId</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/device.ts#L36">request/device.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/shopping-cart-item.ts#L31">request/shopping-cart-item.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -172,13 +172,13 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="sessionage" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> session<wbr>Age</h3>
-					<div class="tsd-signature tsd-kind-icon">session<wbr>Age<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="price" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> price</h3>
+					<div class="tsd-signature tsd-kind-icon">price<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of DeviceProps.sessionAge</p>
+						<p>Implementation of ShoppingCartItemProps.price</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/device.ts#L42">request/device.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/shopping-cart-item.ts#L35">request/shopping-cart-item.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -189,30 +189,13 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="sessionid" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> session<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">session<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="quantity" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> quantity</h3>
+					<div class="tsd-signature tsd-kind-icon">quantity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of DeviceProps.sessionId</p>
+						<p>Implementation of ShoppingCartItemProps.quantity</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/device.ts#L44">request/device.ts:44</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<dl class="tsd-comment-tags">
-							<dt>inheritdoc</dt>
-							<dd></dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="useragent" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> user<wbr>Agent</h3>
-					<div class="tsd-signature tsd-kind-icon">user<wbr>Agent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Implementation of DeviceProps.userAgent</p>
-						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/device.ts#L38">request/device.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/shopping-cart-item.ts#L33">request/shopping-cart-item.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -235,70 +218,67 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
-						<a href="account.html" class="tsd-kind-icon">Account</a>
+						<a href="Account.html" class="tsd-kind-icon">Account</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="billing.html" class="tsd-kind-icon">Billing</a>
+						<a href="Billing.html" class="tsd-kind-icon">Billing</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="client.html" class="tsd-kind-icon">Client</a>
+						<a href="Client.html" class="tsd-kind-icon">Client</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="creditcard.html" class="tsd-kind-icon">Credit<wbr>Card</a>
+						<a href="CreditCard.html" class="tsd-kind-icon">Credit<wbr>Card</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="custominput.html" class="tsd-kind-icon">Custom<wbr>Input</a>
+						<a href="CustomInput.html" class="tsd-kind-icon">Custom<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="Device.html" class="tsd-kind-icon">Device</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="Email.html" class="tsd-kind-icon">Email</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="Event.html" class="tsd-kind-icon">Event</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="Order.html" class="tsd-kind-icon">Order</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="Payment.html" class="tsd-kind-icon">Payment</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="Shipping.html" class="tsd-kind-icon">Shipping</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
-						<a href="device.html" class="tsd-kind-icon">Device</a>
+						<a href="ShoppingCartItem.html" class="tsd-kind-icon">Shopping<wbr>Cart<wbr>Item</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="device.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="ShoppingCartItem.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="device.html#acceptlanguage" class="tsd-kind-icon">accept<wbr>Language</a>
+								<a href="ShoppingCartItem.html#category" class="tsd-kind-icon">category</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="device.html#ipaddress" class="tsd-kind-icon">ip<wbr>Address</a>
+								<a href="ShoppingCartItem.html#itemId" class="tsd-kind-icon">item<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="device.html#sessionage" class="tsd-kind-icon">session<wbr>Age</a>
+								<a href="ShoppingCartItem.html#price" class="tsd-kind-icon">price</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="device.html#sessionid" class="tsd-kind-icon">session<wbr>Id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="device.html#useragent" class="tsd-kind-icon">user<wbr>Agent</a>
+								<a href="ShoppingCartItem.html#quantity" class="tsd-kind-icon">quantity</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-class">
-						<a href="email.html" class="tsd-kind-icon">Email</a>
+						<a href="Transaction.html" class="tsd-kind-icon">Transaction</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="event.html" class="tsd-kind-icon">Event</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="order.html" class="tsd-kind-icon">Order</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="payment.html" class="tsd-kind-icon">Payment</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="shipping.html" class="tsd-kind-icon">Shipping</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="shoppingcartitem.html" class="tsd-kind-icon">Shopping<wbr>Cart<wbr>Item</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="transaction.html" class="tsd-kind-icon">Transaction</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="transactionreport.html" class="tsd-kind-icon">Transaction<wbr>Report</a>
+						<a href="TransactionReport.html" class="tsd-kind-icon">Transaction<wbr>Report</a>
 					</li>
 				</ul>
 			</nav>

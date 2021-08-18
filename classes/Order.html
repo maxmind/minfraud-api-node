@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CreditCard | @maxmind/minfraud-api-node</title>
+	<title>Order | @maxmind/minfraud-api-node</title>
 	<meta name="description" content="Documentation for @maxmind/minfraud-api-node">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">@maxmind/minfraud-api-node</a>
 				</li>
 				<li>
-					<a href="creditcard.html">CreditCard</a>
+					<a href="Order.html">Order</a>
 				</li>
 			</ul>
-			<h1>Class CreditCard</h1>
+			<h1>Class Order</h1>
 		</div>
 	</div>
 </header>
@@ -68,7 +68,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The credit card information for the transaction being sent to the web service.</p>
+						<p>The order information for the transaction being sent to the web service.</p>
 					</div>
 				</div>
 			</section>
@@ -76,14 +76,14 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CreditCard</span>
+						<span class="target">Order</span>
 					</li>
 				</ul>
 			</section>
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><span class="tsd-signature-type">CreditCardProps</span></li>
+					<li><span class="tsd-signature-type">OrderProps</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -93,20 +93,20 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="creditcard.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="Order.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#avsresult" class="tsd-kind-icon">avs<wbr>Result</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#bankname" class="tsd-kind-icon">bank<wbr>Name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#bankphonecountrycode" class="tsd-kind-icon">bank<wbr>Phone<wbr>Country<wbr>Code</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#bankphonenumber" class="tsd-kind-icon">bank<wbr>Phone<wbr>Number</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#cvvresult" class="tsd-kind-icon">cvv<wbr>Result</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#issueridnumber" class="tsd-kind-icon">issuer<wbr>IdNumber</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#last4digits" class="tsd-kind-icon">last4digits</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="creditcard.html#token" class="tsd-kind-icon">token</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Order.html#affiliateId" class="tsd-kind-icon">affiliate<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Order.html#amount" class="tsd-kind-icon">amount</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Order.html#currency" class="tsd-kind-icon">currency</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Order.html#discountCode" class="tsd-kind-icon">discount<wbr>Code</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Order.html#hasGiftMessage" class="tsd-kind-icon">has<wbr>Gift<wbr>Message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Order.html#isGift" class="tsd-kind-icon">is<wbr>Gift</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Order.html#referrerUri" class="tsd-kind-icon">referrer<wbr>Uri</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Order.html#subaffiliateId" class="tsd-kind-icon">subaffiliate<wbr>Id</a></li>
 							</ul>
 						</section>
 					</div>
@@ -118,22 +118,22 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Credit<wbr>Card<span class="tsd-signature-symbol">(</span>creditCard<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CreditCardProps</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="creditcard.html" class="tsd-signature-type" data-tsd-kind="Class">CreditCard</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Order<span class="tsd-signature-symbol">(</span>order<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">OrderProps</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Order.html" class="tsd-signature-type" data-tsd-kind="Class">Order</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/credit-card.ts#L67">request/credit-card.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/order.ts#L64">request/order.ts:64</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>creditCard: <span class="tsd-signature-type">CreditCardProps</span></h5>
+									<h5>order: <span class="tsd-signature-type">OrderProps</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="creditcard.html" class="tsd-signature-type" data-tsd-kind="Class">CreditCard</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="Order.html" class="tsd-signature-type" data-tsd-kind="Class">Order</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -141,13 +141,13 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="avsresult" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> avs<wbr>Result</h3>
-					<div class="tsd-signature tsd-kind-icon">avs<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="affiliateId" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> affiliate<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">affiliate<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of CreditCardProps.avsResult</p>
+						<p>Implementation of OrderProps.affiliateId</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/credit-card.ts#L65">request/credit-card.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/order.ts#L54">request/order.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -158,13 +158,13 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="bankname" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> bank<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">bank<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="amount" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> amount</h3>
+					<div class="tsd-signature tsd-kind-icon">amount<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of CreditCardProps.bankName</p>
+						<p>Implementation of OrderProps.amount</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/credit-card.ts#L59">request/credit-card.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/order.ts#L48">request/order.ts:48</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -175,13 +175,13 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="bankphonecountrycode" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> bank<wbr>Phone<wbr>Country<wbr>Code</h3>
-					<div class="tsd-signature tsd-kind-icon">bank<wbr>Phone<wbr>Country<wbr>Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="currency" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> currency</h3>
+					<div class="tsd-signature tsd-kind-icon">currency<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of CreditCardProps.bankPhoneCountryCode</p>
+						<p>Implementation of OrderProps.currency</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/credit-card.ts#L61">request/credit-card.ts:61</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/order.ts#L50">request/order.ts:50</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -192,13 +192,13 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="bankphonenumber" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> bank<wbr>Phone<wbr>Number</h3>
-					<div class="tsd-signature tsd-kind-icon">bank<wbr>Phone<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="discountCode" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> discount<wbr>Code</h3>
+					<div class="tsd-signature tsd-kind-icon">discount<wbr>Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of CreditCardProps.bankPhoneNumber</p>
+						<p>Implementation of OrderProps.discountCode</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/credit-card.ts#L63">request/credit-card.ts:63</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/order.ts#L52">request/order.ts:52</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -209,13 +209,13 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="cvvresult" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cvv<wbr>Result</h3>
-					<div class="tsd-signature tsd-kind-icon">cvv<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="hasGiftMessage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> has<wbr>Gift<wbr>Message</h3>
+					<div class="tsd-signature tsd-kind-icon">has<wbr>Gift<wbr>Message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of CreditCardProps.cvvResult</p>
+						<p>Implementation of OrderProps.hasGiftMessage</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/credit-card.ts#L67">request/credit-card.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/order.ts#L62">request/order.ts:62</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -226,13 +226,13 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="issueridnumber" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> issuer<wbr>IdNumber</h3>
-					<div class="tsd-signature tsd-kind-icon">issuer<wbr>IdNumber<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="isGift" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> is<wbr>Gift</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Gift<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of CreditCardProps.issuerIdNumber</p>
+						<p>Implementation of OrderProps.isGift</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/credit-card.ts#L53">request/credit-card.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/order.ts#L60">request/order.ts:60</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -243,13 +243,13 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="last4digits" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> last4digits</h3>
-					<div class="tsd-signature tsd-kind-icon">last4digits<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="referrerUri" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> referrer<wbr>Uri</h3>
+					<div class="tsd-signature tsd-kind-icon">referrer<wbr>Uri<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">URL</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of CreditCardProps.last4digits</p>
+						<p>Implementation of OrderProps.referrerUri</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/credit-card.ts#L55">request/credit-card.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/order.ts#L58">request/order.ts:58</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -260,13 +260,13 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="token" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> token</h3>
-					<div class="tsd-signature tsd-kind-icon">token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="subaffiliateId" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> subaffiliate<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">subaffiliate<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of CreditCardProps.token</p>
+						<p>Implementation of OrderProps.subaffiliateId</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/ec67c15/src/request/credit-card.ts#L57">request/credit-card.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/maxmind/minfraud-api-node/blob/2f8e41f/src/request/order.ts#L56">request/order.ts:56</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -289,79 +289,79 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
-						<a href="account.html" class="tsd-kind-icon">Account</a>
+						<a href="Account.html" class="tsd-kind-icon">Account</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="billing.html" class="tsd-kind-icon">Billing</a>
+						<a href="Billing.html" class="tsd-kind-icon">Billing</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="client.html" class="tsd-kind-icon">Client</a>
+						<a href="Client.html" class="tsd-kind-icon">Client</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="CreditCard.html" class="tsd-kind-icon">Credit<wbr>Card</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="CustomInput.html" class="tsd-kind-icon">Custom<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="Device.html" class="tsd-kind-icon">Device</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="Email.html" class="tsd-kind-icon">Email</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="Event.html" class="tsd-kind-icon">Event</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
-						<a href="creditcard.html" class="tsd-kind-icon">Credit<wbr>Card</a>
+						<a href="Order.html" class="tsd-kind-icon">Order</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="creditcard.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="Order.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#avsresult" class="tsd-kind-icon">avs<wbr>Result</a>
+								<a href="Order.html#affiliateId" class="tsd-kind-icon">affiliate<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#bankname" class="tsd-kind-icon">bank<wbr>Name</a>
+								<a href="Order.html#amount" class="tsd-kind-icon">amount</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#bankphonecountrycode" class="tsd-kind-icon">bank<wbr>Phone<wbr>Country<wbr>Code</a>
+								<a href="Order.html#currency" class="tsd-kind-icon">currency</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#bankphonenumber" class="tsd-kind-icon">bank<wbr>Phone<wbr>Number</a>
+								<a href="Order.html#discountCode" class="tsd-kind-icon">discount<wbr>Code</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#cvvresult" class="tsd-kind-icon">cvv<wbr>Result</a>
+								<a href="Order.html#hasGiftMessage" class="tsd-kind-icon">has<wbr>Gift<wbr>Message</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#issueridnumber" class="tsd-kind-icon">issuer<wbr>IdNumber</a>
+								<a href="Order.html#isGift" class="tsd-kind-icon">is<wbr>Gift</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#last4digits" class="tsd-kind-icon">last4digits</a>
+								<a href="Order.html#referrerUri" class="tsd-kind-icon">referrer<wbr>Uri</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="creditcard.html#token" class="tsd-kind-icon">token</a>
+								<a href="Order.html#subaffiliateId" class="tsd-kind-icon">subaffiliate<wbr>Id</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-class">
-						<a href="custominput.html" class="tsd-kind-icon">Custom<wbr>Input</a>
+						<a href="Payment.html" class="tsd-kind-icon">Payment</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="device.html" class="tsd-kind-icon">Device</a>
+						<a href="Shipping.html" class="tsd-kind-icon">Shipping</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="email.html" class="tsd-kind-icon">Email</a>
+						<a href="ShoppingCartItem.html" class="tsd-kind-icon">Shopping<wbr>Cart<wbr>Item</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="event.html" class="tsd-kind-icon">Event</a>
+						<a href="Transaction.html" class="tsd-kind-icon">Transaction</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="order.html" class="tsd-kind-icon">Order</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="payment.html" class="tsd-kind-icon">Payment</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="shipping.html" class="tsd-kind-icon">Shipping</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="shoppingcartitem.html" class="tsd-kind-icon">Shopping<wbr>Cart<wbr>Item</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="transaction.html" class="tsd-kind-icon">Transaction</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="transactionreport.html" class="tsd-kind-icon">Transaction<wbr>Report</a>
+						<a href="TransactionReport.html" class="tsd-kind-icon">Transaction<wbr>Report</a>
 					</li>
 				</ul>
 			</nav>
