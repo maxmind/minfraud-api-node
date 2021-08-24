@@ -111,6 +111,7 @@ export type DispositionReason = 'default' | 'custom_rule';
 export interface DispositionWebRecord {
   readonly action: DispositionAction;
   readonly reason: DispositionReason;
+  readonly rule_label?: string;
 }
 
 export interface SubscoresWebRecord {

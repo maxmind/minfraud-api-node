@@ -42,7 +42,9 @@ export default class Score {
   public readonly warnings?: records.Warning[];
 
   public constructor(response: webRecords.ScoreResponse) {
-    this.disposition = response.disposition as records.Disposition;
+    this.disposition = camelizeResponse(
+      response.disposition
+    ) as records.Disposition;
     this.fundsRemaining = response.funds_remaining;
     this.id = response.id;
     this.ipAddress = response.ip_address;

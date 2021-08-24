@@ -325,6 +325,12 @@ export interface Disposition {
    * will be returned.
    */
   readonly reason: DispositionReason;
+  /**
+   * The label of the custom rule that was triggered. If you do not have custom
+   * rules set up, the triggered custom rule does not have a label, or no custom
+   * rule was triggered, `null` will be returned.
+   */
+  readonly ruleLabel?: string;
 }
 
 /**

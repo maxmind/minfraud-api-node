@@ -205,7 +205,8 @@
 
       "disposition": {
         "action": "accept",
-        "reason": "default"
+        "reason": "default",
+        "rule_label": "the label"
       },
 
       "warnings": [

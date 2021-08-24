@@ -4,6 +4,9 @@ CHANGELOG
 4.3.0
 
 * Added support for the new `test` disposition action.
+* Added support for the `/disposition/rule_label` output in Score, Insights and
+  Factors. This is available at `response.disposition.ruleLabel()`, and is the
+  label of the custom rule that was triggered by the transaction.
 
 4.2.0 (2021-08-18)
 ------------------
