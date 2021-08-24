@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+4.3.0
+
+* Added support for the new `test` disposition action.
+
 4.2.0 (2021-08-18)
 ------------------
 

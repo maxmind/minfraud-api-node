@@ -315,8 +315,8 @@ export interface BillingAddress {
 export interface Disposition {
   /**
    * The action to take on the transaction as defined by your custom rules. The
-   * current set of values are "accept", "manual_review", and "reject". If you
-   * do not have custom rules set up, `null` will be returned.
+   * current set of values are "accept", "manual_review", "reject", and "test".
+   * If you do not have custom rules set up, `null` will be returned.
    */
   readonly action: DispositionAction;
   /**
