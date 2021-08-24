@@ -32,7 +32,7 @@ describe('CreditCard()', () => {
     ${'token is not all digits'}                        | ${{ token: 'a7f6%gf83fhAu' }}
     ${'token is non-space and printable'}               | ${{ token: 'valid_token' }}
     ${'token is a number with more than 19 characters'} | ${{ token: '12345678901234567890' }}
-  `('does not thrown an error if $condition', ({ val }) => {
+  `('does not throw an error if $condition', ({ val }) => {
     expect(() => new CreditCard(val)).not.toThrow();
   });
 
