@@ -38,6 +38,15 @@ interface CreditCardProps {
    * The card verification value (CVV) code as provided by the payment processor.
    */
   cvvResult?: string;
+  /**
+   * Whether or not the outcome of 3D-Secure verification (e.g. Safekey,
+   * SecureCode, Verified by Visa) was successful as provided by the end user.
+   * `true` if customer verification was successful, or `false` if the customer
+   * failed verification. If 3-D Secure verification was not used, was
+   * unavailable, or resulted in another outcome other than success or failure,
+   * do not set this property.
+   */
+  was3DSecureSuccessful?: boolean;
 }
 
 const singleChar = /^[A-Za-z0-9]$/;
@@ -65,6 +74,8 @@ export default class CreditCard implements CreditCardProps {
   public avsResult?: string;
   /** @inheritDoc CreditCardProps.cvvResult */
   public cvvResult?: string;
+  /** @inheritDoc CreditCardProps.was3DSecureSuccessful */
+  public was3DSecureSuccessful?: boolean;
 
   public constructor(creditCard: CreditCardProps) {
     if (

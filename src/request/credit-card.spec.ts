@@ -45,6 +45,7 @@ describe('CreditCard()', () => {
           issuerIdNumber: '411111',
           last4digits: '1234',
           token: 'valid_token',
+          was3DSecureSuccessful: true,
         })
     ).not.toThrow();
   });

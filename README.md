@@ -218,6 +218,7 @@ try {
       issuerIdNumber: '411111',
       last4digits: '1234',
       token: 'a_token',
+      was3DSecureSuccessful: true,
     }),
     order: new minFraud.Order({
       affiliateId: 'robotnet',
