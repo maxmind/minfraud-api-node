@@ -94,10 +94,11 @@ export interface CreditCardIssuer {
    */
   readonly name: string;
   /**
-   * This property is `true` if the name matches the name provided in the request
-   * for the card issuer. It is `false` if the name does not match. The property
-   * is `null` if either no name or no issuer ID number (IIN) was provided in the
-   * request or if MaxMind does not have a name associated with the IIN.
+   * This property is `true` if the name matches the name provided in the
+   * request for the card issuer. It is `false` if the name does not match. The
+   * property is `null` if either no name or no issuer ID number (IIN) was
+   * provided in the request or if MaxMind does not have a name associated with
+   * the IIN.
    */
   readonly matchesProvidedName?: boolean;
   /**
@@ -107,9 +108,9 @@ export interface CreditCardIssuer {
   readonly phoneNumber: string;
   /**
    * This property is `true` if the phone number matches the number provided in
-   * the request for the card issuer. It is `false` if the number does not match.
-   * It is `null` if either no phone number or no issuer ID number(IIN) was
-   * provided in the request or if MaxMind does not have a phone number
+   * the request for the card issuer. It is `false` if the number does not
+   * match. It is `null` if either no phone number or no issuer ID number (IIN)
+   * was provided in the request or if MaxMind does not have a phone number
    * associated with the IIN.
    */
   readonly matchesProvidedPhoneNumber?: boolean;
@@ -194,7 +195,8 @@ export interface Device {
 }
 
 /**
- * This object contains information about the email address domain passed in the request.
+ * This object contains information about the email address domain passed in the
+ * request.
  */
 export interface EmailDomain {
   /**
@@ -204,7 +206,8 @@ export interface EmailDomain {
 }
 
 /**
- * This object contains information about the email address passed in the request.
+ * This object contains information about the email address passed in the
+ * request.
  */
 export interface Email {
   /**
@@ -247,9 +250,9 @@ export interface ShippingAddress {
   readonly isHighRisk: boolean;
   /**
    * This property is `true` if the postal code provided with the address is in
-   * the city for the address.The property is `false` when the postal code is not
-   * in the city. If the address was not provided or could not be parsed, the
-   * property will be `null`.
+   * the city for the address. The property is `false` when the postal code is
+   * not in the city. If the address was not provided or could not be parsed,
+   * the property will be `null`.
    */
   readonly isPostalInCity?: boolean;
   /**
@@ -269,9 +272,9 @@ export interface ShippingAddress {
    */
   readonly distanceToBillingAddress: number;
   /**
-   * This property is `true` if the address is in the IP country.The property is
-   * `false` when the address is not in the IP country. If the address could not
-   * be parsed or was not provided or if the IP address could not be
+   * This property is `true` if the address is in the IP country. The property
+   * is `false` when the address is not in the IP country. If the address could
+   * not be parsed or was not provided or if the IP address could not be
    * geolocated, the property will be `null`.
    */
   readonly isInIpCountry?: boolean;
@@ -280,9 +283,9 @@ export interface ShippingAddress {
 export interface BillingAddress {
   /**
    * This property is `true` if the postal code provided with the address is in
-   * the city for the address.The property is `false` when the postal code is not
-   * in the city. If the address was not provided or could not be parsed, the
-   * property will be `null`.
+   * the city for the address. The property is `false` when the postal code is
+   * not in the city. If the address was not provided or could not be parsed,
+   * the property will be `null`.
    */
   readonly isPostalInCity?: boolean;
   /**
@@ -298,9 +301,9 @@ export interface BillingAddress {
    */
   readonly distanceToIpLocation: number;
   /**
-   * This property is `true` if the address is in the IP country.The property is
-   * `false` when the address is not in the IP country. If the address could not
-   * be parsed or was not provided or if the IP address could not be
+   * This property is `true` if the address is in the IP country. The property
+   * is `false` when the address is not in the IP country. If the address could
+   * not be parsed or was not provided or if the IP address could not be
    * geolocated, the property will be `null`.
    */
   readonly isInIpCountry?: boolean;
@@ -352,7 +355,7 @@ export interface Subscores {
   readonly browser?: number;
   /**
    * Individualized risk of chargeback for the given IP address on your account
-   * and shop ID.This is only available to users sending chargeback data to
+   * and shop ID. This is only available to users sending chargeback data to
    * MaxMind. If present, this is a value in the range 0.01 to 99.
    */
   readonly chargeback?: number;
