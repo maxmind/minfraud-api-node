@@ -104,13 +104,14 @@ export interface BillingAddressWebRecord {
   readonly is_in_ip_country?: boolean;
 }
 
-export type DispositionAction = 'accept' | 'reject' | 'manual_review';
+export type DispositionAction = 'accept' | 'reject' | 'manual_review' | 'test';
 
 export type DispositionReason = 'default' | 'custom_rule';
 
 export interface DispositionWebRecord {
   readonly action: DispositionAction;
   readonly reason: DispositionReason;
+  readonly rule_label?: string;
 }
 
 export interface SubscoresWebRecord {

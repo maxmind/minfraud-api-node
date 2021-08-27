@@ -19,7 +19,8 @@
 
       "disposition": {
         "action": "accept",
-        "reason": "default"
+        "reason": "default",
+        "rule_label": "the label"
       },
 
       "warnings": [
@@ -42,7 +43,8 @@
 
       "disposition": {
         "action": "accept",
-        "reason": "default"
+        "reason": "default",
+        "rule_label": "the label"
       }
     },
     "noDisposition": {
@@ -53,6 +55,29 @@
 
       "ip_address": {
         "risk": 0.01
+      },
+
+      "warnings": [
+        {
+          "code": "INPUT_INVALID",
+          "warning": "Encountered value at /shipping/city that does not meet the required constraints",
+          "input_pointer": "/shipping/city"
+        }
+      ]
+    },
+    "noDispositionRuleLabel": {
+      "id": "5bc5d6c2-b2c8-40af-87f4-6d61af86b6ae",
+      "risk_score": 0.01,
+      "funds_remaining": 25.0,
+      "queries_remaining": 5000,
+
+      "ip_address": {
+        "risk": 0.01
+      },
+
+      "disposition": {
+        "action": "accept",
+        "reason": "default"
       },
 
       "warnings": [

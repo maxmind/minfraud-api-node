@@ -123,6 +123,18 @@ describe('WebServiceClient', () => {
       );
     });
 
+    it('handles "no disposition rule_label" responses', () => {
+      expect.assertions(1);
+
+      nockInstance
+        .post(fullPath('score'), score.request.basic)
+        .reply(200, score.response.noDispositionRuleLabel);
+
+      return expect(client.score(transaction)).resolves.toEqual(
+        camelizeResponse(score.response.noDispositionRuleLabel)
+      );
+    });
+
     it('handles "no warnings" responses', () => {
       expect.assertions(1);
 
