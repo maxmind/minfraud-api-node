@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-4.3.0
+4.3.0 (2021-08-31)
 
 * Added support for the new `test` disposition action.
 * Added support for the `/disposition/rule_label` output in Score, Insights and
