@@ -30,7 +30,7 @@ CHANGELOG
 4.0.1 (2021-06-29)
 ------------------
 
-* Fix: IP address response is optional.  [Issue 515](https://github.com/maxmind/minfraud-api-node/issues/515)
+* Fix: IP address response is optional. [Issue 515](https://github.com/maxmind/minfraud-api-node/issues/515)
 
 4.0.0 (2021-06-21)
 ------------------

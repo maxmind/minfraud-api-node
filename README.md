@@ -7,7 +7,7 @@ Factors, and Report Transaction web services](https://dev.maxmind.com/minfraud/)
 
 ## Requirements
 
-MaxMind has tested this API with Node.js versions 12 and 14.  We aim to support
+MaxMind has tested this API with Node.js versions 12 and 14. We aim to support
 active LTS versions of Node.js, as well as the latest stable release.
 
 ## Installation
@@ -37,7 +37,7 @@ const client = new minFraud.Client("1234", "LICENSEKEY");
 
 Then create a new `Transaction` object. This represents the transaction that
 you are sending to minFraud. Each transaction property is instantiated by creating
-a new instance of each property's class.  For example:
+a new instance of each property's class. For example:
 
 ```js
 const transaction = new minFraud.Transaction({
@@ -85,7 +85,7 @@ MaxMind encourages the use of this API, as data received through this channel
 is continually used to improve the accuracy of our fraud detection algorithms.
 
 To use the Report Transactions API, create a new `TransactionReport` object. An
-IP address and a valid tag are required key values.  Additional key values may
+IP address and a valid tag are required key values. Additional key values may
 also be set, as documented below.
 
 See the API documentation for more details.
