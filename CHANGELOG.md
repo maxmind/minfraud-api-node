@@ -1,7 +1,23 @@
 CHANGELOG
 =========
 
+4.4.0
+------------------
+
+* Added the following new values to the `Processor` enum:
+  * `Boacompra`
+  * `Boku`
+  * `Coregateway`
+  * `Fiserv`
+  * `Neopay`
+  * `Neosurf`
+  * `Openbucks`
+  * `Paysera`
+  * `Payvision`
+  * `Trustly`
+
 4.3.0 (2021-08-31)
+------------------
 
 * Added support for the new `test` disposition action.
 * Added support for the `/disposition/rule_label` output in Score, Insights and
