@@ -115,10 +115,6 @@ export default class CreditCard implements CreditCardProps {
       creditCard.lastDigits = creditCard.last4digits;
     }
 
-    if (creditCard.lastDigits != null) {
-      creditCard.last4digits = creditCard.lastDigits;
-    }
-
     if (
       creditCard.lastDigits != null &&
       !lastDigitsRegex.test(creditCard.lastDigits)
