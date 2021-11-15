@@ -153,14 +153,14 @@ export default class CreditCard implements CreditCardProps {
    * @deprecated Use lastDigits instead
    */
   public get last4digits() {
-    return this.lastDigits!;
+    return this.lastDigits;
   }
 
   /** Set the last digits of the credit card number.
    *
    * @deprecated Use lastDigits instead
    */
-  public set last4digits(lastDigits: string) {
+  public set last4digits(lastDigits: string | undefined) {
     this.lastDigits = lastDigits;
   }
 }
