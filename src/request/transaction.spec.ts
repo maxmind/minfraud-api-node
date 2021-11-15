@@ -266,9 +266,7 @@ describe('Transaction()', () => {
 
       expect(test.toString()).toContain(deviceString);
 
-      expect(test.toString()).toContain(
-        '"credit_card":{"last_4_digits":"1234"}'
-      );
+      expect(test.toString()).toContain('"credit_card":{"last_digits":"1234"}');
     });
 
     it('it handles optional order field', () => {
@@ -413,6 +411,65 @@ describe('Transaction()', () => {
 
         expect(test.shipping).toHaveProperty('address_2', null);
       });
+    });
+  });
+
+  describe('6 or 8 digit iins and 2 or 4 digit lastDigits', () => {
+    it('it handles 8 digit iins with 2 digit lastDigits', () => {
+      const test = new Transaction({
+        creditCard: new CreditCard({
+          issuerIdNumber: '12345678',
+          lastDigits: '12',
+        }),
+        device: new Device({
+          ipAddress: '1.1.1.1',
+          sessionAge: 100,
+        }),
+      });
+
+      expect(isJSON(test.toString())).toBe(true);
+
+      expect(test.toString()).toContain(
+        '"credit_card":{"issuer_id_number":"12345678","last_digits":"12"}'
+      );
+    });
+
+    it('it handles 8 digit iins with 4 digit lastDigits', () => {
+      const test = new Transaction({
+        creditCard: new CreditCard({
+          issuerIdNumber: '12345678',
+          lastDigits: '1234',
+        }),
+        device: new Device({
+          ipAddress: '1.1.1.1',
+          sessionAge: 100,
+        }),
+      });
+
+      expect(isJSON(test.toString())).toBe(true);
+
+      expect(test.toString()).toContain(
+        '"credit_card":{"issuer_id_number":"12345678","last_digits":"1234"}'
+      );
+    });
+
+    it('it handles 6 digit iins with 2 digit lastDigits', () => {
+      const test = new Transaction({
+        creditCard: new CreditCard({
+          issuerIdNumber: '123456',
+          lastDigits: '12',
+        }),
+        device: new Device({
+          ipAddress: '1.1.1.1',
+          sessionAge: 100,
+        }),
+      });
+
+      expect(isJSON(test.toString())).toBe(true);
+
+      expect(test.toString()).toContain(
+        '"credit_card":{"issuer_id_number":"123456","last_digits":"12"}'
+      );
     });
   });
 });
