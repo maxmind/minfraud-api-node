@@ -12,7 +12,7 @@ import Payment from './payment';
 import Shipping from './shipping';
 import ShoppingCartItem from './shopping-cart-item';
 
-interface TransactionProps {
+export interface TransactionProps {
   /**
    * Account information for the transaction.
    */
@@ -70,7 +70,7 @@ export default class Transaction {
   /** @inheritDoc TransactionProps.creditCard */
   public creditCard?: CreditCard;
   /** @inheritDoc TransactionProps.customInputs */
-  public customInputs?: any;
+  public customInputs?: Record<string, boolean | number | string>;
   /** @inheritDoc TransactionProps.device */
   public device?: Device;
   /** @inheritDoc TransactionProps.email */
@@ -121,17 +121,17 @@ export default class Transaction {
       sanitized.creditCard != null &&
       sanitized.creditCard.last4digits != null
     ) {
-      sanitized.creditCard.last_4_digits = this.creditCard!.last4digits;
+      sanitized.creditCard.last_4_digits = this.creditCard?.last4digits;
       delete sanitized.creditCard.last4digits;
     }
 
     if (sanitized.billing != null && sanitized.billing.address2 != null) {
-      sanitized.billing.address_2 = this.billing!.address2;
+      sanitized.billing.address_2 = this.billing?.address2;
       delete sanitized.billing.address2;
     }
 
     if (sanitized.shipping != null && sanitized.shipping.address2 != null) {
-      sanitized.shipping.address_2 = this.shipping!.address2;
+      sanitized.shipping.address_2 = this.shipping?.address2;
       delete sanitized.shipping.address2;
     }
 

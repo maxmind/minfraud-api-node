@@ -1,6 +1,6 @@
 import { ArgumentError } from '../errors';
 
-interface CreditCardProps {
+export interface CreditCardProps {
   /**
    * The issuer ID number for the credit card. This is the first 6 digits of
    * the credit card number. It identifies the issuing bank.

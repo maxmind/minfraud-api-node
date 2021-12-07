@@ -22,7 +22,7 @@ describe('Email()', () => {
 
   it('constructs', () => {
     expect(() => {
-      const email = new Email({
+      new Email({
         address: 'foo@bar.com',
         domain: 'bar.com',
       });
@@ -31,7 +31,7 @@ describe('Email()', () => {
 
   it('constructs without email.address', () => {
     expect(() => {
-      const email = new Email({
+      new Email({
         domain: 'bar.com',
       });
     }).not.toThrow();

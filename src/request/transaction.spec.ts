@@ -12,12 +12,13 @@ import Order from './order';
 import Payment from './payment';
 import Shipping from './shipping';
 import ShoppingCartItem from './shopping-cart-item';
-import Transaction from './transaction';
+import Transaction, { TransactionProps } from './transaction';
 
 describe('Transaction()', () => {
   it('does not throw an error if `device` is not defined', () => {
     const test = () =>
       new Transaction({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         device: undefined,
       });
@@ -36,19 +37,19 @@ describe('Transaction()', () => {
   });
 
   test.each`
-    property        | clss            | val
-    ${'account'}    | ${'Account'}    | ${{ account: { userId: 'foo' } }}
-    ${'billing'}    | ${'Billing'}    | ${{ billing: { address: 'foo' } }}
-    ${'creditCard'} | ${'CreditCard'} | ${{ creditCard: { bankName: 'foo' } }}
-    ${'email'}      | ${'Email'}      | ${{ email: { domain: 'foo.com' } }}
-    ${'event'}      | ${'Event'}      | ${{ event: { shopId: 'foo' } }}
-    ${'order'}      | ${'Order'}      | ${{ order: { affiliateId: 'foo' } }}
-    ${'payment'}    | ${'Payment'}    | ${{ payment: { declineCode: 'A' } }}
-    ${'shipping'}   | ${'Shipping'}   | ${{ shipping: { address: 'foo' } }}
+    clss            | val
+    ${'Account'}    | ${{ account: { userId: 'foo' } }}
+    ${'Billing'}    | ${{ billing: { address: 'foo' } }}
+    ${'CreditCard'} | ${{ creditCard: { bankName: 'foo' } }}
+    ${'Email'}      | ${{ email: { domain: 'foo.com' } }}
+    ${'Event'}      | ${{ event: { shopId: 'foo' } }}
+    ${'Order'}      | ${{ order: { affiliateId: 'foo' } }}
+    ${'Payment'}    | ${{ payment: { declineCode: 'A' } }}
+    ${'Shipping'}   | ${{ shipping: { address: 'foo' } }}
   `(
     'throws an error if `$property` is not an instance of $clss',
-    ({ property, clss, val }) => {
-      const txn = Object.assign(
+    ({ clss, val }: { clss: string; val: Partial<TransactionProps> }) => {
+      const txn: TransactionProps = Object.assign(
         { device: new Device({ ipAddress: '1.1.1.1' }) },
         val
       );
@@ -84,7 +85,7 @@ describe('Transaction()', () => {
 
   it('constructs', () => {
     expect(() => {
-      const test = new Transaction({
+      new Transaction({
         device: new Device({
           ipAddress: '1.1.1.1',
         }),
@@ -94,7 +95,7 @@ describe('Transaction()', () => {
 
   it('constructs without device', () => {
     expect(() => {
-      const test = new Transaction({
+      new Transaction({
         account: new Account({
           username: 'foo',
         }),

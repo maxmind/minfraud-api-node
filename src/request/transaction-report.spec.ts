@@ -17,6 +17,7 @@ describe('Device()', () => {
     const report = () =>
       new TransactionReport({
         ipAddress: '1.1.1.1',
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         tag: 'foobar',
       });
@@ -26,7 +27,7 @@ describe('Device()', () => {
 
   it('constructs', () => {
     expect(() => {
-      const device = new TransactionReport({
+      new TransactionReport({
         ipAddress: '1.1.1.1',
         tag: Tag.CHARGEBACK,
       });

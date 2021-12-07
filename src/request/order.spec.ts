@@ -15,6 +15,7 @@ describe('Order()', () => {
   it('throws an error if referrer URI is not valid', () => {
     const order = () =>
       new Order({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         referrerUri: 'foo',
       });
@@ -24,7 +25,7 @@ describe('Order()', () => {
 
   it('constructs', () => {
     expect(() => {
-      const order = new Order({
+      new Order({
         currency: 'CAD',
         referrerUri: new URL('https://www.foobar.com/foo/bar.html?ref=1'),
       });

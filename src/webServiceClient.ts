@@ -59,7 +59,7 @@ export default class WebServiceClient {
     postData: string,
     modelClass?: any
   ): Promise<T>;
-  private responseFor<T>(
+  private responseFor(
     path: servicePath,
     postData: string,
     modelClass?: any

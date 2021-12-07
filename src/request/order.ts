@@ -68,7 +68,7 @@ export default class Order implements OrderProps {
 
     if (order.referrerUri != null && !isURL(order.referrerUri.toString())) {
       throw new ArgumentError(
-        `The referrer URI ${order.referrerUri} is invalid`
+        `The referrer URI ${order.referrerUri.toString()} is invalid`
       );
     }
 

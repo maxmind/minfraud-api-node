@@ -13,7 +13,7 @@ describe('Device()', () => {
 
   it('constructs', () => {
     expect(() => {
-      const device = new Device({
+      new Device({
         ipAddress: '1.1.1.1',
         userAgent: 'foo',
       });
@@ -22,7 +22,7 @@ describe('Device()', () => {
 
   it('constructs without IP', () => {
     expect(() => {
-      const device = new Device({
+      new Device({
         userAgent: 'foo',
       });
     }).not.toThrow();

@@ -103,7 +103,7 @@ export default class Email implements EmailProps {
 
     domain = punycode.toASCII(domain);
 
-    if (Email.typoDomains.hasOwnProperty(domain)) {
+    if (Object.prototype.hasOwnProperty.call(Email.typoDomains, domain)) {
       domain = Email.typoDomains[domain];
     }
 

@@ -22,7 +22,7 @@ describe('ShoppingCartItem()', () => {
 
   it('constructs', () => {
     expect(() => {
-      const item = new ShoppingCartItem({
+      new ShoppingCartItem({
         quantity: 100,
       });
     }).not.toThrow();
