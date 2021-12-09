@@ -8,7 +8,7 @@ Steps for releasing:
 5. Create a release PR containing the updates relating to any of the steps
    above.
 6. Ensure that the release PR is merged into main.
-7. With `main` checked out, run `yarn publish`. This will generate the
+7. With `main` checked out, run `npm publish`. This will generate the
    docs, deploy docs, and publish the module to NPM.
 8. Create and push a git tag (eg `git tag v4.2.0 && git push --tags`).
 8. Manually create a release on GitHub to include the release-specific

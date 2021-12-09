@@ -13,14 +13,10 @@ active LTS versions of Node.js, as well as the latest stable release.
 ## Installation
 
 ```
-yarn add @maxmind/minfraud-api-node
-```
-
-If you are not able to use `yarn`, you may also use `npm`:
-
-```
 npm install @maxmind/minfraud-api-node
 ```
+
+You can also use `yarn` or `pnpm`.
 
 ## API Documentation
 
