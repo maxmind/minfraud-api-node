@@ -117,21 +117,18 @@ export default class Transaction {
   private sanitizeKeys() {
     const sanitized = Object.assign({}, this) as any;
 
-    if (
-      sanitized.creditCard != null &&
-      sanitized.creditCard.last4digits != null
-    ) {
-      sanitized.creditCard.last_4_digits = this.creditCard?.last4digits;
+    if (sanitized.creditCard?.last4digits) {
+      sanitized.creditCard.last_4_digits = sanitized.creditCard.last4digits;
       delete sanitized.creditCard.last4digits;
     }
 
-    if (sanitized.billing != null && sanitized.billing.address2 != null) {
-      sanitized.billing.address_2 = this.billing?.address2;
+    if (sanitized.billing?.address2) {
+      sanitized.billing.address_2 = sanitized.billing.address2;
       delete sanitized.billing.address2;
     }
 
-    if (sanitized.shipping != null && sanitized.shipping.address2 != null) {
-      sanitized.shipping.address_2 = this.shipping?.address2;
+    if (sanitized.shipping?.address2) {
+      sanitized.shipping.address_2 = sanitized.shipping.address2;
       delete sanitized.shipping.address2;
     }
 
