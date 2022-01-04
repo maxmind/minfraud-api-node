@@ -166,6 +166,7 @@ export enum Processor {
   VirtualCardServices = 'virtual_card_services',
   Vme = 'vme',
   Vpos = 'vpos',
+  Windcave = 'windcave',
   Wirecard = 'wirecard',
   Worldpay = 'worldpay',
 }

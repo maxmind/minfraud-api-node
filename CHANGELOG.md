@@ -15,6 +15,7 @@ CHANGELOG
   * `Paysera`
   * `Payvision`
   * `Trustly`
+  * `Windcave`
 
 4.3.0 (2021-08-31)
 ------------------
