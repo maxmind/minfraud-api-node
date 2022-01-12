@@ -16,6 +16,7 @@ CHANGELOG
   * `Payvision`
   * `Trustly`
   * `Windcave`
+* Updated dependencies.
 
 4.3.0 (2021-08-31)
 ------------------
