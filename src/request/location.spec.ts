@@ -14,7 +14,7 @@ describe('Location()', () => {
 
   it('constructs', () => {
     expect(() => {
-      const location = new Location({
+      new Location({
         country: 'CA',
       });
     }).not.toThrow();

@@ -1,44 +1,36 @@
 import cloneDeep = require('lodash.clonedeep');
-import * as insights from '../../../fixtures/insights.json';
+import * as insightsJson from '../../../fixtures/insights.json';
+import { InsightsResponse } from '../web-records';
 import Insights from './insights';
 
 describe('Insights()', () => {
+  let response: any;
+
+  beforeEach(() => {
+    const fixture = cloneDeep(insightsJson);
+    response = fixture.response.full;
+  });
+
   it('handles empty country responses', () => {
-    let input = cloneDeep(insights) as any;
-    input = input.response.full;
-    delete input.ip_address.country;
-
-    const model = new Insights(input);
-
+    delete response.ip_address.country;
+    const model = new Insights(response as InsightsResponse);
     expect(model.ipAddress?.country).toBeUndefined();
   });
 
   it('handles empty location responses', () => {
-    let input = cloneDeep(insights) as any;
-    input = input.response.full;
-    delete input.ip_address.location;
-
-    const model = new Insights(input);
-
+    delete response.ip_address.location;
+    const model = new Insights(response as InsightsResponse);
     expect(model.ipAddress?.location).toBeUndefined();
   });
 
   it('handles empty IP address responses', () => {
-    let input = cloneDeep(insights) as any;
-    input = input.response.full;
-    delete input.ip_address;
-
-    const model = new Insights(input);
-
+    delete response.ip_address;
+    const model = new Insights(response as InsightsResponse);
     expect(model.ipAddress).toBeUndefined();
   });
 
   it('allows /email/domain/first_seen to be accessed', () => {
-    let input = cloneDeep(insights) as any;
-    input = input.response.full;
-
-    const model = new Insights(input);
-
+    const model = new Insights(response as InsightsResponse);
     expect(model.email?.domain?.firstSeen).toBe('2016-01-23');
   });
 });

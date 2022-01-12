@@ -1,5 +1,5 @@
 import { ArgumentError } from '../errors';
-import CreditCard from './credit-card';
+import CreditCard, { CreditCardProps } from './credit-card';
 
 describe('CreditCard()', () => {
   test.each`
@@ -19,12 +19,15 @@ describe('CreditCard()', () => {
     ${'token is some string phrase'}                    | ${'token'}          | ${'this is invalid'}
     ${'token is empty string'}                          | ${'token'}          | ${''}
     ${'token is too long'}                              | ${'token'}          | ${'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'}
-  `('throws an error if $condition', ({ field, val }) => {
-    const creditCard = () => new CreditCard({ [field]: val });
-    expect(creditCard).toThrowError(ArgumentError);
-    // Ensure that the `ArgumentError` message contains text of a given field
-    expect(creditCard).toThrowError(field);
-  });
+  `(
+    'throws an error if $condition',
+    ({ field, val }: { field: string; val: string }) => {
+      const creditCard = () => new CreditCard({ [field]: val });
+      expect(creditCard).toThrowError(ArgumentError);
+      // Ensure that the `ArgumentError` message contains text of a given field
+      expect(creditCard).toThrowError(field);
+    }
+  );
 
   test.each`
     condition                                           | val
@@ -32,9 +35,12 @@ describe('CreditCard()', () => {
     ${'token is not all digits'}                        | ${{ token: 'a7f6%gf83fhAu' }}
     ${'token is non-space and printable'}               | ${{ token: 'valid_token' }}
     ${'token is a number with more than 19 characters'} | ${{ token: '12345678901234567890' }}
-  `('does not throw an error if $condition', ({ val }) => {
-    expect(() => new CreditCard(val)).not.toThrow();
-  });
+  `(
+    'does not throw an error if $condition',
+    ({ val }: { val: CreditCardProps }) => {
+      expect(() => new CreditCard(val)).not.toThrow();
+    }
+  );
 
   it('constructs', () => {
     expect(
