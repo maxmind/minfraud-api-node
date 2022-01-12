@@ -16,6 +16,12 @@ CHANGELOG
   * `Payvision`
   * `Trustly`
   * `Windcave`
+* Updated dependencies.
+* Added mobile country code (MCC) and mobile network code (MNC) to minFraud
+  Insights and Factors responses. These are available at
+  `response.ipAddress.traits.mobileCountryCode` and
+  `response.ipAddress.traits.mobileNetworkCode`. We expect this data to be
+  available by late January, 2022.
 
 4.3.0 (2021-08-31)
 ------------------
