@@ -315,4 +315,104 @@ describe('Transaction()', () => {
       expect(test.toString()).toContain('{"item_id":"bar"}]');
     });
   });
+
+  describe('key casing conversion', () => {
+    describe('`creditCard.last4digits` => `creditCard.last_4_digits`', () => {
+      test('typed value is mapped', () => {
+        const test = JSON.parse(
+          new Transaction({
+            device: new Device({
+              ipAddress: '1.1.1.1',
+            }),
+            creditCard: new CreditCard({ last4digits: '1234' }),
+          }).toString()
+        );
+
+        expect(test.credit_card).toHaveProperty('last_4_digits', '1234');
+      });
+
+      test('null value is mapped', () => {
+        const test = JSON.parse(
+          new Transaction({
+            device: new Device({
+              ipAddress: '1.1.1.1',
+            }),
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore explicit null
+            creditCard: new CreditCard({ last4digits: null }),
+          }).toString()
+        );
+
+        expect(test.credit_card).toHaveProperty('last_4_digits', null);
+      });
+    });
+
+    describe('`billing.address2` => `billing.address_2`', () => {
+      test('typed value is mapped', () => {
+        const test = JSON.parse(
+          new Transaction({
+            billing: new Billing({
+              address2: '',
+            }),
+            device: new Device({
+              ipAddress: '1.1.1.1',
+            }),
+          }).toString()
+        );
+
+        expect(test.billing).toHaveProperty('address_2', '');
+      });
+
+      test('null value is mapped', () => {
+        const test = JSON.parse(
+          new Transaction({
+            billing: new Billing({
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore explicit null
+              address2: null,
+            }),
+            device: new Device({
+              ipAddress: '1.1.1.1',
+            }),
+          }).toString()
+        );
+
+        expect(test.billing).toHaveProperty('address_2', null);
+      });
+    });
+
+    describe('`shipping.address2` => `shipping.address_2`', () => {
+      test('typed value is mapped', () => {
+        const test = JSON.parse(
+          new Transaction({
+            device: new Device({
+              ipAddress: '1.1.1.1',
+            }),
+            shipping: new Shipping({
+              address2: '',
+            }),
+          }).toString()
+        );
+
+        expect(test.shipping).toHaveProperty('address_2', '');
+      });
+
+      test('null value is mapped', () => {
+        const test = JSON.parse(
+          new Transaction({
+            device: new Device({
+              ipAddress: '1.1.1.1',
+            }),
+            shipping: new Shipping({
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore explicit null
+              address2: null,
+            }),
+          }).toString()
+        );
+
+        expect(test.shipping).toHaveProperty('address_2', null);
+      });
+    });
+  });
 });
