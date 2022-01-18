@@ -334,8 +334,8 @@ export interface Disposition {
 }
 
 /**
- * This object contains subscores for many of the individual components that are
- * used to calculate the overall risk score.
+ * This object contains scores for many of the individual risk factors that
+ * are used to calculate the overall risk score.
  */
 export interface Subscores {
   /**
@@ -438,9 +438,9 @@ export interface Subscores {
   /**
    * Deprecated effective August 29, 2019.
    *
-   * This subscore will default to 1 and will be removed in a future release.
-   * The user tenure on email is reflected in the [[Subscores.emailAddress]]
-   * output.
+   * This risk factor score will default to 1 and will be removed in a future
+   * release. The user tenure on email is reflected in the
+   * [[Subscores.emailAddress]] output.
    *
    * @category Deprecated
    * @deprecated
@@ -450,8 +450,9 @@ export interface Subscores {
   /**
    * Deprecated effective August 29, 2019.
    *
-   * This subscore will default to 1 and will be removed in a future release.
-   * The IP tenure is reflected in the [[Score.riskScore|overall risk score]].
+   * This risk factor score will default to 1 and will be removed in a future
+   * release. The IP tenure is reflected in the
+   * [[Score.riskScore|overall risk score]].
    *
    * @category Deprecated
    * @deprecated
