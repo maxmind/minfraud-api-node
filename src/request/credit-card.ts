@@ -124,17 +124,6 @@ export default class CreditCard implements CreditCardProps {
       );
     }
 
-    if (
-      creditCard.issuerIdNumber != null &&
-      creditCard.lastDigits != null &&
-      creditCard.issuerIdNumber.length === 8 &&
-      creditCard.lastDigits.length !== 2
-    ) {
-      throw new ArgumentError(
-        `The last credit card digits (lastDigits) ${creditCard.lastDigits} are of the wrong format. An eight digit issuerIdNumber requires a two digit value for lastDigit.`
-      );
-    }
-
     if (creditCard.token != null && !tokenRegex.test(creditCard.token)) {
       throw new ArgumentError(
         `The credit card token (token) ${creditCard.token} was invalid. Tokens must be non-space ASCII printable characters. If the token consists of all digits, it must be more than 19 digits.`
