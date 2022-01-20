@@ -315,7 +315,7 @@ describe('Transaction()', () => {
   });
 
   describe('key casing conversion', () => {
-    describe('`creditCard.last4digits` => `creditCard.last_4_digits`', () => {
+    describe('`creditCard.lastDigits/last4digits` => `creditCard.lastDigits`', () => {
       test('typed value is mapped', () => {
         const test = JSON.parse(
           new Transaction({
@@ -338,6 +338,34 @@ describe('Transaction()', () => {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore explicit null
             creditCard: new CreditCard({ last4digits: null }),
+          }).toString()
+        );
+
+        expect(test.credit_card).toHaveProperty('last_digits', null);
+      });
+
+      test('typed value is mapped', () => {
+        const test = JSON.parse(
+          new Transaction({
+            device: new Device({
+              ipAddress: '1.1.1.1',
+            }),
+            creditCard: new CreditCard({ lastDigits: '1234' }),
+          }).toString()
+        );
+
+        expect(test.credit_card).toHaveProperty('last_digits', '1234');
+      });
+
+      test('null value is mapped', () => {
+        const test = JSON.parse(
+          new Transaction({
+            device: new Device({
+              ipAddress: '1.1.1.1',
+            }),
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore explicit null
+            creditCard: new CreditCard({ lastDigits: null }),
           }).toString()
         );
 
