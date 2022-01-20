@@ -117,16 +117,12 @@ export default class Transaction {
   private sanitizeKeys() {
     const sanitized = Object.assign({}, this) as any;
 
-    if (sanitized.creditCard != null) {
-      if (sanitized.creditCard.last4digits != null) {
-        sanitized.creditCard.last_digits = this.creditCard!.last4digits;
-        delete sanitized.creditCard.last4digits;
-      }
-
-      if (sanitized.creditCard.lastDigits != null) {
-        sanitized.creditCard.last_digits = this.creditCard!.lastDigits;
-        delete sanitized.creditCard.lastDigits;
-      }
+    if (
+      sanitized.creditCard &&
+      Object.prototype.hasOwnProperty.call(sanitized.creditCard, 'lastDigits')
+    ) {
+      sanitized.creditCard.last_digits = sanitized.creditCard.lastDigits;
+      delete sanitized.creditCard.lastDigits;
     }
 
     if (
