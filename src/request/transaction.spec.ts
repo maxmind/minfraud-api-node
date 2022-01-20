@@ -326,7 +326,7 @@ describe('Transaction()', () => {
           }).toString()
         );
 
-        expect(test.credit_card).toHaveProperty('last_4_digits', '1234');
+        expect(test.credit_card).toHaveProperty('last_digits', '1234');
       });
 
       test('null value is mapped', () => {
@@ -341,7 +341,7 @@ describe('Transaction()', () => {
           }).toString()
         );
 
-        expect(test.credit_card).toHaveProperty('last_4_digits', null);
+        expect(test.credit_card).toHaveProperty('last_digits', null);
       });
     });
 
