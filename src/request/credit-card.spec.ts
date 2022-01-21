@@ -10,10 +10,10 @@ describe('CreditCard()', () => {
     ${'issuerIdNumber is too short'}                    | ${'issuerIdNumber'} | ${'12345'}
     ${'issuerIdNumber has letters'}                     | ${'issuerIdNumber'} | ${'12345a'}
     ${'issuerIdNumber has non-alphanumeric characters'} | ${'issuerIdNumber'} | ${'12345!'}
-    ${'last4digits is too long'}                        | ${'last4digits'}    | ${'12345'}
-    ${'last4digits is too short'}                       | ${'last4digits'}    | ${'123'}
-    ${'last4digits has letters'}                        | ${'last4digits'}    | ${'12a'}
-    ${'last4digits has non-alphanumeric characters'}    | ${'last4digits'}    | ${'154!'}
+    ${'lastDigits is too long'}                         | ${'lastDigits'}     | ${'12345'}
+    ${'lastDigits is too short'}                        | ${'lastDigits'}     | ${'123'}
+    ${'lastDigits has letters'}                         | ${'lastDigits'}     | ${'12a'}
+    ${'lastDigits has non-alphanumeric characters'}     | ${'lastDigits'}     | ${'154!'}
     ${'token is a PAN'}                                 | ${'token'}          | ${'4485921507912924'}
     ${'token is numbers'}                               | ${'token'}          | ${'432312'}
     ${'token is some string phrase'}                    | ${'token'}          | ${'this is invalid'}
@@ -54,5 +54,25 @@ describe('CreditCard()', () => {
           was3DSecureSuccessful: true,
         })
     ).not.toThrow();
+  });
+
+  it('last4digits getter aliases lastDigits', () => {
+    const cc = new CreditCard({
+      issuerIdNumber: '411111',
+      lastDigits: '1234',
+    });
+
+    expect(cc.lastDigits).toBe('1234');
+    expect(cc.last4digits).toBe(cc.lastDigits);
+  });
+
+  it('last4digits setter aliases lastDigits', () => {
+    const cc = new CreditCard({
+      issuerIdNumber: '411111',
+    });
+    cc.last4digits = '1234';
+
+    expect(cc.lastDigits).toBe('1234');
+    expect(cc.last4digits).toBe(cc.lastDigits);
   });
 });

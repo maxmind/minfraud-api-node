@@ -22,6 +22,20 @@ CHANGELOG
   `response.ipAddress.traits.mobileCountryCode` and
   `response.ipAddress.traits.mobileNetworkCode`. We expect this data to be
   available by late January, 2022.
+* `creditCard.last4digits` has been deprecated in favor of `creditCard.lastDigits`
+   and will be removed in a future release. `lastDigits`/`last4digits` also now
+   supports two digit values in addition to the previous four digit values.
+* Eight digit `creditCard.issuerIdNumber` inputs are now supported in addition to
+  the previously accepted six digit `issuerIdNumber`. In most cases, you should
+  send the last four digits for `creditCard.lastDigits`. If you send a
+  `issuerIdNumber` that contains an eight digit IIN, and if the credit card brand
+  is not one of the following, you should send the last two digits for
+  `lastDigits`:
+  * `Discover`
+  * `JCB`
+  * `Mastercard`
+  * `UnionPay`
+  * `Visa`
 
 4.3.0 (2021-08-31)
 ------------------

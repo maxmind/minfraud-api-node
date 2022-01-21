@@ -7,9 +7,15 @@ export interface CreditCardProps {
    */
   issuerIdNumber?: string;
   /**
-   * The last four digits of the credit card number.
+   * The last digits of the credit card number.
+   *
+   * @deprecated Use lastDigits instead
    */
   last4digits?: string;
+  /**
+   * The last digits of the credit card number.
+   */
+  lastDigits?: string;
   /**
    * A token uniquely identifying the card. This should not be the actual
    * credit card number.
@@ -50,8 +56,8 @@ export interface CreditCardProps {
 }
 
 const singleChar = /^[A-Za-z0-9]$/;
-const issuerIdNumberRegex = /^[0-9]{6}$/;
-const last4Regex = /^[0-9]{4}$/;
+const issuerIdNumberRegex = /^(?:[0-9]{6}|[0-9]{8})$/;
+const lastDigitsRegex = /^(?:[0-9]{2}|[0-9]{4})$/;
 const tokenRegex = /^(?![0-9]{1,19}$)[\u0021-\u007E]{1,255}$/;
 
 /**
@@ -60,8 +66,8 @@ const tokenRegex = /^(?![0-9]{1,19}$)[\u0021-\u007E]{1,255}$/;
 export default class CreditCard implements CreditCardProps {
   /** @inheritDoc CreditCardProps.issuerIdNumber */
   public issuerIdNumber?: string;
-  /** @inheritDoc CreditCardProps.last4digits */
-  public last4digits?: string;
+  /** @inheritDoc CreditCardProps.lastDigits */
+  public lastDigits?: string;
   /** @inheritDoc CreditCardProps.token */
   public token?: string;
   /** @inheritDoc CreditCardProps.bankName */
@@ -105,12 +111,16 @@ export default class CreditCard implements CreditCardProps {
       );
     }
 
+    if (creditCard.last4digits != null) {
+      creditCard.lastDigits = creditCard.last4digits;
+    }
+
     if (
-      creditCard.last4digits != null &&
-      !last4Regex.test(creditCard.last4digits)
+      creditCard.lastDigits != null &&
+      !lastDigitsRegex.test(creditCard.lastDigits)
     ) {
       throw new ArgumentError(
-        `The last 4 credit card digits (last4digits) ${creditCard.last4digits} are of the wrong format.`
+        `The last credit card digits (lastDigits) ${creditCard.lastDigits} are of the wrong format.`
       );
     }
 
@@ -121,5 +131,21 @@ export default class CreditCard implements CreditCardProps {
     }
 
     Object.assign(this, creditCard);
+  }
+
+  /** Get the last digits of the credit card number.
+   *
+   * @deprecated Use lastDigits instead
+   */
+  public get last4digits() {
+    return this.lastDigits;
+  }
+
+  /** Set the last digits of the credit card number.
+   *
+   * @deprecated Use lastDigits instead
+   */
+  public set last4digits(lastDigits: string | undefined) {
+    this.lastDigits = lastDigits;
   }
 }

@@ -119,10 +119,10 @@ export default class Transaction {
 
     if (
       sanitized.creditCard &&
-      Object.prototype.hasOwnProperty.call(sanitized.creditCard, 'last4digits')
+      Object.prototype.hasOwnProperty.call(sanitized.creditCard, 'lastDigits')
     ) {
-      sanitized.creditCard.last_4_digits = sanitized.creditCard.last4digits;
-      delete sanitized.creditCard.last4digits;
+      sanitized.creditCard.last_digits = sanitized.creditCard.lastDigits;
+      delete sanitized.creditCard.lastDigits;
     }
 
     if (

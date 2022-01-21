@@ -212,7 +212,7 @@ try {
       bankPhoneNumber: '123-123-1234',
       cvvResult: 'B',
       issuerIdNumber: '411111',
-      last4digits: '1234',
+      lastDigits: '1234',
       token: 'a_token',
       was3DSecureSuccessful: true,
     }),
