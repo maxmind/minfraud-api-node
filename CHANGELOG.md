@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-4.4.0
+4.4.0 (2022-01-25)
 ------------------
 
 * Added the following new values to the `Processor` enum:
