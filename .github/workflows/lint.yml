@@ -2,8 +2,6 @@ name: Lint
 on:
   pull_request:
   push:
-    branches:
-      - main
   schedule:
     - cron: '3 20 * * SUN'
 jobs:
