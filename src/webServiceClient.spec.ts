@@ -681,62 +681,101 @@ describe('WebServiceClient', () => {
     });
   });
 
-  //   describe('score()', () => {
-  //     const transaction = new Transaction({
-  //       device: new Device({
-  //         ipAddress: '1.1.1.1',
-  //       }),
-  //     });
+  describe('score()', () => {
+    const transaction = new Transaction({
+      device: new Device({
+        ipAddress: '1.1.1.1',
+      }),
+    });
 
-  //     it('handles "full" responses', () => {
-  //       expect.assertions(1);
+    it('handles "full" responses', async () => {
+      expect.assertions(11);
 
-  //       nockInstance
-  //         .post(fullPath('score'), score.request.basic)
-  //         .basicAuth(auth)
-  //         .reply(200, score.response.full);
+      nockInstance
+        .post(fullPath('score'), score.request.basic)
+        .basicAuth(auth)
+        .reply(200, score.response.full);
 
-  //       return expect(client.score(transaction)).resolves.toEqual(
-  //         camelizeResponse(score.response.full)
-  //       );
-  //     });
+      const got: models.Score = await client.score(transaction);
 
-  //     it('handles "no disposition" responses', () => {
-  //       expect.assertions(1);
+      expect(got!.id).toEqual('5bc5d6c2-b2c8-40af-87f4-6d61af86b6ae');
+      expect(got!.riskScore).toEqual(0.01);
+      expect(got!.fundsRemaining).toEqual(25);
+      expect(got!.queriesRemaining).toEqual(5000);
+      expect(got!.ipAddress!.risk).toEqual(0.01);
+      expect(got!.disposition!.action).toEqual('accept');
+      expect(got!.disposition!.reason).toEqual('default');
+      expect(got!.disposition!.ruleLabel).toEqual('the label');
+      expect(got!.warnings![0].code).toEqual('INPUT_INVALID');
+      expect(got!.warnings![0].warning).toEqual(
+        'Encountered value at /shipping/city that does not meet the required constraints'
+      );
+      expect(got!.warnings![0].inputPointer).toEqual('/shipping/city');
+    });
 
-  //       nockInstance
-  //         .post(fullPath('score'), score.request.basic)
-  //         .reply(200, score.response.noDisposition);
+    it('handles "no disposition" responses', async () => {
+      expect.assertions(8);
 
-  //       return expect(client.score(transaction)).resolves.toEqual(
-  //         camelizeResponse(score.response.noDisposition)
-  //       );
-  //     });
+      nockInstance
+        .post(fullPath('score'), score.request.basic)
+        .reply(200, score.response.noDisposition);
 
-  //     it('handles "no disposition rule_label" responses', () => {
-  //       expect.assertions(1);
+      const got: models.Score = await client.score(transaction);
 
-  //       nockInstance
-  //         .post(fullPath('score'), score.request.basic)
-  //         .reply(200, score.response.noDispositionRuleLabel);
+      expect(got!.id).toEqual('5bc5d6c2-b2c8-40af-87f4-6d61af86b6ae');
+      expect(got!.riskScore).toEqual(0.01);
+      expect(got!.fundsRemaining).toEqual(25);
+      expect(got!.queriesRemaining).toEqual(5000);
+      expect(got!.ipAddress!.risk).toEqual(0.01);
+      expect(got!.warnings![0].code).toEqual('INPUT_INVALID');
+      expect(got!.warnings![0].warning).toEqual(
+        'Encountered value at /shipping/city that does not meet the required constraints'
+      );
+      expect(got!.warnings![0].inputPointer).toEqual('/shipping/city');
+    });
 
-  //       return expect(client.score(transaction)).resolves.toEqual(
-  //         camelizeResponse(score.response.noDispositionRuleLabel)
-  //       );
-  //     });
+    it('handles "no disposition rule_label" responses', async () => {
+      expect.assertions(10);
 
-  //     it('handles "no warnings" responses', () => {
-  //       expect.assertions(1);
+      nockInstance
+        .post(fullPath('score'), score.request.basic)
+        .reply(200, score.response.noDispositionRuleLabel);
 
-  //       nockInstance
-  //         .post(fullPath('score'), score.request.basic)
-  //         .reply(200, score.response.noWarnings);
+      const got: models.Score = await client.score(transaction);
 
-  //       return expect(client.score(transaction)).resolves.toEqual(
-  //         camelizeResponse(score.response.noWarnings)
-  //       );
-  //     });
-  //   });
+      expect(got!.id).toEqual('5bc5d6c2-b2c8-40af-87f4-6d61af86b6ae');
+      expect(got!.riskScore).toEqual(0.01);
+      expect(got!.fundsRemaining).toEqual(25);
+      expect(got!.queriesRemaining).toEqual(5000);
+      expect(got!.ipAddress!.risk).toEqual(0.01);
+      expect(got!.disposition!.action).toEqual('accept');
+      expect(got!.disposition!.reason).toEqual('default');
+      expect(got!.warnings![0].code).toEqual('INPUT_INVALID');
+      expect(got!.warnings![0].warning).toEqual(
+        'Encountered value at /shipping/city that does not meet the required constraints'
+      );
+      expect(got!.warnings![0].inputPointer).toEqual('/shipping/city');
+    });
+
+    it('handles "no warnings" responses', async () => {
+      expect.assertions(8);
+
+      nockInstance
+        .post(fullPath('score'), score.request.basic)
+        .reply(200, score.response.noWarnings);
+
+      const got: models.Score = await client.score(transaction);
+
+      expect(got!.id).toEqual('5bc5d6c2-b2c8-40af-87f4-6d61af86b6ae');
+      expect(got!.riskScore).toEqual(0.01);
+      expect(got!.fundsRemaining).toEqual(25);
+      expect(got!.queriesRemaining).toEqual(5000);
+      expect(got!.ipAddress!.risk).toEqual(0.01);
+      expect(got!.disposition!.action).toEqual('accept');
+      expect(got!.disposition!.reason).toEqual('default');
+      expect(got!.disposition!.ruleLabel).toEqual('the label');
+    });
+  });
 
   //   describe('reportTransaction', () => {
   //     it('handles bare minimum request', () => {
