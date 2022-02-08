@@ -1,4 +1,3 @@
-import { Insights } from '@maxmind/geoip2-node';
 import cloneDeep = require('lodash.clonedeep');
 import nock from 'nock';
 import * as models from './response/models';
@@ -12,7 +11,6 @@ import {
   Transaction,
   TransactionReport,
 } from './index';
-import { Factors } from './response/models';
 import * as webRecords from './response/web-records';
 
 const baseUrl = 'https://minfraud.maxmind.com';
@@ -260,28 +258,6 @@ describe('WebServiceClient', () => {
       expect(got!.subscores!.shippingAddress).toEqual(0.99);
       expect(got!.subscores!.shippingAddressDistanceToIpLocation).toEqual(0.16);
       expect(got!.subscores!.timeOfDay).toEqual(0.17);
-
-      // Note: Couldn't write a check for the default item in the subscores array
-      // expect( got!.subscores!["default"].avsResult ).toEqual( 0.01 )
-      // expect( got!.subscores!["default"].billingAddress ).toEqual( 0.02 )
-      // expect( got!.subscores!["default"].billingAddressDistanceToIpLocation ).toEqual( 0.03 )
-      // expect( got!.subscores!["default"].browser ).toEqual( 0.04 )
-      // expect( got!.subscores!["default"].chargeback ).toEqual( 0.05 )
-      // expect( got!.subscores!["default"].country ).toEqual( 0.06 )
-      // expect( got!.subscores!["default"].countryMismatch ).toEqual( 0.07 )
-      // expect( got!.subscores!["default"].cvvResult ).toEqual( 0.08 )
-      // expect( got!.subscores!["default"].device ).toEqual( 0.58 )
-      // expect( got!.subscores!["default"].emailAddress ).toEqual( 0.09 )
-      // expect( got!.subscores!["default"].emailDomain ).toEqual( 0.1 )
-      // expect( got!.subscores!["default"].emailLocalPart ).toEqual( 0.19 )
-      // expect( got!.subscores!["default"].emailTenure ).toEqual( 0.11 )
-      // expect( got!.subscores!["default"].ipTenure ).toEqual( 0.12 )
-      // expect( got!.subscores!["default"].issuerIdNumber ).toEqual( 0.13 )
-      // expect( got!.subscores!["default"].orderAmount ).toEqual( 0.14 )
-      // expect( got!.subscores!["default"].phoneNumber ).toEqual( 0.15 )
-      // expect( got!.subscores!["default"].shippingAddress ).toEqual( 0.99 )
-      // expect( got!.subscores!["default"].shippingAddressDistanceToIpLocation ).toEqual( 0.16 )
-      // expect( got!.subscores!["default"].timeOfDay ).toEqual( 0.17 )
     });
   });
 
@@ -504,8 +480,6 @@ describe('WebServiceClient', () => {
       ${'email'}
       ${'shipping_address'}
     `('handles missing response $property', async ({ property }) => {
-      expect.assertions(111);
-
       const response = cloneDeep(insights.response.full);
       delete response[property as keyof webRecords.InsightsResponse];
 
@@ -515,6 +489,63 @@ describe('WebServiceClient', () => {
         .reply(200, response);
 
       const got: models.Insights = await client.insights(transaction);
+
+      switch (property) {
+        case 'billing_address':
+          expect.assertions(134);
+          break;
+        case 'credit_card':
+          expect.assertions(128);
+          break;
+        case 'email':
+          expect.assertions(134);
+          break;
+        case 'shipping_address':
+          expect.assertions(132);
+          break;
+      }
+
+      if (property != 'billing_address') {
+        expect(got.billingAddress!.isPostalInCity).toEqual(true);
+        expect(got.billingAddress!.latitude).toEqual(37.545);
+        expect(got.billingAddress!.longitude).toEqual(-122.421);
+        expect(got.billingAddress!.distanceToIpLocation).toEqual(100);
+        expect(got.billingAddress!.isInIpCountry).toEqual(true);
+      }
+
+      if (property != 'credit_card') {
+        expect(got.creditCard!.issuer!.name).toEqual('Bank of America');
+        expect(got.creditCard!.issuer!.matchesProvidedName).toEqual(true);
+        expect(got.creditCard!.issuer!.phoneNumber).toEqual('800-732-9194');
+        expect(got.creditCard!.issuer!.matchesProvidedPhoneNumber).toEqual(
+          true
+        );
+        expect(got.creditCard!.brand).toEqual('Visa');
+        expect(got.creditCard!.country).toEqual('US');
+        expect(got.creditCard!.isBusiness).toEqual(true);
+        expect(got.creditCard!.isIssuedInBillingAddressCountry).toEqual(true);
+        expect(got.creditCard!.isPrepaid).toEqual(true);
+        expect(got.creditCard!.isVirtual).toEqual(true);
+        expect(got.creditCard!.type).toEqual('credit');
+      }
+
+      if (property != 'email') {
+        expect(got.email!.domain!.firstSeen).toEqual('2016-01-23');
+        expect(got.email!.firstSeen).toEqual('2016-02-03');
+        expect(got.email!.isDisposable).toEqual(false);
+        expect(got.email!.isFree).toEqual(false);
+        expect(got.email!.isHighRisk).toEqual(true);
+      }
+
+      if (property != 'shipping_address') {
+        expect(got.shippingAddress!.isHighRisk).toEqual(true);
+        expect(got.shippingAddress!.isPostalInCity).toEqual(true);
+        expect(got.shippingAddress!.latitude).toEqual(37.632);
+        expect(got.shippingAddress!.longitude).toEqual(-122.313);
+        expect(got.shippingAddress!.distanceToIpLocation).toEqual(15);
+        expect(got.shippingAddress!.distanceToBillingAddress).toEqual(22);
+        expect(got.shippingAddress!.isInIpCountry).toEqual(true);
+      }
 
       expect(got.id).toEqual('5bc5d6c2-b2c8-40af-87f4-6d61af86b6ae');
       expect(got.riskScore).toEqual(0.01);
