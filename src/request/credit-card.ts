@@ -35,6 +35,13 @@ export interface CreditCardProps {
    */
   bankPhoneNumber?: string;
   /**
+   * The two character ISO 3166-1 alpha-2 country code where the issuer of the
+   * card is located. This may be passed instead of the issuerIdNumber if you
+   * do not wish to pass partial account numbers, or if your payment processor
+   * does not provide them.
+   */
+  country?: string;
+  /**
    * The address verification system (AVS) check result, as returned to you by
    * the credit card processor. The minFraud service supports the standard AVS
    * codes.
@@ -55,6 +62,7 @@ export interface CreditCardProps {
   was3DSecureSuccessful?: boolean;
 }
 
+const countryRegex = /^[A-Z]{2}$/;
 const singleChar = /^[A-Za-z0-9]$/;
 const issuerIdNumberRegex = /^(?:[0-9]{6}|[0-9]{8})$/;
 const lastDigitsRegex = /^(?:[0-9]{2}|[0-9]{4})$/;
@@ -76,6 +84,8 @@ export default class CreditCard implements CreditCardProps {
   public bankPhoneCountryCode?: string;
   /** @inheritDoc CreditCardProps.bankPhoneNumber */
   public bankPhoneNumber?: string;
+  /** @inheritDoc CreditCardProps.country */
+  public country?: string;
   /** @inheritDoc CreditCardProps.avsResult */
   public avsResult?: string;
   /** @inheritDoc CreditCardProps.cvvResult */
@@ -90,6 +100,12 @@ export default class CreditCard implements CreditCardProps {
     ) {
       throw new ArgumentError(
         `avsResult should be a single character but we received: ${creditCard.avsResult}`
+      );
+    }
+
+    if (creditCard.country != null && !countryRegex.test(creditCard.country)) {
+      throw new ArgumentError(
+        'Expected two-letter country code in the ISO 3166-1 alpha-2 format'
       );
     }
 

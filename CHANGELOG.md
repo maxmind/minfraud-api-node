@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+4.5.0
+------------------
+
+* Added the input `/credit_card/country`. This is the country where the
+  issuer of the card is located. This may be passed instead of the
+  `/credit_card/issuer_id_number` if you do not wish to pass partial
+  account numbers or if your payment processor does not provide them. You
+  may provide this by providing `country` to `CreditCard`.
+
 4.4.0 (2022-01-25)
 ------------------
 
