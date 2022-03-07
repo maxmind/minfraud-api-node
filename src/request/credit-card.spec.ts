@@ -5,6 +5,7 @@ describe('CreditCard()', () => {
   test.each`
     condition                                           | field               | val
     ${'avsResult is not a single character'}            | ${'avsResult'}      | ${'foo'}
+    ${'country is invalid'}                             | ${'country'}        | ${'ca'}
     ${'cvvResult is not a single character'}            | ${'cvvResult'}      | ${'foo'}
     ${'issuerIdNumber is too long'}                     | ${'issuerIdNumber'} | ${'1234567'}
     ${'issuerIdNumber is too short'}                    | ${'issuerIdNumber'} | ${'12345'}
@@ -47,6 +48,7 @@ describe('CreditCard()', () => {
       () =>
         new CreditCard({
           avsResult: 'A',
+          country: 'CA',
           cvvResult: 'c',
           issuerIdNumber: '411111',
           last4digits: '1234',
