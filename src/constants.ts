@@ -144,6 +144,7 @@ export enum Processor {
   Safecharge = 'safecharge',
   Sagepay = 'sagepay',
   Securetrading = 'securetrading',
+  ShopifyPayments = 'shopify_payments',
   SimplifyCommerce = 'simplify_commerce',
   Skrill = 'skrill',
   Smartcoin = 'smartcoin',
