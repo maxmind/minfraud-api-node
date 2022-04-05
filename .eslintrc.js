@@ -33,8 +33,6 @@ module.exports = {
         "@typescript-eslint"
       ],
       "rules": {
-        "@typescript-eslint/no-non-null-assertion":2,
-        "@typescript-eslint/no-explicit-any":2,
       }
     }
   ],
