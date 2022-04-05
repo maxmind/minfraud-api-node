@@ -4,6 +4,7 @@ import { InsightsResponse } from '../web-records';
 import Insights from './insights';
 
 describe('Insights()', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let response: any;
 
   beforeEach(() => {

@@ -24,6 +24,7 @@ const fullPath = (path: string) => `/minfraud/v2.0/${path}`;
 const client = new Client(auth.user, auth.pass);
 
 describe('WebServiceClient', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const factors = cloneDeep(insights) as any;
   factors.response.full.subscores = cloneDeep(subscores);
 

@@ -57,11 +57,13 @@ export default class WebServiceClient {
   private responseFor<T>(
     path: servicePath,
     postData: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     modelClass?: any
   ): Promise<T>;
   private responseFor(
     path: servicePath,
     postData: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     modelClass?: any
   ): Promise<void> {
     const parsedPath = `/minfraud/v2.0/${path}`;
