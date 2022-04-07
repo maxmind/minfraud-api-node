@@ -2,8 +2,11 @@
 
 ## Description
 
-This package provides an API for the [MaxMind minFraud Score, Insights,
-Factors, and Report Transaction web services](https://dev.maxmind.com/minfraud/).
+This package provides a server-side API for the [MaxMind minFraud Score,
+Insights, Factors, and Report Transaction web
+services](https://dev.maxmind.com/minfraud/).
+
+**This package will not work client-side.**
 
 ## Requirements
 
