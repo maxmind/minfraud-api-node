@@ -72,6 +72,7 @@ export interface IpAddress extends Insights {
   /**
    * Gets the MaxMind record containing data related to your account
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   maxmind: any;
   /**
    * The risk associated with the IP address. The value ranges from 0.01 to 99.

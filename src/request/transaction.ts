@@ -106,6 +106,7 @@ export default class Transaction {
     return JSON.stringify(snakecaseKeys(sanitized));
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private argumentCheck(property: any, type: any, key: string) {
     if (property != null && !(property instanceof type)) {
       throw new ArgumentError(
@@ -115,6 +116,7 @@ export default class Transaction {
   }
 
   private sanitizeKeys() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const sanitized = Object.assign({}, this) as any;
 
     if (

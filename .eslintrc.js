@@ -1,3 +1,4 @@
+
 module.exports = {
   "env": {
     "es6": true,
@@ -31,7 +32,8 @@ module.exports = {
       "plugins": [
         "@typescript-eslint"
       ],
-      "rules": {}
+      "rules": {
+      }
     }
   ],
   "parserOptions": {
