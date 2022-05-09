@@ -31,7 +31,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "gh-pages": "^3.0.0",
-    "husky": "^7.0.1",
+    "husky": "^8.0.0",
     "jest": "^27.0.4",
     "lint-staged": "^12.1.2",
     "lodash.clonedeep": "^4.5.0",
