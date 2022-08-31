@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-4.6.0
+4.6.0 (2022-08-31)
 ------------------
 
 * Added `ShopifyPayments` to the `Processor` enum.
