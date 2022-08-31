@@ -5,6 +5,7 @@ CHANGELOG
 ------------------
 
 * Added `ShopifyPayments` to the `Processor` enum.
+* Fix `creditCard.was3DSecureSuccessful` snakecase conversion.
 
 4.5.0 (2022-03-28)
 ------------------

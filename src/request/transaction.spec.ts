@@ -255,6 +255,7 @@ describe('Transaction()', () => {
       const test = new Transaction({
         creditCard: new CreditCard({
           last4digits: '1234',
+          was3DSecureSuccessful: true,
         }),
         device: new Device({
           ipAddress: '1.1.1.1',
@@ -266,7 +267,9 @@ describe('Transaction()', () => {
 
       expect(test.toString()).toContain(deviceString);
 
-      expect(test.toString()).toContain('"credit_card":{"last_digits":"1234"}');
+      expect(test.toString()).toContain(
+        '"credit_card":{"last_digits":"1234","was_3d_secure_successful":true}'
+      );
     });
 
     it('it handles optional order field', () => {

@@ -120,14 +120,6 @@ export default class Transaction {
     const sanitized = Object.assign({}, this) as any;
 
     if (
-      sanitized.creditCard &&
-      Object.prototype.hasOwnProperty.call(sanitized.creditCard, 'lastDigits')
-    ) {
-      sanitized.creditCard.last_digits = sanitized.creditCard.lastDigits;
-      delete sanitized.creditCard.lastDigits;
-    }
-
-    if (
       sanitized.billing &&
       Object.prototype.hasOwnProperty.call(sanitized.billing, 'address2')
     ) {
@@ -141,6 +133,18 @@ export default class Transaction {
     ) {
       sanitized.shipping.address_2 = sanitized.shipping.address2;
       delete sanitized.shipping.address2;
+    }
+
+    if (
+      sanitized.creditCard &&
+      Object.prototype.hasOwnProperty.call(
+        sanitized.creditCard,
+        'was3DSecureSuccessful'
+      )
+    ) {
+      sanitized.creditCard.was_3d_secure_successful =
+        sanitized.creditCard.was3DSecureSuccessful;
+      delete sanitized.creditCard.was3DSecureSuccessful;
     }
 
     return sanitized;
