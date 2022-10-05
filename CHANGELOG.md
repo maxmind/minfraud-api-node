@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+4.7.0
+------------------
+
+* Added `GooglePay` to the `Processor` enum.
+
 4.6.0 (2022-08-31)
 ------------------
 

@@ -80,6 +80,7 @@ export enum Processor {
   G2aPay = 'g2a_pay',
   GlobalPayments = 'global_payments',
   Gocardless = 'gocardless',
+  GooglePay = 'google_pay',
   Heartland = 'heartland',
   Hipay = 'hipay',
   Ingenico = 'ingenico',
