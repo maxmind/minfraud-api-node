@@ -5,6 +5,7 @@ CHANGELOG
 ------------------
 
 * Added `GooglePay` to the `Processor` enum.
+* Added `Placetopay` to the `Processor` enum.
 
 4.6.0 (2022-08-31)
 ------------------
