@@ -132,6 +132,7 @@ export enum Processor {
   Payway = 'payway',
   Payza = 'payza',
   Pinpayments = 'pinpayments',
+  Placetopay = 'placetopay',
   Posconnect = 'posconnect',
   PrincetonPaymentSolutions = 'princeton_payment_solutions',
   Psigate = 'psigate',
