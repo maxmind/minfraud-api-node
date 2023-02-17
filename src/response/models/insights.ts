@@ -58,9 +58,7 @@ export default class Insights extends Score {
     response: webRecords.InsightsResponse,
     prop: keyof webRecords.InsightsResponse
   ): T | undefined {
-    return response[prop]
-      ? (camelizeResponse(response[prop]) as unknown as T)
-      : undefined;
+    return response[prop] ? (camelizeResponse(response[prop]) as T) : undefined;
   }
 
   private getIpAddress(
