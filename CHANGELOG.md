@@ -1,11 +1,13 @@
 CHANGELOG
 =========
 
-4.7.0
+4.7.0 (2023-02-21)
 ------------------
 
 * Added `GooglePay` to the `Processor` enum.
 * Added `Placetopay` to the `Processor` enum.
+* Set minimum version of GeoIP2-node to v3.5.0.
+* Remove camelcase-keys dependency.
 
 4.6.0 (2022-08-31)
 ------------------
