@@ -67,7 +67,7 @@
     "postpublish": "pinst --enable"
   },
   "dependencies": {
-    "@maxmind/geoip2-node": "^3.5.0",
+    "@maxmind/geoip2-node": "^4.0.0",
     "maxmind": "^4.1.0",
     "punycode": "^2.1.1",
     "snakecase-keys": "^5.1.2",
