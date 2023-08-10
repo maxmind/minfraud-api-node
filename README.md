@@ -34,6 +34,13 @@ takes your MaxMind account ID and license key. For example:
 const client = new minFraud.Client("1234", "LICENSEKEY");
 ```
 
+If you would like to use the Sandbox environment, you can 
+set the `host` parameter to `sandbox.minfraud.com`: 
+
+```js
+const client = new minFraud.Client("1234", "LICENSEKEY", 3000, 'sandbox.minfraud.com');
+```
+
 Then create a new `Transaction` object. This represents the transaction that
 you are sending to minFraud. Each transaction property is instantiated by creating
 a new instance of each property's class. For example:

@@ -19,11 +19,16 @@ export default class WebServiceClient {
   private licenseKey: string;
   private timeout: number;
 
-  public constructor(accountID: string, licenseKey: string, timeout = 3000) {
+  public constructor(
+    accountID: string,
+    licenseKey: string,
+    timeout = 3000,
+    host = 'minfraud.maxmind.com'
+  ) {
     this.accountID = accountID;
     this.licenseKey = licenseKey;
     this.timeout = timeout;
-    this.host = 'minfraud.maxmind.com';
+    this.host = host;
   }
 
   public factors(transaction: Transaction): Promise<models.Factors> {
