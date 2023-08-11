@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-5.1.0 (2023-08-10)
+5.1.0
 ------------------
 
 * Add `host` parameter to `Client` constructor to allow for use of the
