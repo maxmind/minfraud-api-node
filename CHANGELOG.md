@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+5.1.0
+------------------
+
+* Add `host` parameter to `Client` constructor to allow for use of the
+  Sandbox environment.
+
 5.0.0 (2023-05-16)
 ------------------
 
