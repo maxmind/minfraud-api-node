@@ -272,7 +272,7 @@ describe('WebServiceClient', () => {
     it('handles "full" responses', async () => {
       expect.assertions(139);
 
-      await nockInstance
+      nockInstance
         .post(fullPath('insights'), insights.request.basic)
         .basicAuth(auth)
         .reply(200, insights.response.full);

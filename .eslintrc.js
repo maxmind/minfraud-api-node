@@ -1,4 +1,3 @@
-
 module.exports = {
   "env": {
     "es6": true,
@@ -33,12 +32,14 @@ module.exports = {
         "@typescript-eslint"
       ],
       "rules": {
+        "@typescript-eslint/await-thenable": "error",
       }
     }
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
+      project: ["tsconfig.json"],
   },
   "plugins": [
       "eslint-plugin-prefer-arrow",
