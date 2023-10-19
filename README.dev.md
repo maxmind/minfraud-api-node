@@ -16,3 +16,7 @@ Steps for releasing:
 9. Verify the release on
    [GitHub](https://github.com/maxmind/minfraud-api-node/releases) and
    [NPM](https://npmjs.com/package/@maxmind/minfraud-api-node).
+
+## Set up pre-commit hooks
+
+`npm run setup` to install husky pre-commit hooks
