@@ -1,9 +1,10 @@
 CHANGELOG
 =========
 
-5.1.0
+6.0.0
 ------------------
 
+* **Breaking** Drop Node 16 support
 * Add `host` parameter to `Client` constructor to allow for use of the
   Sandbox environment.
 
