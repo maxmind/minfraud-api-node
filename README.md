@@ -10,7 +10,7 @@ services](https://dev.maxmind.com/minfraud/).
 
 ## Requirements
 
-MaxMind has tested this API with Node.js versions 16, 18, and 20. We aim to support
+MaxMind has tested this API with Node.js versions 18 and 20. We aim to support
 active or maintained LTS versions of Node.js.
 
 ## Installation
@@ -34,8 +34,8 @@ takes your MaxMind account ID and license key. For example:
 const client = new minFraud.Client("1234", "LICENSEKEY");
 ```
 
-If you would like to use the Sandbox environment, you can 
-set the `host` parameter to `sandbox.minfraud.com`: 
+If you would like to use the Sandbox environment, you can
+set the `host` parameter to `sandbox.minfraud.com`:
 
 ```js
 const client = new minFraud.Client("1234", "LICENSEKEY", 3000, 'sandbox.minfraud.com');
