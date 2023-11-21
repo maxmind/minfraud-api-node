@@ -22,8 +22,8 @@ const processArray = (arr: Array<unknown>): unknown[] =>
     Array.isArray(el)
       ? processArray(el)
       : isObject(el)
-      ? camelizeResponse(el as Record<string, unknown>)
-      : el
+        ? camelizeResponse(el as Record<string, unknown>)
+        : el
   );
 
 /**
