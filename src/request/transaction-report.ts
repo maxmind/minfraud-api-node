@@ -84,6 +84,6 @@ export default class TransactionReport {
   }
 
   public toString(): string {
-    return JSON.stringify(snakecaseKeys(this));
+    return JSON.stringify(snakecaseKeys(this as Record<string, unknown>));
   }
 }
