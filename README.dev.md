@@ -11,7 +11,8 @@ Steps for releasing:
    generate the docs, deploy docs, and publish the module to NPM.
 7. Create a release PR containing the updates relating to any of the steps
    above.
-8. Create and push a git tag (eg `git tag v4.2.0 && git push --tags`).
+8. Create and push a git tag (e.g. `git tag -a v4.2.0 -m v4.2.0 && git push
+   --tags`).
 9. Manually create a release on GitHub to include the release-specific
    notes found in `CHANGELOG.md`.
 10. Verify the release on
