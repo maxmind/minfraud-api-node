@@ -7,6 +7,11 @@ CHANGELOG
 * **Breaking** Drop Node 16 support
 * Add `host` parameter to `Client` constructor to allow for use of the
   Sandbox environment.
+* Updated `@maxmind/geoip2-node` to version that includes the `isAnycast`
+  attribute on `response.ipAddress.traits`. This attribute is `true` if the
+  IP address belongs to an [anycast
+  network](https://en.wikipedia.org/wiki/Anycast). This is available in
+  minFraud Insights and Factors.
 
 5.0.0 (2023-05-16)
 ------------------
