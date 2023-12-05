@@ -4,10 +4,11 @@ Steps for releasing:
    merged.
 2. Bump copyright year in `README.md`, if necessary.
 3. Review `CHANGELOG.md` for completeness and correctness. Update its
-4. Bump the version in `package.json`.
+   release date.
+4. Set the version in `package.json`.
 5. Create a release PR containing the updates relating to any of the steps
    above.
-6. Ensure that the release PR is merged into main.
+6. Ensure that the release PR is merged into `main`.
 7. With `main` checked out, run `npm publish`. This will generate the
    docs, deploy docs, and publish the module to NPM.
 8. Create and push a git tag (eg `git tag v4.2.0 && git push --tags`).
