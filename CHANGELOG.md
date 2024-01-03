@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+6.1.0
+------------------
+
+* Added `PxpFinancial` and `Trustpay` to the `Processor` enum.
+
 6.0.0 (2023-12-05)
 ------------------
 
