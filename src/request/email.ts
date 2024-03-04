@@ -316,6 +316,10 @@ export default class Email implements EmailProps {
 
     domain = domain.replace(/(?:\.com){2,}$/, '.com');
     domain = domain.replace(/\.com[^.]+$/, '.com');
+    domain = domain.replace(
+      /(?:\.(?:com|c[a-z]{1,2}m|co[ln]|[dsvx]o[mn]|))$/,
+      '.com'
+    );
 
     if (Object.prototype.hasOwnProperty.call(Email.typoDomains, domain)) {
       domain = Email.typoDomains[domain];
