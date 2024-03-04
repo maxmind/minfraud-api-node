@@ -102,6 +102,10 @@ export default class Email implements EmailProps {
       localPart = localPart.substring(0, separatorIndex);
     }
 
+    if (domain === 'gmail.com') {
+      localPart = localPart.replace(/\./g, '');
+    }
+
     return localPart + '@' + domain;
   }
 
