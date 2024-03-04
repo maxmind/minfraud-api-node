@@ -320,6 +320,7 @@ export default class Email implements EmailProps {
       /(?:\.(?:com|c[a-z]{1,2}m|co[ln]|[dsvx]o[mn]|))$/,
       '.com'
     );
+    domain = domain.replace(/^\d+(?:gmail?\.com)$/, 'gmail.com');
 
     if (Object.prototype.hasOwnProperty.call(Email.typoDomains, domain)) {
       domain = Email.typoDomains[domain];
