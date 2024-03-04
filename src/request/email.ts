@@ -176,6 +176,62 @@ export default class Email implements EmailProps {
     'your-mail.com': true,
   };
 
+  private static readonly yahooDomains: { [key: string]: boolean } = {
+    'y7mail.com': true,
+    'yahoo.at': true,
+    'yahoo.be': true,
+    'yahoo.bg': true,
+    'yahoo.ca': true,
+    'yahoo.cl': true,
+    'yahoo.co.id': true,
+    'yahoo.co.il': true,
+    'yahoo.co.in': true,
+    'yahoo.co.kr': true,
+    'yahoo.co.nz': true,
+    'yahoo.co.th': true,
+    'yahoo.co.uk': true,
+    'yahoo.co.za': true,
+    'yahoo.com': true,
+    'yahoo.com.ar': true,
+    'yahoo.com.au': true,
+    'yahoo.com.br': true,
+    'yahoo.com.co': true,
+    'yahoo.com.hk': true,
+    'yahoo.com.hr': true,
+    'yahoo.com.mx': true,
+    'yahoo.com.my': true,
+    'yahoo.com.pe': true,
+    'yahoo.com.ph': true,
+    'yahoo.com.sg': true,
+    'yahoo.com.tr': true,
+    'yahoo.com.tw': true,
+    'yahoo.com.ua': true,
+    'yahoo.com.ve': true,
+    'yahoo.com.vn': true,
+    'yahoo.cz': true,
+    'yahoo.de': true,
+    'yahoo.dk': true,
+    'yahoo.ee': true,
+    'yahoo.es': true,
+    'yahoo.fi': true,
+    'yahoo.fr': true,
+    'yahoo.gr': true,
+    'yahoo.hu': true,
+    'yahoo.ie': true,
+    'yahoo.in': true,
+    'yahoo.it': true,
+    'yahoo.lt': true,
+    'yahoo.lv': true,
+    'yahoo.nl': true,
+    'yahoo.no': true,
+    'yahoo.pl': true,
+    'yahoo.pt': true,
+    'yahoo.ro': true,
+    'yahoo.se': true,
+    'yahoo.sk': true,
+    'ymail.com': true,
+  };
+
   public constructor(email: EmailProps) {
     if (email.address != null && !isEmail(email.address)) {
       throw new ArgumentError('`email.address` is an invalid email address');
@@ -216,7 +272,11 @@ export default class Email implements EmailProps {
 
     domain = this.cleanDomain(domain);
 
-    const separator = domain === 'yahoo.com' ? '-' : '+';
+    let separator = '+';
+    if (Object.prototype.hasOwnProperty.call(Email.yahooDomains, domain)) {
+      separator = '-';
+    }
+
     const separatorIndex = localPart.indexOf(separator);
     if (separatorIndex > 0) {
       localPart = localPart.substring(0, separatorIndex);
