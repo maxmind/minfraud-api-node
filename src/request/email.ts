@@ -45,6 +45,17 @@ export default class Email implements EmailProps {
     'putlook.com': 'outlook.com',
   };
 
+  private static readonly equivalentDomains: { [key: string]: string } = {
+    'googlemail.com': 'gmail.com',
+    'pm.me': 'protonmail.com',
+    'proton.me': 'protonmail.com',
+    'yandex.by': 'yandex.ru',
+    'yandex.com': 'yandex.ru',
+    'yandex.kz': 'yandex.ru',
+    'yandex.ua': 'yandex.ru',
+    'ya.ru': 'yandex.ru',
+  };
+
   public constructor(email: EmailProps) {
     if (email.address != null && !isEmail(email.address)) {
       throw new ArgumentError('`email.address` is an invalid email address');
@@ -105,6 +116,10 @@ export default class Email implements EmailProps {
 
     if (Object.prototype.hasOwnProperty.call(Email.typoDomains, domain)) {
       domain = Email.typoDomains[domain];
+    }
+
+    if (Object.prototype.hasOwnProperty.call(Email.equivalentDomains, domain)) {
+      domain = Email.equivalentDomains[domain];
     }
 
     return domain;

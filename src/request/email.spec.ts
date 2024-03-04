@@ -1,4 +1,5 @@
 import { ArgumentError } from '../errors';
+import crypto from 'crypto';
 import Email from './email';
 
 describe('Email()', () => {
@@ -65,6 +66,10 @@ describe('Email()', () => {
 
     expect(email.domain).toBe('bar.com');
   });
+
+  const md5 = (s: string): string => {
+    return crypto.createHash('md5').update(s).digest('hex');
+  };
 
   const normalizeTests = [
     {
@@ -143,6 +148,11 @@ describe('Email()', () => {
     // 'test' is rejected as invalid.
     // 'test@' is rejected as invalid.
     // 'test@.' is rejected as invalid.
+    {
+      email: 'foo@googlemail.com',
+      md5: md5('foo@gmail.com'),
+      domain: 'googlemail.com',
+    },
   ];
 
   test.each(normalizeTests)('%p', (arg) => {

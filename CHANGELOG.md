@@ -5,6 +5,8 @@ CHANGELOG
 ------------------
 
 * Added `PxpFinancial` and `Trustpay` to the `Processor` enum.
+* Equivalent domain names are now normalized when `hashAddress` is used.
+  For example, `googlemail.com` will become `gmail.com`.
 
 6.0.0 (2023-12-05)
 ------------------
