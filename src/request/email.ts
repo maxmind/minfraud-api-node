@@ -96,10 +96,10 @@ export default class Email implements EmailProps {
 
   private cleanDomain(domain: string) {
     // We don't need to trim the domain as if it has any leading whitespace
-    // validation rejects it as invalid.
+    // validation (isEmail()) rejects it as invalid.
 
-    // We don't need to strip a trailing '.' because validation rejects domains
-    // that have it.
+    // We don't need to strip a trailing '.' because validation (isEmail())
+    // rejects domains that have it.
 
     domain = punycode.toASCII(domain);
 
