@@ -173,6 +173,11 @@ describe('Email()', () => {
       md5: md5('foo@ymail.com'),
       domain: 'ymail.com',
     },
+    {
+      email: 'foo@example.com.com',
+      md5: md5('foo@example.com'),
+      domain: 'example.com.com',
+    },
   ];
 
   test.each(normalizeTests)('%p', (arg) => {

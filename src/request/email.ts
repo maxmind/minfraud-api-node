@@ -314,6 +314,8 @@ export default class Email implements EmailProps {
 
     domain = punycode.toASCII(domain);
 
+    domain = domain.replace(/(?:\.com){2,}$/, '.com');
+
     if (Object.prototype.hasOwnProperty.call(Email.typoDomains, domain)) {
       domain = Email.typoDomains[domain];
     }
