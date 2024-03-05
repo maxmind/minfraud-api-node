@@ -1,4 +1,5 @@
 import { ArgumentError } from '../errors';
+import crypto from 'crypto';
 import Email from './email';
 
 describe('Email()', () => {
@@ -65,6 +66,10 @@ describe('Email()', () => {
 
     expect(email.domain).toBe('bar.com');
   });
+
+  const md5 = (s: string): string => {
+    return crypto.createHash('md5').update(s).digest('hex');
+  };
 
   const normalizeTests = [
     {
@@ -143,6 +148,51 @@ describe('Email()', () => {
     // 'test' is rejected as invalid.
     // 'test@' is rejected as invalid.
     // 'test@.' is rejected as invalid.
+    {
+      email: 'foo@googlemail.com',
+      md5: md5('foo@gmail.com'),
+      domain: 'googlemail.com',
+    },
+    {
+      email: 'foo.bar.baz@gmail.com',
+      md5: md5('foobarbaz@gmail.com'),
+      domain: 'gmail.com',
+    },
+    {
+      email: 'alias@user.fastmail.com',
+      md5: md5('user@fastmail.com'),
+      domain: 'user.fastmail.com',
+    },
+    {
+      email: 'foo@bar.example.com',
+      md5: md5('foo@bar.example.com'),
+      domain: 'bar.example.com',
+    },
+    {
+      email: 'foo-bar@ymail.com',
+      md5: md5('foo@ymail.com'),
+      domain: 'ymail.com',
+    },
+    {
+      email: 'foo@example.com.com',
+      md5: md5('foo@example.com'),
+      domain: 'example.com.com',
+    },
+    {
+      email: 'foo@example.comfoo',
+      md5: md5('foo@example.com'),
+      domain: 'example.comfoo',
+    },
+    {
+      email: 'foo@example.cam',
+      md5: md5('foo@example.com'),
+      domain: 'example.cam',
+    },
+    {
+      email: 'foo@10000gmail.com',
+      md5: md5('foo@gmail.com'),
+      domain: '10000gmail.com',
+    },
   ];
 
   test.each(normalizeTests)('%p', (arg) => {
