@@ -180,18 +180,23 @@ describe('Email()', () => {
     },
     {
       email: 'foo@example.comfoo',
-      md5: md5('foo@example.com'),
+      md5: md5('foo@example.comfoo'),
       domain: 'example.comfoo',
     },
     {
       email: 'foo@example.cam',
-      md5: md5('foo@example.com'),
+      md5: md5('foo@example.cam'),
       domain: 'example.cam',
     },
     {
       email: 'foo@10000gmail.com',
       md5: md5('foo@gmail.com'),
       domain: '10000gmail.com',
+    },
+    {
+      email: 'foo@example.comcom',
+      md5: md5('foo@example.com'),
+      domain: 'example.comcom',
     },
   ];
 

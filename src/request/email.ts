@@ -48,6 +48,54 @@ export default class Email implements EmailProps {
     'putlook.com': 'outlook.com',
   };
 
+  private static readonly typoTLDs: { [key: string]: string } = {
+    comm: 'com',
+    commm: 'com',
+    commmm: 'com',
+    comn: 'com',
+
+    cbm: 'com',
+    ccm: 'com',
+    cdm: 'com',
+    cem: 'com',
+    cfm: 'com',
+    cgm: 'com',
+    chm: 'com',
+    cim: 'com',
+    cjm: 'com',
+    ckm: 'com',
+    clm: 'com',
+    cmm: 'com',
+    cnm: 'com',
+    cpm: 'com',
+    cqm: 'com',
+    crm: 'com',
+    csm: 'com',
+    ctm: 'com',
+    cum: 'com',
+    cvm: 'com',
+    cwm: 'com',
+    cxm: 'com',
+    cym: 'com',
+    czm: 'com',
+
+    col: 'com',
+    con: 'com',
+
+    dom: 'com',
+    don: 'com',
+    som: 'com',
+    son: 'com',
+    vom: 'com',
+    von: 'com',
+    xom: 'com',
+    xon: 'com',
+
+    clam: 'com',
+    colm: 'com',
+    comcom: 'com',
+  };
+
   private static readonly equivalentDomains: { [key: string]: string } = {
     'googlemail.com': 'gmail.com',
     'pm.me': 'protonmail.com',
@@ -318,12 +366,15 @@ export default class Email implements EmailProps {
     domain = punycode.toASCII(domain);
 
     domain = domain.replace(/(?:\.com){2,}$/, '.com');
-    domain = domain.replace(/\.com[^.]+$/, '.com');
-    domain = domain.replace(
-      /(?:\.(?:com|c[a-z]{1,2}m|co[ln]|[dsvx]o[mn]|))$/,
-      '.com'
-    );
     domain = domain.replace(/^\d+(?:gmail?\.com)$/, 'gmail.com');
+
+    const idx = domain.lastIndexOf('.');
+    if (idx !== -1) {
+      const tld = domain.substring(idx + 1);
+      if (Object.prototype.hasOwnProperty.call(Email.typoTLDs, tld)) {
+        domain = domain.substring(0, idx) + '.' + Email.typoTLDs[tld];
+      }
+    }
 
     if (Object.prototype.hasOwnProperty.call(Email.typoDomains, domain)) {
       domain = Email.typoDomains[domain];
