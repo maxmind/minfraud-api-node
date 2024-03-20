@@ -12,6 +12,24 @@ describe('Email()', () => {
     expect(email).toThrowError('email.address');
   });
 
+  it('email.address with trailing period is not valid', () => {
+    const email = () =>
+      new Email({
+        address: 'foo@example.com.',
+      });
+    expect(email).toThrowError(ArgumentError);
+    expect(email).toThrowError('email.address');
+  });
+
+  it('email.address with multiple trailing periods is not valid', () => {
+    const email = () =>
+      new Email({
+        address: 'foo@example.com...',
+      });
+    expect(email).toThrowError(ArgumentError);
+    expect(email).toThrowError('email.address');
+  });
+
   it('throws an error if email.domain is not valid', () => {
     const email = () =>
       new Email({
