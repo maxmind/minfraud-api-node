@@ -363,7 +363,7 @@ export default class Email implements EmailProps {
     // We don't need to strip a trailing '.' because validation (isEmail())
     // rejects domains that have it.
 
-    domain = punycode.toASCII(domain);
+    domain = punycode.toASCII(domain.normalize('NFC'));
 
     domain = domain.replace(/(?:\.com){2,}$/, '.com');
     domain = domain.replace(/^\d+(?:gmail?\.com)$/, 'gmail.com');
