@@ -29,6 +29,8 @@ CHANGELOG
   used. For example, `gmali.com` will become `gmail.com`.
 * When `hashAddress` is used, the domain part of an email address is now
   normalized to NFC.
+* When `hashAddress` is used, the local part of an email address is now
+  normalized to NFC.
 
 6.0.0 (2023-12-05)
 ------------------

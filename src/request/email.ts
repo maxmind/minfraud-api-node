@@ -322,6 +322,7 @@ export default class Email implements EmailProps {
     let domain = address.substring(atIndex + 1);
 
     domain = this.cleanDomain(domain);
+    localPart = localPart.normalize('NFC');
 
     let separator = '+';
     if (Object.prototype.hasOwnProperty.call(Email.yahooDomains, domain)) {

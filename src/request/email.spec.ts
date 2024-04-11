@@ -226,6 +226,16 @@ describe('Email()', () => {
       md5: '2b21bc76dab3c8b1622837c1d698936c',
       domain: 'b\u00FCcher.com',
     },
+    {
+      email: 'bu\u0308cher@example.com',
+      md5: '53550c712b146287a2d0dd30e5ed6f4b',
+      domain: 'example.com',
+    },
+    {
+      email: 'b\u00FCcher@example.com',
+      md5: '53550c712b146287a2d0dd30e5ed6f4b',
+      domain: 'example.com',
+    },
   ];
 
   test.each(normalizeTests)('%p', (arg) => {
