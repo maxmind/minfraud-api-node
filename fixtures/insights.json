@@ -136,7 +136,6 @@
           "autonomous_system_organization": "Linkem IR WiMax Network",
           "connection_type": "Cable/DSL",
           "domain": "example.com",
-          "ip_address": "1.2.3.4",
           "is_anonymous": true,
           "is_anonymous_proxy": true,
           "is_anonymous_vpn": true,
