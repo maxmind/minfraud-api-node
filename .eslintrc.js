@@ -35,6 +35,8 @@ module.exports = {
         "@typescript-eslint/await-thenable": "error",
       }
     },
+    // We are adding this so that a package-lock.json file with
+    // conflict markers fails as otherwise it may go unnoticed.
     {
       "plugins": [
           "json"
