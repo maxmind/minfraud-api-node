@@ -35,17 +35,6 @@ module.exports = {
         "@typescript-eslint/await-thenable": "error",
       }
     },
-    {
-      "plugins": [
-          "json"
-      ],
-      "files": [
-        "*.json",
-      ],
-      "rules": {
-          "json/*": ["error"]
-      }
-    }
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
