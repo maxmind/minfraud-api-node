@@ -68,7 +68,7 @@
     "@maxmind/geoip2-node": "^5.0.0",
     "maxmind": "^4.1.0",
     "punycode": "^2.1.1",
-    "snakecase-keys": "^6.0.0",
+    "snakecase-keys": "^8.0.1",
     "validator": "^13.0.0"
   }
 }
