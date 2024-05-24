@@ -90,9 +90,10 @@ of:
 MaxMind encourages the use of this API, as data received through this channel
 is continually used to improve the accuracy of our fraud detection algorithms.
 
-To use the Report Transactions API, create a new `TransactionReport` object. An
-IP address and a valid tag are required key values. Additional key values may
-also be set, as documented below.
+To use the Report Transactions API, create a new `TransactionReport` object. A
+valid tag and at least one of the following are required parameters:
+IP address, maxmind ID, minfraud ID, or transaction ID. Additional key values
+may also be set, as documented below.
 
 See the API documentation for more details.
 

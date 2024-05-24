@@ -10,9 +10,12 @@ interface TransactionReportProps {
    */
   chargebackCode?: string;
   /**
-   * The IP address of the customer placing the order.
+   * The IP address of the customer placing the order. This field is not
+   * required if you provide at least one of the transaction's minfraud_id,
+   * maxmind_id, or transaction_id. You are encouraged to provide it, if
+   * possible.
    */
-  ipAddress: string;
+  ipAddress?: string;
   /**
    * A unique eight character string identifying a minFraud Standard or
    * Premium request. These IDs are returned in the maxmindID field of a
@@ -23,8 +26,9 @@ interface TransactionReportProps {
   /**
    * A UUID that identifies a minFraud Score, minFraud Insights, or minFraud
    * Factors request. This ID is returned at /id in the response. This field
-   * is not required, but you are encouraged to provide it if the request was
-   * made to one of these services.
+   * is not required if you provide at least one of the transaction's
+   * minfraud_id, maxmind_id, or transaction_id. You are encouraged to provide
+   * it, if possible.
    */
   minfraudId?: string;
   /**
@@ -40,8 +44,9 @@ interface TransactionReportProps {
   tag: Tag;
   /**
    * The transaction ID you originally passed to minFraud. This field is not
-   * required, but you are encouraged to provide it or the transaction’s
-   * maxmindId or minfraudId.
+   * required if you provide at least one of the transaction's minfraud_id,
+   * maxmind_id, or transaction_id. You are encouraged to provide it, if
+   * possible.
    */
   transactionId?: string;
 }
@@ -50,7 +55,7 @@ export default class TransactionReport {
   /** @inheritDoc TransactionReportProps.chargebackCode */
   public chargebackCode?: string;
   /** @inheritDoc TransactionReportProps.ipAddress */
-  public ipAddress: string;
+  public ipAddress?: string;
   /** @inheritDoc TransactionReportProps.maxmindId */
   public maxmindId?: string;
   /** @inheritDoc TransactionReportProps.minfraudId */
@@ -63,10 +68,24 @@ export default class TransactionReport {
   public transactionId?: string;
 
   public constructor(transactionReport: TransactionReportProps) {
-    if (isIP(transactionReport.ipAddress) === 0) {
+    // Check if at least one identifier field is set
+    if (
+      !transactionReport.ipAddress &&
+      !transactionReport.maxmindId &&
+      !transactionReport.minfraudId &&
+      !transactionReport.transactionId
+    ) {
       throw new ArgumentError(
-        '`transactionReport.ipAddress` is an invalid IP address'
+        'The report must contain at least one of the following fields: `ipAddress`, `maxmindId`, `minfraudId`, `transactionId`.'
       );
+    }
+
+    if (transactionReport.ipAddress) {
+      if (isIP(transactionReport.ipAddress) === 0) {
+        throw new ArgumentError(
+          '`transactionReport.ipAddress` is an invalid IP address'
+        );
+      }
     }
 
     if (
