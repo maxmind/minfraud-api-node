@@ -11,8 +11,8 @@ interface TransactionReportProps {
   chargebackCode?: string;
   /**
    * The IP address of the customer placing the order. This field is not
-   * required if you provide at least one of the transaction's minfraud_id,
-   * maxmind_id, or transaction_id. You are encouraged to provide it, if
+   * required if you provide at least one of the transaction's minfraudId,
+   * maxmindId, or transactionId. You are encouraged to provide it, if
    * possible.
    */
   ipAddress?: string;
@@ -26,8 +26,8 @@ interface TransactionReportProps {
   /**
    * A UUID that identifies a minFraud Score, minFraud Insights, or minFraud
    * Factors request. This ID is returned at /id in the response. This field
-   * is not required if you provide at least one of the transaction's
-   * minfraud_id, maxmind_id, or transaction_id. You are encouraged to provide
+   * is not required if you provide at least one of the transaction's ipAddress,
+   * minfraudId, or transactionId. You are encouraged to provide
    * it, if possible.
    */
   minfraudId?: string;
@@ -44,9 +44,8 @@ interface TransactionReportProps {
   tag: Tag;
   /**
    * The transaction ID you originally passed to minFraud. This field is not
-   * required if you provide at least one of the transaction's minfraud_id,
-   * maxmind_id, or transaction_id. You are encouraged to provide it, if
-   * possible.
+   * required if you provide at least one of the transaction's ipAddress,
+   * minfraudId, or maxmindId. You are encouraged to provide it, if possible.
    */
   transactionId?: string;
 }
