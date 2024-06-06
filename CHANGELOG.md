@@ -1,12 +1,12 @@
 CHANGELOG
 =========
 
-6.2.0
+7.0.0
 ------------------
 
-* Updated `TransactionReport` to make the `ipAddress` parameter optional. Now
-  the `tag` and at least one of the following paramters must be supplied:
-  `ipAddress`, `maxmindId`, `minfraudId`, `transactionId`.
+* **Breaking** Updated `TransactionReport` to make the `ipAddress` parameter
+  optional. Now the `tag` and at least one of the following paramters must be
+  supplied: `ipAddress`, `maxmindId`, `minfraudId`, `transactionId`.
 
 6.1.0 (2024-04-16)
 ------------------
