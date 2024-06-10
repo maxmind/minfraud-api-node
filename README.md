@@ -35,10 +35,10 @@ const client = new minFraud.Client("1234", "LICENSEKEY");
 ```
 
 If you would like to use the Sandbox environment, you can
-set the `host` parameter to `sandbox.minfraud.com`:
+set the `host` parameter to `sandbox.maxmind.com`:
 
 ```js
-const client = new minFraud.Client("1234", "LICENSEKEY", 3000, 'sandbox.minfraud.com');
+const client = new minFraud.Client("1234", "LICENSEKEY", 3000, 'sandbox.maxmind.com');
 ```
 
 Then create a new `Transaction` object. This represents the transaction that
