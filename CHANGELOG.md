@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-7.0.0
-------------------
+7.0.0-beta.1 (2024-06-17)
+-------------------------
 
 * **Breaking** Updated `TransactionReport` to make the `ipAddress` parameter
   optional. Now the `tag` and at least one of the following paramters must be
