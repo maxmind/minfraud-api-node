@@ -121,6 +121,16 @@ export interface PhoneWebRecord {
   readonly number_type?: string;
 }
 
+export interface ReasonWebRecord {
+  code: string;
+  reason: string;
+}
+
+export interface RiskScoreReasonWebRecord {
+  multiplier: number;
+  reasons: ReasonWebRecord[];
+}
+
 export interface SubscoresWebRecord {
   readonly avs_result?: number;
   readonly billing_address?: number;
@@ -172,5 +182,6 @@ export interface InsightsResponse extends ScoreResponse {
 }
 
 export interface FactorsResponse extends InsightsResponse {
+  readonly risk_score_reasons?: RiskScoreReasonWebRecord[];
   readonly subscores: SubscoresWebRecord;
 }

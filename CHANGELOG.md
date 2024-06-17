@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+7.1.0-beta.1
+------------
+
+* Added support for the new risk reasons outputs in minFraud Factors.
+
 7.0.0 (2024-07-08)
 ------------------
 

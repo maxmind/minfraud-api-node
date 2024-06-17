@@ -362,6 +362,35 @@ export interface Disposition {
 }
 
 /**
+ * This object describes one of the reasons for the multiplier.
+ */
+export interface Reason {
+  /**
+   * The machine-readable code for the reason.
+   */
+  code: string;
+  /**
+   * The human-readable description of the reason.
+   */
+  reason: string;
+}
+
+/**
+ * The object describing the risk score multiplier and the reasons for that
+ * multiplier.
+ */
+export interface RiskScoreReason {
+  /**
+   * The risk score multiplier.
+   */
+  multiplier: number;
+  /**
+   * The reasons for the multiplier.
+   */
+  reasons: Reason[];
+}
+
+/**
  * This object contains scores for many of the individual risk factors that
  * are used to calculate the overall risk score.
  */
