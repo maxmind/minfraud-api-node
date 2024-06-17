@@ -7,6 +7,7 @@ CHANGELOG
 * **Breaking** Updated `TransactionReport` to make the `ipAddress` parameter
   optional. Now the `tag` and at least one of the following paramters must be
   supplied: `ipAddress`, `maxmindId`, `minfraudId`, `transactionId`.
+* Added support for the new risk reasons outputs in minFraud Factors.
 
 6.1.0 (2024-04-16)
 ------------------
