@@ -36,7 +36,7 @@ describe('WebServiceClient', () => {
     });
 
     it('handles "full" responses', async () => {
-      expect.assertions(159);
+      expect.assertions(167);
 
       nockInstance
         .post(fullPath('factors'), factors.request.basic)
@@ -223,11 +223,23 @@ describe('WebServiceClient', () => {
       expect(got.shippingAddress?.distanceToBillingAddress).toEqual(22);
       expect(got.shippingAddress?.isInIpCountry).toEqual(true);
 
+      expect(got.shippingPhone?.country).toEqual('CA');
+      expect(got.shippingPhone?.isVoip).toEqual(true);
+      expect(got.shippingPhone?.networkOperator).toEqual(
+        'Telus Mobility-SVR/2'
+      );
+      expect(got.shippingPhone?.numberType).toEqual('mobile');
+
       expect(got.billingAddress?.isPostalInCity).toEqual(true);
       expect(got.billingAddress?.latitude).toEqual(37.545);
       expect(got.billingAddress?.longitude).toEqual(-122.421);
       expect(got.billingAddress?.distanceToIpLocation).toEqual(100);
       expect(got.billingAddress?.isInIpCountry).toEqual(true);
+
+      expect(got.billingPhone?.country).toEqual('US');
+      expect(got.billingPhone?.isVoip).toEqual(false);
+      expect(got.billingPhone?.networkOperator).toEqual('Verizon/1');
+      expect(got.billingPhone?.numberType).toEqual('fixed');
 
       expect(got.disposition?.action).toEqual('accept');
       expect(got.disposition?.reason).toEqual('default');
@@ -270,7 +282,7 @@ describe('WebServiceClient', () => {
     });
 
     it('handles "full" responses', async () => {
-      expect.assertions(139);
+      expect.assertions(147);
 
       nockInstance
         .post(fullPath('insights'), insights.request.basic)
@@ -457,11 +469,23 @@ describe('WebServiceClient', () => {
       expect(got.shippingAddress?.distanceToBillingAddress).toEqual(22);
       expect(got.shippingAddress?.isInIpCountry).toEqual(true);
 
+      expect(got.shippingPhone?.country).toEqual('CA');
+      expect(got.shippingPhone?.isVoip).toEqual(true);
+      expect(got.shippingPhone?.networkOperator).toEqual(
+        'Telus Mobility-SVR/2'
+      );
+      expect(got.shippingPhone?.numberType).toEqual('mobile');
+
       expect(got.billingAddress?.isPostalInCity).toEqual(true);
       expect(got.billingAddress?.latitude).toEqual(37.545);
       expect(got.billingAddress?.longitude).toEqual(-122.421);
       expect(got.billingAddress?.distanceToIpLocation).toEqual(100);
       expect(got.billingAddress?.isInIpCountry).toEqual(true);
+
+      expect(got.billingPhone?.country).toEqual('US');
+      expect(got.billingPhone?.isVoip).toEqual(false);
+      expect(got.billingPhone?.networkOperator).toEqual('Verizon/1');
+      expect(got.billingPhone?.numberType).toEqual('fixed');
 
       expect(got.disposition?.action).toEqual('accept');
       expect(got.disposition?.reason).toEqual('default');

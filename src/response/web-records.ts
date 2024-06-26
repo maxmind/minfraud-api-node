@@ -114,6 +114,13 @@ export interface DispositionWebRecord {
   readonly rule_label?: string;
 }
 
+export interface PhoneWebRecord {
+  readonly country?: string;
+  readonly is_voip?: boolean;
+  readonly network_operator?: string;
+  readonly number_type?: string;
+}
+
 export interface SubscoresWebRecord {
   readonly avs_result?: number;
   readonly billing_address?: number;
@@ -159,7 +166,9 @@ export interface InsightsResponse extends ScoreResponse {
   readonly device: DeviceWebRecord;
   readonly email?: EmailWebRecord;
   readonly shipping_address?: ShippingAddressWebRecord;
+  readonly shipping_phone?: PhoneWebRecord;
   readonly billing_address?: BillingAddressWebRecord;
+  readonly billing_phone?: PhoneWebRecord;
 }
 
 export interface FactorsResponse extends InsightsResponse {

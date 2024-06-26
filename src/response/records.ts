@@ -235,6 +235,37 @@ export interface Email {
 }
 
 /**
+ * This object contains information about the billing or shipping phone passed
+ * in the request.
+ */
+export interface Phone {
+  /**
+   * A two-character ISO 3166-1 country code for the country associated with
+   * the phone number.
+   */
+  readonly country: string;
+  /**
+   * This is `true` if the phone number is a Voice over Internet Protocol (VoIP)
+   * number allocated by a regulator. It is `false` if the phone number is not a
+   * VoIP number allocated by a regulator. The property is `null` if a valid
+   * number has not been provided or we do not have data for it.
+   */
+  readonly isVoip?: boolean;
+  /**
+   * The name of the original network operator associated with the phone
+   * number. This property does not reflect phone numbers that have been ported
+   * from the original operator to another, nor does it identify mobile
+   * virtual network operators.
+   */
+  readonly networkOperator: string;
+  /**
+   * One of the following values: `fixed` or `mobile`. Additional values may
+   * be added in the future.
+   */
+  readonly numberType: string;
+}
+
+/**
  * Information about the shipping address.
  */
 export interface ShippingAddress {

@@ -195,12 +195,26 @@
         "is_in_ip_country": true
       },
 
+      "shipping_phone": {
+        "country": "CA",
+        "is_voip": true,
+        "network_operator": "Telus Mobility-SVR/2",
+        "number_type": "mobile"
+      },
+
       "billing_address": {
         "is_postal_in_city": true,
         "latitude": 37.545,
         "longitude": -122.421,
         "distance_to_ip_location": 100,
         "is_in_ip_country": true
+      },
+
+      "billing_phone": {
+        "country": "US",
+        "is_voip": false,
+        "network_operator": "Verizon/1",
+        "number_type": "fixed"
       },
 
       "disposition": {
