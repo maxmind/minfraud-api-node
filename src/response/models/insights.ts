@@ -11,7 +11,7 @@ export default class Insights extends Score {
    */
   public readonly billingAddress?: records.BillingAddress;
   /**
-   * An object containing minFraud date related to the billing phone used in
+   * An object containing minFraud data related to the billing phone used in
    * the transaction.
    */
   public readonly billingPhone?: records.Phone;
@@ -39,7 +39,7 @@ export default class Insights extends Score {
    */
   public readonly shippingAddress?: records.ShippingAddress;
   /**
-   * An object containing minFraud date related to the shipping phone used in
+   * An object containing minFraud data related to the shipping phone used in
    * the transaction.
    */
   public readonly shippingPhone?: records.Phone;
