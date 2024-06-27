@@ -11,6 +11,11 @@ export default class Insights extends Score {
    */
   public readonly billingAddress?: records.BillingAddress;
   /**
+   * An object containing minFraud data related to the billing phone used in
+   * the transaction.
+   */
+  public readonly billingPhone?: records.Phone;
+  /**
    * An object containing minFraud data about the credit card used in the
    * transaction.
    */
@@ -33,6 +38,11 @@ export default class Insights extends Score {
    * An object containing minFraud data related to the shipping address used in the transaction.
    */
   public readonly shippingAddress?: records.ShippingAddress;
+  /**
+   * An object containing minFraud data related to the shipping phone used in
+   * the transaction.
+   */
+  public readonly shippingPhone?: records.Phone;
 
   public constructor(response: webRecords.InsightsResponse) {
     super(response);
@@ -41,6 +51,7 @@ export default class Insights extends Score {
       response,
       'billing_address'
     );
+    this.billingPhone = this.maybeGet<records.Phone>(response, 'billing_phone');
     this.creditCard = this.maybeGet<records.CreditCardRecord>(
       response,
       'credit_card'
@@ -51,6 +62,10 @@ export default class Insights extends Score {
     this.shippingAddress = this.maybeGet<records.ShippingAddress>(
       response,
       'shipping_address'
+    );
+    this.shippingPhone = this.maybeGet<records.Phone>(
+      response,
+      'shipping_phone'
     );
   }
 
