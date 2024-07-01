@@ -55,3 +55,28 @@ export function camelizeResponse(input: unknown): unknown {
 
   return output;
 }
+
+/**
+ * Convert camelCase keys to snake_case
+ */
+export function snakecaseKeys(input: unknown): unknown {
+  if (Array.isArray(input)) {
+    return input.map(snakecaseKeys);
+  }
+
+  if (!isObject(input)) {
+    return input;
+  }
+
+  return Object.entries(input as Record<string, unknown>).reduce(
+    (acc, [key, value]) => {
+      const snakeKey = key.replace(
+        /[A-Z]/g,
+        (letter) => `_${letter.toLowerCase()}`
+      );
+      acc[snakeKey] = snakecaseKeys(value);
+      return acc;
+    },
+    {} as Record<string, unknown>
+  );
+}
