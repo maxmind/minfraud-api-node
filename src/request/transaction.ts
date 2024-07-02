@@ -1,4 +1,3 @@
-import snakecaseKeys from 'snakecase-keys';
 import { ArgumentError } from '../errors';
 import Account from './account';
 import Billing from './billing';
@@ -11,6 +10,7 @@ import Order from './order';
 import Payment from './payment';
 import Shipping from './shipping';
 import ShoppingCartItem from './shopping-cart-item';
+import { snakecaseKeys } from '../utils';
 
 export interface TransactionProps {
   /**

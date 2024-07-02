@@ -1,4 +1,4 @@
-import { snakeToCamelCase, camelizeResponse } from './utils';
+import { snakecaseKeys, snakeToCamelCase, camelizeResponse } from './utils';
 
 describe('src/Utils', () => {
   describe('snakeToCamelCase()', () => {
@@ -143,6 +143,97 @@ describe('src/Utils', () => {
       ];
       cases.forEach((testCase) => {
         expect(camelizeResponse(testCase.input)).toEqual(testCase.expected);
+      });
+    });
+  });
+  describe('snakecaseKeys()', () => {
+    it("converts an object's keys from camelCase to snake_case", () => {
+      const cases = [
+        {
+          input: { snakeCase: 1 },
+          expected: { snake_case: 1 },
+        },
+        {
+          input: { snakeCase: 1, anotherSnakeCase: 2 },
+          expected: { snake_case: 1, another_snake_case: 2 },
+        },
+      ];
+      cases.forEach((testCase) => {
+        expect(snakecaseKeys(testCase.input)).toEqual(testCase.expected);
+      });
+    });
+
+    it("converts a nested object's keys from camelCase to snake_case", () => {
+      const cases = [
+        {
+          input: { snakeCase: { abCd: 1 } },
+          expected: { snake_case: { ab_cd: 1 } },
+        },
+        {
+          input: { snakeCase: { enGb: 1 } },
+          expected: { snake_case: { en_gb: 1 } },
+        },
+        {
+          input: { enGb: { snakeCasePlus: { anotherOne: 1 } } },
+          expected: { en_gb: { snake_case_plus: { another_one: 1 } } },
+        },
+        {
+          input: {
+            enGb: { snakeCasePlus: { anotherOne: { yetAnother: 1 } } },
+          },
+          expected: {
+            en_gb: { snake_case_plus: { another_one: { yet_another: 1 } } },
+          },
+        },
+      ];
+      cases.forEach((testCase) => {
+        expect(snakecaseKeys(testCase.input)).toEqual(testCase.expected);
+      });
+    });
+
+    it('converts keys of objects contained in an array', () => {
+      const cases = [
+        {
+          input: { snakeCase: { abCd: [{ qwertyDvorak: 1 }] } },
+          expected: { snake_case: { ab_cd: [{ qwerty_dvorak: 1 }] } },
+        },
+        {
+          input: {
+            snakeCase: [
+              { abCd: [{ qwertyDvorak: 1 }] },
+              'dont_change_me',
+              { zxyWt: [7, { pp: 42, llllMmm: 'aa_aa' }] },
+            ],
+            caseSnake: {
+              snakeCamel: [
+                { mnOpQrSt: [[{ objKey: ['a', 7, { keyObj: 99 }] }]] },
+              ],
+            },
+          },
+          expected: {
+            snake_case: [
+              { ab_cd: [{ qwerty_dvorak: 1 }] },
+              'dont_change_me',
+              { zxy_wt: [7, { pp: 42, llll_mmm: 'aa_aa' }] },
+            ],
+            case_snake: {
+              snake_camel: [
+                { mn_op_qr_st: [[{ obj_key: ['a', 7, { key_obj: 99 }] }]] },
+              ],
+            },
+          },
+        },
+        {
+          input: [42, { snakeCase: { abCd: [{ qwertyDvorak: 1 }] } }, '180'],
+          expected: [
+            42,
+            { snake_case: { ab_cd: [{ qwerty_dvorak: 1 }] } },
+            '180',
+          ],
+        },
+      ];
+      cases.forEach((testCase) => {
+        expect(snakecaseKeys(testCase.input)).toEqual(testCase.expected);
       });
     });
   });

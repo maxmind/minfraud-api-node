@@ -1,7 +1,7 @@
 import { isIP } from 'net';
-import snakecaseKeys from 'snakecase-keys';
 import { Tag } from '../constants';
 import { ArgumentError } from '../errors';
+import { snakecaseKeys } from '../utils';
 
 interface TransactionReportProps {
   /**
