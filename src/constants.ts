@@ -110,6 +110,7 @@ export enum Processor {
   Orangepay = 'orangepay',
   Other = 'other',
   PacnetServices = 'pacnet_services',
+  Payconex = 'payconex',
   Payeezy = 'payeezy',
   Payfast = 'payfast',
   Paygate = 'paygate',
