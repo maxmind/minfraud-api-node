@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-7.0.0
+7.0.0 (2024-07-08)
 ------------------
 
 * **Breaking** Updated `TransactionReport` to make the `ipAddress` parameter
