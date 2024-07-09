@@ -1,11 +1,11 @@
 CHANGELOG
 =========
 
-7.0.0
+7.0.0 (2024-07-08)
 ------------------
 
 * **Breaking** Updated `TransactionReport` to make the `ipAddress` parameter
-  optional. Now the `tag` and at least one of the following paramters must be
+  optional. Now the `tag` and at least one of the following parameters must be
   supplied: `ipAddress`, `maxmindId`, `minfraudId`, `transactionId`.
 * Added `billingPhone` and `shippingPhone` properties to the minFraud Insights
   and Factors response models. These contain objects with information about
