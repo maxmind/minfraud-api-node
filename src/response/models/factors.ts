@@ -4,6 +4,10 @@ import * as webRecords from '../web-records';
 import Insights from './insights';
 
 export default class Factors extends Insights {
+  /**
+   * An array of risk score reason objects that describe a risk score
+   * multiplier and the reasons for that multiplier.
+   */
   public readonly riskScoreReasons?: records.RiskScoreReason[];
 
   /**
