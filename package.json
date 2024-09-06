@@ -6,7 +6,7 @@
   "homepage": "https://github.com/maxmind/minfraud-api-node",
   "repository": {
     "type": "git",
-    "url": "https://github.com/maxmind/minfraud-api-node.git"
+    "url": "git+https://github.com/maxmind/minfraud-api-node.git"
   },
   "author": "MaxMind",
   "license": "Apache-2.0",
