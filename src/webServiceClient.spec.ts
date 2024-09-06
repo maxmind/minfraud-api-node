@@ -2,6 +2,7 @@ import cloneDeep = require('lodash.clonedeep');
 import nock from 'nock';
 import * as models from './response/models';
 import * as insights from '../fixtures/insights.json';
+import reasons from '../fixtures/reasons.json';
 import * as score from '../fixtures/score.json';
 import * as subscores from '../fixtures/subscores.json';
 import {
@@ -26,6 +27,7 @@ const client = new Client(auth.user, auth.pass);
 describe('WebServiceClient', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const factors = cloneDeep(insights) as any;
+  factors.response.full.risk_score_reasons = cloneDeep(reasons);
   factors.response.full.subscores = cloneDeep(subscores);
 
   describe('factors()', () => {
@@ -36,7 +38,7 @@ describe('WebServiceClient', () => {
     });
 
     it('handles "full" responses', async () => {
-      expect.assertions(167);
+      expect.assertions(172);
 
       nockInstance
         .post(fullPath('factors'), factors.request.basic)
@@ -250,6 +252,14 @@ describe('WebServiceClient', () => {
         'Encountered value at /shipping/city that does not meet the required constraints'
       );
       expect(got.warnings?.[0].inputPointer).toEqual('/shipping/city');
+
+      expect(got.riskScoreReasons).toHaveLength(4);
+      expect(got.riskScoreReasons?.[0].multiplier).toEqual(45);
+      expect(got.riskScoreReasons?.[0].reasons).toHaveLength(1);
+      expect(got.riskScoreReasons?.[0].reasons[0].code).toEqual('ANONYMOUS_IP');
+      expect(got.riskScoreReasons?.[0].reasons[0].reason).toEqual(
+        'Risk due to IP being an Anonymous IP'
+      );
 
       expect(got?.subscores?.avsResult).toEqual(0.01);
       expect(got?.subscores?.billingAddress).toEqual(0.02);
