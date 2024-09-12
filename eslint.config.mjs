@@ -30,10 +30,18 @@ export default tseslint.config(
       "@typescript-eslint/await-thenable": "error",
       "prefer-arrow-callback": ["warn"],
     },
-  }, {
-  files: ["**/*.ts", "**/*.js"],
-},
+  },
   {
-    ignores: ["**/dist", "**/docs", "**/node_modules", "jest.config.js", "eslint.config.mjs"],
+    files: ["**/*.ts", "**/*.js"],
+  },
+  {
+    ignores: [
+      "**/dist",
+      "**/docs",
+      "**/node_modules",
+      "jest.config.js",
+      "eslint.config.mjs",
+      "coverage",
+    ],
   },
 );

@@ -1,4 +1,3 @@
-import cloneDeep from 'lodash.clonedeep';
 import nock from 'nock';
 import * as models from './response/models';
 import * as insights from '../fixtures/insights.json';
@@ -26,9 +25,9 @@ const client = new Client(auth.user, auth.pass);
 
 describe('WebServiceClient', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const factors = cloneDeep(insights) as any;
-  factors.response.full.risk_score_reasons = cloneDeep(reasons);
-  factors.response.full.subscores = cloneDeep(subscores);
+  const factors = structuredClone(insights) as any;
+  factors.response.full.risk_score_reasons = structuredClone(reasons);
+  factors.response.full.subscores = structuredClone(subscores);
 
   describe('factors()', () => {
     const transaction = new Transaction({
@@ -515,7 +514,7 @@ describe('WebServiceClient', () => {
       ${'email'}
       ${'shipping_address'}
     `('handles missing response $property', async ({ property }) => {
-      const response = cloneDeep(insights.response.full);
+      const response = structuredClone(insights.response.full);
       delete response[property as keyof webRecords.InsightsResponse];
 
       nockInstance
