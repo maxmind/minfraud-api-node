@@ -1,4 +1,3 @@
-import cloneDeep from 'lodash.clonedeep';
 import * as insightsJson from '../../../fixtures/insights.json';
 import { InsightsResponse } from '../web-records';
 import Insights from './insights';
@@ -8,7 +7,7 @@ describe('Insights()', () => {
   let response: any;
 
   beforeEach(() => {
-    const fixture = cloneDeep(insightsJson);
+    const fixture = structuredClone(insightsJson);
     response = fixture.response.full;
   });
 
