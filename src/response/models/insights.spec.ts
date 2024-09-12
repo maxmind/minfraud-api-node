@@ -1,4 +1,4 @@
-import cloneDeep = require('lodash.clonedeep');
+import cloneDeep from 'lodash.clonedeep';
 import * as insightsJson from '../../../fixtures/insights.json';
 import { InsightsResponse } from '../web-records';
 import Insights from './insights';

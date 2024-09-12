@@ -1,4 +1,4 @@
-import cloneDeep = require('lodash.clonedeep');
+import cloneDeep from 'lodash.clonedeep';
 import nock from 'nock';
 import * as models from './response/models';
 import * as insights from '../fixtures/insights.json';
