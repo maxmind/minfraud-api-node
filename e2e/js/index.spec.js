@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const minFraud = require('@maxmind/minfraud-api-node');
 
 describe('client', () => {
