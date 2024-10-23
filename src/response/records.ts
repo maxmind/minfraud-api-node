@@ -464,6 +464,8 @@ export interface RiskScoreReason {
 /**
  * This object contains scores for many of the individual risk factors that
  * are used to calculate the overall risk score.
+ *
+ * @deprecated replaced by {@link RiskScoreReason}.
  */
 export interface Subscores {
   /**

@@ -13,6 +13,8 @@ export default class Factors extends Insights {
   /**
    * An object containing GeoIP2 and minFraud Insights information about the IP
    * address.
+   *
+   * @deprecated replaced by {@link riskScoreReasons}.
    */
   public readonly subscores: records.Subscores;
 
