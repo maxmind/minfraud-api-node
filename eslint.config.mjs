@@ -42,6 +42,7 @@ export default tseslint.config(
       "jest.config.js",
       "eslint.config.mjs",
       "coverage",
+      "prettier.config.mjs",
     ],
   },
 );
