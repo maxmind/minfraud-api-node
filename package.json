@@ -46,7 +46,7 @@
     "build": "rm -rf dist && tsc",
     "build:docs": "rm -rf docs && typedoc src/index.ts --out docs --exclude \"**/*.spec.ts\" --readme README.md",
     "deploy:docs": "gh-pages -d docs",
-    "lint": "npx eslint . --max-warnings=0",
+    "lint": "npx eslint . --max-warnings=0 && npx tsc --noEmit",
     "prettier:ts": "prettier --parser typescript --write 'src/**/*.ts'",
     "prettier:ci": "prettier --parser typescript --list-different 'src/**/*.ts'",
     "prettier:json": "prettier --parser json --write '**/*.json'",
