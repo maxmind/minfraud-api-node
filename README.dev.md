@@ -19,6 +19,7 @@ Steps for releasing:
     [GitHub](https://github.com/maxmind/minfraud-api-node/releases) and
     [NPM](https://npmjs.com/package/@maxmind/minfraud-api-node).
 
-## Set up pre-commit hooks
+## Set up Precious to tidy and lint
 
-`npm run setup` to install husky pre-commit hooks
+1. Run `mkdir -p local && ./bin/install-precious local` to set up Precious locally
+2. Run `./git/setup.sh` to set up pre-commit hook that invokes Precious
