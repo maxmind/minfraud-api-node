@@ -879,10 +879,31 @@ describe('WebServiceClient', () => {
   });
 
   describe('error handling', () => {
+    afterEach(() => {
+      nock.cleanAll();
+    });
+
     const transaction = new Transaction({
       device: new Device({
         ipAddress: '1.1.1.1',
       }),
+    });
+
+    it('handles timeouts', () => {
+      const timeoutClient = new Client(auth.user, auth.pass, 10);
+      expect.assertions(1);
+
+      nockInstance
+        .post(fullPath('score'), score.request.basic)
+        .basicAuth(auth)
+        .delayConnection(100)
+        .reply(200, score.response.full);
+
+      return expect(timeoutClient.score(transaction)).rejects.toEqual({
+        code: 'NETWORK_TIMEOUT',
+        error: 'The request timed out',
+        url: baseUrl + fullPath('score'),
+      });
     });
 
     it('handles 5xx level errors', () => {
@@ -930,15 +951,12 @@ describe('WebServiceClient', () => {
       });
     });
 
-    it('handles general http.request errors', () => {
-      const error = {
-        code: 'FOO_ERR',
-        message: 'some foo error',
-      };
+    it('handles general fetch errors', () => {
+      const error = 'general error';
 
       const expected = {
-        code: error.code,
-        error: error.message,
+        code: 'FETCH_ERROR',
+        error: `Error - ${error}`,
         url: baseUrl + fullPath('score'),
       };
 
