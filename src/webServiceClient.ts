@@ -106,29 +106,29 @@ export default class WebServiceClient {
       }
 
       if (response.status === 204) {
-        return Promise.resolve();
+        return;
       }
       data = await response.json();
     } catch (err) {
       const error = err as TypeError;
       switch (error.name) {
         case 'AbortError':
-          return Promise.reject({
+          throw {
             code: 'NETWORK_TIMEOUT',
             error: 'The request timed out',
             url,
-          });
+          };
         case 'SyntaxError':
-          return Promise.reject({
+          throw {
             ...invalidResponseBody,
             url,
-          });
+          };
         default:
-          return Promise.reject({
+          throw {
             code: 'FETCH_ERROR',
             error: `${error.name} - ${error.message}`,
             url,
-          });
+          };
       }
     } finally {
       clearTimeout(timeoutId);
