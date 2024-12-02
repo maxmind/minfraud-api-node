@@ -102,7 +102,7 @@ export default class WebServiceClient {
       const response = await fetch(url, options);
 
       if (!response.ok) {
-        return Promise.reject(await this.handleError(response, url));
+        throw await this.handleError(response, url);
       }
 
       if (response.status === 204) {
@@ -111,6 +111,9 @@ export default class WebServiceClient {
       data = await response.json();
     } catch (err) {
       const error = err as TypeError;
+      if ((err as WebServiceClientError).url && !error.name) {
+        throw err;
+      }
       switch (error.name) {
         case 'AbortError':
           throw {
