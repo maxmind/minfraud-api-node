@@ -98,11 +98,21 @@ export default class WebServiceClient {
     };
 
     let data;
+    /*
+     We handle two kinds of errors here:
+     1. Network errors, such as timeouts or CORS errors.  These will be caught
+       by the catch block and rethrown as a WebServiceClientError.
+     2. Errors returned by the MaxMind web service, namely non-200 status codes. These
+      will be caught by the handleBadServerResponse method and rethrown/rejected as a
+      WebServiceClientError.
+    */
     try {
       const response = await fetch(url, options);
 
       if (!response.ok) {
-        return Promise.reject(await this.handleError(response, url));
+        return Promise.reject(
+          await this.handleBadServerResponse(response, url)
+        );
       }
 
       if (response.status === 204) {
@@ -136,7 +146,7 @@ export default class WebServiceClient {
     return new modelClass(data);
   }
 
-  private async handleError(
+  private async handleBadServerResponse(
     response: Response,
     url: string
   ): Promise<WebServiceClientError> {
