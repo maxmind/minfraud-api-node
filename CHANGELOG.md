@@ -1,9 +1,13 @@
 CHANGELOG
 =========
 
-7.1.0
+8.0.0
 -----------------
 
+* **Breaking** Internal webservice calls now use Node's built-in `fetch` instead of `http`.  This
+  will affect users who are on unsupported versions of Node, specifically Node 17 and below.
+* Two new error codes have been added: `NETWORK_TIMEOUT` and `FETCH_ERROR`, second of which is returned
+  when there's a `fetch` related error that could not be handled by other errors.
 * The minFraud Factors subscores have been deprecated. They will be removed
   in March 2025. Please see [our release notes](https://dev.maxmind.com/minfraud/release-notes/2024/#deprecation-of-risk-factor-scoressubscores)
   for more information.

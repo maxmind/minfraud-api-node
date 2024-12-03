@@ -1,5 +1,3 @@
-import * as http from 'http';
-import * as https from 'https';
 import { version } from '../package.json';
 import Transaction from './request/transaction';
 import TransactionReport from './request/transaction-report';
@@ -12,6 +10,11 @@ interface ResponseError {
 }
 
 type servicePath = 'factors' | 'insights' | 'score' | 'transactions/report';
+
+const invalidResponseBody = {
+  code: 'INVALID_RESPONSE_BODY',
+  error: 'Received an invalid or unparseable response body',
+};
 
 export default class WebServiceClient {
   private accountID: string;
@@ -65,7 +68,7 @@ export default class WebServiceClient {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     modelClass?: any
   ): Promise<T>;
-  private responseFor(
+  private async responseFor(
     path: servicePath,
     postData: string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -74,97 +77,104 @@ export default class WebServiceClient {
     const parsedPath = `/minfraud/v2.0/${path}`;
     const url = `https://${this.host}${parsedPath}`;
 
-    const options = {
-      auth: `${this.accountID}:${this.licenseKey}`,
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), this.timeout);
+
+    const options: RequestInit = {
+      body: postData,
       headers: {
         Accept: 'application/json',
-        'Content-Length': Buffer.byteLength(postData),
+        Authorization:
+          'Basic ' +
+          Buffer.from(`${this.accountID}:${this.licenseKey}`).toString(
+            'base64'
+          ),
+        'Content-Length': Buffer.byteLength(postData).toString(),
         'Content-Type': 'application/json',
         'User-Agent': `minfraud-api-node/${version}`,
       },
-      host: this.host,
       method: 'POST',
-      path: parsedPath,
-      timeout: this.timeout,
+      signal: controller.signal,
     };
 
-    return new Promise((resolve, reject) => {
-      const req = https.request(options, (response) => {
-        let data = '';
+    let data;
+    /*
+     We handle two kinds of errors here:
+     1. Network errors, such as timeouts or CORS errors.  These will be caught
+       by the catch block and rethrown as a WebServiceClientError.
+     2. Errors returned by the MaxMind web service, namely non-200 status codes. These
+      will be caught by the handleBadServerResponse method and rethrown/rejected as a
+      WebServiceClientError.
+    */
+    try {
+      const response = await fetch(url, options);
 
-        response.on('data', (chunk) => {
-          data += chunk;
-        });
+      if (!response.ok) {
+        return Promise.reject(
+          await this.handleBadServerResponse(response, url)
+        );
+      }
 
-        response.on('end', () => {
-          if (response.statusCode && response.statusCode === 204) {
-            return resolve();
-          }
-
-          try {
-            data = JSON.parse(data);
-          } catch {
-            return reject(this.handleError({}, response, url));
-          }
-
-          if (response.statusCode && response.statusCode !== 200) {
-            return reject(
-              this.handleError(data as ResponseError, response, url)
-            );
-          }
-
-          return resolve(new modelClass(data));
-        });
-      });
-
-      req.on('error', (err: NodeJS.ErrnoException) => {
-        return reject({
-          code: err.code,
-          error: err.message,
-          url,
-        } as WebServiceClientError);
-      });
-
-      req.write(postData);
-
-      req.end();
-    });
+      if (response.status === 204) {
+        return;
+      }
+      data = await response.json();
+    } catch (err) {
+      const error = err as TypeError;
+      switch (error.name) {
+        case 'AbortError':
+          throw {
+            code: 'NETWORK_TIMEOUT',
+            error: 'The request timed out',
+            url,
+          };
+        case 'SyntaxError':
+          throw {
+            ...invalidResponseBody,
+            url,
+          };
+        default:
+          throw {
+            code: 'FETCH_ERROR',
+            error: `${error.name} - ${error.message}`,
+            url,
+          };
+      }
+    } finally {
+      clearTimeout(timeoutId);
+    }
+    return new modelClass(data);
   }
 
-  private handleError(
-    data: ResponseError,
-    response: http.IncomingMessage,
+  private async handleBadServerResponse(
+    response: Response,
     url: string
-  ): WebServiceClientError {
-    if (
-      response.statusCode &&
-      response.statusCode >= 500 &&
-      response.statusCode < 600
-    ) {
+  ): Promise<WebServiceClientError> {
+    if (response.status && response.status >= 500 && response.status < 600) {
       return {
         code: 'SERVER_ERROR',
-        error: `Received a server error with HTTP status code: ${response.statusCode}`,
+        error: `Received a server error with HTTP status code: ${response.status}`,
         url,
       };
     }
 
-    if (
-      response.statusCode &&
-      (response.statusCode < 400 || response.statusCode >= 600)
-    ) {
+    if (response.status && (response.status < 400 || response.status >= 600)) {
       return {
         code: 'HTTP_STATUS_CODE_ERROR',
-        error: `Received an unexpected HTTP status code: ${response.statusCode}`,
+        error: `Received an unexpected HTTP status code: ${response.status}`,
         url,
       };
     }
 
-    if (!data.code || !data.error) {
-      return {
-        code: 'INVALID_RESPONSE_BODY',
-        error: 'Received an invalid or unparseable response body',
-        url,
-      };
+    let data;
+    try {
+      data = (await response.json()) as ResponseError;
+
+      if (!data.code || !data.error) {
+        return { ...invalidResponseBody, url };
+      }
+    } catch {
+      return { ...invalidResponseBody, url };
     }
 
     return { ...data, url } as WebServiceClientError;

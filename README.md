@@ -151,6 +151,16 @@ returned by the web API, we also return:
   code: 'INVALID_RESPONSE_BODY',
   error: <string>
 }
+
+{
+  code: 'NETWORK_TIMEOUT',
+  error: <string>
+}
+
+{
+  code: 'FETCH_ERROR',
+  error: <string>
+}
 ```
 
 ## Example
