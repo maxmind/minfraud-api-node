@@ -70,6 +70,7 @@ export enum Processor {
   Elavon = 'elavon',
   Emerchantpay = 'emerchantpay',
   Epay = 'epay',
+  Epayco = 'epayco',
   EprocessingNetwork = 'eprocessing_network',
   Epx = 'epx',
   Eway = 'eway',
