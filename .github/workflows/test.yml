@@ -4,6 +4,7 @@ on:
   push:
   schedule:
     - cron: '3 22 * * SUN'
+permissions: {}
 jobs:
   test:
     runs-on: ubuntu-latest
