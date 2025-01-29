@@ -4,6 +4,7 @@ on:
   push:
   schedule:
     - cron: '3 20 * * SUN'
+permissions: {}
 jobs:
   lint:
     runs-on: ubuntu-latest
