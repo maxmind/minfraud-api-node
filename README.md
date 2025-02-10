@@ -1,4 +1,4 @@
-# Node.js API for MaxMind minFraud Score, Insights, and Factors
+# Node.js API for MaxMind minFraud
 
 ## Description
 
