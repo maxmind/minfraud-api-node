@@ -52,6 +52,7 @@ export enum Processor {
   Coregateway = 'coregateway',
   Creditguard = 'creditguard',
   Credorax = 'credorax',
+  Cryptomus = 'cryptomus',
   CtPayments = 'ct_payments',
   Cuentadigital = 'cuentadigital',
   Curopayments = 'curopayments',
