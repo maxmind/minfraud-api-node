@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+8.1.0
+------------------
+
+* Added `Cryptomus` to the `Processor` enum.
+
 8.0.0 (2025-02-10)
 ------------------
 
