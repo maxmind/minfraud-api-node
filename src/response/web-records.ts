@@ -117,6 +117,7 @@ export interface DispositionWebRecord {
 export interface PhoneWebRecord {
   readonly country?: string;
   readonly is_voip?: boolean;
+  readonly matches_postal?: boolean;
   readonly network_operator?: string;
   readonly number_type?: string;
 }

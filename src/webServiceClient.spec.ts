@@ -37,7 +37,7 @@ describe('WebServiceClient', () => {
     });
 
     it('handles "full" responses', async () => {
-      expect.assertions(172);
+      expect.assertions(174);
 
       nockInstance
         .post(fullPath('factors'), factors.request.basic)
@@ -226,6 +226,7 @@ describe('WebServiceClient', () => {
 
       expect(got.shippingPhone?.country).toEqual('CA');
       expect(got.shippingPhone?.isVoip).toEqual(true);
+      expect(got.shippingPhone?.matchesPostal).toEqual(true);
       expect(got.shippingPhone?.networkOperator).toEqual(
         'Telus Mobility-SVR/2'
       );
@@ -239,6 +240,7 @@ describe('WebServiceClient', () => {
 
       expect(got.billingPhone?.country).toEqual('US');
       expect(got.billingPhone?.isVoip).toEqual(false);
+      expect(got.billingPhone?.matchesPostal).toEqual(true);
       expect(got.billingPhone?.networkOperator).toEqual('Verizon/1');
       expect(got.billingPhone?.numberType).toEqual('fixed');
 
@@ -291,7 +293,7 @@ describe('WebServiceClient', () => {
     });
 
     it('handles "full" responses', async () => {
-      expect.assertions(147);
+      expect.assertions(149);
 
       nockInstance
         .post(fullPath('insights'), insights.request.basic)
@@ -480,6 +482,7 @@ describe('WebServiceClient', () => {
 
       expect(got.shippingPhone?.country).toEqual('CA');
       expect(got.shippingPhone?.isVoip).toEqual(true);
+      expect(got.shippingPhone?.matchesPostal).toEqual(true);
       expect(got.shippingPhone?.networkOperator).toEqual(
         'Telus Mobility-SVR/2'
       );
@@ -493,6 +496,7 @@ describe('WebServiceClient', () => {
 
       expect(got.billingPhone?.country).toEqual('US');
       expect(got.billingPhone?.isVoip).toEqual(false);
+      expect(got.billingPhone?.matchesPostal).toEqual(true);
       expect(got.billingPhone?.networkOperator).toEqual('Verizon/1');
       expect(got.billingPhone?.numberType).toEqual('fixed');
 

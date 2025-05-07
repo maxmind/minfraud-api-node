@@ -252,6 +252,14 @@ export interface Phone {
    */
   readonly isVoip?: boolean;
   /**
+   * This property is `true` if the phone number's prefix is commonly
+   * associated with the postal code. It is `false` if the prefix is not
+   * associated with the postal code. It is non-`null` only when the phone
+   * number is in the US, the number prefix is in our database, and the
+   * postal code and country are provided in the request.
+   */
+  readonly matchesPostal?: boolean;
+  /**
    * The name of the original network operator associated with the phone
    * number. This property does not reflect phone numbers that have been ported
    * from the original operator to another, nor does it identify mobile
