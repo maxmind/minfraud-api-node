@@ -4,6 +4,10 @@ CHANGELOG
 8.1.0
 ------------------
 
+* Added support for the `/billing_phone/matches_postal` and
+  `/shipping_phone/matches_postal` outputs. These are available as the
+  `matchesPostal` attributes on `response.billingPhone` and
+  `response.shippingPhone`.
 * Added `Cryptomus` to the `Processor` enum.
 
 8.0.0 (2025-02-10)
