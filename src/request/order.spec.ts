@@ -8,8 +8,8 @@ describe('Order()', () => {
       new Order({
         currency: 'foo',
       });
-    expect(order).toThrowError(ArgumentError);
-    expect(order).toThrowError('currency code');
+    expect(order).toThrow(ArgumentError);
+    expect(order).toThrow('currency code');
   });
 
   it('throws an error if referrer URI is not valid', () => {
@@ -19,8 +19,8 @@ describe('Order()', () => {
         // @ts-ignore
         referrerUri: 'foo',
       });
-    expect(order).toThrowError(ArgumentError);
-    expect(order).toThrowError('referrer URI');
+    expect(order).toThrow(ArgumentError);
+    expect(order).toThrow('referrer URI');
   });
 
   it('constructs', () => {

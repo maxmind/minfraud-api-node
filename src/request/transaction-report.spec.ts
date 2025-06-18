@@ -9,8 +9,8 @@ describe('Device()', () => {
         ipAddress: 'foo',
         tag: Tag.CHARGEBACK,
       });
-    expect(report).toThrowError(ArgumentError);
-    expect(report).toThrowError('transactionReport.ipAddress');
+    expect(report).toThrow(ArgumentError);
+    expect(report).toThrow('transactionReport.ipAddress');
   });
 
   it('throws an error if TransactionReport.tag is not valid', () => {
@@ -21,8 +21,8 @@ describe('Device()', () => {
         // @ts-ignore
         tag: 'foobar',
       });
-    expect(report).toThrowError(ArgumentError);
-    expect(report).toThrowError('transactionReport.tag');
+    expect(report).toThrow(ArgumentError);
+    expect(report).toThrow('transactionReport.tag');
   });
 
   it('constructs with ipAddress', () => {

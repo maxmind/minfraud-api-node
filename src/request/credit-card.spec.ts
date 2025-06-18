@@ -24,9 +24,9 @@ describe('CreditCard()', () => {
     'throws an error if $condition',
     ({ field, val }: { field: string; val: string }) => {
       const creditCard = () => new CreditCard({ [field]: val });
-      expect(creditCard).toThrowError(ArgumentError);
+      expect(creditCard).toThrow(ArgumentError);
       // Ensure that the `ArgumentError` message contains text of a given field
-      expect(creditCard).toThrowError(field);
+      expect(creditCard).toThrow(field);
     }
   );
 

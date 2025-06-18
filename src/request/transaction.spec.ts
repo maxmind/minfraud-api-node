@@ -32,8 +32,8 @@ describe('Transaction()', () => {
           ipAddress: '123',
         },
       });
-    expect(test).toThrowError(ArgumentError);
-    expect(test).toThrowError('instance of Device');
+    expect(test).toThrow(ArgumentError);
+    expect(test).toThrow('instance of Device');
   });
 
   test.each`
@@ -54,8 +54,8 @@ describe('Transaction()', () => {
         val
       );
       const test = () => new Transaction(txn);
-      expect(test).toThrowError(ArgumentError);
-      expect(test).toThrowError(clss);
+      expect(test).toThrow(ArgumentError);
+      expect(test).toThrow(clss);
     }
   );
 
