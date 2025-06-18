@@ -7,8 +7,8 @@ describe('Device()', () => {
       new Device({
         ipAddress: 'foo',
       });
-    expect(device).toThrowError(ArgumentError);
-    expect(device).toThrowError('device.ipAddress');
+    expect(device).toThrow(ArgumentError);
+    expect(device).toThrow('device.ipAddress');
   });
 
   it('constructs', () => {

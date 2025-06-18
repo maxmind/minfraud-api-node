@@ -8,8 +8,8 @@ describe('Location()', () => {
         country: 'foo',
       });
 
-    expect(location).toThrowError(ArgumentError);
-    expect(location).toThrowError('country code');
+    expect(location).toThrow(ArgumentError);
+    expect(location).toThrow('country code');
   });
 
   it('constructs', () => {

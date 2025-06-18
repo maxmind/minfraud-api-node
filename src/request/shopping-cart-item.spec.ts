@@ -7,8 +7,8 @@ describe('ShoppingCartItem()', () => {
       new ShoppingCartItem({
         quantity: 123.12,
       });
-    expect(item).toThrowError(ArgumentError);
-    expect(item).toThrowError('positive integer');
+    expect(item).toThrow(ArgumentError);
+    expect(item).toThrow('positive integer');
   });
 
   it('throws an error if quantity is not a positive integer', () => {
@@ -16,8 +16,8 @@ describe('ShoppingCartItem()', () => {
       new ShoppingCartItem({
         quantity: -1,
       });
-    expect(item).toThrowError(ArgumentError);
-    expect(item).toThrowError('positive integer');
+    expect(item).toThrow(ArgumentError);
+    expect(item).toThrow('positive integer');
   });
 
   it('constructs', () => {

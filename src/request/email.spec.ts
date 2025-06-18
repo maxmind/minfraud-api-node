@@ -8,8 +8,8 @@ describe('Email()', () => {
       new Email({
         address: '123',
       });
-    expect(email).toThrowError(ArgumentError);
-    expect(email).toThrowError('email.address');
+    expect(email).toThrow(ArgumentError);
+    expect(email).toThrow('email.address');
   });
 
   it('email.address with trailing period is not valid', () => {
@@ -17,8 +17,8 @@ describe('Email()', () => {
       new Email({
         address: 'foo@example.com.',
       });
-    expect(email).toThrowError(ArgumentError);
-    expect(email).toThrowError('email.address');
+    expect(email).toThrow(ArgumentError);
+    expect(email).toThrow('email.address');
   });
 
   it('email.address with multiple trailing periods is not valid', () => {
@@ -26,8 +26,8 @@ describe('Email()', () => {
       new Email({
         address: 'foo@example.com...',
       });
-    expect(email).toThrowError(ArgumentError);
-    expect(email).toThrowError('email.address');
+    expect(email).toThrow(ArgumentError);
+    expect(email).toThrow('email.address');
   });
 
   it('throws an error if email.domain is not valid', () => {
@@ -35,8 +35,8 @@ describe('Email()', () => {
       new Email({
         domain: '123',
       });
-    expect(email).toThrowError(ArgumentError);
-    expect(email).toThrowError('email.domain');
+    expect(email).toThrow(ArgumentError);
+    expect(email).toThrow('email.domain');
   });
 
   it('constructs', () => {
