@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+8.2.0
+------------------
+
+* Added `Securepay` to the `Processor` enum.
+
 8.1.0 (2025-05-23)
 ------------------
 

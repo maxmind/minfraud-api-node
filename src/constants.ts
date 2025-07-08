@@ -149,6 +149,7 @@ export enum Processor {
   Rewardspay = 'rewardspay',
   Safecharge = 'safecharge',
   Sagepay = 'sagepay',
+  Securepay = 'securepay',
   Securetrading = 'securetrading',
   ShopifyPayments = 'shopify_payments',
   SimplifyCommerce = 'simplify_commerce',
