@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "@maxmind/geoip2-node": "^6.0.0",
-    "maxmind": "^4.1.0",
+    "maxmind": "^5.0.0",
     "punycode": "^2.1.1",
     "validator": "^13.0.0"
   }
