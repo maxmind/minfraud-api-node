@@ -1,5 +1,5 @@
 import Event from './event';
-import { EventType } from '../constants';
+import { EventParty, EventType } from '../constants';
 
 describe('Event()', () => {
   it('sets `time` to now by default', () => {
@@ -30,5 +30,21 @@ describe('Event()', () => {
     });
 
     expect(event.type).toEqual(EventType.FundTransfer);
+  });
+
+  it('accepts agent party', () => {
+    const event = new Event({
+      party: EventParty.Agent,
+    });
+
+    expect(event.party).toEqual(EventParty.Agent);
+  });
+
+  it('accepts customer party', () => {
+    const event = new Event({
+      party: EventParty.Customer,
+    });
+
+    expect(event.party).toEqual(EventParty.Customer);
   });
 });

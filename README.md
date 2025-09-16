@@ -181,6 +181,7 @@ try {
       ipAddress: "81.2.69.160",
     }),
     event: new minFraud.Event({
+      party: minFraud.Constants.EventParty.Customer,
       shopId: 'shop',
       time: new Date(Date.now()),
       transactionId: 'txn1234',

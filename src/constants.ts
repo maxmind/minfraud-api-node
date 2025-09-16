@@ -1,3 +1,8 @@
+export enum EventParty {
+  Agent = 'agent',
+  Customer = 'customer',
+}
+
 export enum EventType {
   AccountCreation = 'account_creation',
   AccountLogin = 'account_login',

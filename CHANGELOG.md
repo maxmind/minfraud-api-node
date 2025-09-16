@@ -6,6 +6,8 @@ CHANGELOG
 
 * Added `Securepay` to the `Processor` enum.
 * Added `CreditApplication` and `FundTransfer` to the `EventType` enum.
+* Added the input `/event/party`. This is the party submitting the
+  transaction. You may provide this by providing `party` to `Event`.
 
 8.1.0 (2025-05-23)
 ------------------
