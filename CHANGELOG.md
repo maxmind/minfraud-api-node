@@ -5,6 +5,7 @@ CHANGELOG
 ------------------
 
 * Added `Securepay` to the `Processor` enum.
+* Added `CreditApplication` and `FundTransfer` to the `EventType` enum.
 
 8.1.0 (2025-05-23)
 ------------------

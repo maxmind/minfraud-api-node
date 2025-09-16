@@ -1,4 +1,5 @@
 import Event from './event';
+import { EventType } from '../constants';
 
 describe('Event()', () => {
   it('sets `time` to now by default', () => {
@@ -13,5 +14,21 @@ describe('Event()', () => {
     });
 
     expect(event.time).toEqual(mockDate);
+  });
+
+  it('accepts credit_application event type', () => {
+    const event = new Event({
+      type: EventType.CreditApplication,
+    });
+
+    expect(event.type).toEqual(EventType.CreditApplication);
+  });
+
+  it('accepts fund_transfer event type', () => {
+    const event = new Event({
+      type: EventType.FundTransfer,
+    });
+
+    expect(event.type).toEqual(EventType.FundTransfer);
   });
 });

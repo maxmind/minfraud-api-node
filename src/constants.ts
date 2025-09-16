@@ -1,7 +1,9 @@
 export enum EventType {
   AccountCreation = 'account_creation',
   AccountLogin = 'account_login',
+  CreditApplication = 'credit_application',
   EmailChange = 'email_change',
+  FundTransfer = 'fund_transfer',
   PasswordReset = 'password_reset',
   PayoutChange = 'payout_change',
   Purchase = 'purchase',
