@@ -1,6 +1,10 @@
-import { Processor } from '../constants';
+import { PaymentMethod, Processor } from '../constants';
 
 interface PaymentProps {
+  /**
+   * The payment method associated with the transaction.
+   */
+  method?: PaymentMethod;
   /**
    * The payment processor used for the transaction.
    */
@@ -21,6 +25,8 @@ interface PaymentProps {
  * The payment information for the transaction being sent to the web service.
  */
 export default class Payment implements PaymentProps {
+  /** @inheritDoc PaymentProps.method */
+  public method?: PaymentMethod;
   /** @inheritDoc PaymentProps.processor */
   public processor?: Processor;
   /** @inheritDoc PaymentProps.wasAuthorized */

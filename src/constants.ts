@@ -1,7 +1,14 @@
+export enum EventParty {
+  Agent = 'agent',
+  Customer = 'customer',
+}
+
 export enum EventType {
   AccountCreation = 'account_creation',
   AccountLogin = 'account_login',
+  CreditApplication = 'credit_application',
   EmailChange = 'email_change',
+  FundTransfer = 'fund_transfer',
   PasswordReset = 'password_reset',
   PayoutChange = 'payout_change',
   Purchase = 'purchase',
@@ -15,6 +22,19 @@ export enum DeliverySpeed {
   Overnight = 'overnight',
   Expedited = 'expedited',
   Standard = 'standard',
+}
+
+export enum PaymentMethod {
+  BankDebit = 'bank_debit',
+  BankRedirect = 'bank_redirect',
+  BankTransfer = 'bank_transfer',
+  BuyNowPayLater = 'buy_now_pay_later',
+  Card = 'card',
+  Crypto = 'crypto',
+  DigitalWallet = 'digital_wallet',
+  GiftCard = 'gift_card',
+  RealTimePayment = 'real_time_payment',
+  Rewards = 'rewards',
 }
 
 export enum Processor {

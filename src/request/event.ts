@@ -1,6 +1,10 @@
-import { EventType } from '../constants';
+import { EventParty, EventType } from '../constants';
 
 interface EventProps {
+  /**
+   * The party submitting the transaction.
+   */
+  party?: EventParty;
   /**
    * Your internal ID for the transaction. We can use this to locate a specific
    * transaction in our logs, and it will also show up in email alerts and
@@ -27,13 +31,15 @@ interface EventProps {
  * Event information for the transaction being sent to the web service.
  */
 export default class Event implements EventProps {
+  /** @inheritDoc EventProps.party */
+  public party?: EventParty;
   /** @inheritDoc EventProps.transactionId */
   public transactionId?: string;
   /** @inheritDoc EventProps.shopId */
   public shopId?: string;
   /** @inheritDoc EventProps.time */
   public time?: Date;
-  /** @inheritDoc EventProps.EventType */
+  /** @inheritDoc EventProps.type */
   public type?: EventType;
 
   public constructor(minfraudEvent: EventProps) {

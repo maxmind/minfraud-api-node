@@ -181,6 +181,7 @@ try {
       ipAddress: "81.2.69.160",
     }),
     event: new minFraud.Event({
+      party: minFraud.Constants.EventParty.Customer,
       shopId: 'shop',
       time: new Date(Date.now()),
       transactionId: 'txn1234',
@@ -223,6 +224,7 @@ try {
     }),
     payment: new minFraud.Payment({
       declineCode: 'A',
+      method: minFraud.Constants.PaymentMethod.Card,
       processor: minFraud.Constants.Processor.ConceptPayments,
       wasAuthorized: true,
     }),
