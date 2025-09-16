@@ -24,6 +24,19 @@ export enum DeliverySpeed {
   Standard = 'standard',
 }
 
+export enum PaymentMethod {
+  BankDebit = 'bank_debit',
+  BankRedirect = 'bank_redirect',
+  BankTransfer = 'bank_transfer',
+  BuyNowPayLater = 'buy_now_pay_later',
+  Card = 'card',
+  Crypto = 'crypto',
+  DigitalWallet = 'digital_wallet',
+  GiftCard = 'gift_card',
+  RealTimePayment = 'real_time_payment',
+  Rewards = 'rewards',
+}
+
 export enum Processor {
   Adyen = 'adyen',
   Affirm = 'affirm',

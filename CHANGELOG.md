@@ -8,6 +8,9 @@ CHANGELOG
 * Added `CreditApplication` and `FundTransfer` to the `EventType` enum.
 * Added the input `/event/party`. This is the party submitting the
   transaction. You may provide this by providing `party` to `Event`.
+* Added the input `/payment/method`. This is the payment method associated
+  with the transaction. You may provide this by providing `method` to
+  `Payment`.
 
 8.1.0 (2025-05-23)
 ------------------

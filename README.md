@@ -224,6 +224,7 @@ try {
     }),
     payment: new minFraud.Payment({
       declineCode: 'A',
+      method: minFraud.Constants.PaymentMethod.Card,
       processor: minFraud.Constants.Processor.ConceptPayments,
       wasAuthorized: true,
     }),
