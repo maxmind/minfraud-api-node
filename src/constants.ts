@@ -14,6 +14,7 @@ export enum EventType {
   Purchase = 'purchase',
   RecurringPurchase = 'recurring_purchase',
   Referral = 'referral',
+  SimSwap = 'sim_swap',
   Survey = 'survey',
 }
 

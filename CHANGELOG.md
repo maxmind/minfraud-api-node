@@ -5,7 +5,8 @@ CHANGELOG
 ------------------
 
 * Added `Securepay` to the `Processor` enum.
-* Added `CreditApplication` and `FundTransfer` to the `EventType` enum.
+* Added `CreditApplication`, `FundTransfer`, and `SimSwap` to the `EventType`
+  enum.
 * Added the input `/event/party`. This is the party submitting the
   transaction. You may provide this by providing `party` to `Event`.
 * Added the input `/payment/method`. This is the payment method associated
