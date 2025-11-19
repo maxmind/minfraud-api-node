@@ -74,8 +74,32 @@ export interface DeviceWebRecord {
   readonly local_time: string;
 }
 
+export type EmailDomainClassification =
+  | 'business'
+  | 'education'
+  | 'government'
+  | 'isp_email';
+
+export type EmailDomainVisitStatus =
+  | 'live'
+  | 'dns_error'
+  | 'network_error'
+  | 'http_error'
+  | 'parked'
+  | 'pre_development';
+
+export interface EmailDomainVisitWebRecord {
+  readonly has_redirect: boolean;
+  readonly last_visited_on: string;
+  readonly status: EmailDomainVisitStatus;
+}
+
 export interface EmailDomainWebRecord {
+  readonly classification?: EmailDomainClassification;
   readonly first_seen: string;
+  readonly risk?: number;
+  readonly visit?: EmailDomainVisitWebRecord;
+  readonly volume?: number;
 }
 
 export interface EmailWebRecord {

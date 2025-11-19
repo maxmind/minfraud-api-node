@@ -37,7 +37,7 @@ describe('WebServiceClient', () => {
     });
 
     it('handles "full" responses', async () => {
-      expect.assertions(174);
+      expect.assertions(180);
 
       nockInstance
         .post(fullPath('factors'), factors.request.basic)
@@ -211,6 +211,12 @@ describe('WebServiceClient', () => {
       expect(got.device?.localTime).toEqual('2018-01-02T10:40:11-08:00');
 
       expect(got.email?.domain?.firstSeen).toEqual('2016-01-23');
+      expect(got.email?.domain?.classification).toEqual('business');
+      expect(got.email?.domain?.risk).toEqual(15.5);
+      expect(got.email?.domain?.volume).toEqual(6300);
+      expect(got.email?.domain?.visit?.status).toEqual('live');
+      expect(got.email?.domain?.visit?.lastVisitedOn).toEqual('2024-11-15');
+      expect(got.email?.domain?.visit?.hasRedirect).toEqual(false);
       expect(got.email?.firstSeen).toEqual('2016-02-03');
       expect(got.email?.isDisposable).toEqual(false);
       expect(got.email?.isFree).toEqual(false);
@@ -293,7 +299,7 @@ describe('WebServiceClient', () => {
     });
 
     it('handles "full" responses', async () => {
-      expect.assertions(149);
+      expect.assertions(155);
 
       nockInstance
         .post(fullPath('insights'), insights.request.basic)
@@ -467,6 +473,12 @@ describe('WebServiceClient', () => {
       expect(got.device?.localTime).toEqual('2018-01-02T10:40:11-08:00');
 
       expect(got.email?.domain?.firstSeen).toEqual('2016-01-23');
+      expect(got.email?.domain?.classification).toEqual('business');
+      expect(got.email?.domain?.risk).toEqual(15.5);
+      expect(got.email?.domain?.volume).toEqual(6300);
+      expect(got.email?.domain?.visit?.status).toEqual('live');
+      expect(got.email?.domain?.visit?.lastVisitedOn).toEqual('2024-11-15');
+      expect(got.email?.domain?.visit?.hasRedirect).toEqual(false);
       expect(got.email?.firstSeen).toEqual('2016-02-03');
       expect(got.email?.isDisposable).toEqual(false);
       expect(got.email?.isFree).toEqual(false);
@@ -530,16 +542,16 @@ describe('WebServiceClient', () => {
 
       switch (property) {
         case 'billing_address':
-          expect.assertions(134);
+          expect.assertions(140);
           break;
         case 'credit_card':
-          expect.assertions(128);
+          expect.assertions(134);
           break;
         case 'email':
           expect.assertions(134);
           break;
         case 'shipping_address':
-          expect.assertions(132);
+          expect.assertions(138);
           break;
       }
 
@@ -569,6 +581,12 @@ describe('WebServiceClient', () => {
 
       if (property != 'email') {
         expect(got.email?.domain?.firstSeen).toEqual('2016-01-23');
+        expect(got.email?.domain?.classification).toEqual('business');
+        expect(got.email?.domain?.risk).toEqual(15.5);
+        expect(got.email?.domain?.volume).toEqual(6300);
+        expect(got.email?.domain?.visit?.status).toEqual('live');
+        expect(got.email?.domain?.visit?.lastVisitedOn).toEqual('2024-11-15');
+        expect(got.email?.domain?.visit?.hasRedirect).toEqual(false);
         expect(got.email?.firstSeen).toEqual('2016-02-03');
         expect(got.email?.isDisposable).toEqual(false);
         expect(got.email?.isFree).toEqual(false);
