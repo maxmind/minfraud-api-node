@@ -33,4 +33,34 @@ describe('Insights()', () => {
     const model = new Insights(response as InsightsResponse);
     expect(model.email?.domain?.firstSeen).toBe('2016-01-23');
   });
+
+  it('allows /email/domain/classification to be accessed', () => {
+    const model = new Insights(response as InsightsResponse);
+    expect(model.email?.domain?.classification).toBe('business');
+  });
+
+  it('allows /email/domain/risk to be accessed', () => {
+    const model = new Insights(response as InsightsResponse);
+    expect(model.email?.domain?.risk).toBe(15.5);
+  });
+
+  it('allows /email/domain/volume to be accessed', () => {
+    const model = new Insights(response as InsightsResponse);
+    expect(model.email?.domain?.volume).toBe(6300);
+  });
+
+  it('allows /email/domain/visit/status to be accessed', () => {
+    const model = new Insights(response as InsightsResponse);
+    expect(model.email?.domain?.visit?.status).toBe('live');
+  });
+
+  it('allows /email/domain/visit/last_visited_on to be accessed', () => {
+    const model = new Insights(response as InsightsResponse);
+    expect(model.email?.domain?.visit?.lastVisitedOn).toBe('2024-11-15');
+  });
+
+  it('allows /email/domain/visit/has_redirect to be accessed', () => {
+    const model = new Insights(response as InsightsResponse);
+    expect(model.email?.domain?.visit?.hasRedirect).toBe(false);
+  });
 });

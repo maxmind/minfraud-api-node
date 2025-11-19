@@ -3,6 +3,8 @@ import {
   CreditCardType,
   DispositionAction,
   DispositionReason,
+  EmailDomainClassification,
+  EmailDomainVisitStatus,
 } from './web-records';
 
 /**
@@ -192,14 +194,59 @@ export interface Device {
 }
 
 /**
+ * Status of an automated visit to the email domain. This object is only
+ * available for low-volume domains. High-volume domains (email providers,
+ * large businesses) will not include visit data.
+ */
+export interface EmailDomainVisit {
+  /**
+   * Indicates if the domain redirects to another URL.
+   */
+  readonly hasRedirect: boolean;
+  /**
+   * The date the automated visit was completed, in ISO 8601 format (YYYY-MM-DD).
+   */
+  readonly lastVisitedOn: string;
+  /**
+   * Classification of the domain based on the automated visit.
+   * Possible values include: `live`, `dns_error`, `network_error`,
+   * `http_error`, `parked`, `pre_development`.
+   */
+  readonly status: EmailDomainVisitStatus;
+}
+
+/**
  * This object contains information about the email address domain passed in the
  * request.
  */
 export interface EmailDomain {
   /**
+   * Classification of the email domain type. Possible values include:
+   * `business`, `education`, `government`, `isp_email`.
+   * Additional values may be added in the future.
+   */
+  readonly classification?: EmailDomainClassification;
+  /**
    * The date the email address domain was first seen by MaxMind.
    */
   readonly firstSeen: string;
+  /**
+   * A risk score from 0.01 to 99 associated with the email domain.
+   * Higher scores indicate higher risk.
+   */
+  readonly risk?: number;
+  /**
+   * Information from an automated visit to the email domain. This is only
+   * available for low-volume domains and may be initially unavailable for
+   * newly-sighted domains, populating later after automated visits occur.
+   */
+  readonly visit?: EmailDomainVisit;
+  /**
+   * Activity indicator for the email domain across the minFraud network,
+   * expressed in sightings per million. Values range from 0.001 to 1,000,000
+   * and are rounded to 2 significant figures.
+   */
+  readonly volume?: number;
 }
 
 /**

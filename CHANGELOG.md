@@ -12,6 +12,17 @@ CHANGELOG
 * Added the input `/payment/method`. This is the payment method associated
   with the transaction. You may provide this by providing `method` to
   `Payment`.
+* Added new `response.email.domain` outputs:
+  * `classification` - The domain type (business, education, government,
+    isp_email).
+  * `risk` - A risk score from 0.01 to 99 associated with the email domain.
+  * `volume` - Activity level for the domain across the minFraud network,
+    expressed in sightings per million.
+* Added new `response.email.domain.visit` outputs for low-volume domains:
+  * `status` - Domain status from automated visit (live, dns_error,
+    network_error, http_error, parked, pre_development).
+  * `lastVisitedOn` - The date the automated visit was completed.
+  * `hasRedirect` - Whether the domain redirects to another URL.
 
 8.1.0 (2025-05-23)
 ------------------

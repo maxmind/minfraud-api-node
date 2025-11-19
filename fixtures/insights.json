@@ -177,7 +177,15 @@
 
       "email": {
         "domain": {
-          "first_seen": "2016-01-23"
+          "classification": "business",
+          "first_seen": "2016-01-23",
+          "risk": 15.5,
+          "visit": {
+            "has_redirect": false,
+            "last_visited_on": "2024-11-15",
+            "status": "live"
+          },
+          "volume": 6300
         },
         "first_seen": "2016-02-03",
         "is_disposable": false,
