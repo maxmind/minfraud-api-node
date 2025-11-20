@@ -23,6 +23,10 @@ CHANGELOG
     network_error, http_error, parked, pre_development).
   * `lastVisitedOn` - The date the automated visit was completed.
   * `hasRedirect` - Whether the domain redirects to another URL.
+* Added the `status` property to `WebServiceClientError`. This property
+  contains the HTTP status code when the error is the result of an HTTP
+  response error. Network errors (timeouts, fetch errors) will not have a
+  status code.
 
 8.1.0 (2025-05-23)
 ------------------
