@@ -939,6 +939,7 @@ describe('WebServiceClient', () => {
       return expect(client.score(transaction)).rejects.toEqual({
         code: 'SERVER_ERROR',
         error: 'Received a server error with HTTP status code: 500',
+        status: 500,
         url: baseUrl + fullPath('score'),
       });
     });
@@ -954,6 +955,7 @@ describe('WebServiceClient', () => {
       return expect(client.score(transaction)).rejects.toEqual({
         code: 'HTTP_STATUS_CODE_ERROR',
         error: 'Received an unexpected HTTP status code: 300',
+        status: 300,
         url: baseUrl + fullPath('score'),
       });
     });
@@ -969,6 +971,7 @@ describe('WebServiceClient', () => {
       return expect(client.score(transaction)).rejects.toEqual({
         code: 'INVALID_RESPONSE_BODY',
         error: 'Received an invalid or unparseable response body',
+        status: 401,
         url: baseUrl + fullPath('score'),
       });
     });
@@ -1013,6 +1016,7 @@ describe('WebServiceClient', () => {
       return expect(client.score(transaction)).rejects.toEqual({
         code,
         error,
+        status,
         url: baseUrl + fullPath('score'),
       });
     });
