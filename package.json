@@ -55,7 +55,7 @@
     "prepublishOnly": "npm run build && npm run test && npm run lint && npm run build:docs && npm run deploy:docs"
   },
   "dependencies": {
-    "@maxmind/geoip2-node": "^6.0.0",
+    "@maxmind/geoip2-node": "^6.3.0",
     "maxmind": "^5.0.0",
     "punycode": "^2.1.1",
     "validator": "^13.0.0"

@@ -27,6 +27,8 @@ CHANGELOG
   contains the HTTP status code when the error is the result of an HTTP
   response error. Network errors (timeouts, fetch errors) will not have a
   status code.
+* Updated `@maxmind/geoip2-node` to 6.3.0, which includes new anonymizer
+  and IP risk outputs.
 
 8.1.0 (2025-05-23)
 ------------------
