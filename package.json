@@ -1,6 +1,6 @@
 {
   "name": "@maxmind/minfraud-api-node",
-  "version": "8.2.0",
+  "version": "8.2.1",
   "description": "Node.js API for MaxMind minFraud web services",
   "main": "dist/src/index.js",
   "homepage": "https://github.com/maxmind/minfraud-api-node",
@@ -29,7 +29,6 @@
     "@types/validator": "^13.0.0",
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^10.0.1",
-    "gh-pages": "^6.0.0",
     "globals": "^16.0.0",
     "jest": "^30.0.0",
     "nock": "^14.0.0-beta.16",
@@ -52,7 +51,7 @@
     "prettier:json": "prettier --parser json --write '**/*.json'",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepublishOnly": "npm run build && npm run test && npm run lint && npm run build:docs && npm run deploy:docs"
+    "prepublishOnly": "if [ -z \"$GITHUB_ACTIONS\" ]; then echo 'Manual publishing is disabled. Use ./dev-bin/release.sh instead.' && exit 1; fi"
   },
   "dependencies": {
     "@maxmind/geoip2-node": "^6.3.0",

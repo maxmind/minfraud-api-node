@@ -1,23 +1,24 @@
-Steps for releasing:
+## Steps for releasing:
 
 1. Review open issues and PRs to see if any can easily be fixed, closed, or
    merged.
 2. Bump copyright year in `README.md`, if necessary.
 3. Consider whether any dependencies need to be updated.
 4. Review `CHANGELOG.md` for completeness and correctness. Update its
-   release date.
-5. Set the version in `package.json`.
-6. Run `npm publish`. You can do this from the release branch. This will
-   generate the docs, deploy docs, and publish the module to NPM.
-7. Create a release PR containing the updates relating to any of the steps
-   above.
-8. Create and push a git tag (e.g. `git tag -a v4.2.0 -m v4.2.0 && git push
-   --tags`).
-9. Manually create a release on GitHub to include the release-specific
-   notes found in `CHANGELOG.md`.
-10. Verify the release on
-    [GitHub](https://github.com/maxmind/minfraud-api-node/releases) and
-    [NPM](https://npmjs.com/package/@maxmind/minfraud-api-node).
+   release date to today.
+5. Run `./dev-bin/release.sh`. This will:
+   - Validate you're not on the main branch
+   - Validate your branch is up to date with origin/main
+   - Extract the version and date from `CHANGELOG.md`
+   - Update the version in `package.json`
+   - Build and test
+   - Commit changes and push
+   - Create a GitHub release (which triggers the npm publish workflow)
+6. Merge the release PR after the workflow succeeds.
+7. Verify the release on [npm](https://npmjs.com/package/@maxmind/minfraud-api-node).
+
+Note: Publishing is done via GitHub Actions using npm Trusted Publishing
+(OIDC). Manual `npm publish` is not supported.
 
 ## Set up Precious to tidy and lint
 
