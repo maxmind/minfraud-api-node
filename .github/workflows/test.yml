@@ -12,7 +12,7 @@ jobs:
       matrix:
         version: [18, 20]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           persist-credentials: false
       - uses: actions/setup-node@v6
