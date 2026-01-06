@@ -49,6 +49,7 @@ export enum Processor {
   ApsPayments = 'aps_payments',
   Authorizenet = 'authorizenet',
   Balanced = 'balanced',
+  Banquest = 'banquest',
   Beanstream = 'beanstream',
   Bluepay = 'bluepay',
   Bluesnap = 'bluesnap',
@@ -180,6 +181,7 @@ export enum Processor {
   SolidtrustPay = 'solidtrust_pay',
   SpsDecidir = 'sps_decidir',
   Stripe = 'stripe',
+  SummitPayments = 'summit_payments',
   Synapsefi = 'synapsefi',
   Systempay = 'systempay',
   Telerecargas = 'telerecargas',
@@ -199,6 +201,7 @@ export enum Processor {
   Windcave = 'windcave',
   Wirecard = 'wirecard',
   Worldpay = 'worldpay',
+  Yaadpay = 'yaadpay',
 }
 
 export enum Tag {
