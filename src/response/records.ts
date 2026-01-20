@@ -1,4 +1,9 @@
-import { CountryRecord, Insights, LocationRecord } from '@maxmind/geoip2-node';
+import {
+  AnonymizerRecord,
+  CountryRecord,
+  Insights,
+  LocationRecord,
+} from '@maxmind/geoip2-node';
 import {
   CreditCardType,
   DispositionAction,
@@ -62,6 +67,11 @@ export interface IpRiskReasons {
  * Model for minFraud GeoIP2 Insights data.
  */
 export interface IpAddress extends Insights {
+  /**
+   * Anonymizer object for the requested IP address. This contains information
+   * about whether the IP address is associated with an anonymizing service.
+   */
+  readonly anonymizer?: AnonymizerRecord;
   /**
    * Country object for the requested IP address. This record represents the
    * country where MaxMind believes the IP is located.
