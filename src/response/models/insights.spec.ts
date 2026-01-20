@@ -63,4 +63,25 @@ describe('Insights()', () => {
     const model = new Insights(response as InsightsResponse);
     expect(model.email?.domain?.visit?.hasRedirect).toBe(false);
   });
+
+  it('allows /ip_address/anonymizer to be accessed', () => {
+    const model = new Insights(response as InsightsResponse);
+    expect(model.ipAddress?.anonymizer).toEqual({
+      confidence: 99,
+      isAnonymous: true,
+      isAnonymousVpn: true,
+      isHostingProvider: true,
+      isPublicProxy: true,
+      isResidentialProxy: false,
+      isTorExitNode: true,
+      networkLastSeen: '2025-01-15',
+      providerName: 'TestVPN',
+    });
+  });
+
+  it('handles empty anonymizer responses', () => {
+    delete response.ip_address.anonymizer;
+    const model = new Insights(response as InsightsResponse);
+    expect(model.ipAddress?.anonymizer).toBeUndefined();
+  });
 });

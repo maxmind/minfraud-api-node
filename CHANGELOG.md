@@ -5,6 +5,9 @@ CHANGELOG
 ------------------
 
 * Added `Banquest`, `SummitPayments`, and `Yaadpay` to the `Processor` enum.
+* Added `anonymizer` property to the `IpAddress` interface. This contains
+  information about whether the IP address is an anonymous network, including
+  confidence score, VPN provider name, and various anonymizer type flags.
 
 8.2.1 (2025-11-25)
 ------------------
