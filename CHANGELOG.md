@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-8.3.0
+8.3.0 (2026-01-20)
 ------------------
 
 * Added `Banquest`, `SummitPayments`, and `Yaadpay` to the `Processor` enum.
