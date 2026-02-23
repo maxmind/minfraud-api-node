@@ -179,6 +179,7 @@ try {
   transaction = new minFraud.Transaction({
     device: new minFraud.Device({
       ipAddress: "81.2.69.160",
+      trackingToken: "abc123",
     }),
     event: new minFraud.Event({
       party: minFraud.Constants.EventParty.Customer,
