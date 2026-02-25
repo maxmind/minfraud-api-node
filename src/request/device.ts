@@ -26,6 +26,11 @@ interface DeviceProps {
    * identifies a visitor's session on the site.
    */
   sessionId?: string;
+  /**
+   * The tracking token from the Device Tracking Add-on for explicit device
+   * linking.
+   */
+  trackingToken?: string;
 }
 
 /**
@@ -42,6 +47,8 @@ export default class Device implements DeviceProps {
   public sessionAge?: number;
   /** @inheritDoc DeviceProps.sessionId */
   public sessionId?: string;
+  /** @inheritDoc DeviceProps.trackingToken */
+  public trackingToken?: string;
 
   public constructor(device: DeviceProps) {
     if (device.ipAddress != null && isIP(device.ipAddress) === 0) {

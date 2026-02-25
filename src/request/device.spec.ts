@@ -27,4 +27,12 @@ describe('Device()', () => {
       });
     }).not.toThrow();
   });
+
+  it('sets trackingToken correctly', () => {
+    const device = new Device({
+      ipAddress: '1.1.1.1',
+      trackingToken: 'abc123',
+    });
+    expect(device.trackingToken).toBe('abc123');
+  });
 });
