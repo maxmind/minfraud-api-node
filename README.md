@@ -99,12 +99,11 @@ See the API documentation for more details.
 
 ```js
   const transactionReport = new minFraud.TransactionReport({
-    ipAddress: '81.2.69.160',
     tag: minFraud.Constants.Tag.NOT_FRAUD,
 
     // The following key/values are not mandatory but are encouraged
-    chargebackCode: 'the string provided by your payment processor indicating
-    the reason for the chargeback',
+    chargebackCode: 'the string provided by your payment processor indicating the reason for the chargeback',
+    ipAddress: '81.2.69.160',
     maxmindId: '12345678',
     minfraudId: '58fa38d8-4b87-458b-a22b-f00eda1aa20d',
     notes: 'some notes',
