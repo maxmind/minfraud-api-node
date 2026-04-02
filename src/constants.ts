@@ -98,6 +98,7 @@ export enum Processor {
   Epx = 'epx',
   Eway = 'eway',
   Exact = 'exact',
+  FatZebra = 'fat_zebra',
   FirstAtlanticCommerce = 'first_atlantic_commerce',
   FirstData = 'first_data',
   Fiserv = 'fiserv',

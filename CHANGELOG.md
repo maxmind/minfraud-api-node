@@ -8,6 +8,7 @@ CHANGELOG
   the [Device Tracking Add-on](https://dev.maxmind.com/minfraud/track-devices)
   for explicit device linking. You may provide this by providing
   `trackingToken` to `Device`.
+* Added `FatZebra` to the `Processor` enum.
 
 8.3.0 (2026-01-20)
 ------------------
