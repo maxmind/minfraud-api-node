@@ -902,6 +902,12 @@ describe('WebServiceClient', () => {
 
   describe('error handling', () => {
     afterEach(() => {
+      // `handles timeouts` below uses `.delayConnection(100)` with a 10ms
+      // client timeout. The client aborts at 10ms, but nock's pending reply
+      // timer keeps ticking and can fire in a later test — producing a
+      // spurious `InterceptorError: ... the request has already been
+      // handled`. Abort those timers so they can't bleed across tests.
+      nock.abortPendingRequests();
       nock.cleanAll();
     });
 
