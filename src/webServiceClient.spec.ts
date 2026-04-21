@@ -24,6 +24,11 @@ const fullPath = (path: string) => `/minfraud/v2.0/${path}`;
 const client = new Client(auth.user, auth.pass);
 
 describe('WebServiceClient', () => {
+  afterEach(() => {
+    nock.cleanAll();
+    nock.abortPendingRequests();
+  });
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const factors = structuredClone(insights) as any;
   factors.response.full.risk_score_reasons = structuredClone(reasons);
@@ -901,10 +906,6 @@ describe('WebServiceClient', () => {
   });
 
   describe('error handling', () => {
-    afterEach(() => {
-      nock.cleanAll();
-    });
-
     const transaction = new Transaction({
       device: new Device({
         ipAddress: '1.1.1.1',
