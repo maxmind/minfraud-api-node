@@ -9,6 +9,7 @@ CHANGELOG
   for explicit device linking. You may provide this by providing
   `trackingToken` to `Device`.
 * Added `FatZebra` to the `Processor` enum.
+* Added `CLEAR` to the `Tag` enum for use with the Report Transaction API.
 
 8.3.0 (2026-01-20)
 ------------------

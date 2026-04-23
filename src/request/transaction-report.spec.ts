@@ -60,4 +60,13 @@ describe('Device()', () => {
       });
     }).not.toThrow();
   });
+
+  it('accepts the clear tag', () => {
+    expect(() => {
+      new TransactionReport({
+        ipAddress: '1.1.1.1',
+        tag: Tag.CLEAR,
+      });
+    }).not.toThrow();
+  });
 });
