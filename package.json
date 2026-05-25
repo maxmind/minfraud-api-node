@@ -11,6 +11,9 @@
   "author": "MaxMind",
   "license": "Apache-2.0",
   "private": false,
+  "engines": {
+    "node": ">=22"
+  },
   "keywords": [
     "maxmind",
     "minfraud",
@@ -56,7 +59,6 @@
   "dependencies": {
     "@maxmind/geoip2-node": "^6.3.0",
     "maxmind": "^5.0.0",
-    "punycode": "^2.1.1",
     "validator": "^13.0.0"
   }
 }

@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import punycode from 'punycode';
+import { domainToASCII } from 'url';
 import isEmail from 'validator/lib/isEmail';
 import isFQDN from 'validator/lib/isFQDN';
 import { ArgumentError } from '../errors';
@@ -364,7 +364,7 @@ export default class Email implements EmailProps {
     // We don't need to strip a trailing '.' because validation (isEmail())
     // rejects domains that have it.
 
-    domain = punycode.toASCII(domain.normalize('NFC'));
+    domain = domainToASCII(domain.normalize('NFC'));
 
     domain = domain.replace(/(?:\.com){2,}$/, '.com');
     domain = domain.replace(/^\d+(?:gmail?\.com)$/, 'gmail.com');
