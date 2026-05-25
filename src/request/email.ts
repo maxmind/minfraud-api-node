@@ -1,5 +1,5 @@
-import crypto from 'crypto';
-import { domainToASCII } from 'url';
+import crypto from 'node:crypto';
+import { domainToASCII } from 'node:url';
 import isEmail from 'validator/lib/isEmail';
 import isFQDN from 'validator/lib/isFQDN';
 import { ArgumentError } from '../errors';
@@ -294,10 +294,11 @@ export default class Email implements EmailProps {
 
     if (email.address) {
       if (email.hashAddress) {
-        this.address = crypto
-          .createHash('md5')
-          .update(this.cleanEmailAddress(email.address))
-          .digest('hex');
+        this.address = crypto.hash(
+          'md5',
+          this.cleanEmailAddress(email.address),
+          'hex'
+        );
       } else {
         this.address = email.address;
       }

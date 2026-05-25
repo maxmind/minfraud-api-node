@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import crypto from 'node:crypto';
 
 interface AccountProps {
   /**
@@ -32,10 +32,7 @@ export default class Account {
     this.userId = account.userId;
 
     if (account.username) {
-      this.usernameMd5 = crypto
-        .createHash('md5')
-        .update(account.username)
-        .digest('hex');
+      this.usernameMd5 = crypto.hash('md5', account.username, 'hex');
     }
   }
 }
