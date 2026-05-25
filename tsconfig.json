@@ -13,8 +13,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es2022",
-    "useDefineForClassFields": false
+    "target": "es2022"
   },
   "compileOnSave": false,
   "include": ["src"],

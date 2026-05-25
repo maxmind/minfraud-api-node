@@ -6,12 +6,6 @@ interface EventProps {
    */
   party?: EventParty;
   /**
-   * Your internal ID for the transaction. We can use this to locate a specific
-   * transaction in our logs, and it will also show up in email alerts and
-   * notifications from us to you.
-   */
-  transactionId?: string;
-  /**
    * Your internal ID for the shop, affiliate, or merchant this order is coming
    * from. Required for minFraud users who are resellers, payment providers,
    * gateways and affiliate networks.
@@ -21,6 +15,12 @@ interface EventProps {
    * The date and time the event occurred.
    */
   time?: Date;
+  /**
+   * Your internal ID for the transaction. We can use this to locate a specific
+   * transaction in our logs, and it will also show up in email alerts and
+   * notifications from us to you.
+   */
+  transactionId?: string;
   /**
    * The type of event being scored.
    */
@@ -33,12 +33,12 @@ interface EventProps {
 export default class Event implements EventProps {
   /** @inheritDoc EventProps.party */
   public party?: EventParty;
-  /** @inheritDoc EventProps.transactionId */
-  public transactionId?: string;
   /** @inheritDoc EventProps.shopId */
   public shopId?: string;
   /** @inheritDoc EventProps.time */
   public time?: Date;
+  /** @inheritDoc EventProps.transactionId */
+  public transactionId?: string;
   /** @inheritDoc EventProps.type */
   public type?: EventType;
 
