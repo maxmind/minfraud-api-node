@@ -1,4 +1,3 @@
-import { URL } from 'url';
 import { ArgumentError } from '../errors';
 import Order from './order';
 
