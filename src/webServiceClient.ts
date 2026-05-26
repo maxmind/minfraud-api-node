@@ -77,24 +77,17 @@ export default class WebServiceClient {
     const parsedPath = `/minfraud/v2.0/${path}`;
     const url = `https://${this.host}${parsedPath}`;
 
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), this.timeout);
-
     const options: RequestInit = {
       body: postData,
       headers: {
         Accept: 'application/json',
-        Authorization:
-          'Basic ' +
-          Buffer.from(`${this.accountID}:${this.licenseKey}`).toString(
-            'base64'
-          ),
+        Authorization: 'Basic ' + btoa(`${this.accountID}:${this.licenseKey}`),
         'Content-Length': Buffer.byteLength(postData).toString(),
         'Content-Type': 'application/json',
         'User-Agent': `minfraud-api-node/${version}`,
       },
       method: 'POST',
-      signal: controller.signal,
+      signal: AbortSignal.timeout(this.timeout),
     };
 
     let data;
@@ -122,7 +115,7 @@ export default class WebServiceClient {
     } catch (err) {
       const error = err as TypeError;
       switch (error.name) {
-        case 'AbortError':
+        case 'TimeoutError':
           throw {
             code: 'NETWORK_TIMEOUT',
             error: 'The request timed out',
@@ -140,8 +133,6 @@ export default class WebServiceClient {
             url,
           };
       }
-    } finally {
-      clearTimeout(timeoutId);
     }
     return new modelClass(data);
   }
