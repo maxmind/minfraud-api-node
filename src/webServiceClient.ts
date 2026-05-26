@@ -81,8 +81,7 @@ export default class WebServiceClient {
       body: postData,
       headers: {
         Accept: 'application/json',
-        Authorization:
-          'Basic ' + btoa(`${this.accountID}:${this.licenseKey}`),
+        Authorization: 'Basic ' + btoa(`${this.accountID}:${this.licenseKey}`),
         'Content-Length': Buffer.byteLength(postData).toString(),
         'Content-Type': 'application/json',
         'User-Agent': `minfraud-api-node/${version}`,
