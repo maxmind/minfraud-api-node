@@ -10,7 +10,7 @@ services](https://dev.maxmind.com/minfraud/).
 
 ## Requirements
 
-MaxMind has tested this API with Node.js versions 18 and 20. We aim to support
+MaxMind has tested this API with Node.js versions 22 and 24. We aim to support
 active or maintained LTS versions of Node.js.
 
 ## Installation

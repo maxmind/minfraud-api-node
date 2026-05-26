@@ -1,4 +1,4 @@
-import { isIP } from 'net';
+import { isIP } from 'node:net';
 import { ArgumentError } from '../errors';
 
 interface DeviceProps {

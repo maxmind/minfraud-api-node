@@ -11,6 +11,9 @@
   "author": "MaxMind",
   "license": "Apache-2.0",
   "private": false,
+  "engines": {
+    "node": ">=22"
+  },
   "keywords": [
     "maxmind",
     "minfraud",
@@ -33,7 +36,7 @@
     "jest": "^30.0.0",
     "nock": "^14.0.0-beta.16",
     "prettier": "^3.0.0",
-    "ts-jest": "^29.1.0",
+    "ts-jest": "^29.4.0",
     "typedoc": "^0.28.1",
     "typescript": "^6.0.2",
     "typescript-eslint": "^8.5.0"
@@ -56,7 +59,6 @@
   "dependencies": {
     "@maxmind/geoip2-node": "^6.3.0",
     "maxmind": "^5.0.0",
-    "punycode": "^2.1.1",
     "validator": "^13.0.0"
   }
 }

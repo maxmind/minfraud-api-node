@@ -1,5 +1,5 @@
-import crypto from 'crypto';
-import punycode from 'punycode';
+import crypto from 'node:crypto';
+import { domainToASCII } from 'node:url';
 import isEmail from 'validator/lib/isEmail';
 import isFQDN from 'validator/lib/isFQDN';
 import { ArgumentError } from '../errors';
@@ -294,10 +294,11 @@ export default class Email implements EmailProps {
 
     if (email.address) {
       if (email.hashAddress) {
-        this.address = crypto
-          .createHash('md5')
-          .update(this.cleanEmailAddress(email.address))
-          .digest('hex');
+        this.address = crypto.hash(
+          'md5',
+          this.cleanEmailAddress(email.address),
+          'hex'
+        );
       } else {
         this.address = email.address;
       }
@@ -364,7 +365,7 @@ export default class Email implements EmailProps {
     // We don't need to strip a trailing '.' because validation (isEmail())
     // rejects domains that have it.
 
-    domain = punycode.toASCII(domain.normalize('NFC'));
+    domain = domainToASCII(domain.normalize('NFC'));
 
     domain = domain.replace(/(?:\.com){2,}$/, '.com');
     domain = domain.replace(/^\d+(?:gmail?\.com)$/, 'gmail.com');

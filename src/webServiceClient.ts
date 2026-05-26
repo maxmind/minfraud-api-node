@@ -77,27 +77,19 @@ export default class WebServiceClient {
     const parsedPath = `/minfraud/v2.0/${path}`;
     const url = `https://${this.host}${parsedPath}`;
 
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), this.timeout);
-
     const options: RequestInit = {
       body: postData,
       headers: {
         Accept: 'application/json',
-        Authorization:
-          'Basic ' +
-          Buffer.from(`${this.accountID}:${this.licenseKey}`).toString(
-            'base64'
-          ),
+        Authorization: 'Basic ' + btoa(`${this.accountID}:${this.licenseKey}`),
         'Content-Length': Buffer.byteLength(postData).toString(),
         'Content-Type': 'application/json',
         'User-Agent': `minfraud-api-node/${version}`,
       },
       method: 'POST',
-      signal: controller.signal,
+      signal: AbortSignal.timeout(this.timeout),
     };
 
-    let data;
     /*
      We handle two kinds of errors here:
      1. Network errors, such as timeouts or CORS errors.  These will be caught
@@ -106,43 +98,40 @@ export default class WebServiceClient {
       will be caught by the handleBadServerResponse method and rethrown/rejected as a
       WebServiceClientError.
     */
+    let response: Response;
     try {
-      const response = await fetch(url, options);
-
-      if (!response.ok) {
-        return Promise.reject(
-          await this.handleBadServerResponse(response, url)
-        );
-      }
-
-      if (response.status === 204) {
-        return;
-      }
-      data = await response.json();
+      response = await fetch(url, options);
     } catch (err) {
-      const error = err as TypeError;
-      switch (error.name) {
-        case 'AbortError':
-          throw {
-            code: 'NETWORK_TIMEOUT',
-            error: 'The request timed out',
-            url,
-          };
-        case 'SyntaxError':
-          throw {
-            ...invalidResponseBody,
-            url,
-          };
-        default:
-          throw {
-            code: 'FETCH_ERROR',
-            error: `${error.name} - ${error.message}`,
-            url,
-          };
+      const error = err instanceof DOMException ? err : new Error(String(err));
+      if (error.name === 'TimeoutError') {
+        throw {
+          code: 'NETWORK_TIMEOUT',
+          error: 'The request timed out',
+          url,
+        };
       }
-    } finally {
-      clearTimeout(timeoutId);
+      throw {
+        code: 'FETCH_ERROR',
+        error: `${error.name} - ${error.message}`,
+        url,
+      };
     }
+
+    if (!response.ok) {
+      throw await this.handleBadServerResponse(response, url);
+    }
+
+    if (response.status === 204) {
+      return;
+    }
+
+    let data;
+    try {
+      data = await response.json();
+    } catch {
+      throw { ...invalidResponseBody, url };
+    }
+
     return new modelClass(data);
   }
 
