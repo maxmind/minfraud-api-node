@@ -1,4 +1,3 @@
-import { URL } from 'url';
 import isJSON from 'validator/lib/isJSON';
 import { ArgumentError } from '../errors';
 import Account from './account';
