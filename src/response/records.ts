@@ -24,7 +24,7 @@ export interface ScoreIpAddress {
 }
 
 /**
- * A subclass of the GeoIP2 Country model with minFraud-specific additions.
+ * A subclass of the GeoIP Country model with minFraud-specific additions.
  */
 export interface GeoIPCountry extends CountryRecord {
   /**
@@ -37,7 +37,7 @@ export interface GeoIPCountry extends CountryRecord {
 }
 
 /**
- * A subclass of the GeoIP2 Location model with minFraud-specific additions.
+ * A subclass of the GeoIP Location model with minFraud-specific additions.
  */
 export interface GeoIPLocation extends LocationRecord {
   /**
@@ -64,7 +64,7 @@ export interface IpRiskReasons {
 }
 
 /**
- * Model for minFraud GeoIP2 Insights data.
+ * Model for minFraud GeoIP Insights data.
  */
 export interface IpAddress extends Insights {
   /**

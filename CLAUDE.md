@@ -124,7 +124,7 @@ await client.reportTransaction(report);
 
 **Exception:** Use plain `string` only when the API documentation explicitly states "additional values may be added in the future" AND you want to allow any string value (e.g., `phone.numberType`).
 
-#### 6. **GeoIP2 Integration**
+#### 6. **GeoIP Integration**
 
 The Insights and Factors responses include IP geolocation data from the @maxmind/geoip2-node library:
 ```typescript
@@ -331,7 +331,7 @@ try {
 }
 ```
 
-### Problem: GeoIP2 Type Conflicts
+### Problem: GeoIP Type Conflicts
 
 The IP address data comes from @maxmind/geoip2-node and needs augmentation.
 

@@ -31,7 +31,7 @@ export default class Insights extends Score {
    */
   public readonly email?: records.Email;
   /**
-   * An object containing GeoIP2 and minFraud Insights information about the IP address.
+   * An object containing GeoIP and minFraud Insights information about the IP address.
    */
   public readonly ipAddress?: records.IpAddress;
   /**
