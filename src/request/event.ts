@@ -1,4 +1,4 @@
-import { EventParty, EventType } from '../constants';
+import { EventParty, EventType } from '../constants.js';
 
 interface EventProps {
   /**

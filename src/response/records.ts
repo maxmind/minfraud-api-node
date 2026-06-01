@@ -10,7 +10,7 @@ import {
   DispositionReason,
   EmailDomainClassification,
   EmailDomainVisitStatus,
-} from './web-records';
+} from './web-records.js';
 
 /**
  * The IP addresses risk.

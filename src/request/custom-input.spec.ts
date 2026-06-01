@@ -1,4 +1,4 @@
-import CustomInput from './custom-input';
+import CustomInput from './custom-input.js';
 
 describe('CustomInput()', () => {
   it('constructs', () => {

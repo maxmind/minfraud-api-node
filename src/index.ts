@@ -1,18 +1,18 @@
-import * as Constants from './constants';
-import Account from './request/account';
-import Billing from './request/billing';
-import CreditCard from './request/credit-card';
-import CustomInput from './request/custom-input';
-import Device from './request/device';
-import Email from './request/email';
-import Event from './request/event';
-import Order from './request/order';
-import Payment from './request/payment';
-import Shipping from './request/shipping';
-import ShoppingCartItem from './request/shopping-cart-item';
-import Transaction from './request/transaction';
-import TransactionReport from './request/transaction-report';
-import Client from './webServiceClient';
+import * as Constants from './constants.js';
+import Account from './request/account.js';
+import Billing from './request/billing.js';
+import CreditCard from './request/credit-card.js';
+import CustomInput from './request/custom-input.js';
+import Device from './request/device.js';
+import Email from './request/email.js';
+import Event from './request/event.js';
+import Order from './request/order.js';
+import Payment from './request/payment.js';
+import Shipping from './request/shipping.js';
+import ShoppingCartItem from './request/shopping-cart-item.js';
+import Transaction from './request/transaction.js';
+import TransactionReport from './request/transaction-report.js';
+import Client from './webServiceClient.js';
 
 export {
   Account,

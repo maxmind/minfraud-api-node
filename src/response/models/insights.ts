@@ -1,8 +1,8 @@
 import { Insights as GeoInsights } from '@maxmind/geoip2-node';
-import { camelizeResponse } from '../../utils';
-import * as records from '../records';
-import * as webRecords from '../web-records';
-import Score from './score';
+import { camelizeResponse } from '../../utils.js';
+import * as records from '../records.js';
+import * as webRecords from '../web-records.js';
+import Score from './score.js';
 
 export default class Insights extends Score {
   /**

@@ -1,4 +1,4 @@
-import { snakecaseKeys, snakeToCamelCase, camelizeResponse } from './utils';
+import { snakecaseKeys, snakeToCamelCase, camelizeResponse } from './utils.js';
 
 describe('src/Utils', () => {
   describe('snakeToCamelCase()', () => {

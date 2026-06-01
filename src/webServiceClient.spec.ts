@@ -1,17 +1,17 @@
 import nock from 'nock';
-import * as models from './response/models';
-import * as insights from '../fixtures/insights.json';
-import reasons from '../fixtures/reasons.json';
-import * as score from '../fixtures/score.json';
-import * as subscores from '../fixtures/subscores.json';
+import * as models from './response/models/index.js';
+import insights from '../fixtures/insights.json' with { type: 'json' };
+import reasons from '../fixtures/reasons.json' with { type: 'json' };
+import score from '../fixtures/score.json' with { type: 'json' };
+import subscores from '../fixtures/subscores.json' with { type: 'json' };
 import {
   Client,
   Constants,
   Device,
   Transaction,
   TransactionReport,
-} from './index';
-import * as webRecords from './response/web-records';
+} from './index.js';
+import * as webRecords from './response/web-records.js';
 
 const baseUrl = 'https://minfraud.maxmind.com';
 const nockInstance = nock(baseUrl);

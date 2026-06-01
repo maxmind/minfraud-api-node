@@ -1,5 +1,5 @@
-import Factors from './factors';
-import Insights from './insights';
-import Score from './score';
+import Factors from './factors.js';
+import Insights from './insights.js';
+import Score from './score.js';
 
 export { Factors, Insights, Score };

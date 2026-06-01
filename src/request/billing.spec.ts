@@ -1,4 +1,4 @@
-import Billing from './billing';
+import Billing from './billing.js';
 
 describe('Billing()', () => {
   it('constructs', () => {

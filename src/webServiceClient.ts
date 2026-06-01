@@ -1,8 +1,8 @@
-import { version } from '../package.json';
-import Transaction from './request/transaction';
-import TransactionReport from './request/transaction-report';
-import * as models from './response/models';
-import { WebServiceClientError } from './types';
+import packageInfo from '../package.json' with { type: 'json' };
+import Transaction from './request/transaction.js';
+import TransactionReport from './request/transaction-report.js';
+import * as models from './response/models/index.js';
+import { WebServiceClientError } from './types.js';
 
 interface ResponseError {
   code?: string;
@@ -84,7 +84,7 @@ export default class WebServiceClient {
         Authorization: 'Basic ' + btoa(`${this.accountID}:${this.licenseKey}`),
         'Content-Length': Buffer.byteLength(postData).toString(),
         'Content-Type': 'application/json',
-        'User-Agent': `minfraud-api-node/${version}`,
+        'User-Agent': `minfraud-api-node/${packageInfo.version}`,
       },
       method: 'POST',
       signal: AbortSignal.timeout(this.timeout),

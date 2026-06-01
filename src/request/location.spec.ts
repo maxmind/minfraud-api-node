@@ -1,5 +1,5 @@
-import { ArgumentError } from '../errors';
-import Location from './location';
+import { ArgumentError } from '../errors.js';
+import Location from './location.js';
 
 describe('Location()', () => {
   it('throws an error if country is not valid', () => {

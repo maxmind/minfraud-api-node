@@ -1,6 +1,6 @@
-import { Tag } from '../constants';
-import { ArgumentError } from '../errors';
-import TransactionReport from './transaction-report';
+import { Tag } from '../constants.js';
+import { ArgumentError } from '../errors.js';
+import TransactionReport from './transaction-report.js';
 
 describe('Device()', () => {
   it('throws an error if TransactionReport.ipAddress is not valid', () => {

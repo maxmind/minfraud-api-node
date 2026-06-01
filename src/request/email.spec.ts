@@ -1,6 +1,6 @@
-import { ArgumentError } from '../errors';
+import { ArgumentError } from '../errors.js';
 import crypto from 'node:crypto';
-import Email from './email';
+import Email from './email.js';
 
 describe('Email()', () => {
   it('throws an error if email.address is not valid', () => {

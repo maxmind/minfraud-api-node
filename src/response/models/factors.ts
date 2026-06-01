@@ -1,7 +1,7 @@
-import { camelizeResponse } from '../../utils';
-import * as records from '../records';
-import * as webRecords from '../web-records';
-import Insights from './insights';
+import { camelizeResponse } from '../../utils.js';
+import * as records from '../records.js';
+import * as webRecords from '../web-records.js';
+import Insights from './insights.js';
 
 export default class Factors extends Insights {
   /**

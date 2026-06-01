@@ -1,7 +1,7 @@
 import { isIP } from 'node:net';
-import { Tag } from '../constants';
-import { ArgumentError } from '../errors';
-import { snakecaseKeys } from '../utils';
+import { Tag } from '../constants.js';
+import { ArgumentError } from '../errors.js';
+import { snakecaseKeys } from '../utils.js';
 
 interface TransactionReportProps {
   /**

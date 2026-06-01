@@ -1,8 +1,7 @@
 import crypto from 'node:crypto';
 import { domainToASCII } from 'node:url';
-import isEmail from 'validator/lib/isEmail';
-import isFQDN from 'validator/lib/isFQDN';
-import { ArgumentError } from '../errors';
+import { isEmail, isFQDN } from 'validator';
+import { ArgumentError } from '../errors.js';
 
 interface EmailProps {
   /**

@@ -167,7 +167,6 @@ returned by the web API, we also return:
 ```js
 import { URL } from 'url'; // Used for `order.referrerUri
 import * as minFraud from '@maxmind/minfraud-api-node';
-// const minFraud = require('@maxmind/minfraud-api-node');
 
 // client is reusable
 const client = new minFraud.Client("1234", "LICENSEKEY");

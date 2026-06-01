@@ -1,6 +1,6 @@
-import * as insightsJson from '../../../fixtures/insights.json';
-import { InsightsResponse } from '../web-records';
-import Insights from './insights';
+import insightsJson from '../../../fixtures/insights.json' with { type: 'json' };
+import { InsightsResponse } from '../web-records.js';
+import Insights from './insights.js';
 
 describe('Insights()', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

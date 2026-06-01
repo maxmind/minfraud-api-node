@@ -1,6 +1,6 @@
 import { URL } from 'node:url';
-import isURL from 'validator/lib/isURL';
-import { ArgumentError } from '../errors';
+import { isURL } from 'validator';
+import { ArgumentError } from '../errors.js';
 
 interface OrderProps {
   /**

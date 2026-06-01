@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-const minFraud = require('@maxmind/minfraud-api-node');
+import * as minFraud from '@maxmind/minfraud-api-node';
 
 describe('client', () => {
-  it('exists', () => {
+  it('exists', async () => {
     expect(new minFraud.Transaction({
       device: new minFraud.Device({
         ipAddress: '1.1.1.1',

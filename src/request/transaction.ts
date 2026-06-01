@@ -1,16 +1,16 @@
-import { ArgumentError } from '../errors';
-import Account from './account';
-import Billing from './billing';
-import CreditCard from './credit-card';
-import CustomInput from './custom-input';
-import Device from './device';
-import Email from './email';
-import Event from './event';
-import Order from './order';
-import Payment from './payment';
-import Shipping from './shipping';
-import ShoppingCartItem from './shopping-cart-item';
-import { snakecaseKeys } from '../utils';
+import { ArgumentError } from '../errors.js';
+import Account from './account.js';
+import Billing from './billing.js';
+import CreditCard from './credit-card.js';
+import CustomInput from './custom-input.js';
+import Device from './device.js';
+import Email from './email.js';
+import Event from './event.js';
+import Order from './order.js';
+import Payment from './payment.js';
+import Shipping from './shipping.js';
+import ShoppingCartItem from './shopping-cart-item.js';
+import { snakecaseKeys } from '../utils.js';
 
 export interface TransactionProps {
   /**

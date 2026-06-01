@@ -1,5 +1,5 @@
-import { ArgumentError } from '../errors';
-import ShoppingCartItem from './shopping-cart-item';
+import { ArgumentError } from '../errors.js';
+import ShoppingCartItem from './shopping-cart-item.js';
 
 describe('ShoppingCartItem()', () => {
   it('throws an error if quantity is not an integer', () => {
