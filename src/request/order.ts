@@ -1,5 +1,5 @@
 import { URL } from 'node:url';
-import { isURL } from 'validator';
+import validator from 'validator';
 import { ArgumentError } from '../errors.js';
 
 interface OrderProps {
@@ -66,7 +66,10 @@ export default class Order implements OrderProps {
       throw new ArgumentError(`The currency code ${order.currency} is invalid`);
     }
 
-    if (order.referrerUri != null && !isURL(order.referrerUri.toString())) {
+    if (
+      order.referrerUri != null &&
+      !validator.isURL(order.referrerUri.toString())
+    ) {
       throw new ArgumentError(
         `The referrer URI ${order.referrerUri.toString()} is invalid`
       );

@@ -1,6 +1,6 @@
 import crypto from 'node:crypto';
 import { domainToASCII } from 'node:url';
-import { isEmail, isFQDN } from 'validator';
+import validator from 'validator';
 import { ArgumentError } from '../errors.js';
 
 interface EmailProps {
@@ -283,11 +283,11 @@ export default class Email implements EmailProps {
   };
 
   public constructor(email: EmailProps) {
-    if (email.address != null && !isEmail(email.address)) {
+    if (email.address != null && !validator.isEmail(email.address)) {
       throw new ArgumentError('`email.address` is an invalid email address');
     }
 
-    if (email.domain != null && !isFQDN(email.domain)) {
+    if (email.domain != null && !validator.isFQDN(email.domain)) {
       throw new ArgumentError('`email.domain` is an invalid domain');
     }
 
