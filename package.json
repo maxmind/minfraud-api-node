@@ -1,6 +1,6 @@
 {
   "name": "@maxmind/minfraud-api-node",
-  "version": "8.3.0",
+  "version": "9.0.0",
   "description": "Node.js API for MaxMind minFraud web services",
   "type": "module",
   "main": "dist/src/index.js",
