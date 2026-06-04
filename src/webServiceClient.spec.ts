@@ -982,7 +982,7 @@ describe('WebServiceClient', () => {
 
       const expected = {
         code: 'FETCH_ERROR',
-        error: `Error - Error: ${error}`,
+        error: `Error - ${error}`,
         url: baseUrl + fullPath('score'),
       };
 
