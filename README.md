@@ -165,7 +165,6 @@ returned by the web API, we also return:
 ## Example
 
 ```js
-import { URL } from 'url'; // Used for `order.referrerUri
 import * as minFraud from '@maxmind/minfraud-api-node';
 
 // client is reusable

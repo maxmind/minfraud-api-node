@@ -1,4 +1,3 @@
-import { URL } from 'node:url';
 import validator from 'validator';
 import { ArgumentError } from '../errors.js';
 
