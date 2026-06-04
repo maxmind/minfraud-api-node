@@ -36,8 +36,15 @@ exclude = [
     # the web UI but is the correct packaging metadata, so it is not a "link" to
     # fix.
     '^https://github\.com/maxmind/minfraud-api-node\.git$',
-    # Placeholders / local
+    # dev.maxmind.com API docs are client-side rendered, so schema anchors
+    # (#schema--...) are generated in the browser and are not present in the
+    # static HTML lychee fetches. The page itself resolves 200; only the
+    # fragment cannot be verified, so exclude these schema-fragment URLs.
+    '^https://dev\.maxmind\.com/minfraud/api-documentation/responses/#schema--',
+    # Placeholders / example URLs used in tests and docstrings
     '^https?://example\.(com|org|net)',
+    '^https?://(www\.)?foobar\.com',
+    '^http://google\.com',
     '^http://localhost',
     '127\.0\.0\.1',
 ]
