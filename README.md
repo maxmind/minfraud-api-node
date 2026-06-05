@@ -132,7 +132,7 @@ Thrown by the request and transaction models:
 * `ArgumentError` - Thrown when invalid data is passed to the Transaction
 and Transaction property constructors.
 
-In addition to the [response errors](https://dev.maxmind.com/minfraud/api-documentation/responses?lang=en#errors)
+In addition to the [response errors](https://dev.maxmind.com/minfraud/api-documentation/responses/?lang=en#errors)
 returned by the web API, we also return:
 
 ```js
@@ -284,7 +284,7 @@ Please report all issues with this code using the
 
 If you are having an issue with the minFraud service that is not specific
 to the client API, please see
-[our support page](https://www.maxmind.com/en/support).
+[our support page](https://support.maxmind.com/knowledge-base).
 
 ## Contributing
 
