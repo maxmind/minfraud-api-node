@@ -1,4 +1,4 @@
-import { PaymentMethod, Processor } from '../constants';
+import { PaymentMethod, Processor } from '../constants.js';
 
 interface PaymentProps {
   /**

@@ -10,7 +10,7 @@ services](https://dev.maxmind.com/minfraud/).
 
 ## Requirements
 
-MaxMind has tested this API with Node.js versions 18 and 20. We aim to support
+MaxMind has tested this API with Node.js versions 22 and 24. We aim to support
 active or maintained LTS versions of Node.js.
 
 ## Installation
@@ -165,9 +165,7 @@ returned by the web API, we also return:
 ## Example
 
 ```js
-import { URL } from 'url'; // Used for `order.referrerUri
 import * as minFraud from '@maxmind/minfraud-api-node';
-// const minFraud = require('@maxmind/minfraud-api-node');
 
 // client is reusable
 const client = new minFraud.Client("1234", "LICENSEKEY");

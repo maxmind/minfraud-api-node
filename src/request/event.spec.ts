@@ -1,5 +1,6 @@
-import Event from './event';
-import { EventParty, EventType } from '../constants';
+import { jest } from '@jest/globals';
+import Event from './event.js';
+import { EventParty, EventType } from '../constants.js';
 
 describe('Event()', () => {
   it('sets `time` to now by default', () => {

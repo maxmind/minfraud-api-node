@@ -1,5 +1,5 @@
-import { DeliverySpeed } from '../constants';
-import Shipping from './shipping';
+import { DeliverySpeed } from '../constants.js';
+import Shipping from './shipping.js';
 
 describe('Shipping()', () => {
   it('constructs', () => {

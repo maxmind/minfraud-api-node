@@ -1,18 +1,17 @@
-import { URL } from 'url';
-import isJSON from 'validator/lib/isJSON';
-import { ArgumentError } from '../errors';
-import Account from './account';
-import Billing from './billing';
-import CreditCard from './credit-card';
-import CustomInput from './custom-input';
-import Device from './device';
-import Email from './email';
-import Event from './event';
-import Order from './order';
-import Payment from './payment';
-import Shipping from './shipping';
-import ShoppingCartItem from './shopping-cart-item';
-import Transaction, { TransactionProps } from './transaction';
+import validator from 'validator';
+import { ArgumentError } from '../errors.js';
+import Account from './account.js';
+import Billing from './billing.js';
+import CreditCard from './credit-card.js';
+import CustomInput from './custom-input.js';
+import Device from './device.js';
+import Email from './email.js';
+import Event from './event.js';
+import Order from './order.js';
+import Payment from './payment.js';
+import Shipping from './shipping.js';
+import ShoppingCartItem from './shopping-cart-item.js';
+import Transaction, { TransactionProps } from './transaction.js';
 
 describe('Transaction()', () => {
   it('does not throw an error if `device` is not defined', () => {
@@ -131,7 +130,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(isJSON(test.toString())).toBe(true);
+      expect(validator.isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toEqual(`{${deviceString}}`);
     });
@@ -149,7 +148,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(isJSON(test.toString())).toBe(true);
+      expect(validator.isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -170,7 +169,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(isJSON(test.toString())).toBe(true);
+      expect(validator.isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -190,7 +189,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(isJSON(test.toString())).toBe(true);
+      expect(validator.isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -208,7 +207,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(isJSON(test.toString())).toBe(true);
+      expect(validator.isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -226,7 +225,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(isJSON(test.toString())).toBe(true);
+      expect(validator.isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -244,7 +243,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(isJSON(test.toString())).toBe(true);
+      expect(validator.isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -263,7 +262,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(isJSON(test.toString())).toBe(true);
+      expect(validator.isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -284,7 +283,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(isJSON(test.toString())).toBe(true);
+      expect(validator.isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -308,7 +307,7 @@ describe('Transaction()', () => {
         ],
       });
 
-      expect(isJSON(test.toString())).toBe(true);
+      expect(validator.isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -458,7 +457,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(isJSON(test.toString())).toBe(true);
+      expect(validator.isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(
         '"credit_card":{"issuer_id_number":"12345678","last_digits":"12"}'
@@ -477,7 +476,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(isJSON(test.toString())).toBe(true);
+      expect(validator.isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(
         '"credit_card":{"issuer_id_number":"12345678","last_digits":"1234"}'
@@ -496,7 +495,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(isJSON(test.toString())).toBe(true);
+      expect(validator.isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(
         '"credit_card":{"issuer_id_number":"123456","last_digits":"12"}'

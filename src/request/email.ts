@@ -1,8 +1,7 @@
-import crypto from 'crypto';
-import punycode from 'punycode';
-import isEmail from 'validator/lib/isEmail';
-import isFQDN from 'validator/lib/isFQDN';
-import { ArgumentError } from '../errors';
+import crypto from 'node:crypto';
+import { domainToASCII } from 'node:url';
+import validator from 'validator';
+import { ArgumentError } from '../errors.js';
 
 interface EmailProps {
   /**
@@ -284,20 +283,21 @@ export default class Email implements EmailProps {
   };
 
   public constructor(email: EmailProps) {
-    if (email.address != null && !isEmail(email.address)) {
+    if (email.address != null && !validator.isEmail(email.address)) {
       throw new ArgumentError('`email.address` is an invalid email address');
     }
 
-    if (email.domain != null && !isFQDN(email.domain)) {
+    if (email.domain != null && !validator.isFQDN(email.domain)) {
       throw new ArgumentError('`email.domain` is an invalid domain');
     }
 
     if (email.address) {
       if (email.hashAddress) {
-        this.address = crypto
-          .createHash('md5')
-          .update(this.cleanEmailAddress(email.address))
-          .digest('hex');
+        this.address = crypto.hash(
+          'md5',
+          this.cleanEmailAddress(email.address),
+          'hex'
+        );
       } else {
         this.address = email.address;
       }
@@ -364,7 +364,7 @@ export default class Email implements EmailProps {
     // We don't need to strip a trailing '.' because validation (isEmail())
     // rejects domains that have it.
 
-    domain = punycode.toASCII(domain.normalize('NFC'));
+    domain = domainToASCII(domain.normalize('NFC'));
 
     domain = domain.replace(/(?:\.com){2,}$/, '.com');
     domain = domain.replace(/^\d+(?:gmail?\.com)$/, 'gmail.com');

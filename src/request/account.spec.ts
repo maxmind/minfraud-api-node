@@ -1,4 +1,4 @@
-import Account from './account';
+import Account from './account.js';
 
 describe('Account()', () => {
   it('creates `usernameMd5` from `username` if it exists', () => {

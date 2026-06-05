@@ -6,14 +6,15 @@
     "esModuleInterop": true,
     "lib": ["es2022"],
     "types": ["node"],
-    "module": "commonjs",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "outDir": "dist",
     "pretty": true,
     "removeComments": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es6"
+    "target": "es2022"
   },
   "compileOnSave": false,
   "include": ["src"],

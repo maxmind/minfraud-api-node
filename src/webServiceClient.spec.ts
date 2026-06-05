@@ -1,17 +1,17 @@
 import nock from 'nock';
-import * as models from './response/models';
-import * as insights from '../fixtures/insights.json';
-import reasons from '../fixtures/reasons.json';
-import * as score from '../fixtures/score.json';
-import * as subscores from '../fixtures/subscores.json';
+import * as models from './response/models/index.js';
+import insights from '../fixtures/insights.json' with { type: 'json' };
+import reasons from '../fixtures/reasons.json' with { type: 'json' };
+import score from '../fixtures/score.json' with { type: 'json' };
+import subscores from '../fixtures/subscores.json' with { type: 'json' };
 import {
   Client,
   Constants,
   Device,
   Transaction,
   TransactionReport,
-} from './index';
-import * as webRecords from './response/web-records';
+} from './index.js';
+import * as webRecords from './response/web-records.js';
 
 const baseUrl = 'https://minfraud.maxmind.com';
 const nockInstance = nock(baseUrl);
@@ -869,7 +869,7 @@ describe('WebServiceClient', () => {
   });
 
   describe('reportTransaction', () => {
-    it('handles bare minimum request', () => {
+    it('handles bare minimum request', async () => {
       const report = new TransactionReport({
         ipAddress: '1.1.1.1',
         tag: Constants.Tag.CHARGEBACK,
@@ -881,10 +881,10 @@ describe('WebServiceClient', () => {
         .post(fullPath('transactions/report'), report.toString())
         .reply(204);
 
-      return expect(client.reportTransaction(report)).resolves.toBeUndefined();
+      await expect(client.reportTransaction(report)).resolves.toBeUndefined();
     });
 
-    it('handles a "full" request', () => {
+    it('handles a "full" request', async () => {
       const report = new TransactionReport({
         chargebackCode: 'foobar',
         ipAddress: '1.1.1.1',
@@ -901,7 +901,7 @@ describe('WebServiceClient', () => {
         .post(fullPath('transactions/report'), report.toString())
         .reply(204);
 
-      return expect(client.reportTransaction(report)).resolves.toBeUndefined();
+      await expect(client.reportTransaction(report)).resolves.toBeUndefined();
     });
   });
 
@@ -912,24 +912,24 @@ describe('WebServiceClient', () => {
       }),
     });
 
-    it('handles timeouts', () => {
+    it('handles timeouts', async () => {
       const timeoutClient = new Client(auth.user, auth.pass, 10);
       expect.assertions(1);
 
       nockInstance
         .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
-        .delayConnection(100)
+        .delay(100)
         .reply(200, score.response.full);
 
-      return expect(timeoutClient.score(transaction)).rejects.toEqual({
+      await expect(timeoutClient.score(transaction)).rejects.toEqual({
         code: 'NETWORK_TIMEOUT',
         error: 'The request timed out',
         url: baseUrl + fullPath('score'),
       });
     });
 
-    it('handles 5xx level errors', () => {
+    it('handles 5xx level errors', async () => {
       expect.assertions(1);
 
       nockInstance
@@ -937,7 +937,7 @@ describe('WebServiceClient', () => {
         .basicAuth(auth)
         .reply(500);
 
-      return expect(client.score(transaction)).rejects.toEqual({
+      await expect(client.score(transaction)).rejects.toEqual({
         code: 'SERVER_ERROR',
         error: 'Received a server error with HTTP status code: 500',
         status: 500,
@@ -945,7 +945,7 @@ describe('WebServiceClient', () => {
       });
     });
 
-    it('handles 3xx level errors', () => {
+    it('handles 3xx level errors', async () => {
       expect.assertions(1);
 
       nockInstance
@@ -953,7 +953,7 @@ describe('WebServiceClient', () => {
         .basicAuth(auth)
         .reply(300);
 
-      return expect(client.score(transaction)).rejects.toEqual({
+      await expect(client.score(transaction)).rejects.toEqual({
         code: 'HTTP_STATUS_CODE_ERROR',
         error: 'Received an unexpected HTTP status code: 300',
         status: 300,
@@ -961,7 +961,7 @@ describe('WebServiceClient', () => {
       });
     });
 
-    it('handles errors with unknown payload', () => {
+    it('handles errors with unknown payload', async () => {
       expect.assertions(1);
 
       nockInstance
@@ -969,7 +969,7 @@ describe('WebServiceClient', () => {
         .basicAuth(auth)
         .reply(401, { foo: 'bar' });
 
-      return expect(client.score(transaction)).rejects.toEqual({
+      await expect(client.score(transaction)).rejects.toEqual({
         code: 'INVALID_RESPONSE_BODY',
         error: 'Received an invalid or unparseable response body',
         status: 401,
@@ -977,7 +977,7 @@ describe('WebServiceClient', () => {
       });
     });
 
-    it('handles general fetch errors', () => {
+    it('handles general fetch errors', async () => {
       const error = 'general error';
 
       const expected = {
@@ -993,7 +993,7 @@ describe('WebServiceClient', () => {
         .basicAuth(auth)
         .replyWithError(error);
 
-      return expect(client.score(transaction)).rejects.toEqual(expected);
+      await expect(client.score(transaction)).rejects.toEqual(expected);
     });
 
     test.each`
@@ -1007,14 +1007,14 @@ describe('WebServiceClient', () => {
       ${401} | ${'USER_ID_REQUIRED'}      | ${'user id required'}
       ${402} | ${'INSUFFICIENT_FUNDS'}    | ${'no money!'}
       ${403} | ${'PERMISSION_REQUIRED'}   | ${'permission required'}
-    `('handles $code error', ({ code, error, status }) => {
+    `('handles $code error', async ({ code, error, status }) => {
       nockInstance
         .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
         .reply(status, { code, error });
       expect.assertions(1);
 
-      return expect(client.score(transaction)).rejects.toEqual({
+      await expect(client.score(transaction)).rejects.toEqual({
         code,
         error,
         status,

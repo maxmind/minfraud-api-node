@@ -1,6 +1,6 @@
-import { ArgumentError } from '../errors';
-import crypto from 'crypto';
-import Email from './email';
+import { ArgumentError } from '../errors.js';
+import crypto from 'node:crypto';
+import Email from './email.js';
 
 describe('Email()', () => {
   it('throws an error if email.address is not valid', () => {
@@ -86,7 +86,7 @@ describe('Email()', () => {
   });
 
   const md5 = (s: string): string => {
-    return crypto.createHash('md5').update(s).digest('hex');
+    return crypto.hash('md5', s, 'hex');
   };
 
   const normalizeTests = [

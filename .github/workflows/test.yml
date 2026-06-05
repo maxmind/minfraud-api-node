@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [18, 20]
+        version: [22, 24]
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
@@ -29,9 +29,13 @@ jobs:
         working-directory: e2e/js
       - run: npx jest
         working-directory: e2e/js
+        env:
+          NODE_OPTIONS: --experimental-vm-modules
       - run: npm ci
         working-directory: e2e/ts
       - run: npm link '@maxmind/minfraud-api-node'
         working-directory: e2e/ts
       - run: npx jest
         working-directory: e2e/ts
+        env:
+          NODE_OPTIONS: --experimental-vm-modules

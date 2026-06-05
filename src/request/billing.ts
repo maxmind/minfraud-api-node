@@ -1,4 +1,4 @@
-import Location, { LocationProps } from './location';
+import Location, { LocationProps } from './location.js';
 
 /**
  * The billing information for the transaction being sent to the web service.

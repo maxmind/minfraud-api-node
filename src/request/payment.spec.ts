@@ -1,5 +1,5 @@
-import Payment from './payment';
-import { PaymentMethod } from '../constants';
+import Payment from './payment.js';
+import { PaymentMethod } from '../constants.js';
 
 describe('Payment()', () => {
   it('constructs', () => {

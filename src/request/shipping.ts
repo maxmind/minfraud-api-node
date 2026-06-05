@@ -1,5 +1,5 @@
-import { DeliverySpeed } from '../constants';
-import Location, { LocationProps } from './location';
+import { DeliverySpeed } from '../constants.js';
+import Location, { LocationProps } from './location.js';
 
 interface ShippingProps extends LocationProps {
   /**

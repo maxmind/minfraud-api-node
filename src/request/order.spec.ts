@@ -1,6 +1,5 @@
-import { URL } from 'url';
-import { ArgumentError } from '../errors';
-import Order from './order';
+import { ArgumentError } from '../errors.js';
+import Order from './order.js';
 
 describe('Order()', () => {
   it('throws an error if currency is not valid', () => {

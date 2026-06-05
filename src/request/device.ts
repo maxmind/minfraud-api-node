@@ -1,5 +1,5 @@
-import { isIP } from 'net';
-import { ArgumentError } from '../errors';
+import { isIP } from 'node:net';
+import { ArgumentError } from '../errors.js';
 
 interface DeviceProps {
   /**

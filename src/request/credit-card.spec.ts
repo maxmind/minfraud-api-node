@@ -1,5 +1,5 @@
-import { ArgumentError } from '../errors';
-import CreditCard, { CreditCardProps } from './credit-card';
+import { ArgumentError } from '../errors.js';
+import CreditCard, { CreditCardProps } from './credit-card.js';
 
 describe('CreditCard()', () => {
   test.each`

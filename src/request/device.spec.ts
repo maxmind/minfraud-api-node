@@ -1,5 +1,5 @@
-import { ArgumentError } from '../errors';
-import Device from './device';
+import { ArgumentError } from '../errors.js';
+import Device from './device.js';
 
 describe('Device()', () => {
   it('throws an error if device.ipAddress is not valid', () => {
