@@ -74,16 +74,22 @@ client.insights(transaction).then(insightsResponse => ...);
 client.factors(transaction).then(factorsResponse => ...);
 ```
 
-If the request fails, an error object will be returned in the catch in the form
-of:
+If the request fails, the returned promise rejects with a `WebServiceError`.
+This extends the built-in `Error` and has the following shape:
 
 ```js
 {
   code: string
   error: string
+  status?: number
   url: string
+  cause?: unknown // the underlying error, when one exists
 }
 ```
+
+`error` is also available as the standard `Error` `message`, and when the
+failure was caused by another error (for example, a network failure), the
+original error is available as `cause`.
 
 ### Reporting a transaction using the Report Transactions API
 
@@ -115,16 +121,8 @@ See the API documentation for more details.
 
 If the request succeeds, no data is returned in the Promise.
 
-If the request fails, an error object will be returned in the catch in the
-form of:
-
-```js
-{
-  code: string
-  error: string
-  url: string
-}
-```
+If the request fails, the returned promise rejects with a `WebServiceError`
+(see above for its shape).
 
 ## Errors and Exceptions
 
@@ -132,8 +130,14 @@ Thrown by the request and transaction models:
 * `ArgumentError` - Thrown when invalid data is passed to the Transaction
 and Transaction property constructors.
 
+Web service failures reject with a `WebServiceError`, which extends `Error`.
+It exposes `code`, `error`, an optional `status`, `url`, and, when the failure
+was caused by another error, the standard `cause` property. Both
+`ArgumentError` and `WebServiceError` (along with the `WebServiceClientError`
+type) are exported from the package.
+
 In addition to the [response errors](https://dev.maxmind.com/minfraud/api-documentation/responses/?lang=en#errors)
-returned by the web API, we also return:
+returned by the web API, we also return these `code` values:
 
 ```js
 {
@@ -161,6 +165,10 @@ returned by the web API, we also return:
   error: <string>
 }
 ```
+
+For `FETCH_ERROR`, the `error` message includes the underlying failure reason
+(for example, a DNS or connection error) when one is available, and the
+original error is also attached as `cause`.
 
 ## Example
 

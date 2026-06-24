@@ -10,6 +10,7 @@ import {
   Device,
   Transaction,
   TransactionReport,
+  WebServiceError,
 } from './index.js';
 import * as webRecords from './response/web-records.js';
 
@@ -912,9 +913,44 @@ describe('WebServiceClient', () => {
       }),
     });
 
+    const expectError = async (
+      promise: Promise<unknown>,
+      expected: {
+        code: string;
+        error: string;
+        status?: number;
+        url: string;
+        // Whether the error's `cause` should be present or absent.
+        cause?: 'defined' | 'undefined';
+      }
+    ): Promise<WebServiceError> => {
+      const { cause, ...fields } = expected;
+      const err = await promise.then(
+        () => {
+          throw new Error('expected the request to reject');
+        },
+        (e: unknown) => e
+      );
+      expect(err).toBeInstanceOf(WebServiceError);
+      const webServiceError = err as WebServiceError;
+      expect(webServiceError).toMatchObject(fields);
+      // The `error` property is retained as an alias of `message`.
+      expect(webServiceError.message).toBe(expected.error);
+      // Assert `status` explicitly (toMatchObject ignores extra own
+      // properties), so a regression leaking a `status` onto a network-error
+      // path is caught.
+      expect(webServiceError.status).toBe(expected.status);
+      if (cause === 'defined') {
+        expect(webServiceError.cause).toBeDefined();
+      }
+      if (cause === 'undefined') {
+        expect(webServiceError.cause).toBeUndefined();
+      }
+      return webServiceError;
+    };
+
     it('handles timeouts', async () => {
       const timeoutClient = new Client(auth.user, auth.pass, 10);
-      expect.assertions(1);
 
       nockInstance
         .post(fullPath('score'), score.request.basic)
@@ -922,78 +958,155 @@ describe('WebServiceClient', () => {
         .delay(100)
         .reply(200, score.response.full);
 
-      await expect(timeoutClient.score(transaction)).rejects.toEqual({
+      // The underlying abort/timeout error is preserved as the cause.
+      await expectError(timeoutClient.score(transaction), {
         code: 'NETWORK_TIMEOUT',
         error: 'The request timed out',
         url: baseUrl + fullPath('score'),
+        cause: 'defined',
       });
     });
 
     it('handles 5xx level errors', async () => {
-      expect.assertions(1);
-
       nockInstance
         .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
         .reply(500);
 
-      await expect(client.score(transaction)).rejects.toEqual({
+      await expectError(client.score(transaction), {
         code: 'SERVER_ERROR',
         error: 'Received a server error with HTTP status code: 500',
         status: 500,
         url: baseUrl + fullPath('score'),
+        cause: 'undefined',
       });
     });
 
     it('handles 3xx level errors', async () => {
-      expect.assertions(1);
-
       nockInstance
         .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
         .reply(300);
 
-      await expect(client.score(transaction)).rejects.toEqual({
+      await expectError(client.score(transaction), {
         code: 'HTTP_STATUS_CODE_ERROR',
         error: 'Received an unexpected HTTP status code: 300',
         status: 300,
         url: baseUrl + fullPath('score'),
+        cause: 'undefined',
       });
     });
 
     it('handles errors with unknown payload', async () => {
-      expect.assertions(1);
-
       nockInstance
         .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
         .reply(401, { foo: 'bar' });
 
-      await expect(client.score(transaction)).rejects.toEqual({
+      await expectError(client.score(transaction), {
         code: 'INVALID_RESPONSE_BODY',
         error: 'Received an invalid or unparseable response body',
         status: 401,
         url: baseUrl + fullPath('score'),
+        cause: 'undefined',
       });
+    });
+
+    test.each`
+      description              | payload
+      ${'a non-string code'}   | ${{ code: 123, error: 'an error' }}
+      ${'a non-string error'}  | ${{ code: 'A_CODE', error: {} }}
+      ${'empty string fields'} | ${{ code: '', error: '' }}
+    `(
+      'treats $description as an invalid response body',
+      async ({ payload }) => {
+        nockInstance
+          .post(fullPath('score'), score.request.basic)
+          .basicAuth(auth)
+          .reply(400, payload);
+
+        await expectError(client.score(transaction), {
+          code: 'INVALID_RESPONSE_BODY',
+          error: 'Received an invalid or unparseable response body',
+          status: 400,
+          url: baseUrl + fullPath('score'),
+          cause: 'undefined',
+        });
+      }
+    );
+
+    it('preserves the cause for invalid response bodies', async () => {
+      nockInstance
+        .post(fullPath('score'), score.request.basic)
+        .basicAuth(auth)
+        .reply(200, 'this is not json');
+
+      const err = await expectError(client.score(transaction), {
+        code: 'INVALID_RESPONSE_BODY',
+        error: 'Received an invalid or unparseable response body',
+        url: baseUrl + fullPath('score'),
+        cause: 'defined',
+      });
+      // The JSON parse error is preserved as the cause. (instanceof Error is
+      // unreliable here: under --experimental-vm-modules the parse error is
+      // created in a different realm than this test file.)
+      expect((err.cause as Error).message).toEqual(expect.any(String));
+    });
+
+    it('preserves the cause when an error response body is not JSON', async () => {
+      nockInstance
+        .post(fullPath('score'), score.request.basic)
+        .basicAuth(auth)
+        .reply(401, 'this is not json');
+
+      const err = await expectError(client.score(transaction), {
+        code: 'INVALID_RESPONSE_BODY',
+        error: 'Received an invalid or unparseable response body',
+        status: 401,
+        url: baseUrl + fullPath('score'),
+        cause: 'defined',
+      });
+      // The parse failure on a non-2xx response is preserved as the cause.
+      expect((err.cause as Error).message).toEqual(expect.any(String));
     });
 
     it('handles general fetch errors', async () => {
       const error = 'general error';
-
-      const expected = {
-        code: 'FETCH_ERROR',
-        error: `Error - ${error}`,
-        url: baseUrl + fullPath('score'),
-      };
-
-      expect.assertions(1);
 
       nockInstance
         .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
         .replyWithError(error);
 
-      await expect(client.score(transaction)).rejects.toEqual(expected);
+      const err = await expectError(client.score(transaction), {
+        code: 'FETCH_ERROR',
+        error: `Error - ${error}`,
+        url: baseUrl + fullPath('score'),
+        cause: 'defined',
+      });
+      // The original fetch error is preserved as the cause.
+      expect(err.cause).toBeInstanceOf(Error);
+      expect((err.cause as Error).message).toBe(error);
+    });
+
+    it('includes the underlying cause in the FETCH_ERROR message', async () => {
+      const fetchError = Object.assign(new TypeError('fetch failed'), {
+        cause: new Error('connect ECONNREFUSED 1.2.3.4:443'),
+      });
+
+      nockInstance
+        .post(fullPath('score'), score.request.basic)
+        .basicAuth(auth)
+        .replyWithError(fetchError);
+
+      const err = await expectError(client.score(transaction), {
+        code: 'FETCH_ERROR',
+        error: 'TypeError - fetch failed: connect ECONNREFUSED 1.2.3.4:443',
+        url: baseUrl + fullPath('score'),
+        cause: 'defined',
+      });
+      // The original error (with its own cause) is still attached.
+      expect((err.cause as Error).message).toBe('fetch failed');
     });
 
     test.each`
@@ -1012,13 +1125,13 @@ describe('WebServiceClient', () => {
         .post(fullPath('score'), score.request.basic)
         .basicAuth(auth)
         .reply(status, { code, error });
-      expect.assertions(1);
 
-      await expect(client.score(transaction)).rejects.toEqual({
+      await expectError(client.score(transaction), {
         code,
         error,
         status,
         url: baseUrl + fullPath('score'),
+        cause: 'undefined',
       });
     });
   });

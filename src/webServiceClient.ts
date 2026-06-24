@@ -1,13 +1,8 @@
 import packageInfo from '../package.json' with { type: 'json' };
+import { WebServiceError } from './errors.js';
 import Transaction from './request/transaction.js';
 import TransactionReport from './request/transaction-report.js';
 import * as models from './response/models/index.js';
-import { WebServiceClientError } from './types.js';
-
-interface ResponseError {
-  code?: string;
-  error?: string;
-}
 
 type servicePath = 'factors' | 'insights' | 'score' | 'transactions/report';
 
@@ -15,6 +10,14 @@ const invalidResponseBody = {
   code: 'INVALID_RESPONSE_BODY',
   error: 'Received an invalid or unparseable response body',
 };
+
+const isErrorBody = (data: unknown): data is { code: string; error: string } =>
+  typeof data === 'object' &&
+  data !== null &&
+  typeof (data as Record<string, unknown>).code === 'string' &&
+  (data as Record<string, unknown>).code !== '' &&
+  typeof (data as Record<string, unknown>).error === 'string' &&
+  (data as Record<string, unknown>).error !== '';
 
 export default class WebServiceClient {
   private accountID: string;
@@ -93,10 +96,10 @@ export default class WebServiceClient {
     /*
      We handle two kinds of errors here:
      1. Network errors, such as timeouts or CORS errors.  These will be caught
-       by the catch block and rethrown as a WebServiceClientError.
+       by the catch block and rethrown as a WebServiceError.
      2. Errors returned by the MaxMind web service, namely non-200 status codes. These
       will be caught by the handleBadServerResponse method and rethrown/rejected as a
-      WebServiceClientError.
+      WebServiceError.
     */
     let response: Response;
     try {
@@ -107,17 +110,28 @@ export default class WebServiceClient {
           ? err
           : new Error(String(err));
       if (error.name === 'TimeoutError') {
-        throw {
-          code: 'NETWORK_TIMEOUT',
-          error: 'The request timed out',
-          url,
-        };
+        throw new WebServiceError(
+          {
+            code: 'NETWORK_TIMEOUT',
+            error: 'The request timed out',
+            url,
+          },
+          { cause: error }
+        );
       }
-      throw {
-        code: 'FETCH_ERROR',
-        error: `${error.name} - ${error.message}`,
-        url,
-      };
+      // Include the underlying cause's message in the error string so the
+      // reason (e.g. a DNS or connection failure) is visible to consumers that
+      // only log `code`/`error`, not just available via `cause`.
+      const causeDetail =
+        error.cause instanceof Error ? `: ${error.cause.message}` : '';
+      throw new WebServiceError(
+        {
+          code: 'FETCH_ERROR',
+          error: `${error.name} - ${error.message}${causeDetail}`,
+          url,
+        },
+        { cause: error }
+      );
     }
 
     if (!response.ok) {
@@ -131,8 +145,11 @@ export default class WebServiceClient {
     let data;
     try {
       data = await response.json();
-    } catch {
-      throw { ...invalidResponseBody, url };
+    } catch (err) {
+      throw new WebServiceError(
+        { ...invalidResponseBody, url },
+        { cause: err }
+      );
     }
 
     return new modelClass(data);
@@ -141,38 +158,46 @@ export default class WebServiceClient {
   private async handleBadServerResponse(
     response: Response,
     url: string
-  ): Promise<WebServiceClientError> {
+  ): Promise<WebServiceError> {
     const status = response.status;
 
     if (status && status >= 500 && status < 600) {
-      return {
+      return new WebServiceError({
         code: 'SERVER_ERROR',
         error: `Received a server error with HTTP status code: ${status}`,
         status,
         url,
-      };
+      });
     }
 
     if (status && (status < 400 || status >= 600)) {
-      return {
+      return new WebServiceError({
         code: 'HTTP_STATUS_CODE_ERROR',
         error: `Received an unexpected HTTP status code: ${status}`,
         status,
         url,
-      };
+      });
     }
 
-    let data;
+    let data: unknown;
     try {
-      data = (await response.json()) as ResponseError;
-
-      if (!data.code || !data.error) {
-        return { ...invalidResponseBody, status, url };
-      }
-    } catch {
-      return { ...invalidResponseBody, status, url };
+      data = await response.json();
+    } catch (err) {
+      return new WebServiceError(
+        { ...invalidResponseBody, status, url },
+        { cause: err }
+      );
     }
 
-    return { ...data, status, url } as WebServiceClientError;
+    if (!isErrorBody(data)) {
+      return new WebServiceError({ ...invalidResponseBody, status, url });
+    }
+
+    return new WebServiceError({
+      code: data.code,
+      error: data.error,
+      status,
+      url,
+    });
   }
 }
