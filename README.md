@@ -166,6 +166,10 @@ returned by the web API, we also return these `code` values:
 }
 ```
 
+For `FETCH_ERROR`, the `error` message includes the underlying failure reason
+(for example, a DNS or connection error) when one is available, and the
+original error is also attached as `cause`.
+
 ## Example
 
 ```js
