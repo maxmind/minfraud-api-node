@@ -3,13 +3,29 @@ import { WebServiceError } from './errors.js';
 import Transaction from './request/transaction.js';
 import TransactionReport from './request/transaction-report.js';
 import * as models from './response/models/index.js';
+import { ClientErrorCode } from './types.js';
 
 type servicePath = 'factors' | 'insights' | 'score' | 'transactions/report';
 
 const invalidResponseBody = {
   code: 'INVALID_RESPONSE_BODY',
   error: 'Received an invalid or unparseable response body',
-};
+} satisfies { code: ClientErrorCode; error: string };
+
+// Builds a WebServiceError for a client-generated failure. Typing `code` as the
+// closed `ClientErrorCode` (rather than the open `WebServiceErrorCode` the
+// WebServiceError constructor accepts) makes a typo at a throw site a compile
+// error and keeps the `ClientErrorCode` union in sync with what the client
+// actually emits.
+const clientError = (
+  properties: {
+    code: ClientErrorCode;
+    error: string;
+    status?: number;
+    url: string;
+  },
+  options?: { cause?: unknown }
+): WebServiceError => new WebServiceError(properties, options);
 
 const isErrorBody = (data: unknown): data is { code: string; error: string } =>
   typeof data === 'object' &&
@@ -110,7 +126,7 @@ export default class WebServiceClient {
           ? err
           : new Error(String(err));
       if (error.name === 'TimeoutError') {
-        throw new WebServiceError(
+        throw clientError(
           {
             code: 'NETWORK_TIMEOUT',
             error: 'The request timed out',
@@ -124,7 +140,7 @@ export default class WebServiceClient {
       // only log `code`/`error`, not just available via `cause`.
       const causeDetail =
         error.cause instanceof Error ? `: ${error.cause.message}` : '';
-      throw new WebServiceError(
+      throw clientError(
         {
           code: 'FETCH_ERROR',
           error: `${error.name} - ${error.message}${causeDetail}`,
@@ -146,10 +162,7 @@ export default class WebServiceClient {
     try {
       data = await response.json();
     } catch (err) {
-      throw new WebServiceError(
-        { ...invalidResponseBody, url },
-        { cause: err }
-      );
+      throw clientError({ ...invalidResponseBody, url }, { cause: err });
     }
 
     return new modelClass(data);
@@ -162,7 +175,7 @@ export default class WebServiceClient {
     const status = response.status;
 
     if (status && status >= 500 && status < 600) {
-      return new WebServiceError({
+      return clientError({
         code: 'SERVER_ERROR',
         error: `Received a server error with HTTP status code: ${status}`,
         status,
@@ -171,7 +184,7 @@ export default class WebServiceClient {
     }
 
     if (status && (status < 400 || status >= 600)) {
-      return new WebServiceError({
+      return clientError({
         code: 'HTTP_STATUS_CODE_ERROR',
         error: `Received an unexpected HTTP status code: ${status}`,
         status,
@@ -183,14 +196,14 @@ export default class WebServiceClient {
     try {
       data = await response.json();
     } catch (err) {
-      return new WebServiceError(
+      return clientError(
         { ...invalidResponseBody, status, url },
         { cause: err }
       );
     }
 
     if (!isErrorBody(data)) {
-      return new WebServiceError({ ...invalidResponseBody, status, url });
+      return clientError({ ...invalidResponseBody, status, url });
     }
 
     return new WebServiceError({
