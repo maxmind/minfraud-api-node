@@ -30,6 +30,20 @@ describe('Email()', () => {
     expect(email).toThrow('email.address');
   });
 
+  it.each([
+    'foo@bar', // no dot in the domain
+    'foo bar@example.com', // whitespace
+    'foo@@example.com', // multiple @
+    'foo@-example.com', // label starting with a hyphen
+    'foo@example..com', // empty label
+    'foo@example.123', // purely numeric TLD
+    'foo@1.2.3.4', // looks like an IP address
+  ])('email.address %p is not valid', (address) => {
+    const email = () => new Email({ address });
+    expect(email).toThrow(ArgumentError);
+    expect(email).toThrow('email.address');
+  });
+
   it('throws an error if email.domain is not valid', () => {
     const email = () =>
       new Email({
@@ -37,6 +51,34 @@ describe('Email()', () => {
       });
     expect(email).toThrow(ArgumentError);
     expect(email).toThrow('email.domain');
+  });
+
+  it('throws an ArgumentError (not a TypeError) for a non-string domain', () => {
+    const email = () =>
+      new Email({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        domain: 123,
+      });
+    expect(email).toThrow(ArgumentError);
+    expect(email).toThrow('email.domain');
+  });
+
+  it('throws an error if a domain label exceeds 63 characters', () => {
+    const email = () =>
+      new Email({
+        domain: `${'a'.repeat(64)}.com`,
+      });
+    expect(email).toThrow(ArgumentError);
+    expect(email).toThrow('email.domain');
+  });
+
+  it('accepts a domain label of exactly 63 characters', () => {
+    expect(() => {
+      new Email({
+        domain: `${'a'.repeat(63)}.com`,
+      });
+    }).not.toThrow();
   });
 
   it('constructs', () => {

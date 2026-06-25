@@ -1,4 +1,3 @@
-import validator from 'validator';
 import { ArgumentError } from '../errors.js';
 import Account from './account.js';
 import Billing from './billing.js';
@@ -12,6 +11,15 @@ import Payment from './payment.js';
 import Shipping from './shipping.js';
 import ShoppingCartItem from './shopping-cart-item.js';
 import Transaction, { TransactionProps } from './transaction.js';
+
+const isJSON = (value: string): boolean => {
+  try {
+    JSON.parse(value);
+    return true;
+  } catch {
+    return false;
+  }
+};
 
 describe('Transaction()', () => {
   it('does not throw an error if `device` is not defined', () => {
@@ -170,7 +178,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toEqual(`{${deviceString}}`);
     });
@@ -188,7 +196,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -209,7 +217,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -229,7 +237,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -247,7 +255,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -306,7 +314,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -324,7 +332,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -343,7 +351,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -364,7 +372,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -388,7 +396,7 @@ describe('Transaction()', () => {
         ],
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -538,7 +546,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(
         '"credit_card":{"issuer_id_number":"12345678","last_digits":"12"}'
@@ -557,7 +565,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(
         '"credit_card":{"issuer_id_number":"12345678","last_digits":"1234"}'
@@ -576,7 +584,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(
         '"credit_card":{"issuer_id_number":"123456","last_digits":"12"}'

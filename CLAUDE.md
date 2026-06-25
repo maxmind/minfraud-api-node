@@ -57,7 +57,7 @@ Responses use snake_case and are converted to camelCase in model constructors:
 // Model exposes: response.riskScore, response.fundsRemaining
 ```
 
-The `camelizeResponse()` utility in `utils.ts` handles deep conversion for response data.
+The `camelcaseKeys()` utility in `utils.ts` handles deep conversion for response data.
 The `snakecaseKeys()` utility converts request objects to snake_case.
 
 #### 2. **Model Inheritance Hierarchy**
@@ -293,12 +293,12 @@ Always update `CHANGELOG.md` for user-facing changes.
 
 API responses use snake_case but must be exposed as camelCase.
 
-**Solution**: Use `camelizeResponse()` for nested objects:
+**Solution**: Use `camelcaseKeys()` for nested objects:
 ```typescript
 this.email = this.maybeGet<records.Email>(response, 'email');
 
 private maybeGet<T>(response: Response, prop: keyof Response): T | undefined {
-  return response[prop] ? (camelizeResponse(response[prop]) as T) : undefined;
+  return response[prop] ? (camelcaseKeys(response[prop]) as T) : undefined;
 }
 ```
 
@@ -306,14 +306,19 @@ private maybeGet<T>(response: Response, prop: keyof Response): T | undefined {
 
 Request components should validate inputs in constructors.
 
-**Solution**: Import validators from the `validator` package:
-```typescript
-import validator from 'validator';
+**Solution**: Validate inputs in the constructor and throw `ArgumentError` on
+failure, using built-ins (the library has no validation dependency):
 
-if (!validator.isEmail(props.address)) {
-  throw new ArgumentError('Invalid email address');
+```typescript
+import { isIP } from 'node:net';
+
+if (props.ipAddress != null && isIP(props.ipAddress) === 0) {
+  throw new ArgumentError('Invalid IP address');
 }
 ```
+
+Email and domain checks use small local regex helpers (`src/request/email.ts`),
+and URLs are validated with the `URL` constructor (`src/request/order.ts`).
 
 ### Problem: Missing Error Handling
 
