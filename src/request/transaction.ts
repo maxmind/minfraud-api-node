@@ -26,9 +26,11 @@ export interface TransactionProps {
    */
   creditCard?: CreditCard;
   /**
-   * Custom inputs as configured on your account portal.
+   * Custom inputs as configured on your account portal. This may be provided
+   * either as an array of `CustomInput` instances or as a plain object mapping
+   * input keys to their values.
    */
-  customInputs?: CustomInput[];
+  customInputs?: CustomInput[] | Record<string, boolean | number | string>;
   /**
    * Information about the device used in the transaction.
    */
@@ -92,7 +94,9 @@ export default class Transaction {
     Object.assign(this, transaction);
 
     if (transaction.customInputs != null) {
-      this.customInputs = Object.assign({}, ...transaction.customInputs);
+      this.customInputs = Array.isArray(transaction.customInputs)
+        ? Object.assign({}, ...transaction.customInputs)
+        : { ...transaction.customInputs };
     }
   }
 
@@ -190,11 +194,25 @@ export default class Transaction {
     }
 
     if (props.customInputs != null) {
-      for (const [idx, item] of props.customInputs.entries()) {
-        if (!(item instanceof CustomInput)) {
-          throw new ArgumentError(
-            `\`customInputs[${idx}]\` needs to be an instance of CustomInput`
-          );
+      if (Array.isArray(props.customInputs)) {
+        for (const [idx, item] of props.customInputs.entries()) {
+          if (!(item instanceof CustomInput)) {
+            throw new ArgumentError(
+              `\`customInputs[${idx}]\` needs to be an instance of CustomInput`
+            );
+          }
+        }
+      } else {
+        for (const [key, value] of Object.entries(props.customInputs)) {
+          const isValid =
+            typeof value === 'boolean' ||
+            typeof value === 'string' ||
+            (typeof value === 'number' && Number.isFinite(value));
+          if (!isValid) {
+            throw new ArgumentError(
+              `\`customInputs.${key}\` needs to be a boolean, finite number, or string`
+            );
+          }
         }
       }
     }

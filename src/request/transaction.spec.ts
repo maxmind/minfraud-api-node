@@ -119,6 +119,46 @@ describe('Transaction()', () => {
     });
   });
 
+  it('accepts custom inputs as a plain record', () => {
+    const test = new Transaction({
+      customInputs: { fizz: 'buzz', foo: 'bar' },
+      device: new Device({
+        ipAddress: '1.1.1.1',
+      }),
+    });
+
+    expect(test.customInputs).toEqual({
+      fizz: 'buzz',
+      foo: 'bar',
+    });
+  });
+
+  it('throws if a customInputs record value is not a primitive', () => {
+    const test = () =>
+      new Transaction({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        customInputs: { foo: { nested: true } },
+        device: new Device({
+          ipAddress: '1.1.1.1',
+        }),
+      });
+    expect(test).toThrow(ArgumentError);
+    expect(test).toThrow('customInputs');
+  });
+
+  it('throws if a customInputs record value is a non-finite number', () => {
+    const test = () =>
+      new Transaction({
+        customInputs: { foo: NaN },
+        device: new Device({
+          ipAddress: '1.1.1.1',
+        }),
+      });
+    expect(test).toThrow(ArgumentError);
+    expect(test).toThrow('customInputs');
+  });
+
   describe('toString()', () => {
     const deviceString = '"device":{"ip_address":"1.1.1.1","session_age":100}';
 
