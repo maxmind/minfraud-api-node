@@ -102,4 +102,15 @@ describe('ArgumentError', () => {
     expect(err.name).toBe('ArgumentError');
     expect(err.message).toBe('bad input');
   });
+
+  it('preserves the underlying cause when provided', () => {
+    const cause = new RangeError('bad value');
+    const err = new ArgumentError('bad input', { cause });
+
+    expect(err.cause).toBe(cause);
+  });
+
+  it('leaves cause undefined when not provided', () => {
+    expect(new ArgumentError('bad input').cause).toBeUndefined();
+  });
 });

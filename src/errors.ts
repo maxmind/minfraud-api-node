@@ -2,8 +2,8 @@ import { WebServiceClientError, WebServiceErrorCode } from './types.js';
 
 /* tslint:disable:max-classes-per-file */
 export class ArgumentError extends Error {
-  constructor(message: string) {
-    super(message);
+  constructor(message: string, options?: { cause?: unknown }) {
+    super(message, options);
     this.name = this.constructor.name;
   }
 }
