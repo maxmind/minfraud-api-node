@@ -214,6 +214,47 @@ describe('Transaction()', () => {
       expect(test.toString()).toContain('"billing":{"address_2":"foo"}');
     });
 
+    it('does not mutate the caller’s input objects when serializing', () => {
+      const billing = new Billing({ address2: 'foo' });
+      const shipping = new Shipping({ address2: 'bar' });
+      const creditCard = new CreditCard({ was3DSecureSuccessful: true });
+      const order = new Order({
+        referrerUri: new URL('https://example.com/foo'),
+      });
+      const test = new Transaction({
+        billing,
+        creditCard,
+        device: new Device({ ipAddress: '1.1.1.1' }),
+        order,
+        shipping,
+      });
+
+      const serialized = test.toString();
+      expect(serialized).toContain('"billing":{"address_2":"foo"}');
+      expect(serialized).toContain('"shipping":{"address_2":"bar"}');
+      expect(serialized).toContain('"was_3d_secure_successful":true');
+      expect(serialized).toContain('"referrer_uri":"https://example.com/foo"');
+
+      // Serializing must not have rewritten any of the caller's instances.
+      expect(billing.address2).toEqual('foo');
+      expect(Object.prototype.hasOwnProperty.call(billing, 'address_2')).toBe(
+        false
+      );
+      expect(shipping.address2).toEqual('bar');
+      expect(Object.prototype.hasOwnProperty.call(shipping, 'address_2')).toBe(
+        false
+      );
+      expect(creditCard.was3DSecureSuccessful).toBe(true);
+      expect(
+        Object.prototype.hasOwnProperty.call(
+          creditCard,
+          'was_3d_secure_successful'
+        )
+      ).toBe(false);
+      // referrerUri must still be the original URL, not a stringified copy.
+      expect(order.referrerUri).toBeInstanceOf(URL);
+    });
+
     it('it handles optional shipping field', () => {
       const test = new Transaction({
         device: new Device({
