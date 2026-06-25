@@ -182,17 +182,25 @@ Tests use `.spec.ts` files co-located with source:
 
 ### Test Patterns
 
-Tests typically use `nock` to mock HTTP responses:
-```typescript
-import nock from 'nock';
+`WebServiceClient` tests inject a custom `fetcher` (via the constructor's
+options object) rather than mocking at the HTTP layer. A small `clientWith()`
+helper builds a client whose fetcher returns a canned `Response` and records the
+requests made, so the request shape (method, path, body, auth header) and the
+parsed response can both be asserted directly:
 
-nock('https://minfraud.maxmind.com')
-  .post('/minfraud/v2.0/score')
-  .reply(200, { risk_score: 50, id: '...', /* ... */ });
+```typescript
+const { client, requests } = clientWith(() =>
+  jsonResponse(200, { risk_score: 50, id: '...', /* ... */ })
+);
 
 const response = await client.score(transaction);
+
+expect(requests[0].url).toBe('https://minfraud.maxmind.com/minfraud/v2.0/score');
 expect(response.riskScore).toBe(50);
 ```
+
+Error and timeout cases return the appropriate `Response` (or a rejecting/
+signal-aware handler) from the fetcher. The library no longer depends on `nock`.
 
 When adding new fields to models:
 1. Update test fixtures/mocks to include the new field
