@@ -1,4 +1,4 @@
-import { camelizeResponse } from '../../utils.js';
+import { camelcaseKeys } from '../../utils.js';
 import * as records from '../records.js';
 import * as webRecords from '../web-records.js';
 
@@ -42,7 +42,7 @@ export default class Score {
   public readonly warnings?: records.Warning[];
 
   public constructor(response: webRecords.ScoreResponse) {
-    this.disposition = camelizeResponse(
+    this.disposition = camelcaseKeys(
       response.disposition
     ) as records.Disposition;
     this.fundsRemaining = response.funds_remaining;
@@ -51,7 +51,7 @@ export default class Score {
     this.queriesRemaining = response.queries_remaining;
     this.riskScore = response.risk_score;
     this.warnings = response.warnings
-      ? (camelizeResponse(response.warnings) as records.Warning[])
+      ? (camelcaseKeys(response.warnings) as records.Warning[])
       : undefined;
   }
 }

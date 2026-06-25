@@ -1,5 +1,5 @@
 import { Insights as GeoInsights } from '@maxmind/geoip2-node';
-import { camelizeResponse } from '../../utils.js';
+import { camelcaseKeys } from '../../utils.js';
 import * as records from '../records.js';
 import * as webRecords from '../web-records.js';
 import Score from './score.js';
@@ -73,7 +73,7 @@ export default class Insights extends Score {
     response: webRecords.InsightsResponse,
     prop: keyof webRecords.InsightsResponse
   ): T | undefined {
-    return response[prop] ? (camelizeResponse(response[prop]) as T) : undefined;
+    return response[prop] ? (camelcaseKeys(response[prop]) as T) : undefined;
   }
 
   private getIpAddress(

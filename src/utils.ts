@@ -22,7 +22,7 @@ const processArray = (arr: Array<unknown>): unknown[] =>
     Array.isArray(el)
       ? processArray(el)
       : isObject(el)
-        ? camelizeResponse(el as Record<string, unknown>)
+        ? camelcaseKeys(el as Record<string, unknown>)
         : el
   );
 
@@ -31,12 +31,13 @@ const processArray = (arr: Array<unknown>): unknown[] =>
  * @param input - object with some snake_case keys
  * @returns - object with camelCase keys
  */
-export function camelizeResponse(input: unknown): unknown {
-  if (!input) {
-    return input;
-  }
+export function camelcaseKeys(input: unknown): unknown {
   if (Array.isArray(input)) {
     return processArray(input);
+  }
+  // Leave primitives (and null/undefined) untouched, matching snakecaseKeys.
+  if (!isObject(input)) {
+    return input;
   }
 
   const output: Record<string, unknown> = {};
@@ -45,7 +46,7 @@ export function camelizeResponse(input: unknown): unknown {
     if (Array.isArray(value)) {
       output[snakeToCamelCase(key)] = processArray(value);
     } else if (isObject(value)) {
-      output[snakeToCamelCase(key)] = camelizeResponse(
+      output[snakeToCamelCase(key)] = camelcaseKeys(
         value as Record<string, unknown>
       );
     } else {

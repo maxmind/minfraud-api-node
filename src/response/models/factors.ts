@@ -1,4 +1,4 @@
-import { camelizeResponse } from '../../utils.js';
+import { camelcaseKeys } from '../../utils.js';
 import * as records from '../records.js';
 import * as webRecords from '../web-records.js';
 import Insights from './insights.js';
@@ -22,6 +22,6 @@ export default class Factors extends Insights {
     super(response);
 
     this.riskScoreReasons = response.risk_score_reasons;
-    this.subscores = camelizeResponse(response.subscores) as records.Subscores;
+    this.subscores = camelcaseKeys(response.subscores) as records.Subscores;
   }
 }
