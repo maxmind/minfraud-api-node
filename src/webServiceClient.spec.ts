@@ -5,6 +5,7 @@ import reasons from '../fixtures/reasons.json' with { type: 'json' };
 import score from '../fixtures/score.json' with { type: 'json' };
 import subscores from '../fixtures/subscores.json' with { type: 'json' };
 import {
+  ArgumentError,
   Client,
   Constants,
   Device,
@@ -34,6 +35,47 @@ describe('WebServiceClient', () => {
   const factors = structuredClone(insights) as any;
   factors.response.full.risk_score_reasons = structuredClone(reasons);
   factors.response.full.subscores = structuredClone(subscores);
+
+  describe('fetcher option', () => {
+    it('uses an injected fetcher instead of the global fetch', async () => {
+      const calls: { init?: RequestInit; url: RequestInfo | URL }[] = [];
+      const fetcher = ((url: RequestInfo | URL, init?: RequestInit) => {
+        calls.push({ init, url });
+        return Promise.resolve(
+          new Response(JSON.stringify(score.response.full), {
+            headers: { 'content-type': 'application/json' },
+            status: 200,
+          })
+        );
+      }) as typeof fetch;
+      const localClient = new Client(auth.user, auth.pass, { fetcher });
+      const transaction = new Transaction({
+        device: new Device({ ipAddress: '1.1.1.1' }),
+      });
+
+      const got = await localClient.score(transaction);
+
+      expect(calls).toHaveLength(1);
+      expect(calls[0].url).toBe(`${baseUrl}${fullPath('score')}`);
+      expect(got.riskScore).toEqual(0.01);
+    });
+
+    it('treats a null options argument like no options', () => {
+      // A JS caller may pass an explicit null; it must not crash the
+      // constructor (typeof null === 'object').
+      expect(
+        () => new Client(auth.user, auth.pass, null as unknown as undefined)
+      ).not.toThrow();
+    });
+
+    it('rejects a legacy positional host argument', () => {
+      // The old constructor took (accountID, licenseKey, timeout, host); a
+      // fourth argument now indicates an out-of-date call site.
+      expect(
+        () => new Client(auth.user, auth.pass, 3000, 'proxy.example' as never)
+      ).toThrow(ArgumentError);
+    });
+  });
 
   describe('factors()', () => {
     const transaction = new Transaction({

@@ -40,3 +40,4 @@ export type {
   WebServiceClientError,
   WebServiceErrorCode,
 } from './types.js';
+export type { WebServiceClientOptions } from './webServiceClient.js';

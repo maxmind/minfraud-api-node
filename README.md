@@ -34,12 +34,18 @@ takes your MaxMind account ID and license key. For example:
 const client = new minFraud.Client("1234", "LICENSEKEY");
 ```
 
-If you would like to use the Sandbox environment, you can
-set the `host` parameter to `sandbox.maxmind.com`:
+The constructor also takes an optional third argument: an options object with
+`timeout` (milliseconds, default `3000`), `host` (default `minfraud.maxmind.com`),
+and `fetcher` (a custom `fetch` implementation, e.g. to route requests through a
+proxy or custom dispatcher). If you would like to use the Sandbox environment,
+set `host` to `sandbox.maxmind.com`:
 
 ```js
-const client = new minFraud.Client("1234", "LICENSEKEY", 3000, 'sandbox.maxmind.com');
+const client = new minFraud.Client("1234", "LICENSEKEY", { host: 'sandbox.maxmind.com' });
 ```
+
+For backward compatibility, a number may be passed as the third argument and is
+treated as the `timeout`, though this is deprecated.
 
 Then create a new `Transaction` object. This represents the transaction that
 you are sending to minFraud. Each transaction property is instantiated by creating
