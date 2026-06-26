@@ -26,9 +26,11 @@ export interface TransactionProps {
    */
   creditCard?: CreditCard;
   /**
-   * Custom inputs as configured on your account portal.
+   * Custom inputs as configured on your account portal. This may be provided
+   * either as an array of `CustomInput` instances or as a plain object mapping
+   * input keys to their values.
    */
-  customInputs?: CustomInput[];
+  customInputs?: CustomInput[] | Record<string, boolean | number | string>;
   /**
    * Information about the device used in the transaction.
    */
@@ -92,18 +94,14 @@ export default class Transaction {
     Object.assign(this, transaction);
 
     if (transaction.customInputs != null) {
-      this.customInputs = Object.assign({}, ...transaction.customInputs);
+      this.customInputs = Array.isArray(transaction.customInputs)
+        ? Object.assign({}, ...transaction.customInputs)
+        : { ...transaction.customInputs };
     }
   }
 
   public toString(): string {
-    const sanitized = this.sanitizeKeys();
-
-    if (sanitized.order != null && sanitized.order.referrerUri) {
-      sanitized.order.referrerUri = sanitized.order.referrerUri.toString();
-    }
-
-    return JSON.stringify(snakecaseKeys(sanitized));
+    return JSON.stringify(snakecaseKeys(this.sanitizeKeys()));
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -119,20 +117,24 @@ export default class Transaction {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const sanitized = Object.assign({}, this) as any;
 
+    // `Object.assign({}, this)` is a shallow copy, so the nested request
+    // objects are still the caller's instances. Rebuild each one we need to
+    // rename keys on as a fresh object rather than mutating it in place, so
+    // serializing a Transaction never mutates the objects the caller passed in.
     if (
       sanitized.billing &&
       Object.prototype.hasOwnProperty.call(sanitized.billing, 'address2')
     ) {
-      sanitized.billing.address_2 = sanitized.billing.address2;
-      delete sanitized.billing.address2;
+      const { address2, ...rest } = sanitized.billing;
+      sanitized.billing = { ...rest, address_2: address2 };
     }
 
     if (
       sanitized.shipping &&
       Object.prototype.hasOwnProperty.call(sanitized.shipping, 'address2')
     ) {
-      sanitized.shipping.address_2 = sanitized.shipping.address2;
-      delete sanitized.shipping.address2;
+      const { address2, ...rest } = sanitized.shipping;
+      sanitized.shipping = { ...rest, address_2: address2 };
     }
 
     if (
@@ -142,9 +144,18 @@ export default class Transaction {
         'was3DSecureSuccessful'
       )
     ) {
-      sanitized.creditCard.was_3d_secure_successful =
-        sanitized.creditCard.was3DSecureSuccessful;
-      delete sanitized.creditCard.was3DSecureSuccessful;
+      const { was3DSecureSuccessful, ...rest } = sanitized.creditCard;
+      sanitized.creditCard = {
+        ...rest,
+        was_3d_secure_successful: was3DSecureSuccessful,
+      };
+    }
+
+    if (sanitized.order && sanitized.order.referrerUri) {
+      sanitized.order = {
+        ...sanitized.order,
+        referrerUri: sanitized.order.referrerUri.toString(),
+      };
     }
 
     return sanitized;
@@ -183,11 +194,25 @@ export default class Transaction {
     }
 
     if (props.customInputs != null) {
-      for (const [idx, item] of props.customInputs.entries()) {
-        if (!(item instanceof CustomInput)) {
-          throw new ArgumentError(
-            `\`customInputs[${idx}]\` needs to be an instance of CustomInput`
-          );
+      if (Array.isArray(props.customInputs)) {
+        for (const [idx, item] of props.customInputs.entries()) {
+          if (!(item instanceof CustomInput)) {
+            throw new ArgumentError(
+              `\`customInputs[${idx}]\` needs to be an instance of CustomInput`
+            );
+          }
+        }
+      } else {
+        for (const [key, value] of Object.entries(props.customInputs)) {
+          const isValid =
+            typeof value === 'boolean' ||
+            typeof value === 'string' ||
+            (typeof value === 'number' && Number.isFinite(value));
+          if (!isValid) {
+            throw new ArgumentError(
+              `\`customInputs.${key}\` needs to be a boolean, finite number, or string`
+            );
+          }
         }
       }
     }

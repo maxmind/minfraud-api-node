@@ -1,7 +1,41 @@
 import crypto from 'node:crypto';
 import { domainToASCII } from 'node:url';
-import validator from 'validator';
 import { ArgumentError } from '../errors.js';
+
+// A fully-qualified domain name: two or more dot-separated labels of letters
+// (including non-ASCII), combining marks, digits, or hyphens, with no label
+// starting or ending with a hyphen. Replaces validator.isFQDN.
+const isFQDN = (value: unknown): boolean => {
+  // Fail closed for non-string input so the constructor surfaces an
+  // ArgumentError rather than a raw TypeError from `.split`.
+  if (typeof value !== 'string' || value.length > 253) {
+    return false;
+  }
+  const labels = value.split('.');
+  if (labels.length < 2) {
+    return false;
+  }
+  // The top-level domain must not be purely numeric (RFC 3696), which also
+  // rejects IP-address-like values.
+  if (/^\d+$/.test(labels[labels.length - 1])) {
+    return false;
+  }
+  return labels.every(
+    (label) =>
+      label.length <= 63 &&
+      /^[\p{L}\p{M}\p{N}-]+$/u.test(label) &&
+      !label.startsWith('-') &&
+      !label.endsWith('-')
+  );
+};
+
+// A pragmatic email check: a non-empty local part with no whitespace or `@`,
+// followed by a fully-qualified domain. This intentionally does not implement
+// the full RFC 5322 grammar. Replaces validator.isEmail.
+const isEmail = (value: string): boolean => {
+  const match = /^([^\s@]+)@([^\s@]+)$/.exec(value);
+  return match !== null && isFQDN(match[2]);
+};
 
 interface EmailProps {
   /**
@@ -283,11 +317,11 @@ export default class Email implements EmailProps {
   };
 
   public constructor(email: EmailProps) {
-    if (email.address != null && !validator.isEmail(email.address)) {
+    if (email.address != null && !isEmail(email.address)) {
       throw new ArgumentError('`email.address` is an invalid email address');
     }
 
-    if (email.domain != null && !validator.isFQDN(email.domain)) {
+    if (email.domain != null && !isFQDN(email.domain)) {
       throw new ArgumentError('`email.domain` is an invalid domain');
     }
 

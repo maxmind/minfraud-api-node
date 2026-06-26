@@ -13,7 +13,6 @@ import Shipping from './request/shipping.js';
 import ShoppingCartItem from './request/shopping-cart-item.js';
 import Transaction from './request/transaction.js';
 import TransactionReport from './request/transaction-report.js';
-import { WebServiceClientError } from './types.js';
 import Client from './webServiceClient.js';
 
 export {
@@ -36,4 +35,9 @@ export {
   WebServiceError,
 };
 
-export type { WebServiceClientError };
+export type {
+  ClientErrorCode,
+  WebServiceClientError,
+  WebServiceErrorCode,
+} from './types.js';
+export type { WebServiceClientOptions } from './webServiceClient.js';

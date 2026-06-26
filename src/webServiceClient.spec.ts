@@ -1,10 +1,10 @@
-import nock from 'nock';
 import * as models from './response/models/index.js';
 import insights from '../fixtures/insights.json' with { type: 'json' };
 import reasons from '../fixtures/reasons.json' with { type: 'json' };
 import score from '../fixtures/score.json' with { type: 'json' };
 import subscores from '../fixtures/subscores.json' with { type: 'json' };
 import {
+  ArgumentError,
   Client,
   Constants,
   Device,
@@ -15,25 +15,86 @@ import {
 import * as webRecords from './response/web-records.js';
 
 const baseUrl = 'https://minfraud.maxmind.com';
-const nockInstance = nock(baseUrl);
 const auth = {
   pass: 'foo',
   user: '123',
 };
 const fullPath = (path: string) => `/minfraud/v2.0/${path}`;
 
-const client = new Client(auth.user, auth.pass);
+interface CapturedRequest {
+  init?: RequestInit;
+  url: RequestInfo | URL;
+}
 
-describe('WebServiceClient', () => {
-  afterEach(() => {
-    nock.cleanAll();
-    nock.abortPendingRequests();
+const jsonResponse = (status: number, body: unknown): Response =>
+  new Response(JSON.stringify(body), {
+    headers: { 'content-type': 'application/json' },
+    status,
   });
 
+// Builds a client backed by an injected fetcher driven by `handler`, capturing
+// the requests the client makes so they can be asserted on. This replaces
+// HTTP-level mocking: the handler returns the `Response` (or rejects) for each
+// request.
+const clientWith = (
+  handler: (request: CapturedRequest) => Response | Promise<Response>,
+  options?: { host?: string; timeout?: number }
+) => {
+  const requests: CapturedRequest[] = [];
+  const fetcher = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    const request = { init, url };
+    requests.push(request);
+    return handler(request);
+  }) as typeof fetch;
+  const client = new Client(auth.user, auth.pass, { fetcher, ...options });
+  return { client, requests };
+};
+
+describe('WebServiceClient', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const factors = structuredClone(insights) as any;
   factors.response.full.risk_score_reasons = structuredClone(reasons);
   factors.response.full.subscores = structuredClone(subscores);
+
+  describe('fetcher option', () => {
+    it('uses the injected fetcher with the correct method, path, body, and auth', async () => {
+      const { client, requests } = clientWith(() =>
+        jsonResponse(200, score.response.full)
+      );
+      const transaction = new Transaction({
+        device: new Device({ ipAddress: '1.1.1.1' }),
+      });
+
+      const got = await client.score(transaction);
+
+      expect(requests).toHaveLength(1);
+      expect(requests[0].url).toBe(`${baseUrl}${fullPath('score')}`);
+      expect(requests[0].init!.method).toBe('POST');
+      expect(requests[0].init!.body).toBe(transaction.toString());
+      const headers = requests[0].init!.headers as Record<string, string>;
+      expect(headers.Authorization).toBe(
+        'Basic ' + btoa(`${auth.user}:${auth.pass}`)
+      );
+      expect(headers['User-Agent']).toMatch(/^minfraud-api-node\//);
+      expect(got.riskScore).toEqual(0.01);
+    });
+
+    it('treats a null options argument like no options', () => {
+      // A JS caller may pass an explicit null; it must not crash the
+      // constructor (typeof null === 'object').
+      expect(
+        () => new Client(auth.user, auth.pass, null as unknown as undefined)
+      ).not.toThrow();
+    });
+
+    it('rejects a legacy positional host argument', () => {
+      // The old constructor took (accountID, licenseKey, timeout, host); a
+      // fourth argument now indicates an out-of-date call site.
+      expect(
+        () => new Client(auth.user, auth.pass, 3000, 'proxy.example' as never)
+      ).toThrow(ArgumentError);
+    });
+  });
 
   describe('factors()', () => {
     const transaction = new Transaction({
@@ -45,10 +106,9 @@ describe('WebServiceClient', () => {
     it('handles "full" responses', async () => {
       expect.assertions(180);
 
-      nockInstance
-        .post(fullPath('factors'), factors.request.basic)
-        .basicAuth(auth)
-        .reply(200, factors.response.full);
+      const { client } = clientWith(() =>
+        jsonResponse(200, factors.response.full)
+      );
 
       const got: models.Factors = await client.factors(transaction);
 
@@ -307,10 +367,9 @@ describe('WebServiceClient', () => {
     it('handles "full" responses', async () => {
       expect.assertions(155);
 
-      nockInstance
-        .post(fullPath('insights'), insights.request.basic)
-        .basicAuth(auth)
-        .reply(200, insights.response.full);
+      const { client } = clientWith(() =>
+        jsonResponse(200, insights.response.full)
+      );
 
       const got: models.Insights = await client.insights(transaction);
 
@@ -539,10 +598,7 @@ describe('WebServiceClient', () => {
       const response = structuredClone(insights.response.full);
       delete response[property as keyof webRecords.InsightsResponse];
 
-      nockInstance
-        .post(fullPath('insights'), insights.request.basic)
-        .basicAuth(auth)
-        .reply(200, response);
+      const { client } = clientWith(() => jsonResponse(200, response));
 
       const got: models.Insights = await client.insights(transaction);
 
@@ -783,10 +839,9 @@ describe('WebServiceClient', () => {
     it('handles "full" responses', async () => {
       expect.assertions(11);
 
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .basicAuth(auth)
-        .reply(200, score.response.full);
+      const { client } = clientWith(() =>
+        jsonResponse(200, score.response.full)
+      );
 
       const got: models.Score = await client.score(transaction);
 
@@ -808,9 +863,9 @@ describe('WebServiceClient', () => {
     it('handles "no disposition" responses', async () => {
       expect.assertions(8);
 
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .reply(200, score.response.noDisposition);
+      const { client } = clientWith(() =>
+        jsonResponse(200, score.response.noDisposition)
+      );
 
       const got: models.Score = await client.score(transaction);
 
@@ -829,9 +884,9 @@ describe('WebServiceClient', () => {
     it('handles "no disposition rule_label" responses', async () => {
       expect.assertions(10);
 
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .reply(200, score.response.noDispositionRuleLabel);
+      const { client } = clientWith(() =>
+        jsonResponse(200, score.response.noDispositionRuleLabel)
+      );
 
       const got: models.Score = await client.score(transaction);
 
@@ -852,9 +907,9 @@ describe('WebServiceClient', () => {
     it('handles "no warnings" responses', async () => {
       expect.assertions(8);
 
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .reply(200, score.response.noWarnings);
+      const { client } = clientWith(() =>
+        jsonResponse(200, score.response.noWarnings)
+      );
 
       const got: models.Score = await client.score(transaction);
 
@@ -878,9 +933,7 @@ describe('WebServiceClient', () => {
 
       expect.assertions(1);
 
-      nockInstance
-        .post(fullPath('transactions/report'), report.toString())
-        .reply(204);
+      const { client } = clientWith(() => new Response(null, { status: 204 }));
 
       await expect(client.reportTransaction(report)).resolves.toBeUndefined();
     });
@@ -898,9 +951,7 @@ describe('WebServiceClient', () => {
 
       expect.assertions(1);
 
-      nockInstance
-        .post(fullPath('transactions/report'), report.toString())
-        .reply(204);
+      const { client } = clientWith(() => new Response(null, { status: 204 }));
 
       await expect(client.reportTransaction(report)).resolves.toBeUndefined();
     });
@@ -950,16 +1001,21 @@ describe('WebServiceClient', () => {
     };
 
     it('handles timeouts', async () => {
-      const timeoutClient = new Client(auth.user, auth.pass, 10);
-
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .basicAuth(auth)
-        .delay(100)
-        .reply(200, score.response.full);
+      // The handler rejects only when the request signal aborts, which the
+      // client's timeout triggers — exercising the real timeout signal and the
+      // NETWORK_TIMEOUT mapping without a wall-clock delay.
+      const { client } = clientWith(
+        (request) =>
+          new Promise<Response>((_resolve, reject) => {
+            request.init?.signal?.addEventListener('abort', () =>
+              reject((request.init!.signal as AbortSignal).reason)
+            );
+          }),
+        { timeout: 10 }
+      );
 
       // The underlying abort/timeout error is preserved as the cause.
-      await expectError(timeoutClient.score(transaction), {
+      await expectError(client.score(transaction), {
         code: 'NETWORK_TIMEOUT',
         error: 'The request timed out',
         url: baseUrl + fullPath('score'),
@@ -968,10 +1024,7 @@ describe('WebServiceClient', () => {
     });
 
     it('handles 5xx level errors', async () => {
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .basicAuth(auth)
-        .reply(500);
+      const { client } = clientWith(() => new Response(null, { status: 500 }));
 
       await expectError(client.score(transaction), {
         code: 'SERVER_ERROR',
@@ -983,10 +1036,7 @@ describe('WebServiceClient', () => {
     });
 
     it('handles 3xx level errors', async () => {
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .basicAuth(auth)
-        .reply(300);
+      const { client } = clientWith(() => new Response(null, { status: 300 }));
 
       await expectError(client.score(transaction), {
         code: 'HTTP_STATUS_CODE_ERROR',
@@ -998,10 +1048,7 @@ describe('WebServiceClient', () => {
     });
 
     it('handles errors with unknown payload', async () => {
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .basicAuth(auth)
-        .reply(401, { foo: 'bar' });
+      const { client } = clientWith(() => jsonResponse(401, { foo: 'bar' }));
 
       await expectError(client.score(transaction), {
         code: 'INVALID_RESPONSE_BODY',
@@ -1020,10 +1067,7 @@ describe('WebServiceClient', () => {
     `(
       'treats $description as an invalid response body',
       async ({ payload }) => {
-        nockInstance
-          .post(fullPath('score'), score.request.basic)
-          .basicAuth(auth)
-          .reply(400, payload);
+        const { client } = clientWith(() => jsonResponse(400, payload));
 
         await expectError(client.score(transaction), {
           code: 'INVALID_RESPONSE_BODY',
@@ -1036,10 +1080,9 @@ describe('WebServiceClient', () => {
     );
 
     it('preserves the cause for invalid response bodies', async () => {
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .basicAuth(auth)
-        .reply(200, 'this is not json');
+      const { client } = clientWith(
+        () => new Response('this is not json', { status: 200 })
+      );
 
       const err = await expectError(client.score(transaction), {
         code: 'INVALID_RESPONSE_BODY',
@@ -1054,10 +1097,9 @@ describe('WebServiceClient', () => {
     });
 
     it('preserves the cause when an error response body is not JSON', async () => {
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .basicAuth(auth)
-        .reply(401, 'this is not json');
+      const { client } = clientWith(
+        () => new Response('this is not json', { status: 401 })
+      );
 
       const err = await expectError(client.score(transaction), {
         code: 'INVALID_RESPONSE_BODY',
@@ -1073,10 +1115,7 @@ describe('WebServiceClient', () => {
     it('handles general fetch errors', async () => {
       const error = 'general error';
 
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .basicAuth(auth)
-        .replyWithError(error);
+      const { client } = clientWith(() => Promise.reject(new Error(error)));
 
       const err = await expectError(client.score(transaction), {
         code: 'FETCH_ERROR',
@@ -1094,10 +1133,7 @@ describe('WebServiceClient', () => {
         cause: new Error('connect ECONNREFUSED 1.2.3.4:443'),
       });
 
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .basicAuth(auth)
-        .replyWithError(fetchError);
+      const { client } = clientWith(() => Promise.reject(fetchError));
 
       const err = await expectError(client.score(transaction), {
         code: 'FETCH_ERROR',
@@ -1121,10 +1157,9 @@ describe('WebServiceClient', () => {
       ${402} | ${'INSUFFICIENT_FUNDS'}    | ${'no money!'}
       ${403} | ${'PERMISSION_REQUIRED'}   | ${'permission required'}
     `('handles $code error', async ({ code, error, status }) => {
-      nockInstance
-        .post(fullPath('score'), score.request.basic)
-        .basicAuth(auth)
-        .reply(status, { code, error });
+      const { client } = clientWith(() =>
+        jsonResponse(status, { code, error })
+      );
 
       await expectError(client.score(transaction), {
         code,

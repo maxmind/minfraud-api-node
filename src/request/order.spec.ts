@@ -22,6 +22,24 @@ describe('Order()', () => {
     expect(order).toThrow('referrer URI');
   });
 
+  it('throws an error if the referrer URI scheme is not http(s)', () => {
+    const order = () =>
+      new Order({
+        referrerUri: new URL('javascript:alert(1)'),
+      });
+    expect(order).toThrow(ArgumentError);
+    expect(order).toThrow('referrer URI');
+  });
+
+  it('throws an error if the referrer URI host has no dot', () => {
+    const order = () =>
+      new Order({
+        referrerUri: new URL('http://foo'),
+      });
+    expect(order).toThrow(ArgumentError);
+    expect(order).toThrow('referrer URI');
+  });
+
   it('constructs', () => {
     expect(() => {
       new Order({

@@ -44,6 +44,8 @@ exclude = [
     # Placeholders / example URLs used in tests and docstrings
     '^https?://example\.(com|org|net)',
     '^https?://(www\.)?foobar\.com',
+    # `http://foo` is a single-label host used to test referrer-URI validation
+    '^https?://foo/?$',
     '^http://google\.com',
     '^http://localhost',
     '127\.0\.0\.1',

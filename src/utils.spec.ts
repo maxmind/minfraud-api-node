@@ -1,4 +1,4 @@
-import { snakecaseKeys, snakeToCamelCase, camelizeResponse } from './utils.js';
+import { snakecaseKeys, snakeToCamelCase, camelcaseKeys } from './utils.js';
 
 describe('src/Utils', () => {
   describe('snakeToCamelCase()', () => {
@@ -59,6 +59,14 @@ describe('src/Utils', () => {
     });
   });
   describe('camelcaseKeys()', () => {
+    it('returns non-object input unchanged', () => {
+      expect(camelcaseKeys('foo')).toBe('foo');
+      expect(camelcaseKeys(42)).toBe(42);
+      expect(camelcaseKeys(true)).toBe(true);
+      expect(camelcaseKeys(null)).toBeNull();
+      expect(camelcaseKeys(undefined)).toBeUndefined();
+    });
+
     it("converts an object's keys from snake_case to camelCase", () => {
       const cases = [
         { input: { snake_case: 1 }, expected: { snakeCase: 1 } },
@@ -68,7 +76,7 @@ describe('src/Utils', () => {
         },
       ];
       cases.forEach((testCase) => {
-        expect(camelizeResponse(testCase.input)).toEqual(testCase.expected);
+        expect(camelcaseKeys(testCase.input)).toEqual(testCase.expected);
       });
     });
 
@@ -96,7 +104,7 @@ describe('src/Utils', () => {
         },
       ];
       cases.forEach((testCase) => {
-        expect(camelizeResponse(testCase.input)).toEqual(testCase.expected);
+        expect(camelcaseKeys(testCase.input)).toEqual(testCase.expected);
       });
     });
 
@@ -142,7 +150,7 @@ describe('src/Utils', () => {
         },
       ];
       cases.forEach((testCase) => {
-        expect(camelizeResponse(testCase.input)).toEqual(testCase.expected);
+        expect(camelcaseKeys(testCase.input)).toEqual(testCase.expected);
       });
     });
   });
