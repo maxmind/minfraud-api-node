@@ -40,6 +40,15 @@ describe('Order()', () => {
     expect(order).toThrow('referrer URI');
   });
 
+  it('accepts an IP-literal referrer host', () => {
+    expect(() => {
+      new Order({ referrerUri: new URL('https://[2001:db8::1]/') });
+    }).not.toThrow();
+    expect(() => {
+      new Order({ referrerUri: new URL('http://192.0.2.1/') });
+    }).not.toThrow();
+  });
+
   it('constructs', () => {
     expect(() => {
       new Order({
