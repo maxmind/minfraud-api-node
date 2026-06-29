@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-9.0.0 (unreleased)
+9.0.0 (2026-06-29)
 ------------------
 
 * **Breaking** Dropped support for Node.js 18 and 20. The minimum supported version is
