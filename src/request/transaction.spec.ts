@@ -139,6 +139,10 @@ describe('Transaction()', () => {
       fizz: 'buzz',
       foo: 'bar',
     });
+
+    expect(test.toString()).toContain(
+      '"custom_inputs":{"fizz":"buzz","foo":"bar"}'
+    );
   });
 
   it('throws if a customInputs record value is not a primitive', () => {
