@@ -18,10 +18,12 @@ CHANGELOG
 * **Breaking** The `WebServiceClient` constructor now takes an options object as
   its third argument (`{ timeout, host, fetcher }`) instead of positional
   `timeout` and `host` arguments. For backward compatibility a number may still
-  be passed and is treated as the `timeout`, so only callers that passed `host`
-  positionally need to change (to `{ host }`). The new `fetcher` option accepts
-  a custom `fetch` implementation, useful for routing requests through a proxy
-  or custom dispatcher, or for testing.
+  be passed and is treated as the `timeout`; callers that passed `host`
+  positionally must change to `{ host }`, and passing a fourth positional
+  argument now throws an `ArgumentError` rather than being silently ignored. The
+  new `fetcher` option accepts a custom `fetch` implementation, useful for
+  routing requests through a proxy or custom dispatcher, or for testing. The
+  `WebServiceClientOptions` type is exported from the package.
 * The `code` property on `WebServiceError` and the `WebServiceClientError`
   interface is now typed as `WebServiceErrorCode`
   (`ClientErrorCode | (string & {})`) instead of `string`, providing

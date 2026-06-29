@@ -29,6 +29,10 @@ export interface TransactionProps {
    * Custom inputs as configured on your account portal. This may be provided
    * either as an array of `CustomInput` instances or as a plain object mapping
    * input keys to their values.
+   *
+   * Note: input keys are converted to snake_case when sent to the web service
+   * (e.g. `fizzBuzz` becomes `fizz_buzz`), so name them to match the keys
+   * configured on your account portal.
    */
   customInputs?: CustomInput[] | Record<string, boolean | number | string>;
   /**

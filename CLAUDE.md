@@ -85,7 +85,11 @@ Each component validates its inputs in the constructor and throws `ArgumentError
 
 The `WebServiceClient` provides direct methods for each endpoint:
 ```typescript
-const client = new WebServiceClient(accountID, licenseKey, timeout, host);
+const client = new WebServiceClient(accountID, licenseKey, {
+  timeout,
+  host,
+  fetcher,
+});
 const response = await client.score(transaction);
 const response = await client.insights(transaction);
 const response = await client.factors(transaction);
