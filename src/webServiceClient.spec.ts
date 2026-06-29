@@ -94,6 +94,37 @@ describe('WebServiceClient', () => {
         () => new Client(auth.user, auth.pass, 3000, 'proxy.example' as never)
       ).toThrow(ArgumentError);
     });
+
+    it('sends requests to the configured host', async () => {
+      const ip = '1.1.1.1';
+      const requests: { url: RequestInfo | URL }[] = [];
+      const fetcher = ((url: RequestInfo | URL) => {
+        requests.push({ url });
+        return Promise.resolve(jsonResponse(200, score.response.full));
+      }) as typeof fetch;
+      const client = new Client(auth.user, auth.pass, {
+        fetcher,
+        host: 'sandbox.example',
+      });
+
+      await client.score(
+        new Transaction({ device: new Device({ ipAddress: ip }) })
+      );
+
+      expect(requests[0].url).toBe(
+        'https://sandbox.example/minfraud/v2.0/score'
+      );
+    });
+
+    it.each([
+      ['host', { host: null }],
+      ['timeout', { timeout: null }],
+      ['fetcher', { fetcher: null }],
+    ])('rejects a null %s option', (_name, options) => {
+      expect(() => new Client(auth.user, auth.pass, options as never)).toThrow(
+        ArgumentError
+      );
+    });
   });
 
   describe('factors()', () => {
