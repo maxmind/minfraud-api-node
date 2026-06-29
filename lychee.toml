@@ -46,6 +46,10 @@ exclude = [
     '^https?://(www\.)?foobar\.com',
     # `http://foo` is a single-label host used to test referrer-URI validation
     '^https?://foo/?$',
+    # Reserved example IPs used to test IP-literal referrer validation
+    # (RFC 5737 TEST-NET-1 and RFC 3849 IPv6 documentation literals)
+    '^https?://192\.0\.2\.',
+    '^https?://\[',
     '^http://google\.com',
     '^http://localhost',
     '127\.0\.0\.1',
