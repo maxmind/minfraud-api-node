@@ -1,4 +1,4 @@
-import validator from 'validator';
+import { isIP } from 'node:net';
 import { ArgumentError } from '../errors.js';
 
 interface OrderProps {
@@ -65,13 +65,31 @@ export default class Order implements OrderProps {
       throw new ArgumentError(`The currency code ${order.currency} is invalid`);
     }
 
-    if (
-      order.referrerUri != null &&
-      !validator.isURL(order.referrerUri.toString())
-    ) {
-      throw new ArgumentError(
-        `The referrer URI ${order.referrerUri.toString()} is invalid`
-      );
+    if (order.referrerUri != null) {
+      let parsed: URL;
+      try {
+        // The URL constructor throws for non-absolute or otherwise invalid URLs.
+        parsed = new URL(order.referrerUri.toString());
+      } catch {
+        throw new ArgumentError(
+          `The referrer URI ${order.referrerUri.toString()} is invalid`
+        );
+      }
+      // Only http(s) referrers are meaningful; reject other schemes (e.g.
+      // javascript:, data:, mailto:) and single-label hosts (e.g. http://foo)
+      // the way the former validator.isURL did by default. IP literals
+      // (e.g. http://192.0.2.1, https://[2001:db8::1]) are valid hosts even
+      // though an IPv6 literal contains no dot, so exempt them.
+      const host = parsed.hostname.replace(/^\[|\]$/g, '');
+      const isIpLiteral = isIP(host) !== 0;
+      if (
+        (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') ||
+        (!isIpLiteral && !parsed.hostname.includes('.'))
+      ) {
+        throw new ArgumentError(
+          `The referrer URI ${order.referrerUri.toString()} is invalid`
+        );
+      }
     }
 
     Object.assign(this, order);

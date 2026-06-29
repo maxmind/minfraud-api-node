@@ -1,4 +1,3 @@
-import validator from 'validator';
 import { ArgumentError } from '../errors.js';
 import Account from './account.js';
 import Billing from './billing.js';
@@ -12,6 +11,15 @@ import Payment from './payment.js';
 import Shipping from './shipping.js';
 import ShoppingCartItem from './shopping-cart-item.js';
 import Transaction, { TransactionProps } from './transaction.js';
+
+const isJSON = (value: string): boolean => {
+  try {
+    JSON.parse(value);
+    return true;
+  } catch {
+    return false;
+  }
+};
 
 describe('Transaction()', () => {
   it('does not throw an error if `device` is not defined', () => {
@@ -119,6 +127,50 @@ describe('Transaction()', () => {
     });
   });
 
+  it('accepts custom inputs as a plain record', () => {
+    const test = new Transaction({
+      customInputs: { fizz: 'buzz', foo: 'bar' },
+      device: new Device({
+        ipAddress: '1.1.1.1',
+      }),
+    });
+
+    expect(test.customInputs).toEqual({
+      fizz: 'buzz',
+      foo: 'bar',
+    });
+
+    expect(test.toString()).toContain(
+      '"custom_inputs":{"fizz":"buzz","foo":"bar"}'
+    );
+  });
+
+  it('throws if a customInputs record value is not a primitive', () => {
+    const test = () =>
+      new Transaction({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        customInputs: { foo: { nested: true } },
+        device: new Device({
+          ipAddress: '1.1.1.1',
+        }),
+      });
+    expect(test).toThrow(ArgumentError);
+    expect(test).toThrow('customInputs');
+  });
+
+  it('throws if a customInputs record value is a non-finite number', () => {
+    const test = () =>
+      new Transaction({
+        customInputs: { foo: NaN },
+        device: new Device({
+          ipAddress: '1.1.1.1',
+        }),
+      });
+    expect(test).toThrow(ArgumentError);
+    expect(test).toThrow('customInputs');
+  });
+
   describe('toString()', () => {
     const deviceString = '"device":{"ip_address":"1.1.1.1","session_age":100}';
 
@@ -130,7 +182,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toEqual(`{${deviceString}}`);
     });
@@ -148,7 +200,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -169,7 +221,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -189,7 +241,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -207,11 +259,52 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
       expect(test.toString()).toContain('"billing":{"address_2":"foo"}');
+    });
+
+    it('does not mutate the caller’s input objects when serializing', () => {
+      const billing = new Billing({ address2: 'foo' });
+      const shipping = new Shipping({ address2: 'bar' });
+      const creditCard = new CreditCard({ was3DSecureSuccessful: true });
+      const order = new Order({
+        referrerUri: new URL('https://example.com/foo'),
+      });
+      const test = new Transaction({
+        billing,
+        creditCard,
+        device: new Device({ ipAddress: '1.1.1.1' }),
+        order,
+        shipping,
+      });
+
+      const serialized = test.toString();
+      expect(serialized).toContain('"billing":{"address_2":"foo"}');
+      expect(serialized).toContain('"shipping":{"address_2":"bar"}');
+      expect(serialized).toContain('"was_3d_secure_successful":true');
+      expect(serialized).toContain('"referrer_uri":"https://example.com/foo"');
+
+      // Serializing must not have rewritten any of the caller's instances.
+      expect(billing.address2).toEqual('foo');
+      expect(Object.prototype.hasOwnProperty.call(billing, 'address_2')).toBe(
+        false
+      );
+      expect(shipping.address2).toEqual('bar');
+      expect(Object.prototype.hasOwnProperty.call(shipping, 'address_2')).toBe(
+        false
+      );
+      expect(creditCard.was3DSecureSuccessful).toBe(true);
+      expect(
+        Object.prototype.hasOwnProperty.call(
+          creditCard,
+          'was_3d_secure_successful'
+        )
+      ).toBe(false);
+      // referrerUri must still be the original URL, not a stringified copy.
+      expect(order.referrerUri).toBeInstanceOf(URL);
     });
 
     it('it handles optional shipping field', () => {
@@ -225,7 +318,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -243,7 +336,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -262,7 +355,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -283,7 +376,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -307,7 +400,7 @@ describe('Transaction()', () => {
         ],
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(deviceString);
 
@@ -457,7 +550,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(
         '"credit_card":{"issuer_id_number":"12345678","last_digits":"12"}'
@@ -476,7 +569,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(
         '"credit_card":{"issuer_id_number":"12345678","last_digits":"1234"}'
@@ -495,7 +588,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(validator.isJSON(test.toString())).toBe(true);
+      expect(isJSON(test.toString())).toBe(true);
 
       expect(test.toString()).toContain(
         '"credit_card":{"issuer_id_number":"123456","last_digits":"12"}'

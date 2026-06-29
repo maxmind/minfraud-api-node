@@ -22,21 +22,26 @@ const processArray = (arr: Array<unknown>): unknown[] =>
     Array.isArray(el)
       ? processArray(el)
       : isObject(el)
-        ? camelizeResponse(el as Record<string, unknown>)
+        ? camelcaseKeys(el as Record<string, unknown>)
         : el
   );
 
 /**
- * Deeply clones an object and converts keys from snake_case to camelCase
- * @param input - object with some snake_case keys
- * @returns - object with camelCase keys
+ * Recursively converts the keys of a plain object — and of the plain objects
+ * nested within it or within arrays — from snake_case to camelCase, returning a
+ * new value. Arrays are mapped element-wise. Primitives and non-plain objects
+ * (`null`, `undefined`, `Date`, `Error`, `RegExp`, etc.) are returned unchanged.
+ *
+ * @param input - a value that may contain snake_case keys
+ * @returns the value with object keys converted to camelCase
  */
-export function camelizeResponse(input: unknown): unknown {
-  if (!input) {
-    return input;
-  }
+export function camelcaseKeys(input: unknown): unknown {
   if (Array.isArray(input)) {
     return processArray(input);
+  }
+  // Leave primitives (and null/undefined) untouched, matching snakecaseKeys.
+  if (!isObject(input)) {
+    return input;
   }
 
   const output: Record<string, unknown> = {};
@@ -45,7 +50,7 @@ export function camelizeResponse(input: unknown): unknown {
     if (Array.isArray(value)) {
       output[snakeToCamelCase(key)] = processArray(value);
     } else if (isObject(value)) {
-      output[snakeToCamelCase(key)] = camelizeResponse(
+      output[snakeToCamelCase(key)] = camelcaseKeys(
         value as Record<string, unknown>
       );
     } else {

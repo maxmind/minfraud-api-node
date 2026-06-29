@@ -22,6 +22,33 @@ describe('Order()', () => {
     expect(order).toThrow('referrer URI');
   });
 
+  it('throws an error if the referrer URI scheme is not http(s)', () => {
+    const order = () =>
+      new Order({
+        referrerUri: new URL('javascript:alert(1)'),
+      });
+    expect(order).toThrow(ArgumentError);
+    expect(order).toThrow('referrer URI');
+  });
+
+  it('throws an error if the referrer URI host has no dot', () => {
+    const order = () =>
+      new Order({
+        referrerUri: new URL('http://foo'),
+      });
+    expect(order).toThrow(ArgumentError);
+    expect(order).toThrow('referrer URI');
+  });
+
+  it('accepts an IP-literal referrer host', () => {
+    expect(() => {
+      new Order({ referrerUri: new URL('https://[2001:db8::1]/') });
+    }).not.toThrow();
+    expect(() => {
+      new Order({ referrerUri: new URL('http://192.0.2.1/') });
+    }).not.toThrow();
+  });
+
   it('constructs', () => {
     expect(() => {
       new Order({

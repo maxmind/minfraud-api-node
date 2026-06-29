@@ -57,7 +57,7 @@ Responses use snake_case and are converted to camelCase in model constructors:
 // Model exposes: response.riskScore, response.fundsRemaining
 ```
 
-The `camelizeResponse()` utility in `utils.ts` handles deep conversion for response data.
+The `camelcaseKeys()` utility in `utils.ts` handles deep conversion for response data.
 The `snakecaseKeys()` utility converts request objects to snake_case.
 
 #### 2. **Model Inheritance Hierarchy**
@@ -85,7 +85,11 @@ Each component validates its inputs in the constructor and throws `ArgumentError
 
 The `WebServiceClient` provides direct methods for each endpoint:
 ```typescript
-const client = new WebServiceClient(accountID, licenseKey, timeout, host);
+const client = new WebServiceClient(accountID, licenseKey, {
+  timeout,
+  host,
+  fetcher,
+});
 const response = await client.score(transaction);
 const response = await client.insights(transaction);
 const response = await client.factors(transaction);
@@ -182,17 +186,25 @@ Tests use `.spec.ts` files co-located with source:
 
 ### Test Patterns
 
-Tests typically use `nock` to mock HTTP responses:
-```typescript
-import nock from 'nock';
+`WebServiceClient` tests inject a custom `fetcher` (via the constructor's
+options object) rather than mocking at the HTTP layer. A small `clientWith()`
+helper builds a client whose fetcher returns a canned `Response` and records the
+requests made, so the request shape (method, path, body, auth header) and the
+parsed response can both be asserted directly:
 
-nock('https://minfraud.maxmind.com')
-  .post('/minfraud/v2.0/score')
-  .reply(200, { risk_score: 50, id: '...', /* ... */ });
+```typescript
+const { client, requests } = clientWith(() =>
+  jsonResponse(200, { risk_score: 50, id: '...', /* ... */ })
+);
 
 const response = await client.score(transaction);
+
+expect(requests[0].url).toBe('https://minfraud.maxmind.com/minfraud/v2.0/score');
 expect(response.riskScore).toBe(50);
 ```
+
+Error and timeout cases return the appropriate `Response` (or a rejecting/
+signal-aware handler) from the fetcher. The library no longer depends on `nock`.
 
 When adding new fields to models:
 1. Update test fixtures/mocks to include the new field
@@ -293,12 +305,12 @@ Always update `CHANGELOG.md` for user-facing changes.
 
 API responses use snake_case but must be exposed as camelCase.
 
-**Solution**: Use `camelizeResponse()` for nested objects:
+**Solution**: Use `camelcaseKeys()` for nested objects:
 ```typescript
 this.email = this.maybeGet<records.Email>(response, 'email');
 
 private maybeGet<T>(response: Response, prop: keyof Response): T | undefined {
-  return response[prop] ? (camelizeResponse(response[prop]) as T) : undefined;
+  return response[prop] ? (camelcaseKeys(response[prop]) as T) : undefined;
 }
 ```
 
@@ -306,14 +318,19 @@ private maybeGet<T>(response: Response, prop: keyof Response): T | undefined {
 
 Request components should validate inputs in constructors.
 
-**Solution**: Import validators from the `validator` package:
-```typescript
-import validator from 'validator';
+**Solution**: Validate inputs in the constructor and throw `ArgumentError` on
+failure, using built-ins (the library has no validation dependency):
 
-if (!validator.isEmail(props.address)) {
-  throw new ArgumentError('Invalid email address');
+```typescript
+import { isIP } from 'node:net';
+
+if (props.ipAddress != null && isIP(props.ipAddress) === 0) {
+  throw new ArgumentError('Invalid IP address');
 }
 ```
+
+Email and domain checks use small local regex helpers (`src/request/email.ts`),
+and URLs are validated with the `URL` constructor (`src/request/order.ts`).
 
 ### Problem: Missing Error Handling
 
