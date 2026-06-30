@@ -62,7 +62,6 @@
     "prepublishOnly": "if [ -z \"$GITHUB_ACTIONS\" ]; then echo 'Manual publishing is disabled. Use ./dev-bin/release.sh instead.' && exit 1; fi"
   },
   "dependencies": {
-    "@maxmind/geoip2-node": "^6.3.0",
-    "maxmind": "^5.0.0"
+    "@maxmind/geoip2-node": "^7.0.0"
   }
 }
