@@ -1,6 +1,25 @@
 CHANGELOG
 =========
 
+9.1.0 (unreleased)
+------------------
+
+* A new `residential` property has been added to the `anonymizer` object on
+  `IpAddress`. This contains residential proxy data for the network and is
+  available from the minFraud Insights and Factors web services only. It may
+  be populated even when no other `anonymizer` properties are set. The
+  `residential` object includes the following properties:
+  * `confidence`: A score (1-99) representing MaxMind's confidence that the
+    network is part of an actively used residential proxy
+  * `networkLastSeen`: The last day (YYYY-MM-DD) the network was sighted in
+    our analysis of residential proxies
+  * `providerName`: The name of the residential proxy provider associated
+    with the network
+* This release requires `@maxmind/geoip2-node` 7.1.0 or greater, which adds
+  the `residential` property to the `AnonymizerRecord` type. The
+  `@maxmind/geoip2-node` dependency will be bumped to `^7.1.0` once that
+  version is released.
+
 9.0.0 (2026-06-29)
 ------------------
 

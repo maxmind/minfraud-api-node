@@ -76,6 +76,11 @@ describe('Insights()', () => {
       isTorExitNode: true,
       networkLastSeen: '2025-01-15',
       providerName: 'TestVPN',
+      residential: {
+        confidence: 82,
+        networkLastSeen: '2026-05-11',
+        providerName: 'quickshift',
+      },
     });
   });
 
