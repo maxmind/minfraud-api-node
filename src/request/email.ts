@@ -383,7 +383,7 @@ export default class Email implements EmailProps {
       ) {
         domain = possibleDomain;
         // Validation guarantees a non-empty local part.
-        /* v8 ignore else */
+        /* v8 ignore else -- @preserve */
         if (localPart !== '') {
           localPart = domainParts[0];
         }
@@ -407,7 +407,7 @@ export default class Email implements EmailProps {
 
     const idx = domain.lastIndexOf('.');
     // Validated domains always contain a dot.
-    /* v8 ignore else */
+    /* v8 ignore else -- @preserve */
     if (idx !== -1) {
       const tld = domain.substring(idx + 1);
       if (Object.prototype.hasOwnProperty.call(Email.typoTLDs, tld)) {
