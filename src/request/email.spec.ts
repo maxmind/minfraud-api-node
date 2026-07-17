@@ -1,3 +1,4 @@
+import { describe, expect, it, test } from 'vitest';
 import { ArgumentError } from '../errors.js';
 import crypto from 'node:crypto';
 import Email from './email.js';

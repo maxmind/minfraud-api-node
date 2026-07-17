@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import Account from './account.js';
 
 describe('Account()', () => {

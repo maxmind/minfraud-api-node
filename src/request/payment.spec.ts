@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import Payment from './payment.js';
 import { PaymentMethod } from '../constants.js';
 

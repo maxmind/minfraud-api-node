@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { Tag } from '../constants.js';
 import { ArgumentError } from '../errors.js';
 import TransactionReport from './transaction-report.js';
@@ -59,6 +60,15 @@ describe('Device()', () => {
         tag: Tag.CHARGEBACK,
       });
     }).not.toThrow();
+  });
+
+  it('throws an error if no identifier field is set', () => {
+    const report = () =>
+      new TransactionReport({
+        tag: Tag.CHARGEBACK,
+      });
+    expect(report).toThrow(ArgumentError);
+    expect(report).toThrow('at least one of the following fields');
   });
 
   it('accepts the clear tag', () => {

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { ArgumentError, WebServiceError } from './errors.js';
 
 describe('WebServiceError', () => {

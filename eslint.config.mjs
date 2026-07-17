@@ -15,6 +15,7 @@ export default tseslint.config(
     languageOptions: {
       globals: {
         ...globals.node,
+        // Still needed by the e2e suites until they migrate to Vitest.
         ...globals.jest,
       },
 
@@ -39,7 +40,7 @@ export default tseslint.config(
       "**/dist",
       "**/docs",
       "**/node_modules",
-      "jest.config.js",
+      "vitest.config.ts",
       "eslint.config.mjs",
       "coverage",
       "prettier.config.mjs",

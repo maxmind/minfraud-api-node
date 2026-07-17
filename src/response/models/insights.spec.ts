@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, it } from 'vitest';
 import insightsJson from '../../../fixtures/insights.json' with { type: 'json' };
 import { InsightsResponse } from '../web-records.js';
 import Insights from './insights.js';

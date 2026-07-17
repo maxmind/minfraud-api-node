@@ -1,3 +1,4 @@
+import { describe, expect, it, test } from 'vitest';
 import * as models from './response/models/index.js';
 import insights from '../fixtures/insights.json' with { type: 'json' };
 import reasons from '../fixtures/reasons.json' with { type: 'json' };
@@ -93,6 +94,10 @@ describe('WebServiceClient', () => {
       expect(
         () => new Client(auth.user, auth.pass, 3000, 'proxy.example' as never)
       ).toThrow(ArgumentError);
+    });
+
+    it('accepts a legacy positional timeout argument', () => {
+      expect(() => new Client(auth.user, auth.pass, 3000)).not.toThrow();
     });
 
     it('sends requests to the configured host', async () => {
@@ -1157,6 +1162,19 @@ describe('WebServiceClient', () => {
       // The original fetch error is preserved as the cause.
       expect(err.cause).toBeInstanceOf(Error);
       expect((err.cause as Error).message).toBe(error);
+    });
+
+    it('wraps a non-Error fetch rejection in an Error', async () => {
+      const { client } = clientWith(() => Promise.reject('rejection reason'));
+
+      const err = await expectError(client.score(transaction), {
+        code: 'FETCH_ERROR',
+        error: 'Error - rejection reason',
+        url: baseUrl + fullPath('score'),
+        cause: 'defined',
+      });
+      expect(err.cause).toBeInstanceOf(Error);
+      expect((err.cause as Error).message).toBe('rejection reason');
     });
 
     it('includes the underlying cause in the FETCH_ERROR message', async () => {
