@@ -15,8 +15,6 @@ export default tseslint.config(
     languageOptions: {
       globals: {
         ...globals.node,
-        // Still needed by the e2e suites until they migrate to Vitest.
-        ...globals.jest,
       },
 
       ecmaVersion: "latest",
