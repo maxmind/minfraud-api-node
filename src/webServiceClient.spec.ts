@@ -22,9 +22,11 @@ const auth = {
 };
 const fullPath = (path: string) => `/minfraud/v2.0/${path}`;
 
+type FetchInput = Parameters<typeof fetch>[0];
+
 interface CapturedRequest {
   init?: RequestInit;
-  url: RequestInfo | URL;
+  url: FetchInput;
 }
 
 const jsonResponse = (status: number, body: unknown): Response =>
@@ -42,7 +44,7 @@ const clientWith = (
   options?: { timeout?: number }
 ) => {
   const requests: CapturedRequest[] = [];
-  const fetcher = (async (url: RequestInfo | URL, init?: RequestInit) => {
+  const fetcher = (async (url: FetchInput, init?: RequestInit) => {
     const request = { init, url };
     requests.push(request);
     return handler(request);
@@ -102,8 +104,8 @@ describe('WebServiceClient', () => {
 
     it('sends requests to the configured host', async () => {
       const ip = '1.1.1.1';
-      const requests: { url: RequestInfo | URL }[] = [];
-      const fetcher = ((url: RequestInfo | URL) => {
+      const requests: { url: FetchInput }[] = [];
+      const fetcher = ((url: FetchInput) => {
         requests.push({ url });
         return Promise.resolve(jsonResponse(200, score.response.full));
       }) as typeof fetch;
