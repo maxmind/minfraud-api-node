@@ -1,3 +1,4 @@
+import { describe, expect, it, test } from 'vitest';
 import * as models from './response/models/index.js';
 import insights from '../fixtures/insights.json' with { type: 'json' };
 import reasons from '../fixtures/reasons.json' with { type: 'json' };
@@ -21,9 +22,11 @@ const auth = {
 };
 const fullPath = (path: string) => `/minfraud/v2.0/${path}`;
 
+type FetchInput = Parameters<typeof fetch>[0];
+
 interface CapturedRequest {
   init?: RequestInit;
-  url: RequestInfo | URL;
+  url: FetchInput;
 }
 
 const jsonResponse = (status: number, body: unknown): Response =>
@@ -41,7 +44,7 @@ const clientWith = (
   options?: { timeout?: number }
 ) => {
   const requests: CapturedRequest[] = [];
-  const fetcher = (async (url: RequestInfo | URL, init?: RequestInit) => {
+  const fetcher = (async (url: FetchInput, init?: RequestInit) => {
     const request = { init, url };
     requests.push(request);
     return handler(request);
@@ -95,10 +98,14 @@ describe('WebServiceClient', () => {
       ).toThrow(ArgumentError);
     });
 
+    it('accepts a legacy positional timeout argument', () => {
+      expect(() => new Client(auth.user, auth.pass, 3000)).not.toThrow();
+    });
+
     it('sends requests to the configured host', async () => {
       const ip = '1.1.1.1';
-      const requests: { url: RequestInfo | URL }[] = [];
-      const fetcher = ((url: RequestInfo | URL) => {
+      const requests: { url: FetchInput }[] = [];
+      const fetcher = ((url: FetchInput) => {
         requests.push({ url });
         return Promise.resolve(jsonResponse(200, score.response.full));
       }) as typeof fetch;
@@ -1121,10 +1128,8 @@ describe('WebServiceClient', () => {
         url: baseUrl + fullPath('score'),
         cause: 'defined',
       });
-      // The JSON parse error is preserved as the cause. (instanceof Error is
-      // unreliable here: under --experimental-vm-modules the parse error is
-      // created in a different realm than this test file.)
-      expect((err.cause as Error).message).toEqual(expect.any(String));
+      // The JSON parse error is preserved as the cause.
+      expect(err.cause).toBeInstanceOf(SyntaxError);
     });
 
     it('preserves the cause when an error response body is not JSON', async () => {
@@ -1140,7 +1145,7 @@ describe('WebServiceClient', () => {
         cause: 'defined',
       });
       // The parse failure on a non-2xx response is preserved as the cause.
-      expect((err.cause as Error).message).toEqual(expect.any(String));
+      expect(err.cause).toBeInstanceOf(SyntaxError);
     });
 
     it('handles general fetch errors', async () => {
@@ -1157,6 +1162,19 @@ describe('WebServiceClient', () => {
       // The original fetch error is preserved as the cause.
       expect(err.cause).toBeInstanceOf(Error);
       expect((err.cause as Error).message).toBe(error);
+    });
+
+    it('wraps a non-Error fetch rejection in an Error', async () => {
+      const { client } = clientWith(() => Promise.reject('rejection reason'));
+
+      const err = await expectError(client.score(transaction), {
+        code: 'FETCH_ERROR',
+        error: 'Error - rejection reason',
+        url: baseUrl + fullPath('score'),
+        cause: 'defined',
+      });
+      expect(err.cause).toBeInstanceOf(Error);
+      expect((err.cause as Error).message).toBe('rejection reason');
     });
 
     it('includes the underlying cause in the FETCH_ERROR message', async () => {

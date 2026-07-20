@@ -3,7 +3,7 @@
   "compilerOptions": {
     "isolatedModules": true,
     "rootDir": "src",
-    "types": ["jest", "node"]
+    "types": ["node"]
   },
   "include": ["src"],
   "exclude": []

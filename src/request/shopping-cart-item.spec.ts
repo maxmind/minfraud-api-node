@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { ArgumentError } from '../errors.js';
 import ShoppingCartItem from './shopping-cart-item.js';
 

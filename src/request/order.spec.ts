@@ -1,7 +1,12 @@
+import { describe, expect, it } from 'vitest';
 import { ArgumentError } from '../errors.js';
 import Order from './order.js';
 
 describe('Order()', () => {
+  it('constructs without a referrer URI', () => {
+    expect(() => new Order({ currency: 'USD' })).not.toThrow();
+  });
+
   it('throws an error if currency is not valid', () => {
     const order = () =>
       new Order({

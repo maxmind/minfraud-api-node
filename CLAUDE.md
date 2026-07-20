@@ -16,7 +16,7 @@ The library is server-side only and provides strongly-typed request/response mod
 - TypeScript with strict type checking
 - Node.js 22+ (targets active LTS versions)
 - Uses Node.js built-in `fetch` for HTTP requests
-- Jest for testing
+- Vitest for testing
 - ESLint + Prettier for code quality
 - TypeDoc for API documentation
 - Depends on @maxmind/geoip2-node for IP geolocation data
@@ -153,8 +153,11 @@ npm test
 # Run tests in watch mode
 npm run test:watch
 
+# Run tests with coverage (100% thresholds enforced)
+npm run test:coverage
+
 # Run specific test file
-npx jest src/webServiceClient.spec.ts
+npx vitest run src/webServiceClient.spec.ts
 ```
 
 ### Linting and Building

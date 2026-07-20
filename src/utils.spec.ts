@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { snakecaseKeys, snakeToCamelCase, camelcaseKeys } from './utils.js';
 
 describe('src/Utils', () => {

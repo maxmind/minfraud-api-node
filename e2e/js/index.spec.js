@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import * as minFraud from '@maxmind/minfraud-api-node';
 
 describe('client', () => {

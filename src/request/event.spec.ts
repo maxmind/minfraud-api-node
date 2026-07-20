@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals';
+import { describe, expect, it, vi } from 'vitest';
 import Event from './event.js';
 import { EventParty, EventType } from '../constants.js';
 
@@ -6,9 +6,9 @@ describe('Event()', () => {
   it('sets `time` to now by default', () => {
     const mockDate = new Date('2019-05-29T17:12:28.123Z');
 
-    jest
-      .spyOn(global.Date, 'now')
-      .mockImplementationOnce(() => mockDate.valueOf());
+    vi.spyOn(global.Date, 'now').mockImplementationOnce(() =>
+      mockDate.valueOf()
+    );
 
     const event = new Event({
       transactionId: 'foobar',

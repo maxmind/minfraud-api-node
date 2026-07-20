@@ -1,3 +1,4 @@
+import { describe, expect, it, test } from 'vitest';
 import { ArgumentError } from '../errors.js';
 import Account from './account.js';
 import Billing from './billing.js';
