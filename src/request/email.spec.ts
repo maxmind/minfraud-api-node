@@ -225,6 +225,11 @@ describe('Email()', () => {
       domain: 'user.fastmail.com',
     },
     {
+      email: 'alias@user.fastmail.ca',
+      md5: md5('user@fastmail.ca'),
+      domain: 'user.fastmail.ca',
+    },
+    {
       email: 'foo@bar.example.com',
       md5: md5('foo@bar.example.com'),
       domain: 'bar.example.com',
@@ -233,6 +238,11 @@ describe('Email()', () => {
       email: 'foo-bar@ymail.com',
       md5: md5('foo@ymail.com'),
       domain: 'ymail.com',
+    },
+    {
+      email: 'test-alias@myyahoo.com',
+      md5: md5('test@myyahoo.com'),
+      domain: 'myyahoo.com',
     },
     {
       email: 'foo@example.com.com',
