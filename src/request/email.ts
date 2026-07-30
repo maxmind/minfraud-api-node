@@ -168,6 +168,7 @@ export default class Email implements EmailProps {
     'fastemailer.com': true,
     'fastest.cc': true,
     'fastimap.com': true,
+    'fastmail.ca': true,
     'fastmail.cn': true,
     'fastmail.co.uk': true,
     'fastmail.com': true,
@@ -261,6 +262,7 @@ export default class Email implements EmailProps {
   };
 
   private static readonly yahooDomains: { [key: string]: boolean } = {
+    'myyahoo.com': true,
     'y7mail.com': true,
     'yahoo.at': true,
     'yahoo.be': true,
