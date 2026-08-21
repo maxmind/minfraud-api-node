@@ -18,20 +18,31 @@ jobs:
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: ${{ matrix.version }}
-      - run: npm ci
-      - run: npm run test:coverage
-      - run: npm run build
-      - run: npm run build:docs
-      - run: npm link
-      - run: npm ci
+          package-manager-cache: false
+      - name: Setup mise
+        uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4.2.4
+        with:
+          install: false
+      # Install pnpm only, and put just its directory on PATH. A full mise
+      # install would also install mise's own node (node = "latest") and could
+      # place it ahead of the matrix node selected above, silently testing the
+      # wrong version.
+      - name: Install pnpm
+        env:
+          MISE_AUTO_INSTALL: 'false'
+        run: |
+          mise install github:pnpm/pnpm
+          dirname "$(mise which pnpm)" >> "$GITHUB_PATH"
+      # Guard against the failure above: this must print the matrix version.
+      - run: node --version
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run test:coverage
+      - run: pnpm run build
+      - run: pnpm run build:docs
+      # e2e/js and e2e/ts are workspace members that depend on the library with
+      # workspace:*, so the root install already symlinked it into their
+      # node_modules. They read the dist/ built two steps above.
+      - run: pnpm exec vitest run
         working-directory: e2e/js
-      - run: npm link '@maxmind/minfraud-api-node'
-        working-directory: e2e/js
-      - run: npx vitest run
-        working-directory: e2e/js
-      - run: npm ci
-        working-directory: e2e/ts
-      - run: npm link '@maxmind/minfraud-api-node'
-        working-directory: e2e/ts
-      - run: npx vitest run
+      - run: pnpm exec vitest run
         working-directory: e2e/ts

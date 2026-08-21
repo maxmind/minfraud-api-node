@@ -20,6 +20,16 @@
 Note: Publishing is done via GitHub Actions using npm Trusted Publishing
 (OIDC). Manual `npm publish` is not supported.
 
+## Development setup
+
+Dependencies are managed with pnpm, pinned in `mise.toml`. Run `mise install`
+to get it, then `pnpm install`. Do not use npm or corepack: the repo is a pnpm
+workspace (`e2e/js` and `e2e/ts` are members) with a single root
+`pnpm-lock.yaml`, and npm cannot resolve their `workspace:*` dependency.
+
+Publishing is the one exception. `release.yml` calls `npm publish --provenance`
+because npm Trusted Publishing (OIDC) has no pnpm equivalent.
+
 ## Set up Precious to tidy and lint
 
 1. Run `mkdir -p local && ./bin/install-precious local` to set up Precious locally

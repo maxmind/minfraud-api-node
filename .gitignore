@@ -69,3 +69,6 @@ local
 
 # Claude Code
 .claude
+
+# pnpm
+.pnpm-store/

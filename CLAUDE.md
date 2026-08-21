@@ -145,37 +145,37 @@ insights.risk = response.ip_address.risk;
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Run all tests
-npm test
+pnpm test
 
 # Run tests in watch mode
-npm run test:watch
+pnpm run test:watch
 
 # Run tests with coverage (100% thresholds enforced)
-npm run test:coverage
+pnpm run test:coverage
 
 # Run specific test file
-npx vitest run src/webServiceClient.spec.ts
+pnpm exec vitest run src/webServiceClient.spec.ts
 ```
 
 ### Linting and Building
 
 ```bash
 # Lint code (ESLint + TypeScript)
-npm run lint
+pnpm run lint
 
 # Format code (Prettier)
-npm run prettier:ts
-npm run prettier:json
+pnpm run prettier:ts
+pnpm run prettier:json
 
 # Build TypeScript
-npm run build
+pnpm run build
 
 # Build and deploy documentation
-npm run build:docs
-npm run deploy:docs
+pnpm run build:docs
+pnpm run deploy:docs
 ```
 
 ### Test Structure
@@ -374,7 +374,7 @@ insights.risk = response.ip_address.risk;
 
 ### Setup
 ```bash
-npm install
+pnpm install
 ```
 
 ### Before Committing
@@ -386,16 +386,18 @@ precious tidy -g
 precious lint -g
 
 # Run tests
-npm test
+pnpm test
 
 # Build
-npm run build
+pnpm run build
 ```
 
 Note: Precious is already set up and handles code formatting and linting. Use `precious tidy -g` to automatically fix issues, and `precious lint -g` to check for remaining problems.
 
 ### Version Requirements
 - **Node.js 22+** required (targets active LTS: 22, 24)
+- **pnpm 11+** required. It is pinned in `mise.toml`, so `mise install`
+  provides it; do not use npm or corepack.
 - Uses Node.js built-in `fetch` (no external HTTP libraries)
 - TypeScript 6.x
 

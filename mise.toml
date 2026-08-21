@@ -5,10 +5,27 @@ disable_backends = [
     "asdf",
     "vfox",
 ]
+# macos-x64 is deliberately absent. pnpm 11 ships no darwin-x64 binary (the
+# v11.22.0 assets are darwin-arm64, linux-{arm64,x64}{,-musl} and win32-
+# {arm64,x64}), and when mise locks that platform it falls back to the
+# release's source-maps.tgz, producing an entry that resolves but contains no
+# pnpm. Omitting the platform turns a silently broken Intel Mac install into a
+# clear "no pre-resolved URL" error.
+lockfile_platforms = [
+    "linux-arm64",
+    "linux-arm64-musl",
+    "linux-x64",
+    "linux-x64-musl",
+    "macos-arm64",
+    "windows-x64",
+]
 
 [tools]
 node = "latest"
 lychee = "latest"
+# Not aqua:pnpm/pnpm: the aqua registry's pnpm config keeps breaking on
+# release-asset naming changes (jdx/mise discussions #9453, #9624).
+"github:pnpm/pnpm" = "v11.22.0"
 
 [hooks]
 enter = "mise install --quiet --locked"

@@ -1,9 +1,12 @@
 version: 2
 updates:
   - package-ecosystem: npm
+    # One root pnpm-lock.yaml covers the workspace (root + e2e/js + e2e/ts), so
+    # a '**/*' glob would only add no-op directories. A per-directory run in
+    # e2e/* would bump a manifest while leaving the root lockfile stale, which
+    # turns the PR red on --frozen-lockfile.
     directories:
       - /
-      - '**/*'
     schedule:
       interval: weekly
       day: monday
