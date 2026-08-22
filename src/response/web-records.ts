@@ -75,10 +75,7 @@ export interface DeviceWebRecord {
 }
 
 export type EmailDomainClassification =
-  | 'business'
-  | 'education'
-  | 'government'
-  | 'isp_email';
+  'business' | 'education' | 'government' | 'isp_email';
 
 export type EmailDomainVisitStatus =
   | 'live'

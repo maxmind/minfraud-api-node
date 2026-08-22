@@ -1,0 +1,15 @@
+# e2e/js and e2e/ts are workspace members so that a single root install wires
+# them up to the library under test. They depend on it with workspace:*, which
+# pnpm resolves to a symlink at the repo root, so the e2e suites run against
+# dist/ exactly as they did under `npm link`. The root package is always a
+# member and must not be listed here.
+packages:
+  - e2e/js
+  - e2e/ts
+
+# pnpm 11 no longer reads non-auth settings from .npmrc, so this lives here.
+engineStrict: true
+
+# The root package is the product, not a monorepo shell, so `pnpm add -D <pkg>`
+# at the root is routine and should not require -w.
+ignoreWorkspaceRootCheck: true

@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+9.2.0
+------------------
+
+* Added `maxmind` as a direct dependency. The `IpAddressWebRecord` type extends
+  `CityResponse` from that package, so it is part of this package's published
+  type surface. It was previously resolved only as a transitive dependency of
+  `@maxmind/geoip2-node`, which broke type checking for users of package
+  managers that do not flatten `node_modules`, such as pnpm.
+
 9.1.0 (2026-07-21)
 ------------------
 
