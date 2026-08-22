@@ -5,12 +5,11 @@ disable_backends = [
     "asdf",
     "vfox",
 ]
-# macos-x64 is deliberately absent. pnpm 11 ships no darwin-x64 binary (the
-# v11.22.0 assets are darwin-arm64, linux-{arm64,x64}{,-musl} and win32-
-# {arm64,x64}), and when mise locks that platform it falls back to the
-# release's source-maps.tgz, producing an entry that resolves but contains no
-# pnpm. Omitting the platform turns a silently broken Intel Mac install into a
-# clear "no pre-resolved URL" error.
+# windows-arm64 and macos-x64 are both absent because MaxMind supports neither
+# Windows ARM64 nor Intel Mac. macos-x64 would have to stay absent regardless:
+# pnpm 11 ships no darwin-x64 binary, so when mise locks that platform it falls
+# back to the release's unrelated source-maps.tgz, producing an entry that
+# verifies but contains no pnpm.
 lockfile_platforms = [
     "linux-arm64",
     "linux-arm64-musl",

@@ -395,6 +395,7 @@ pnpm run build
 Note: Precious is already set up and handles code formatting and linting. Use `precious tidy -g` to automatically fix issues, and `precious lint -g` to check for remaining problems.
 
 ### Version Requirements
+
 - **Node.js 22+** required (targets active LTS: 22, 24)
 - **pnpm 11+** required. It is pinned in `mise.toml`, so `mise install`
   provides it; do not use npm or corepack.

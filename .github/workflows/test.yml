@@ -33,8 +33,15 @@ jobs:
         run: |
           mise install github:pnpm/pnpm
           dirname "$(mise which pnpm)" >> "$GITHUB_PATH"
-      # Guard against the failure above: this must print the matrix version.
-      - run: node --version
+      # Guard against the failure above. This asserts rather than prints, so a
+      # shadowed node fails the job instead of needing someone to read the log.
+      - name: Verify the matrix node is active
+        env:
+          EXPECTED_MAJOR: ${{ matrix.version }}
+        run: |
+          actual=$(node -p 'process.versions.node.split(".")[0]')
+          echo "node major: $actual (expected $EXPECTED_MAJOR)"
+          test "$actual" = "$EXPECTED_MAJOR"
       - run: pnpm install --frozen-lockfile
       - run: pnpm run test:coverage
       - run: pnpm run build
