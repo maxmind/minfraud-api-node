@@ -26,6 +26,11 @@ jobs:
         uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4.2.4
         with:
           install: false
+          # Caching is off in this workflow only. zizmor's cache-poisoning
+          # audit flags a restorable cache in a job that builds release
+          # artifacts, which is also why the setup-node steps here set
+          # package-manager-cache: false.
+          cache: false
       # Install pnpm only, so mise's own node does not shadow the node above.
       - name: Install pnpm
         env:
@@ -64,6 +69,11 @@ jobs:
         uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4.2.4
         with:
           install: false
+          # Caching is off in this workflow only. zizmor's cache-poisoning
+          # audit flags a restorable cache in a job that builds release
+          # artifacts, which is also why the setup-node steps here set
+          # package-manager-cache: false.
+          cache: false
       # Install pnpm only, so mise's own node does not shadow the node above.
       - name: Install pnpm
         env:
