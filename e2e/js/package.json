@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "private": true,
   "type": "module",
+  "dependencies": {
+    "@maxmind/minfraud-api-node": "workspace:*"
+  },
   "devDependencies": {
     "vitest": "^4.1.10"
   }
