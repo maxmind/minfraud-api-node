@@ -189,15 +189,25 @@ export default class WebServiceClient {
     */
     let response: Response;
     try {
-      response = await this.fetcher(url, options);
-    } catch (err) {
-      const error =
-        err instanceof Error || err instanceof DOMException
-          ? err
-          : new Error(String(err));
-      if (error.name === 'TimeoutError') {
-        throw clientError(
-          {
+ } catch (err) {
+      const error = err as TypeError;
+      if ((err as WebServiceClientError).url && !error.name) {
+        throw err;
+      }
+      switch (error.name) {
+        case 'AbortError':
+          throw (url, options);
+      const response = await fetch(url, options);
+
+      if (!response.ok) {
+        throw await this.handleError(response, url);
+      }
+
+      if (response.status === 204) {
+        return;
+      }
+      data = await response.json();
+     {
             code: 'NETWORK_TIMEOUT',
             error: 'The request timed out',
             url,
