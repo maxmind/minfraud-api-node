@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import { domainToASCII } from 'node:url';
 import { ArgumentError } from '../errors.js';
+import { assertValidDate } from '../utils.js';
 
 // A fully-qualified domain name: two or more dot-separated labels of letters
 // (including non-ASCII), combining marks, digits, or hyphens, with no label
@@ -51,6 +52,19 @@ interface EmailProps {
    * true, the address will instead be sent as an MD5 hash.
    */
   hashAddress?: boolean;
+  /**
+   * The date and time of the most recent attempt to verify the email address,
+   * if known. The time must not be before 1970-01-01T00:00:00Z or more than two
+   * days in the future. The web service ignores a time outside this range and
+   * returns a warning.
+   */
+  verificationTime?: Date;
+  /**
+   * Whether the most recent verification that the end user controls the email
+   * address succeeded, for example by confirming a link sent to the address.
+   * Omit this if no verification was attempted.
+   */
+  wasVerificationSuccessful?: boolean;
 }
 
 /**
@@ -64,6 +78,19 @@ export default class Email implements EmailProps {
   public address?: string;
   /** @inheritDoc EmailProps.domain */
   public domain?: string;
+  /**
+   * The date and time of the most recent attempt to verify the email address,
+   * if known. The time must not be before 1970-01-01T00:00:00Z or more than two
+   * days in the future. The web service ignores a time outside this range and
+   * returns a warning.
+   */
+  public verificationTime?: Date;
+  /**
+   * Whether the most recent verification that the end user controls the email
+   * address succeeded, for example by confirming a link sent to the address.
+   * Omit this if no verification was attempted.
+   */
+  public wasVerificationSuccessful?: boolean;
 
   private static readonly typoDomains: { [key: string]: string } = {
     // gmail.com
@@ -327,6 +354,22 @@ export default class Email implements EmailProps {
       throw new ArgumentError('`email.domain` is an invalid domain');
     }
 
+    if (email.verificationTime != null) {
+      assertValidDate(email.verificationTime, 'email.verificationTime');
+      // Copy the Date so that a later change to the caller's object does not
+      // change the request.
+      this.verificationTime = new Date(email.verificationTime.getTime());
+    }
+
+    if (
+      email.wasVerificationSuccessful != null &&
+      typeof email.wasVerificationSuccessful !== 'boolean'
+    ) {
+      throw new ArgumentError(
+        '`email.wasVerificationSuccessful` must be a boolean'
+      );
+    }
+
     if (email.address) {
       if (email.hashAddress) {
         this.address = crypto.hash(
@@ -344,6 +387,8 @@ export default class Email implements EmailProps {
     if (email.domain == null && email.address != null) {
       this.domain = email.address.substring(email.address.indexOf('@') + 1);
     }
+
+    this.wasVerificationSuccessful = email.wasVerificationSuccessful;
   }
 
   private cleanEmailAddress(address: string) {
