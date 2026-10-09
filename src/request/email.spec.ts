@@ -4,6 +4,19 @@ import crypto from 'node:crypto';
 import Email from './email.js';
 
 describe('Email()', () => {
+  it('stores the verification properties', () => {
+    const time = new Date('2026-10-01T14:25:00Z');
+    const email = new Email({
+      domain: 'example.com',
+      verificationTime: time,
+      wasVerificationSuccessful: false,
+    });
+
+    expect(email.domain).toBe('example.com');
+    expect(email.verificationTime).toBe(time);
+    expect(email.wasVerificationSuccessful).toBe(false);
+  });
+
   it('throws an error if email.address is not valid', () => {
     const email = () =>
       new Email({

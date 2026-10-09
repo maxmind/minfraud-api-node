@@ -51,6 +51,15 @@ interface EmailProps {
    * true, the address will instead be sent as an MD5 hash.
    */
   hashAddress?: boolean;
+  /**
+   * The date and time of the most recent verification of the email address.
+   */
+  verificationTime?: Date;
+  /**
+   * Whether the most recent verification of the email address succeeded.
+   * Omit this if no verification was attempted.
+   */
+  wasVerificationSuccessful?: boolean;
 }
 
 /**
@@ -64,6 +73,10 @@ export default class Email implements EmailProps {
   public address?: string;
   /** @inheritDoc EmailProps.domain */
   public domain?: string;
+  /** @inheritDoc EmailProps.verificationTime */
+  public verificationTime?: Date;
+  /** @inheritDoc EmailProps.wasVerificationSuccessful */
+  public wasVerificationSuccessful?: boolean;
 
   private static readonly typoDomains: { [key: string]: string } = {
     // gmail.com
@@ -344,6 +357,9 @@ export default class Email implements EmailProps {
     if (email.domain == null && email.address != null) {
       this.domain = email.address.substring(email.address.indexOf('@') + 1);
     }
+
+    this.verificationTime = email.verificationTime;
+    this.wasVerificationSuccessful = email.wasVerificationSuccessful;
   }
 
   private cleanEmailAddress(address: string) {

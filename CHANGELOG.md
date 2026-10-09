@@ -11,6 +11,10 @@ CHANGELOG
   `phoneVerificationMethod`, `phoneWasVerificationSuccessful`, and
   `phoneVerificationTime` to `Billing`. The `PhoneVerificationMethod` enum
   lists the valid methods.
+* Added the inputs `/email/was_verification_successful` and
+  `/email/verification_time`. They describe the most recent verification of
+  the email address. You may provide them by providing
+  `wasVerificationSuccessful` and `verificationTime` to `Email`.
 * Added `maxmind` as a direct dependency. The `IpAddressWebRecord` type extends
   `CityResponse` from that package, so it is part of this package's published
   type surface. It was previously resolved only as a transitive dependency of
