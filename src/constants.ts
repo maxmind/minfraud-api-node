@@ -25,6 +25,12 @@ export enum DeliverySpeed {
   Standard = 'standard',
 }
 
+export enum PhoneVerificationMethod {
+  DeliveredCode = 'delivered_code',
+  Network = 'network',
+  Other = 'other',
+}
+
 export enum PaymentMethod {
   BankDebit = 'bank_debit',
   BankRedirect = 'bank_redirect',

@@ -1,3 +1,4 @@
+import { PhoneVerificationMethod } from '../constants.js';
 import { ArgumentError } from '../errors.js';
 
 export interface LocationProps {
@@ -46,6 +47,21 @@ export interface LocationProps {
    * The phone number, without the country code, associated with the address.
    */
   phoneCountryCode?: string;
+  /**
+   * The most recent method used to verify the phone number.
+   */
+  phoneVerificationMethod?: PhoneVerificationMethod;
+  /**
+   * The date and time of the most recent verification of the phone number.
+   * The time must not be before 1970-01-01T00:00:00Z or more than two days in
+   * the future.
+   */
+  phoneVerificationTime?: Date;
+  /**
+   * Whether the most recent verification of the phone number succeeded. Omit
+   * this if no verification was attempted.
+   */
+  phoneWasVerificationSuccessful?: boolean;
 }
 
 const countryRegex = /^[A-Z]{2}$/;
@@ -76,6 +92,12 @@ export default class Location implements LocationProps {
   public phoneNumber?: string;
   /** @inheritDoc LocationProps.phoneCountryCode */
   public phoneCountryCode?: string;
+  /** @inheritDoc LocationProps.phoneVerificationMethod */
+  public phoneVerificationMethod?: PhoneVerificationMethod;
+  /** @inheritDoc LocationProps.phoneVerificationTime */
+  public phoneVerificationTime?: Date;
+  /** @inheritDoc LocationProps.phoneWasVerificationSuccessful */
+  public phoneWasVerificationSuccessful?: boolean;
 
   public constructor(location: LocationProps) {
     if (location.country != null && !countryRegex.test(location.country)) {

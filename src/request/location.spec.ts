@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { PhoneVerificationMethod } from '../constants.js';
 import { ArgumentError } from '../errors.js';
 import Location from './location.js';
 
@@ -19,5 +20,20 @@ describe('Location()', () => {
         country: 'CA',
       });
     }).not.toThrow();
+  });
+
+  it('stores the phone verification properties', () => {
+    const time = new Date('2026-10-01T14:30:00Z');
+    const location = new Location({
+      country: 'CA',
+      phoneVerificationMethod: PhoneVerificationMethod.Network,
+      phoneVerificationTime: time,
+      phoneWasVerificationSuccessful: false,
+    });
+
+    expect(location.country).toBe('CA');
+    expect(location.phoneVerificationMethod).toBe('network');
+    expect(location.phoneVerificationTime).toBe(time);
+    expect(location.phoneWasVerificationSuccessful).toBe(false);
   });
 });
