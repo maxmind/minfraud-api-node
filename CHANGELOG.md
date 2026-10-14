@@ -1,9 +1,19 @@
 CHANGELOG
 =========
 
-9.1.1
+9.2.0
 ------------------
 
+* Added the inputs `/billing/phone_verification_method`,
+  `/billing/phone_was_verification_successful`,
+  `/billing/phone_verification_time`,
+  `/shipping/phone_verification_method`,
+  `/shipping/phone_was_verification_successful`, and
+  `/shipping/phone_verification_time`. They describe the most recent
+  verification of the billing or shipping phone number. You may provide them
+  by providing `phoneVerificationMethod`, `phoneWasVerificationSuccessful`,
+  and `phoneVerificationTime` to `Billing` or `Shipping`. The
+  `PhoneVerificationMethod` enum lists the valid methods.
 * Added `maxmind` as a direct dependency. The `IpAddressWebRecord` type extends
   `CityResponse` from that package, so it is part of this package's published
   type surface. It was previously resolved only as a transitive dependency of
