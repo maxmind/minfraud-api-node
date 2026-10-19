@@ -26,8 +26,20 @@ export enum DeliverySpeed {
 }
 
 export enum PhoneVerificationMethod {
+  /**
+   * A one-time code delivered to the phone number by SMS, an automated voice
+   * call, or a messaging app, and entered by the user.
+   */
   DeliveredCode = 'delivered_code',
+  /**
+   * Carrier or SIM-based silent network authentication. No code is sent to
+   * the device.
+   */
   Network = 'network',
+  /**
+   * A method not listed above, such as flash or missed call verification, or
+   * a method you do not know because a third party performed the check.
+   */
   Other = 'other',
 }
 

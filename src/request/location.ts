@@ -55,7 +55,8 @@ export interface LocationProps {
   /**
    * The date and time of the most recent verification of the phone number.
    * The time must not be before 1970-01-01T00:00:00Z or more than two days in
-   * the future.
+   * the future. The web service ignores a time outside this range and returns
+   * a warning.
    */
   phoneVerificationTime?: Date;
   /**
