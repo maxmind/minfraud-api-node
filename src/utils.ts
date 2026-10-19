@@ -1,3 +1,5 @@
+import { ArgumentError } from './errors.js';
+
 /**
  * Converts snake_case to camelCase
  * @param {string} input - snake_case string
@@ -84,4 +86,19 @@ export function snakecaseKeys(input: unknown): unknown {
     },
     {} as Record<string, unknown>
   );
+}
+
+/**
+ * Throws an `ArgumentError` if `value` is not a valid `Date`.
+ *
+ * @param value - the value to check
+ * @param name - the property name to use in the error message
+ */
+export function assertValidDate(
+  value: unknown,
+  name: string
+): asserts value is Date {
+  if (!(value instanceof Date) || Number.isNaN(value.getTime())) {
+    throw new ArgumentError(`\`${name}\` must be a valid Date`);
+  }
 }

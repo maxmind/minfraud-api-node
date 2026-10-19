@@ -1,5 +1,6 @@
 import { PhoneVerificationMethod } from '../constants.js';
 import { ArgumentError } from '../errors.js';
+import { assertValidDate } from '../utils.js';
 
 export interface LocationProps {
   /**
@@ -106,6 +107,38 @@ export default class Location implements LocationProps {
       );
     }
 
+    if (
+      location.phoneVerificationMethod != null &&
+      !Object.values(PhoneVerificationMethod).includes(
+        location.phoneVerificationMethod
+      )
+    ) {
+      throw new ArgumentError(
+        `"${location.phoneVerificationMethod}" is an invalid value for "phoneVerificationMethod"`
+      );
+    }
+
+    if (
+      location.phoneWasVerificationSuccessful != null &&
+      typeof location.phoneWasVerificationSuccessful !== 'boolean'
+    ) {
+      throw new ArgumentError(
+        '`phoneWasVerificationSuccessful` must be a boolean'
+      );
+    }
+
+    if (location.phoneVerificationTime != null) {
+      assertValidDate(location.phoneVerificationTime, 'phoneVerificationTime');
+    }
+
     Object.assign(this, location);
+
+    // Copy the Date so that a later change to the caller's object does not
+    // change the request.
+    if (location.phoneVerificationTime != null) {
+      this.phoneVerificationTime = new Date(
+        location.phoneVerificationTime.getTime()
+      );
+    }
   }
 }

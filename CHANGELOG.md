@@ -14,6 +14,9 @@ CHANGELOG
   by providing `phoneVerificationMethod`, `phoneWasVerificationSuccessful`,
   and `phoneVerificationTime` to `Billing` or `Shipping`. The
   `PhoneVerificationMethod` enum lists the valid methods.
+* `Event` now throws an `ArgumentError` if `time` is not a valid `Date`.
+  Before, the client sent an invalid `Date` as `null` and did not report an
+  error.
 * Added `maxmind` as a direct dependency. The `IpAddressWebRecord` type extends
   `CityResponse` from that package, so it is part of this package's published
   type surface. It was previously resolved only as a transitive dependency of

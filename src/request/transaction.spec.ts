@@ -268,9 +268,12 @@ describe('Transaction()', () => {
       expect(test.toString()).toContain('"billing":{"address_2":"foo"}');
     });
 
-    it('it handles billing phone verification fields', () => {
+    it.each([
+      ['billing', Billing],
+      ['shipping', Shipping],
+    ] as const)('it handles %s phone verification fields', (name, Cls) => {
       const test = new Transaction({
-        billing: new Billing({
+        [name]: new Cls({
           phoneVerificationMethod: PhoneVerificationMethod.DeliveredCode,
           phoneVerificationTime: new Date('2026-10-01T14:30:00Z'),
           phoneWasVerificationSuccessful: false,
@@ -280,26 +283,7 @@ describe('Transaction()', () => {
         }),
       });
 
-      expect(JSON.parse(test.toString()).billing).toEqual({
-        phone_verification_method: 'delivered_code',
-        phone_verification_time: '2026-10-01T14:30:00.000Z',
-        phone_was_verification_successful: false,
-      });
-    });
-
-    it('it handles shipping phone verification fields', () => {
-      const test = new Transaction({
-        shipping: new Shipping({
-          phoneVerificationMethod: PhoneVerificationMethod.DeliveredCode,
-          phoneVerificationTime: new Date('2026-10-01T14:30:00Z'),
-          phoneWasVerificationSuccessful: false,
-        }),
-        device: new Device({
-          ipAddress: '1.1.1.1',
-        }),
-      });
-
-      expect(JSON.parse(test.toString()).shipping).toEqual({
+      expect(JSON.parse(test.toString())[name]).toEqual({
         phone_verification_method: 'delivered_code',
         phone_verification_time: '2026-10-01T14:30:00.000Z',
         phone_was_verification_successful: false,
