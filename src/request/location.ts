@@ -1,4 +1,6 @@
+import { PhoneVerificationMethod } from '../constants.js';
 import { ArgumentError } from '../errors.js';
+import { assertValidDate } from '../utils.js';
 
 export interface LocationProps {
   /**
@@ -39,13 +41,29 @@ export interface LocationProps {
    */
   postal?: string;
   /**
-   * The phone country code for the phone number associated with the address.
+   * The phone number, without the country code, associated with the address.
    */
   phoneNumber?: string;
   /**
-   * The phone number, without the country code, associated with the address.
+   * The phone country code for the phone number associated with the address.
    */
   phoneCountryCode?: string;
+  /**
+   * The most recent method used to verify the phone number.
+   */
+  phoneVerificationMethod?: PhoneVerificationMethod;
+  /**
+   * The date and time of the most recent verification of the phone number.
+   * The time must not be before 1970-01-01T00:00:00Z or more than two days in
+   * the future. The web service ignores a time outside this range and returns
+   * a warning.
+   */
+  phoneVerificationTime?: Date;
+  /**
+   * Whether the most recent verification of the phone number succeeded. Omit
+   * this if no verification was attempted.
+   */
+  phoneWasVerificationSuccessful?: boolean;
 }
 
 const countryRegex = /^[A-Z]{2}$/;
@@ -76,6 +94,12 @@ export default class Location implements LocationProps {
   public phoneNumber?: string;
   /** @inheritDoc LocationProps.phoneCountryCode */
   public phoneCountryCode?: string;
+  /** @inheritDoc LocationProps.phoneVerificationMethod */
+  public phoneVerificationMethod?: PhoneVerificationMethod;
+  /** @inheritDoc LocationProps.phoneVerificationTime */
+  public phoneVerificationTime?: Date;
+  /** @inheritDoc LocationProps.phoneWasVerificationSuccessful */
+  public phoneWasVerificationSuccessful?: boolean;
 
   public constructor(location: LocationProps) {
     if (location.country != null && !countryRegex.test(location.country)) {
@@ -84,6 +108,38 @@ export default class Location implements LocationProps {
       );
     }
 
+    if (
+      location.phoneVerificationMethod != null &&
+      !Object.values(PhoneVerificationMethod).includes(
+        location.phoneVerificationMethod
+      )
+    ) {
+      throw new ArgumentError(
+        `"${location.phoneVerificationMethod}" is an invalid value for "phoneVerificationMethod"`
+      );
+    }
+
+    if (
+      location.phoneWasVerificationSuccessful != null &&
+      typeof location.phoneWasVerificationSuccessful !== 'boolean'
+    ) {
+      throw new ArgumentError(
+        '`phoneWasVerificationSuccessful` must be a boolean'
+      );
+    }
+
+    if (location.phoneVerificationTime != null) {
+      assertValidDate(location.phoneVerificationTime, 'phoneVerificationTime');
+    }
+
     Object.assign(this, location);
+
+    // Copy the Date so that a later change to the caller's object does not
+    // change the request.
+    if (location.phoneVerificationTime != null) {
+      this.phoneVerificationTime = new Date(
+        location.phoneVerificationTime.getTime()
+      );
+    }
   }
 }

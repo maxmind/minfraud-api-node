@@ -1,4 +1,5 @@
 import { describe, expect, it, test } from 'vitest';
+import { PhoneVerificationMethod } from '../constants.js';
 import { ArgumentError } from '../errors.js';
 import Account from './account.js';
 import Billing from './billing.js';
@@ -265,6 +266,28 @@ describe('Transaction()', () => {
       expect(test.toString()).toContain(deviceString);
 
       expect(test.toString()).toContain('"billing":{"address_2":"foo"}');
+    });
+
+    it.each([
+      ['billing', Billing],
+      ['shipping', Shipping],
+    ] as const)('it handles %s phone verification fields', (name, Cls) => {
+      const test = new Transaction({
+        [name]: new Cls({
+          phoneVerificationMethod: PhoneVerificationMethod.DeliveredCode,
+          phoneVerificationTime: new Date('2026-10-01T14:30:00Z'),
+          phoneWasVerificationSuccessful: false,
+        }),
+        device: new Device({
+          ipAddress: '1.1.1.1',
+        }),
+      });
+
+      expect(JSON.parse(test.toString())[name]).toEqual({
+        phone_verification_method: 'delivered_code',
+        phone_verification_time: '2026-10-01T14:30:00.000Z',
+        phone_was_verification_successful: false,
+      });
     });
 
     it('does not mutate the caller’s input objects when serializing', () => {

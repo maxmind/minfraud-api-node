@@ -1,4 +1,5 @@
 import { EventParty, EventType } from '../constants.js';
+import { assertValidDate } from '../utils.js';
 
 interface EventProps {
   /**
@@ -43,6 +44,10 @@ export default class Event implements EventProps {
   public type?: EventType;
 
   public constructor(minfraudEvent: EventProps) {
+    if (minfraudEvent.time != null) {
+      assertValidDate(minfraudEvent.time, 'event.time');
+    }
+
     Object.assign(this, minfraudEvent);
 
     if (!this.time) {
