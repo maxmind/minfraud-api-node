@@ -4,6 +4,63 @@ import crypto from 'node:crypto';
 import Email from './email.js';
 
 describe('Email()', () => {
+  it('stores the verification properties', () => {
+    const time = new Date('2026-10-01T14:25:00Z');
+    const email = new Email({
+      domain: 'example.com',
+      verificationTime: time,
+      wasVerificationSuccessful: false,
+    });
+
+    expect(email.domain).toBe('example.com');
+    expect(email.verificationTime).toEqual(time);
+    expect(email.wasVerificationSuccessful).toBe(false);
+  });
+
+  it('copies `verificationTime`', () => {
+    const time = new Date('2026-10-01T14:25:00Z');
+    const email = new Email({ verificationTime: time });
+
+    time.setTime(0);
+
+    expect(email.verificationTime).toEqual(new Date('2026-10-01T14:25:00Z'));
+  });
+
+  it('accepts null verification properties', () => {
+    expect(
+      () =>
+        new Email({
+          verificationTime: null,
+          wasVerificationSuccessful: null,
+        } as unknown as ConstructorParameters<typeof Email>[0])
+    ).not.toThrow();
+  });
+
+  it.each([
+    ['an invalid Date', new Date('not a date')],
+    ['a string', '2026-10-01T14:25:00Z'],
+    ['a number', 1790000000000],
+  ])('throws an ArgumentError if verificationTime is %s', (_, value) => {
+    const test = () =>
+      new Email({
+        verificationTime: value as unknown as Date,
+      });
+    expect(test).toThrow(ArgumentError);
+    expect(test).toThrow('verificationTime');
+  });
+
+  it.each(['true', 1, 0])(
+    'throws an ArgumentError for wasVerificationSuccessful %j',
+    (value) => {
+      const test = () =>
+        new Email({
+          wasVerificationSuccessful: value as unknown as boolean,
+        });
+      expect(test).toThrow(ArgumentError);
+      expect(test).toThrow('wasVerificationSuccessful');
+    }
+  );
+
   it('throws an error if email.address is not valid', () => {
     const email = () =>
       new Email({

@@ -250,6 +250,23 @@ describe('Transaction()', () => {
       expect(test.toString()).toContain('"email":{"domain":"foo.com"}');
     });
 
+    it('it handles email verification fields', () => {
+      const test = new Transaction({
+        device: new Device({
+          ipAddress: '1.1.1.1',
+        }),
+        email: new Email({
+          verificationTime: new Date('2026-10-01T14:25:00Z'),
+          wasVerificationSuccessful: false,
+        }),
+      });
+
+      expect(JSON.parse(test.toString()).email).toEqual({
+        verification_time: '2026-10-01T14:25:00.000Z',
+        was_verification_successful: false,
+      });
+    });
+
     it('it handles optional billing field', () => {
       const test = new Transaction({
         billing: new Billing({
