@@ -356,9 +356,6 @@ export default class Email implements EmailProps {
 
     if (email.verificationTime != null) {
       assertValidDate(email.verificationTime, 'email.verificationTime');
-      // Copy the Date so that a later change to the caller's object does not
-      // change the request.
-      this.verificationTime = new Date(email.verificationTime.getTime());
     }
 
     if (
@@ -386,6 +383,12 @@ export default class Email implements EmailProps {
 
     if (email.domain == null && email.address != null) {
       this.domain = email.address.substring(email.address.indexOf('@') + 1);
+    }
+
+    // Copy the Date so that a later change to the caller's object does not
+    // change the request.
+    if (email.verificationTime != null) {
+      this.verificationTime = new Date(email.verificationTime.getTime());
     }
 
     this.wasVerificationSuccessful = email.wasVerificationSuccessful;
