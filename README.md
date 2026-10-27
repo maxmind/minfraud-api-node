@@ -206,6 +206,8 @@ try {
     email: new minFraud.Email({
       address: 'foo@bar.com',
       domain: 'bar.com',
+      verificationTime: new Date('2026-10-01T14:25:00Z'),
+      wasVerificationSuccessful: true,
     }),
     billing: new minFraud.Billing({
       address: '123 Robot Ave.',

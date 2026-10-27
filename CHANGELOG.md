@@ -14,6 +14,10 @@ CHANGELOG
   by providing `phoneVerificationMethod`, `phoneWasVerificationSuccessful`,
   and `phoneVerificationTime` to `Billing` or `Shipping`. The
   `PhoneVerificationMethod` enum lists the valid methods.
+* Added the inputs `/email/verification_time` and
+  `/email/was_verification_successful`. They describe the most recent
+  verification of the email address. You may provide them by providing
+  `verificationTime` and `wasVerificationSuccessful` to `Email`.
 * `Event` now throws an `ArgumentError` if `time` is not a valid `Date`.
   Before, the client sent an invalid `Date` as `null` and did not report an
   error.
