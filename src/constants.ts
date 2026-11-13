@@ -188,6 +188,7 @@ export enum Processor {
   Rede = 'rede',
   Redpagos = 'redpagos',
   Rewardspay = 'rewardspay',
+  Ryft = 'ryft',
   Safecharge = 'safecharge',
   Sagepay = 'sagepay',
   Securepay = 'securepay',
