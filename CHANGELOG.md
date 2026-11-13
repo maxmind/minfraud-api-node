@@ -26,6 +26,7 @@ CHANGELOG
   type surface. It was previously resolved only as a transitive dependency of
   `@maxmind/geoip2-node`, which broke type checking for users of package
   managers that do not flatten `node_modules`, such as pnpm.
+* Added `Ryft` to the `Processor` enum.
 
 9.1.0 (2026-07-21)
 ------------------
