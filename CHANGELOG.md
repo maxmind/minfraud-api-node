@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-9.2.0
+9.2.0 (2026-11-18)
 ------------------
 
 * Added the inputs `/billing/phone_verification_method`,
