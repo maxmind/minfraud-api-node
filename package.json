@@ -19,8 +19,14 @@
   "license": "Apache-2.0",
   "private": false,
   "engines": {
-    "node": ">=22",
-    "pnpm": ">=11"
+    "node": ">=22"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=11",
+      "onFail": "error"
+    }
   },
   "keywords": [
     "maxmind",
