@@ -1,7 +1,15 @@
 CHANGELOG
 =========
 
-9.2.0
+9.2.1 (2026-11-18)
+------------------
+
+* No library code changes. The 9.2.0 release workflow failed before it
+  published to npm, so npm has no 9.2.0. This release publishes the same code.
+  The only package change is in `devEngines`, which applies to development of
+  this package, not to projects that install it.
+
+9.2.0 (2026-11-18)
 ------------------
 
 * Added the inputs `/billing/phone_verification_method`,

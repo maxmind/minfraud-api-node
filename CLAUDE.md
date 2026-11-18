@@ -406,6 +406,8 @@ Note: Precious is already set up and handles code formatting and linting. Use `p
   corepack. The release workflow is the one exception: it publishes with
   `npm publish --provenance`. pnpm 11 supports OIDC natively, so that is a
   deliberate hold on a release path CI never runs, not a limitation.
+  Nothing enforces pnpm 11: `devEngines.packageManager` only warns, because npm
+  reads it too and would otherwise refuse to publish.
 - Uses Node.js built-in `fetch` (no external HTTP libraries)
 - TypeScript 6.x
 

@@ -13,6 +13,10 @@ packages:
 #
 # engineStrict makes an incompatible engines.node a hard install failure, this
 # package's own included: without it the root "node": ">=22" only warns, so
-# deleting this setting silently weakens that guard. engines.pnpm is enforced
-# either way.
+# deleting this setting silently weakens that guard.
+#
+# package.json sets devEngines.packageManager with onFail "warn". It cannot be
+# "error": npm reads it too, and the release workflow publishes with npm, which
+# then refuses to run. Keep onFail explicit: without it, pnpm 11 downloads the
+# pnpm it locked and bypasses mise.lock. pnpm 10 ignores devEngines.
 engineStrict: true
