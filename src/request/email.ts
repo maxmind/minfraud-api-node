@@ -38,7 +38,7 @@ const isEmail = (value: string): boolean => {
   return match !== null && isFQDN(match[2]);
 };
 
-interface EmailProps {
+export interface EmailProps {
   /**
    * The email address used in the transaction.
    */

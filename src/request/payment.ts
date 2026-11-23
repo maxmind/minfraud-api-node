@@ -1,6 +1,6 @@
 import { PaymentMethod, Processor } from '../constants.js';
 
-interface PaymentProps {
+export interface PaymentProps {
   /**
    * The payment method associated with the transaction.
    */

@@ -1,6 +1,6 @@
 import { ArgumentError } from '../errors.js';
 
-interface ShoppingCartItemProps {
+export interface ShoppingCartItemProps {
   /**
    * The category of the item.
    */

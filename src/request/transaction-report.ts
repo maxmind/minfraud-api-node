@@ -3,7 +3,7 @@ import { Tag } from '../constants.js';
 import { ArgumentError } from '../errors.js';
 import { snakecaseKeys } from '../utils.js';
 
-interface TransactionReportProps {
+export interface TransactionReportProps {
   /**
    * A string which is provided by your payment processor indicating the
    * reason for the chargeback.

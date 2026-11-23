@@ -1,6 +1,6 @@
 import crypto from 'node:crypto';
 
-interface AccountProps {
+export interface AccountProps {
   /**
    * A unique user ID associated with the end-user in your system. If your
    * system allows the login name for the account to be changed, this should

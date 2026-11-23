@@ -1,7 +1,7 @@
 import { isIP } from 'node:net';
 import { ArgumentError } from '../errors.js';
 
-interface OrderProps {
+export interface OrderProps {
   /**
    * The total order amount for the transaction.
    */

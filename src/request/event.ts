@@ -1,7 +1,7 @@
 import { EventParty, EventType } from '../constants.js';
 import { assertValidDate } from '../utils.js';
 
-interface EventProps {
+export interface EventProps {
   /**
    * The party submitting the transaction.
    */

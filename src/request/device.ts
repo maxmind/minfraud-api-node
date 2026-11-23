@@ -1,7 +1,7 @@
 import { isIP } from 'node:net';
 import { ArgumentError } from '../errors.js';
 
-interface DeviceProps {
+export interface DeviceProps {
   /**
    * The IP address associated with the device used by the customer in the
    * transaction.

@@ -1,7 +1,7 @@
 import { DeliverySpeed } from '../constants.js';
 import Location, { LocationProps } from './location.js';
 
-interface ShippingProps extends LocationProps {
+export interface ShippingProps extends LocationProps {
   /**
    * The shipping delivery speed for the order.
    */
