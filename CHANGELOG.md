@@ -16,6 +16,8 @@ CHANGELOG
   `ShoppingCartItemProps`, `TransactionProps`, and `TransactionReportProps`.
   The API documentation now shows the descriptions of the request properties
   that inherit them from these types.
+* The package now keeps the documentation comments in its type declarations,
+  so editors show them.
 
 9.2.1 (2026-11-18)
 ------------------
