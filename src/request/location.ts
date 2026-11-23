@@ -49,19 +49,27 @@ export interface LocationProps {
    */
   phoneCountryCode?: string;
   /**
-   * The most recent method used to verify the phone number.
+   * The method used for the most recent verification of the phone number. Set
+   * this if you tried to verify the phone number, even if the user did not
+   * complete the verification. Do not set this if you did not try to verify
+   * the phone number.
    */
   phoneVerificationMethod?: PhoneVerificationMethod;
   /**
-   * The date and time of the most recent verification of the phone number.
-   * The time must not be before 1970-01-01T00:00:00Z or more than two days in
-   * the future. The web service ignores a time outside this range and returns
-   * a warning.
+   * The date and time that the end user completed the most recent verification
+   * of the phone number, if known. Set this only if
+   * `phoneWasVerificationSuccessful` is `true`. The time must not be before
+   * 1970-01-01T00:00:00Z or more than two days in the future. The web service
+   * ignores a time outside this range and returns a warning.
    */
   phoneVerificationTime?: Date;
   /**
-   * Whether the most recent verification of the phone number succeeded. Omit
-   * this if no verification was attempted.
+   * Whether the end user has verified that they control the phone number, as
+   * of the time of the event. Set this to `true` if the user completed a
+   * verification. Set it to `false` if the phone number is not verified. This
+   * includes a verification that is pending, abandoned, expired, or failed,
+   * and a phone number that you did not try to verify. Omitting this is not
+   * equivalent to `false`.
    */
   phoneWasVerificationSuccessful?: boolean;
 }

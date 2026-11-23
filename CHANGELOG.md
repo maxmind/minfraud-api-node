@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+9.2.2 (unreleased)
+------------------
+
+* Updated the documentation for the email and phone verification inputs.
+  `false` for `wasVerificationSuccessful` and `phoneWasVerificationSuccessful`
+  now means that the email address or phone number is not verified as of the
+  time of the event, for any reason. Set a verification time only when the
+  value is `true`. Set `phoneVerificationMethod` for any verification that you
+  tried. There are no code changes.
+
 9.2.1 (2026-11-18)
 ------------------
 
