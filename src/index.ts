@@ -35,6 +35,18 @@ export {
   WebServiceError,
 };
 
+export type { AccountProps } from './request/account.js';
+export type { CreditCardProps } from './request/credit-card.js';
+export type { DeviceProps } from './request/device.js';
+export type { EmailProps } from './request/email.js';
+export type { EventProps } from './request/event.js';
+export type { LocationProps } from './request/location.js';
+export type { OrderProps } from './request/order.js';
+export type { PaymentProps } from './request/payment.js';
+export type { ShippingProps } from './request/shipping.js';
+export type { ShoppingCartItemProps } from './request/shopping-cart-item.js';
+export type { TransactionProps } from './request/transaction.js';
+export type { TransactionReportProps } from './request/transaction-report.js';
 export type {
   ClientErrorCode,
   WebServiceClientError,

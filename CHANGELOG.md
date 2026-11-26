@@ -1,6 +1,24 @@
 CHANGELOG
 =========
 
+9.3.0 (unreleased)
+------------------
+
+* Updated the documentation for the email and phone verification inputs.
+  `false` for `wasVerificationSuccessful` and `phoneWasVerificationSuccessful`
+  now means that the email address or phone number is not verified as of the
+  time of the event, for any reason. Set a verification time only when the
+  value is `true`. Set `phoneVerificationMethod` for any verification that you
+  tried.
+* Exported the request property types from the package root: `AccountProps`,
+  `CreditCardProps`, `DeviceProps`, `EmailProps`, `EventProps`,
+  `LocationProps`, `OrderProps`, `PaymentProps`, `ShippingProps`,
+  `ShoppingCartItemProps`, `TransactionProps`, and `TransactionReportProps`.
+  The API documentation now shows the descriptions of the request properties
+  that inherit them from these types.
+* The package now keeps the documentation comments in its type declarations,
+  so editors show them.
+
 9.2.1 (2026-11-18)
 ------------------
 

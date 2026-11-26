@@ -10,7 +10,6 @@
     "moduleResolution": "NodeNext",
     "outDir": "dist",
     "pretty": true,
-    "removeComments": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,

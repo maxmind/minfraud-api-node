@@ -38,7 +38,7 @@ const isEmail = (value: string): boolean => {
   return match !== null && isFQDN(match[2]);
 };
 
-interface EmailProps {
+export interface EmailProps {
   /**
    * The email address used in the transaction.
    */
@@ -53,16 +53,20 @@ interface EmailProps {
    */
   hashAddress?: boolean;
   /**
-   * The date and time of the most recent attempt to verify the email address,
-   * if known. The time must not be before 1970-01-01T00:00:00Z or more than two
-   * days in the future. The web service ignores a time outside this range and
-   * returns a warning.
+   * The date and time that the end user completed the most recent verification
+   * of the email address, if known. Set this only if
+   * `wasVerificationSuccessful` is `true`. The time must not be before
+   * 1970-01-01T00:00:00Z or more than two days in the future. The web service
+   * ignores a time outside this range and returns a warning.
    */
   verificationTime?: Date;
   /**
-   * Whether the most recent verification that the end user controls the email
-   * address succeeded, for example by confirming a link sent to the address.
-   * Omit this if no verification was attempted.
+   * Whether the end user has verified that they control the email address, as
+   * of the time of the event. Set this to `true` if the user completed a
+   * verification, for example by confirming a link sent to the address. Set it
+   * to `false` if the address is not verified. This includes a verification
+   * that is pending, abandoned, expired, or failed, and an address that you did
+   * not try to verify. Omitting this is not equivalent to `false`.
    */
   wasVerificationSuccessful?: boolean;
 }
@@ -79,16 +83,20 @@ export default class Email implements EmailProps {
   /** @inheritDoc EmailProps.domain */
   public domain?: string;
   /**
-   * The date and time of the most recent attempt to verify the email address,
-   * if known. The time must not be before 1970-01-01T00:00:00Z or more than two
-   * days in the future. The web service ignores a time outside this range and
-   * returns a warning.
+   * The date and time that the end user completed the most recent verification
+   * of the email address, if known. Set this only if
+   * `wasVerificationSuccessful` is `true`. The time must not be before
+   * 1970-01-01T00:00:00Z or more than two days in the future. The web service
+   * ignores a time outside this range and returns a warning.
    */
   public verificationTime?: Date;
   /**
-   * Whether the most recent verification that the end user controls the email
-   * address succeeded, for example by confirming a link sent to the address.
-   * Omit this if no verification was attempted.
+   * Whether the end user has verified that they control the email address, as
+   * of the time of the event. Set this to `true` if the user completed a
+   * verification, for example by confirming a link sent to the address. Set it
+   * to `false` if the address is not verified. This includes a verification
+   * that is pending, abandoned, expired, or failed, and an address that you did
+   * not try to verify. Omitting this is not equivalent to `false`.
    */
   public wasVerificationSuccessful?: boolean;
 
